@@ -35,6 +35,10 @@ class MultiplayerFragment : Fragment() {
             val inviteFrag = InviteFragment()
             inviteFrag.show(getFragmentManager(),"INVITE_FRAGMENT")
         }
+        fragmentMultiplayer_temporalButton_receiveInvitation.setOnClickListener {
+            val receiveInvitationFragment = InvitationReceived()
+            receiveInvitationFragment.show(fragmentManager, "RECEIVE_INVITATION_FRAGMENT")
+        }
 
     }
 }

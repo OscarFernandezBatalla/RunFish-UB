@@ -1,6 +1,7 @@
 package com.example.frponsll40alumnes.runfish
 
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +34,7 @@ private const val ARG_PARAM2 = "param2"
     en la vista del jugador. Mediante el método update típico de las interfaces Observable se notificará a los
     observadores que ha llegado la invitación y mostrarán éste fragmento.
  */
-class InvitationReceived : Fragment() {
+class InvitationReceived : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_invitation_received, container, false)
@@ -44,7 +45,6 @@ class InvitationReceived : Fragment() {
         // ----------------------- Buttons listeners -----------------------
         invitationReceived_button_aceptar.setOnClickListener{
             // Si se acepta, navegar a la pantalla multijugador
-            if(view.visibility == View.GONE){view.visibility = View.VISIBLE}
             view.visibility = View.GONE
             // joinParty()
         }
