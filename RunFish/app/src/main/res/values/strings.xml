@@ -102,4 +102,9 @@
     <string name="invitationReceived_buttonAccept_acceptMsg">ACCEPT</string>
     <string name="invitationReceived_buttonReject_rejectMsg">REJECT</string>
     <string name="invitationReceived_textView_invitingUserName_placeholder">USERNAME PLACEHOLDER</string>
+
+    <!--Fragment InGamePause-->
+    <string name="inGamePause_textView_pauseMsg">PAUSE</string>
+    <string name="inGamePause_continueButton_continueMsg">CONTINUE</string>
+
 </resources>
