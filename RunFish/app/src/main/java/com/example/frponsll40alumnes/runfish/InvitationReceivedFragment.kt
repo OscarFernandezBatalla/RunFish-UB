@@ -53,7 +53,7 @@ class InvitationReceived : DialogFragment() {
             // Si se rechaza, ocultar la notificación (No seria mejor destruirla?)
             view.visibility = View.GONE
             // Return to last fragment
-            fragmentManager?.popBackStack()
+            //fragmentManager?.popBackStack()
         }
     }
 
