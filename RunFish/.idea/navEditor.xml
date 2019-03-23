@@ -178,6 +178,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_menuFragment_to_shopFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_menuFragment_to_singlePlayerFragment">
                               <value>
                                 <LayoutPositions />
@@ -250,6 +255,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="pauseFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-527" />
+                            <option name="y" value="-921" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="shopFragment">
                     <value>
                       <LayoutPositions>
@@ -258,6 +275,15 @@
                             <option name="x" value="280" />
                             <option name="y" value="-716" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_shopFragment_to_menuFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
