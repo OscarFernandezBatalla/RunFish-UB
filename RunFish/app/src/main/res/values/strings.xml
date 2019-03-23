@@ -98,8 +98,8 @@
     <string name="paused">PAUSED</string>
 
     <!--Fragment InvitationReceived-->
-    <string name="invitationReceived_textViewMsg_invitationReceivedMsg">You have received an invitation from</string>
-    <string name="invitationReceived_buttonAccept_acceptMsg">Accept</string>
-    <string name="invitationReceived_buttonReject_rejectMsg">Reject</string>
-    <string name="invitationReceived_textView_invitingUserName_placeholder">Username placeholder</string>
+    <string name="invitationReceived_textViewMsg_invitationReceivedMsg">YOU HAVE RECEIVED AN INVITATION FROM</string>
+    <string name="invitationReceived_buttonAccept_acceptMsg">ACCEPT</string>
+    <string name="invitationReceived_buttonReject_rejectMsg">REJECT</string>
+    <string name="invitationReceived_textView_invitingUserName_placeholder">USERNAME PLACEHOLDER</string>
 </resources>
