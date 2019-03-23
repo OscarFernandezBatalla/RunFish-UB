@@ -23,12 +23,21 @@ class MultiplayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
         //button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_levelsFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_levelsFragment))
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_menuFragment))
         button_invite.setOnClickListener{
-            fragment_invite_layout.bringToFront()
-            fragment_invite_layout.visibility=View.VISIBLE
+            //fragment_invite_layout.bringToFront()
+            //fragment_invite_layout.visibility=View.VISIBLE
+            val inviteFrag = InviteFragment()
+            inviteFrag.show(getFragmentManager(),"INVITE_FRAGMENT")
+        }
+        fragmentMultiplayer_temporalButton_receiveInvitation.setOnClickListener {
+            val receiveInvitationFragment = InvitationReceived()
+            receiveInvitationFragment.show(fragmentManager, "RECEIVE_INVITATION_FRAGMENT")
         }
 
     }

@@ -92,4 +92,14 @@
     <string name="preu_blowfish">3500</string>
     <string name="preu_shark">8500</string>
     <string name="preu_swordfish">5000</string>
+    <string name="pause">PAUSE</string>
+    <string name="restart">RESTART</string>
+    <string name="exit">EXIT</string>
+    <string name="paused">PAUSED</string>
+
+    <!--Fragment InvitationReceived-->
+    <string name="invitationReceived_textViewMsg_invitationReceivedMsg">You have received an invitation from</string>
+    <string name="invitationReceived_buttonAccept_acceptMsg">Accept</string>
+    <string name="invitationReceived_buttonReject_rejectMsg">Reject</string>
+    <string name="invitationReceived_textView_invitingUserName_placeholder">Username placeholder</string>
 </resources>
