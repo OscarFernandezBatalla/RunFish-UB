@@ -51,9 +51,7 @@ class InvitationReceived : DialogFragment() {
 
         invitationReceived_button_rechazar.setOnClickListener {
             // Si se rechaza, ocultar la notificación (No seria mejor destruirla?)
-            view.visibility = View.GONE
-            // Return to last fragment
-            //fragmentManager?.popBackStack()
+            this.dismiss()
         }
     }
 
