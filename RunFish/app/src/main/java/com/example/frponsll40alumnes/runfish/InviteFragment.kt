@@ -27,20 +27,24 @@ class InviteFragment : DialogFragment() {
         * TODO: Preguntar per la visiblitat del fragment un cop visistat per primera vegada.
          */
         button_friend.setOnClickListener{
-            view.visibility=View.GONE
+            //view.visibility=View.GONE
+            this.dismiss()
         }
         button_friend1.setOnClickListener{
-            view.visibility=View.GONE
+            //view.visibility=View.GONE
+            this.dismiss()
         }
         button_friend2.setOnClickListener{
-            view.visibility=View.GONE
+            //view.visibility=View.GONE
+            this.dismiss()
         }
         button_friend3.setOnClickListener{
-            view.visibility=View.GONE
+            //view.visibility=View.GONE
+            this.dismiss()
         }
-
         button_cross.setOnClickListener{
-            view.visibility=View.GONE
+            //view.visibility=View.GONE
+            this.dismiss()
         }
 
     }
