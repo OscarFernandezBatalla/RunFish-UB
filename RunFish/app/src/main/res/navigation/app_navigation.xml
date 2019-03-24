@@ -8,36 +8,47 @@
               android:label="fragment_main"
               tools:layout="@layout/fragment_main">
         <action android:id="@+id/action_mainFragment_to_signInFragment" app:destination="@id/signInFragment"
-        />
-        <action android:id="@+id/action_mainFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+                app:popUpTo="@+id/mainFragment"/>
+        <action android:id="@+id/action_mainFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/signInFragment" android:name="com.example.frponsll40alumnes.runfish.SignInFragment"
               android:label="fragment_sign_in" tools:layout="@layout/fragment_sign_in">
         <action android:id="@+id/action_signInFragment_to_mainFragment" app:destination="@id/mainFragment"
-        />
+                app:popUpTo="@+id/mainFragment"/>
     </fragment>
     <fragment android:id="@+id/friendsFragment" android:name="com.example.frponsll40alumnes.runfish.FriendsFragment"
               android:label="fragment_friends" tools:layout="@layout/fragment_friends">
-        <action android:id="@+id/action_friendsFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+        <action android:id="@+id/action_friendsFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/menuFragment" android:name="com.example.frponsll40alumnes.runfish.menuFragment"
               android:label="fragment_menu" tools:layout="@layout/fragment_menu">
         <action android:id="@+id/action_menuFragment_to_singlePlayerFragment"
-                app:destination="@+id/singlePlayerFragment"/>
-        <action android:id="@+id/action_menuFragment_to_multiplayerFragment" app:destination="@id/multiplayerFragment"/>
-        <action android:id="@+id/action_menuFragment_to_friendsFragment" app:destination="@id/friendsFragment"/>
-        <action android:id="@+id/action_menuFragment_to_options" app:destination="@id/options"/>
-        <action android:id="@+id/action_menuFragment_to_statsFragment" app:destination="@id/statsFragment"/>
-        <action android:id="@+id/action_menuFragment_to_shopFragment" app:destination="@id/shopFragment"/>
+                app:destination="@+id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_menuFragment_to_multiplayerFragment" app:destination="@id/multiplayerFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_menuFragment_to_friendsFragment" app:destination="@id/friendsFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_menuFragment_to_options" app:destination="@id/options"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_menuFragment_to_statsFragment" app:destination="@id/statsFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_menuFragment_to_shopFragment" app:destination="@id/shopFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
 
     <fragment android:id="@+id/singlePlayerFragment"
               android:name="com.example.frponsll40alumnes.runfish.SinglePlayerFragment"
               android:label="fragment_single_player" tools:layout="@layout/fragment_single_player">
-        <action android:id="@+id/action_singlePlayerFragment_to_menuFragment" app:destination="@id/menuFragment"/>
-        <action android:id="@+id/action_singlePlayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"/>
-        <action android:id="@+id/action_singlePlayerFragment_to_gameFragment" app:destination="@id/gameFragment"/>
-        <action android:id="@+id/action_singlePlayerFragment_to_fishFragment" app:destination="@id/fishFragment"/>
+        <action android:id="@+id/action_singlePlayerFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_singlePlayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"
+                app:popUpTo="@+id/singlePlayerFragment"/>
+        <action android:id="@+id/action_singlePlayerFragment_to_gameFragment" app:destination="@id/gameFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_singlePlayerFragment_to_fishFragment" app:destination="@id/fishFragment"
+                app:popUpTo="@+id/singlePlayerFragment"/>
     </fragment>
 
 
@@ -46,36 +57,48 @@
         <action android:id="@+id/action_levelsFragment_to_singlePlayerFragment"
                 app:destination="@id/singlePlayerFragment"/>
         <action android:id="@+id/action_levelsFragment_to_multiplayerFragment"
-                app:destination="@id/multiplayerFragment"/>
-        <action android:id="@+id/action_levelsFragment_to_gameFragment" app:destination="@id/gameFragment"/>
+                app:destination="@id/multiplayerFragment" app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_levelsFragment_to_gameFragment" app:destination="@id/gameFragment"
+                app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_levelsFragment_to_singlePlayerFragment2"
-                app:destination="@id/singlePlayerFragment"/>
+                app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
 
     <fragment android:id="@+id/options" android:name="com.example.frponsll40alumnes.runfish.options"
               android:label="fragment_options" tools:layout="@layout/fragment_options">
-        <action android:id="@+id/action_options_to_menuFragment" app:destination="@id/menuFragment"/>
-        <action android:id="@+id/action_options_to_mainFragment" app:destination="@id/mainFragment"/>
+        <action android:id="@+id/action_options_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_options_to_mainFragment" app:destination="@id/mainFragment"
+                app:popUpTo="@+id/mainFragment"/>
     </fragment>
 
     <fragment android:id="@+id/multiplayerFragment" android:name="com.example.frponsll40alumnes.runfish.MultiplayerFragment"
               android:label="fragment_multiplayer" tools:layout="@layout/fragment_multiplayer">
-        <action android:id="@+id/action_multiplayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"/>
-        <action android:id="@+id/action_multiplayerFragment_to_menuFragment" app:destination="@id/menuFragment"/>
-        <action android:id="@+id/action_multiplayerFragment_to_gameFragment" app:destination="@id/gameFragment"/>
+
+        <action android:id="@+id/action_multiplayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"
+                app:popUpTo="@+id/multiplayerFragment"/>
+        <action android:id="@+id/action_multiplayerFragment_to_menuFragment" app:destination="@+id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_multiplayerFragment_to_gameFragment" app:destination="@id/gameFragment"
+                app:popUpTo="@+id/menuFragment"/>
+
         <action android:id="@+id/action_multiplayerFragment_to_fishFragment" app:destination="@id/fishFragment"/>
+
     </fragment>
     <fragment android:id="@+id/statsFragment" android:name="com.example.frponsll40alumnes.runfish.statsFragment"
               android:label="fragment_stats" tools:layout="@layout/fragment_stats">
-        <action android:id="@+id/action_statsFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+        <action android:id="@+id/action_statsFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/shopFragment" android:name="com.example.frponsll40alumnes.runfish.shopFragment"
               android:label="fragment_shop" tools:layout="@layout/fragment_shop">
-        <action android:id="@+id/action_shopFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+        <action android:id="@+id/action_shopFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/gameFragment" android:name="com.example.frponsll40alumnes.runfish.GameFragment"
               android:label="fragment_game" tools:layout="@layout/fragment_game">
-        <action android:id="@+id/action_gameFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+        <action android:id="@+id/action_gameFragment_to_menuFragment" app:destination="@id/menuFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment><![CDATA[
 
               android:label="fragment_game" tools:layout="@layout/fragment_game"/>
@@ -84,7 +107,7 @@
     <fragment android:id="@+id/fishFragment" android:name="com.example.frponsll40alumnes.runfish.FishFragment"
               android:label="fragment_fish" tools:layout="@layout/fragment_fish">
         <action android:id="@+id/action_fishFragment_to_singlePlayerFragment"
-                app:destination="@id/singlePlayerFragment"/>
+                app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
 
 </navigation>
