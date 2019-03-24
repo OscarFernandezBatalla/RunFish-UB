@@ -108,6 +108,8 @@
               android:label="fragment_fish" tools:layout="@layout/fragment_fish">
         <action android:id="@+id/action_fishFragment_to_singlePlayerFragment"
                 app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_fishFragment_to_multiplayerFragment" app:destination="@id/multiplayerFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
 
 </navigation>

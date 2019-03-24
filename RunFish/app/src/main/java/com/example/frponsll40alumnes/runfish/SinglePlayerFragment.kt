@@ -22,7 +22,7 @@ class SinglePlayerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        ReturnLevelDirection = LevelDirection.SINGLEPLAYER
+        ReturnDirection = LevelDirection.SINGLEPLAYER
         super.onViewCreated(view, savedInstanceState)
         button_resume_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))

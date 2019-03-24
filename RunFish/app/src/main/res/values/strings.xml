@@ -41,7 +41,7 @@
     <string name="shop">SHOP</string>
     <string name="stats">STATS</string>
     <string name="options">OPTIONS</string>
-    <string name="users_ini">0</string>
+    <string name="users_ini">3</string>
     <string name="invite">INVITE</string>
     <string name="music">MUSIC</string>
     <string name="sounds">SOUNDS</string>
@@ -58,7 +58,7 @@
     <string name="image_player2">Image Player2</string>
     <string name="player_2">Player 2</string>
     <string name="player_1">Player 1</string>
-    <string name="preu_common_fish">OWNED</string>
+    <string name="preu_common_fish">500</string>
     <string name="common_fish">COMMON FISH</string>
     <string name="description_image_plankton">Plankton image</string>
     <string name="description_image_fish">Fish image</string>
@@ -88,6 +88,7 @@
     <string name="int_travelled_meters">150 METERS</string>
     <string name="game_over">GAME_OVER</string>
     <string name="retry">RETRY</string>
+    <string name="owned">OWNED</string>
     <string name="preu_clownfish">1000</string>
     <string name="preu_blowfish">3500</string>
     <string name="preu_shark">8500</string>

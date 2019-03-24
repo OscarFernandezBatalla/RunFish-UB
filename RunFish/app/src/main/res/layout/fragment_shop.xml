@@ -163,7 +163,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginBottom="16dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            android:text="@string/preu_common_fish" style="@style/MistralStyle"/>
+                            android:text="@string/owned" style="@style/MistralStyle"/>
                     <TextView
                             android:text="@string/common_fish"
                             android:layout_width="wrap_content"
@@ -320,7 +320,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginBottom="16dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            android:text="@string/preu_clownfish" style="@style/MistralStyle"/>
+                            style="@style/MistralStyle" android:text="@string/owned"/>
                     <TextView
                             android:text="@string/clownfish"
                             android:layout_width="wrap_content"
@@ -638,7 +638,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginBottom="16dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            android:text="@string/preu_shark"
+                            android:text="@string/owned"
                             style="@style/MistralStyle"/>
                     <TextView
                             android:text="@string/shark"

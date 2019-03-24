@@ -113,8 +113,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_comeback"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/flecha_animation_izq"/>
 

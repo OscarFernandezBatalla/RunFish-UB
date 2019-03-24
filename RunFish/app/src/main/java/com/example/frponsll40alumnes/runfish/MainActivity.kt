@@ -7,7 +7,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
 
-var ReturnLevelDirection : LevelDirection = LevelDirection.SINGLEPLAYER
+var ReturnDirection : LevelDirection = LevelDirection.SINGLEPLAYER
 
 enum class LevelDirection {
     SINGLEPLAYER, MULTIPLAYER
@@ -24,11 +24,9 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        //binding.buttonEnter.setOnClickListener{
 
-        //}
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
 
 
 

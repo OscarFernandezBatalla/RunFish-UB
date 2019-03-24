@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_fish.*
-import kotlinx.android.synthetic.main.fragment_levels.*
+
 
 
 class FishFragment : Fragment() {
@@ -24,7 +24,13 @@ class FishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_singlePlayerFragment))
+
+        if (ReturnDirection == LevelDirection.SINGLEPLAYER) {
+            button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_singlePlayerFragment))
+        } else if (ReturnDirection == LevelDirection.MULTIPLAYER) {
+            button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_multiplayerFragment))
+        }
+
 
         button_common_fish.setOnClickListener {
             text_selected_fish.text =  "COMMON FISH"
@@ -42,14 +48,6 @@ class FishFragment : Fragment() {
             button_ability_selected_fish.setBackgroundResource(R.drawable.salud)
         }
 
-        /*button_blowfish.setOnClickListener {
-            text_selected_fish.text =  "BLOWFISH"
-            life_bar_selected_fish.progress = 45
-            capactity_bar_selected_fish.progress = 50
-            speed_bar_selected_fish.progress = 20
-            button_ability_selected_fish.setBackgroundResource(R.drawable.fuerza)
-        }*/
-
 
         button_shark.setOnClickListener {
 
@@ -59,19 +57,7 @@ class FishFragment : Fragment() {
             speed_bar_selected_fish.progress = 80
             button_ability_selected_fish.setBackgroundResource(R.drawable.shark_icon_dos)
         }
+        
 
-        button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_singlePlayerFragment))
-
-/*
-        button_ability_selected_fish.setOnClickListener(){
-
-            //val toast1 = Toast.makeText(this@FishFragment, "Prueba ASF", Toast.LENGTH_SHORT).show()
-            Toast.makeText(activity, "Its toast!", Toast.LENGTH_SHORT).show()
-        }
-        */
-    button_ability_selected_fish.setOnTouchListener { _, _ ->
-            //TODO : PREGUNTAR COM FER QUE ES VEGI UN FRAGMENT ÚNICAMENT QUAN ESTIGUI APRETANT EL BOTÓ (PER MOSTRAR L'HABILITAT DEL PEIX)
-            true
-            }
     }
 }

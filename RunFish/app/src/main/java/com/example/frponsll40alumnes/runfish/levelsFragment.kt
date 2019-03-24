@@ -21,12 +21,12 @@ class levelsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         button_tutorial.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
 
-        if (ReturnLevelDirection == LevelDirection.SINGLEPLAYER) {
+        if (ReturnDirection == LevelDirection.SINGLEPLAYER) {
             button_comeback_singleplayer3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_singlePlayerFragment))
-        } else if (ReturnLevelDirection == LevelDirection.MULTIPLAYER) {
+        } else if (ReturnDirection == LevelDirection.MULTIPLAYER) {
             button_comeback_singleplayer3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_multiplayerFragment))
         }
 
