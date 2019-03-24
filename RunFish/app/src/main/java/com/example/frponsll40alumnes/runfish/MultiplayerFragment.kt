@@ -29,12 +29,44 @@ class MultiplayerFragment : Fragment() {
         button_invite.setOnClickListener{
             //fragment_invite_layout.bringToFront()
             //fragment_invite_layout.visibility=View.VISIBLE
-            val inviteFrag = InviteFragment()
-            inviteFrag.show(getFragmentManager(),"INVITE_FRAGMENT")
+            fragment_invite.bringToFront()
+            fragment_invite.visibility=View.VISIBLE
+            //al inviteFrag = InviteFragment()
+            //inviteFrag.show(getFragmentManager(),"INVITE_FRAGMENT")
         }
-        fragmentMultiplayer_temporalButton_receiveInvitation.setOnClickListener {
-            val receiveInvitationFragment = InvitationReceived()
-            receiveInvitationFragment.show(fragmentManager, "RECEIVE_INVITATION_FRAGMENT")
+
+        // Amaga el constraint de INVITAR:
+
+        button_friend.setOnClickListener {
+            fragment_invite.visibility=View.GONE
+        }
+        button_friend1.setOnClickListener {
+            fragment_invite.visibility=View.GONE
+        }
+        button_friend2.setOnClickListener {
+            fragment_invite.visibility=View.GONE
+        }
+        button_friend3.setOnClickListener {
+            fragment_invite.visibility=View.GONE
+        }
+
+        button_cross.setOnClickListener {
+            fragment_invite.visibility=View.GONE
+        }
+
+        button_receive_invitation.setOnClickListener {
+            constaint_receive_invitation.bringToFront()
+            constaint_receive_invitation.visibility=View.VISIBLE
+        }
+
+        button_accept_invitation.setOnClickListener {
+            fragment_invite.visibility=View.GONE
+            constaint_receive_invitation.visibility=View.GONE
+
+        }
+
+        button_reject_invitation.setOnClickListener {
+            constaint_receive_invitation.visibility=View.GONE
         }
 
     }

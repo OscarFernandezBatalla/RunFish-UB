@@ -108,5 +108,6 @@
     <string name="inGamePause_continueButton_continueMsg">CONTINUE</string>
     <string name="successful">SUCCESSFUL</string>
     <string name="gameOver">GAME OVER</string>
+    <string name="Receive_invitation">RECEIVE INVITATION</string>
 
 </resources>
