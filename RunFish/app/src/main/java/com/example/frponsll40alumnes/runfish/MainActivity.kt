@@ -7,6 +7,11 @@ import android.view.Window
 import android.view.WindowManager
 import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
 
+var ReturnLevelDirection : LevelDirection = LevelDirection.SINGLEPLAYER
+
+enum class LevelDirection {
+    SINGLEPLAYER, MULTIPLAYER
+}
 
 class MainActivity : AppCompatActivity() {
 
