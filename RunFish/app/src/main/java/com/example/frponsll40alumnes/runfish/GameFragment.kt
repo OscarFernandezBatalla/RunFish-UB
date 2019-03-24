@@ -64,8 +64,6 @@ class GameFragment : Fragment() {
         button_next_level.setOnClickListener(){
             successful_layout.visibility=View.GONE
         }
-
-
     }
 
 
