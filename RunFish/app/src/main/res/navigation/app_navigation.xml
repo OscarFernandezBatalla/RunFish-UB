@@ -74,12 +74,16 @@
 
     <fragment android:id="@+id/multiplayerFragment" android:name="com.example.frponsll40alumnes.runfish.MultiplayerFragment"
               android:label="fragment_multiplayer" tools:layout="@layout/fragment_multiplayer">
+
         <action android:id="@+id/action_multiplayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"
                 app:popUpTo="@+id/multiplayerFragment"/>
         <action android:id="@+id/action_multiplayerFragment_to_menuFragment" app:destination="@+id/menuFragment"
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_multiplayerFragment_to_gameFragment" app:destination="@id/gameFragment"
                 app:popUpTo="@+id/menuFragment"/>
+
+        <action android:id="@+id/action_multiplayerFragment_to_fishFragment" app:destination="@id/fishFragment"/>
+
     </fragment>
     <fragment android:id="@+id/statsFragment" android:name="com.example.frponsll40alumnes.runfish.statsFragment"
               android:label="fragment_stats" tools:layout="@layout/fragment_stats">

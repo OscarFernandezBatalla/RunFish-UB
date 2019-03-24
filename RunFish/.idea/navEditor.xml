@@ -190,6 +190,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_multiplayerFragment_to_fishFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_multiplayerFragment_to_gameFragment">
                               <value>
                                 <LayoutPositions />
