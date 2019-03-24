@@ -106,5 +106,6 @@
     <!--Fragment InGamePause-->
     <string name="inGamePause_textView_pauseMsg">PAUSE</string>
     <string name="inGamePause_continueButton_continueMsg">CONTINUE</string>
+    <string name="Receive_invitation">RECEIVE INVITATION</string>
 
 </resources>

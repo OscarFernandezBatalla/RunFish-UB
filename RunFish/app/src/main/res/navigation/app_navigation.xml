@@ -60,7 +60,6 @@
               android:label="fragment_multiplayer" tools:layout="@layout/fragment_multiplayer">
         <action android:id="@+id/action_multiplayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"/>
         <action android:id="@+id/action_multiplayerFragment_to_menuFragment" app:destination="@id/menuFragment"/>
-        <action android:id="@+id/action_multiplayerFragment_to_inviteFragment" app:destination="@id/inviteFragment"/>
     </fragment>
     <fragment android:id="@+id/statsFragment" android:name="com.example.frponsll40alumnes.runfish.statsFragment"
               android:label="fragment_stats" tools:layout="@layout/fragment_stats">
@@ -72,11 +71,6 @@
     </fragment>
     <fragment android:id="@+id/gameFragment" android:name="com.example.frponsll40alumnes.runfish.GameFragment"
               android:label="fragment_game" tools:layout="@layout/fragment_game"/>
-    <fragment android:id="@+id/inviteFragment" android:name="com.example.frponsll40alumnes.runfish.InviteFragment"
-              android:label="fragment_invite" tools:layout="@layout/fragment_invite">
-        <action android:id="@+id/action_inviteFragment_to_multiplayerFragment"
-                app:destination="@id/multiplayerFragment"/>
-    </fragment>
     <fragment android:id="@+id/fishFragment" android:name="com.example.frponsll40alumnes.runfish.FishFragment"
               android:label="fragment_fish" tools:layout="@layout/fragment_fish">
         <action android:id="@+id/action_fishFragment_to_singlePlayerFragment"
