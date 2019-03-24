@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_fish.*
+import kotlinx.android.synthetic.main.fragment_levels.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,6 +32,8 @@ class FishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_singlePlayerFragment))
 
         button_common_fish.setOnClickListener {
             text_selected_fish.text =  "COMMON FISH"
@@ -59,7 +63,11 @@ class FishFragment : Fragment() {
             speed_bar_selected_fish.progress = 80
         }
 
-        button_ability_selected_fish.setOnTouchListener { _, _ ->
+
+
+
+
+    button_ability_selected_fish.setOnTouchListener { _, _ ->
             //TODO : PREGUNTAR COM FER QUE ES VEGI UN FRAGMENT ÚNICAMENT QUAN ESTIGUI APRETANT EL BOTÓ (PER MOSTRAR L'HABILITAT DEL PEIX)
             true
             }
