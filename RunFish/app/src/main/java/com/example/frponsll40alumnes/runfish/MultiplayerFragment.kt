@@ -23,16 +23,13 @@ class MultiplayerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_levelsFragment))
+        button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_gameFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_levelsFragment))
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_menuFragment))
+        button_go.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_gameFragment))
         button_invite.setOnClickListener{
-            //fragment_invite_layout.bringToFront()
-            //fragment_invite_layout.visibility=View.VISIBLE
             fragment_invite.bringToFront()
             fragment_invite.visibility=View.VISIBLE
-            //al inviteFrag = InviteFragment()
-            //inviteFrag.show(getFragmentManager(),"INVITE_FRAGMENT")
         }
 
         // Amaga el constraint de INVITAR:

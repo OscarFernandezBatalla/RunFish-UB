@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_single_player.*
 
 
 class MainFragment : Fragment() {
@@ -26,6 +27,7 @@ class MainFragment : Fragment() {
 
         button_enter.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_menuFragment))
         button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signInFragment))
+
     }
 
 

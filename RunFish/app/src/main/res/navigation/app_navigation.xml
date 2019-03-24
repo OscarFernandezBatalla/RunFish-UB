@@ -63,6 +63,7 @@
         <action android:id="@+id/action_multiplayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"/>
         <action android:id="@+id/action_multiplayerFragment_to_menuFragment" app:destination="@id/menuFragment"/>
         <action android:id="@+id/action_multiplayerFragment_to_gameFragment" app:destination="@id/gameFragment"/>
+        <action android:id="@+id/action_multiplayerFragment_to_fishFragment" app:destination="@id/fishFragment"/>
     </fragment>
     <fragment android:id="@+id/statsFragment" android:name="com.example.frponsll40alumnes.runfish.statsFragment"
               android:label="fragment_stats" tools:layout="@layout/fragment_stats">
