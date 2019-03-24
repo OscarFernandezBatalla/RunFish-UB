@@ -45,12 +45,12 @@ class FishFragment : Fragment() {
             speed_bar_selected_fish.progress = 30
         }
 
-        button_blowfish.setOnClickListener {
+        /*button_blowfish.setOnClickListener {
             text_selected_fish.text =  "BLOWFISH"
             life_bar_selected_fish.progress = 45
             capactity_bar_selected_fish.progress = 50
             speed_bar_selected_fish.progress = 20
-        }
+        }*/
 
         button_shark.setOnClickListener {
             text_selected_fish.text =  "TIRANOSAURIUSHARK"

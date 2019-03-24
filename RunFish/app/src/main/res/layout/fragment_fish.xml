@@ -148,17 +148,6 @@
             app:layout_constraintVertical_bias="0.726"
             android:background="@drawable/anemone"/>
     <Button
-            android:layout_width="66dp"
-            android:layout_height="66dp"
-            android:id="@+id/button_blowfish"
-            android:background="@drawable/pez_globo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.409"
-            app:layout_constraintVertical_bias="0.228"/>
-    <Button
             android:layout_width="65dp"
             android:layout_height="33dp"
             android:id="@+id/button_common_fish"
