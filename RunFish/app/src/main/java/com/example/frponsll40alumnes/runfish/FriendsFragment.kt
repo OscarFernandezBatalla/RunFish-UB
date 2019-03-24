@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_friends.*
+import kotlinx.android.synthetic.main.fragment_multiplayer.*
 
 
 class FriendsFragment : Fragment() {
@@ -24,5 +25,10 @@ class FriendsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imageButton_cross.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_friendsFragment_to_menuFragment))
+
+        button_Invite.setOnClickListener {
+            edit_text_username_invite.setText("")
+        }
+
     }
 }
