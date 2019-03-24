@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_fish.*
+import kotlinx.android.synthetic.main.fragment_levels.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,6 +32,8 @@ class FishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_singlePlayerFragment))
 
         button_common_fish.setOnClickListener {
             text_selected_fish.text =  "COMMON FISH"

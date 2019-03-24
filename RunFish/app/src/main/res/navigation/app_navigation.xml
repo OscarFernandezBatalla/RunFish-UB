@@ -48,6 +48,8 @@
         <action android:id="@+id/action_levelsFragment_to_multiplayerFragment"
                 app:destination="@id/multiplayerFragment"/>
         <action android:id="@+id/action_levelsFragment_to_gameFragment" app:destination="@id/gameFragment"/>
+        <action android:id="@+id/action_levelsFragment_to_singlePlayerFragment2"
+                app:destination="@id/singlePlayerFragment"/>
     </fragment>
 
     <fragment android:id="@+id/options" android:name="com.example.frponsll40alumnes.runfish.options"
