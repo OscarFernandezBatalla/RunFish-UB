@@ -63,25 +63,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView2"
+            android:contentDescription="@string/corda2"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/text_username"
-            app:layout_constraintBottom_toTopOf="@+id/text_password"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="276dp"
-            android:contentDescription="@string/corda2"/>
+            app:layout_constraintTop_toTopOf="@+id/text_username" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_password"
+            app:layout_constraintStart_toEndOf="@+id/imageView4" android:layout_marginStart="172dp"
+    />
     <ImageView
             android:src="@drawable/corda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
+            android:contentDescription="@string/corda1"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/text_username"
-            app:layout_constraintBottom_toTopOf="@+id/text_password"
-            app:layout_constraintVertical_bias="0.571"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="284dp"
-            android:contentDescription="@string/corda1"/>
+            app:layout_constraintTop_toTopOf="@+id/text_username" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_password" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.382"
+            app:layout_constraintVertical_bias="0.555"/>
     <TextView
             android:text="@string/fish"
             android:layout_width="110dp"
@@ -103,16 +102,14 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/text_username" style="@style/MistralStyle"
             android:hint="@string/username"
             android:background="@drawable/new_tablon"
             android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_run"
-            app:layout_constraintHorizontal_bias="0.5"
-            android:layout_marginTop="100dp"
-            android:importantForAutofill="no" app:layout_constraintBottom_toTopOf="@+id/imageView4"/>
+            android:importantForAutofill="no"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="44dp" app:layout_constraintTop_toBottomOf="@+id/image_nemo"
+            app:layout_constraintHorizontal_bias="0.501"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
