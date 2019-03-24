@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="445" />
-                            <option name="y" value="26" />
+                            <option name="x" value="12" />
+                            <option name="y" value="225" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -55,8 +55,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="690" />
-                            <option name="y" value="-486" />
+                            <option name="x" value="814" />
+                            <option name="y" value="-456" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -71,13 +71,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="gameOverFragment3">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="480" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="levelsFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="179" />
-                            <option name="y" value="-398" />
+                            <option name="x" value="299" />
+                            <option name="y" value="-278" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -93,6 +105,11 @@
                               </value>
                             </entry>
                             <entry key="action_levelsFragment_to_singlePlayerFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_levelsFragment_to_singlePlayerFragment2">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -179,8 +196,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-327" />
-                            <option name="y" value="-95" />
+                            <option name="x" value="-481" />
+                            <option name="y" value="117" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -210,8 +227,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="26" />
-                            <option name="y" value="-91" />
+                            <option name="x" value="54" />
+                            <option name="y" value="-97" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -326,6 +343,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="successfullFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="324" />
+                            <option name="y" value="12" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
