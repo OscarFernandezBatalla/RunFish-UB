@@ -21,9 +21,20 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.imageButton_pause.setOnClickListener {
+        /*this.imageButton_pause.setOnClickListener {
             val pausa = InGamePauseFragment()
             pausa.show(fragmentManager, "IN_GAME_PAUSE")
+        }*/
+        imageButton_pause.setOnClickListener(){
+            pause_fragment.bringToFront()
+            pause_fragment.visibility=View.VISIBLE
+        }
+
+        button_restart.setOnClickListener(){
+            pause_fragment.visibility=View.GONE
+        }
+        button_resume.setOnClickListener(){
+            pause_fragment.visibility=View.GONE
         }
     }
 
