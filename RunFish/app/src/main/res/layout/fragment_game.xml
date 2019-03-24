@@ -65,6 +65,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginStart="0dp" android:id="@+id/game_layout">
 
+
         <Button
                 android:layout_width="54dp"
                 android:layout_height="54dp"
@@ -164,6 +165,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:contentDescription="@string/description_image_pause"/>
+
     </android.support.constraint.ConstraintLayout>
 
     <ImageView

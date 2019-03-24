@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment() {
@@ -36,6 +37,14 @@ class GameFragment : Fragment() {
         button_resume.setOnClickListener(){
             pause_fragment.visibility=View.GONE
         }
+        button_exit.setOnClickListener(){
+            pause_fragment.visibility=View.GONE
+        }
+
+        button_exit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
+
+        //button_gameOver.setOnClickListener()
+
     }
 
 
