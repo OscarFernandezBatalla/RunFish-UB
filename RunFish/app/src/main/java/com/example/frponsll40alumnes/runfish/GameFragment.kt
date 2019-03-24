@@ -22,10 +22,6 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*this.imageButton_pause.setOnClickListener {
-            val pausa = InGamePauseFragment()
-            pausa.show(fragmentManager, "IN_GAME_PAUSE")
-        }*/
         imageButton_pause.setOnClickListener(){
             pause_fragment.bringToFront()
             pause_fragment.visibility=View.VISIBLE
@@ -43,7 +39,32 @@ class GameFragment : Fragment() {
 
         button_exit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
 
-        //button_gameOver.setOnClickListener()
+        button_gameOver.setOnClickListener(){
+            game_over_layout.bringToFront()
+            game_over_layout.visibility=View.VISIBLE
+        }
+
+        button_successful.setOnClickListener(){
+            successful_layout.bringToFront()
+            successful_layout.visibility=View.VISIBLE
+        }
+
+        button_retry.setOnClickListener(){
+            game_over_layout.visibility=View.GONE
+        }
+
+        button_back.setOnClickListener(){
+            game_over_layout.visibility=View.GONE
+        }
+
+        button_back_successful.setOnClickListener(){
+           successful_layout.visibility=View.GONE
+        }
+
+        button_next_level.setOnClickListener(){
+            successful_layout.visibility=View.GONE
+        }
+
 
     }
 

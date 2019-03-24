@@ -59,7 +59,11 @@ class FishFragment : Fragment() {
             speed_bar_selected_fish.progress = 80
         }
 
-        button_ability_selected_fish.setOnTouchListener { _, _ ->
+
+
+
+
+    button_ability_selected_fish.setOnTouchListener { _, _ ->
             //TODO : PREGUNTAR COM FER QUE ES VEGI UN FRAGMENT ÚNICAMENT QUAN ESTIGUI APRETANT EL BOTÓ (PER MOSTRAR L'HABILITAT DEL PEIX)
             true
             }
