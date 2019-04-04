@@ -68,7 +68,8 @@
             app:layout_constraintTop_toTopOf="@+id/text_username" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/text_password"
             app:layout_constraintStart_toEndOf="@+id/imageView4" android:layout_marginStart="172dp"
-    />
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="@+id/text_username"
+            app:layout_constraintHorizontal_bias="0.0"/>
     <ImageView
             android:src="@drawable/corda"
             android:layout_width="wrap_content"
