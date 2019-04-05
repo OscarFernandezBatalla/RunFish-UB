@@ -1,4 +1,4 @@
-package com.example.frponsll40alumnes.runfish
+package com.example.frponsll40alumnes.runfish.fragmentsAndActivites
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_multiplayer.*
 
 
@@ -21,7 +22,8 @@ class MultiplayerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        ReturnDirection = LevelDirection.MULTIPLAYER
+        ReturnDirection =
+            LevelDirection.MULTIPLAYER
         super.onViewCreated(view, savedInstanceState)
         button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_fishFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_multiplayerFragment_to_levelsFragment))
