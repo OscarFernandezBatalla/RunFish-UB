@@ -1,13 +1,13 @@
-package com.example.frponsll40alumnes.runfish
+package com.example.frponsll40alumnes.runfish.fragmentsAndActivites
 
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_single_player.*
 
 
@@ -22,7 +22,8 @@ class SinglePlayerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        ReturnDirection = LevelDirection.SINGLEPLAYER
+        ReturnDirection =
+            LevelDirection.SINGLEPLAYER
         super.onViewCreated(view, savedInstanceState)
         button_resume_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))
