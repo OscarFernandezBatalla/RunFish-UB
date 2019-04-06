@@ -1,5 +1,6 @@
-package com.example.frponsll40alumnes.runfish
+package com.example.frponsll40alumnes.runfish.fish
 
+import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 

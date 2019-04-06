@@ -108,5 +108,6 @@
     <string name="successful">SUCCESSFUL</string>
     <string name="gameOver">GAME OVER</string>
     <string name="Receive_invitation">RECEIVE INVITATION</string>
+    <string name="descriptor_button_singIn">Sign in button</string>
 
 </resources>

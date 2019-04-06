@@ -1,7 +1,5 @@
 package com.example.frponsll40alumnes.runfish.fish
 
-import com.example.frponsll40alumnes.runfish.Fish
-
 class CommonFish(
     name: String = "Common Fish",
     life: Int = 20,
