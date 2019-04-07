@@ -44,7 +44,9 @@
         <action android:id="@+id/action_singlePlayerFragment_to_menuFragment" app:destination="@id/menuFragment"
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_singlePlayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"
-                app:popUpTo="@+id/singlePlayerFragment"/>
+                app:popUpTo="@+id/singlePlayerFragment">
+            <argument android:defaultValue="0" android:name="comeFrom"/>
+        </action>
         <action android:id="@+id/action_singlePlayerFragment_to_gameFragment" app:destination="@id/gameFragment"
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_singlePlayerFragment_to_fishFragment" app:destination="@id/fishFragment"
@@ -62,6 +64,7 @@
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_levelsFragment_to_singlePlayerFragment2"
                 app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
+        <argument android:name="comeFrom" app:argType="integer" android:defaultValue="0"/>
     </fragment>
 
     <fragment android:id="@+id/options" android:name="com.example.frponsll40alumnes.runfish.fragmentsAndActivites.options"
@@ -76,7 +79,9 @@
               android:label="fragment_multiplayer" tools:layout="@layout/fragment_multiplayer">
 
         <action android:id="@+id/action_multiplayerFragment_to_levelsFragment" app:destination="@id/levelsFragment"
-                app:popUpTo="@+id/multiplayerFragment"/>
+                app:popUpTo="@+id/multiplayerFragment">
+            <argument android:defaultValue="1" android:name="comeFrom"/>
+        </action>
         <action android:id="@+id/action_multiplayerFragment_to_menuFragment" app:destination="@+id/menuFragment"
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_multiplayerFragment_to_gameFragment" app:destination="@id/gameFragment"
