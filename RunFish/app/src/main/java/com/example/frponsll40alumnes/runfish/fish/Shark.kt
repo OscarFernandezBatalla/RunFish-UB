@@ -6,6 +6,12 @@ class Shark(name: String = "Shark",
             ability: String = "bite",
             price: Int = 1000) :
     Fish(name, life, capacity, ability, price) {
+    override var width: Int
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {}
+    override var height: Int
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {}
 
 
     override var x: Int
