@@ -9,4 +9,14 @@ class CommonFish(
 
 ) : Fish(name, life, capacity, ability, price) {
 
+    override var x: Int
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {}
+    override var y: Int
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {}
+    override var speed: Float
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {}
+
 }
