@@ -28,20 +28,7 @@
                 android:paddingTop="30dp"
                 android:layout_marginTop="8dp">
 
-            <io.github.controlwear.virtual.joystick.android.JoystickView
-                    xmlns:custom="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/joystickView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    custom:JV_buttonColor="#FF6E40"
-                    custom:JV_buttonSizeRatio="15%"
-                    custom:JV_borderColor="#00796B"
-                    custom:JV_backgroundColor="#009688"
-                    custom:JV_borderWidth="4dp"
-                    custom:JV_fixedCenter="false"/>
+
 
 
             <ImageView
@@ -293,27 +280,32 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton_pause"/>
-        <ImageView
-                android:src="@drawable/joystick_interior"
-                android:layout_width="57dp"
-                android:layout_height="58dp"
-                android:id="@+id/imageView_joystick_interior"
-                app:layout_constraintTop_toTopOf="@+id/imageView_joystick_exterior"
-                app:layout_constraintStart_toStartOf="@+id/imageView_joystick_exterior"
-                app:layout_constraintEnd_toEndOf="@+id/imageView_joystick_exterior"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView_joystick_exterior"
-                app:layout_constraintHorizontal_bias="0.49"
-                android:contentDescription="@string/description_image_joystick"/>
-        <ImageView
-                android:src="@drawable/joystick_exterior"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView_joystick_exterior"
+
+        <io.github.controlwear.virtual.joystick.android.JoystickView
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/joystickView"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="24dp"
-                android:layout_marginBottom="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:contentDescription="@string/description_image_joystick"/>
+
+                android:layout_width="167dp"
+                android:layout_height="182dp"
+                custom:JV_buttonColor="#FF6E40"
+                custom:JV_buttonSizeRatio="60%"
+                custom:JV_borderWidth="4dp"
+                custom:JV_fixedCenter="false"
+                android:layout_marginEnd="8dp"
+                custom:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="8dp"
+                custom:layout_constraintBottom_toBottomOf="parent"
+                custom:layout_constraintHorizontal_bias="0.028"
+                android:background="@drawable/joystick_exterior"
+                custom:JV_buttonImage="@drawable/joystick_interior"
+                custom:layout_constraintVertical_bias="0.963"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+        />
+
         <ImageButton
                 android:src="@drawable/pause"
                 android:layout_width="wrap_content"
