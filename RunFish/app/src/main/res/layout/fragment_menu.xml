@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".fragmentsAndActivites.menuFragment" android:id="@+id/constraintLayout"
+                                             tools:context=".menuFragment" android:id="@+id/constraintLayout"
                                              android:background="@drawable/fons">
     <ImageView
             android:src="@drawable/corda"
@@ -109,8 +109,8 @@
             app:layout_constraintVertical_bias="0.491"/>
     <Button
             android:text="@string/multiplayer"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/button_multiplayer"
             android:background="@drawable/new_tablon"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,37 +120,33 @@
             app:layout_constraintTop_toBottomOf="@+id/button_singleplayer" style="@style/MistralStyle"/>
     <Button
             android:text="@string/singleplayer"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/button_singleplayer"
             android:background="@drawable/new_tablon"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
-            style="@style/MistralStyle"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_menu"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageButton_friends" style="@style/MistralStyle"/>
     <Button
             android:text="@string/options"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/button_options"
             android:background="@drawable/new_tablon"
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/MistralStyle"
             android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/button_stats"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/button_stats" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="0.0"/>
     <Button
             android:text="@string/shop"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/button_shop"
             android:background="@drawable/new_tablon"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,8 +156,8 @@
             app:layout_constraintTop_toBottomOf="@+id/button_multiplayer" style="@style/MistralStyle"/>
     <Button
             android:text="@string/stats"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/button_stats"
             android:background="@drawable/new_tablon"
             app:layout_constraintStart_toStartOf="parent"

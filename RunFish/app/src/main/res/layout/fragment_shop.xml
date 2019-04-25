@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".fragmentsAndActivites.shopFragment"
+                                             tools:context=".shopFragment"
                                              android:background="@drawable/fons"
                                              android:id="@+id/frameLayout2">
     <TextView
@@ -145,14 +145,14 @@
                             android:layout_marginBottom="8dp"
                             android:contentDescription="@string/description_image_plankton"/>
                     <ImageView
+                            android:src="@drawable/pez_comun"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
                             android:id="@+id/image_common_fish"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/description_image_fish"
-                            android:background="@android:color/transparent" android:src="@drawable/pez_comun"/>
+                            android:contentDescription="@string/description_image_fish"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -309,8 +309,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/description_image_fish"
-                    />
+                            android:contentDescription="@string/description_image_fish"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -761,7 +760,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:id="@+id/button_ability_swordfish"
-                            android:background="@drawable/rayo"
+                            android:background="@drawable/camouflage_icon_dos"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp"
