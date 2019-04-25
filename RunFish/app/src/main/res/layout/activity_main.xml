@@ -9,7 +9,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".fragmentsAndActivites.MainActivity">
+            tools:context=".MainActivity">
 
         <fragment
                 android:layout_width="match_parent"
@@ -19,10 +19,6 @@
                 app:navGraph="@navigation/app_navigation"
                 app:defaultNavHost="true"
         />
-
-        <com.example.frponsll40alumnes.runfish.Game.GameView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RunFish</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in">SIGN IN</string>
     <string name="enter">ENTER</string>
@@ -108,6 +110,5 @@
     <string name="successful">SUCCESSFUL</string>
     <string name="gameOver">GAME OVER</string>
     <string name="Receive_invitation">RECEIVE INVITATION</string>
-    <string name="descriptor_button_singIn">Sign in button</string>
 
 </resources>

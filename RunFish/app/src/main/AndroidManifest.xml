@@ -4,14 +4,14 @@
 
     <application
             android:allowBackup="true"
-            android:icon="@mipmap/icono_app"
+            android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/icono_app_round"
+            android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             >
 
-        <activity android:name=".fragmentsAndActivites.MainActivity" android:screenOrientation="landscape">
+        <activity android:name=".MainActivity" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
