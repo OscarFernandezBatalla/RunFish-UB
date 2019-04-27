@@ -30,7 +30,7 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         joystick.setOnMoveListener { angle, strength ->
-            // do whatever you want
+            TODO("not implemented")
         }
 
         imageButton_pause.setOnClickListener(){
