@@ -1,6 +1,9 @@
-package com.example.frponsll40alumnes.runfish
+package com.example.frponsll40alumnes.runfish.npc
 
-class EnemyShark : NPC(value = 50), Movable {
+import com.example.frponsll40alumnes.runfish.Movable
+
+class EnemyShark : NPC(value = 50),
+    Movable {
     override var speed: Float
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
         set(value) {}

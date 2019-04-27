@@ -1,4 +1,4 @@
-package com.example.frponsll40alumnes.runfish
+package com.example.frponsll40alumnes.runfish.npc
 
 class NPCFactory {
 
