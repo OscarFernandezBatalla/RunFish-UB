@@ -5,7 +5,7 @@ class NPCFactory {
     fun createNPC(type : NPCType) : NPC? = when (type){
         NPCType.BOMB -> Bomb()
         NPCType.ENEMYSHARK -> EnemyShark()
-        NPCType.PLANKTON -> Plankton()
+        NPCType.PLANKTON -> null
         //else -> null      ????
     }
 

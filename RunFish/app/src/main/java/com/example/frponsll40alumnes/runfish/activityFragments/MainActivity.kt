@@ -1,5 +1,6 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
+import android.app.Activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.databinding.DataBindingUtil
@@ -20,12 +21,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         //Amaga la barra de notificacions.
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        //requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        super.onCreate(savedInstanceState)
+
+        //setContentView(R.layout.activity_main)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 

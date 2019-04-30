@@ -5,6 +5,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
+
+
+    <!--
+    <com.example.frponsll40alumnes.runfish.GameView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+-->
+
+
+
+    <!--
+    Problema:   no se per que pero estem obligats a usar el data binding, no va ficar nomes el setContentView del main.
+                i per a usar databinding necessitem que aquí hi hagi un "layout" com a cosa principal, pero nosaltres volem un
+                relativelayout perque amb aixo funciona el gameview.
+
+    -->
+
+
     <android.support.constraint.ConstraintLayout
 
             android:layout_width="match_parent"
@@ -19,6 +37,8 @@
                 app:navGraph="@navigation/app_navigation"
                 app:defaultNavHost="true"
         />
-
     </android.support.constraint.ConstraintLayout>
+
+
+
 </layout>

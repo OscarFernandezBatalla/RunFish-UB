@@ -7,9 +7,8 @@ import android.view.SurfaceHolder
 class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView: GameView) : Thread(){
     private val FPS : Int = 30
 
-    private val avgFPS : Double = 0.0
+    private val avgFPS : Double = 0.0   //i aixo?
     private var isRunning : Boolean = false
-    private var canvas : Canvas? = null             //es pot esborrar aixo i fer el companion d'abaix, no se la
 
     fun setRunning(isRunning: Boolean) {
         this.isRunning = isRunning
@@ -25,7 +24,6 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
                 canvas = this.surfaceHolder.lockCanvas()
                 synchronized(surfaceHolder) {
                     gameView.update()
-                    //falta el draw()?
                     gameView.draw(canvas!!)
                 }
 
@@ -40,7 +38,7 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
                         }
                     }
                 }
-            var timeMilis = (System.nanoTime()-startTime) / 1000000
+            var timeMilis = (System.nanoTime() - startTime) / 1000000
             var waitMilis = targetTime - timeMilis
 
             try {
@@ -51,10 +49,11 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
         }
 
     }
-/*
+
     companion object {
         private var canvas: Canvas? = null
     }
-*/
+
+
 
 }
