@@ -11,12 +11,7 @@ import kotlinx.android.synthetic.main.fragment_game.view.*
 
 class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
 
-
-
-
-
-
-
+    
     private var xVelocity = 20
     private var yVelocity = 20
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels

@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.example.frponsll40alumnes.runfish.npc.Plankton
+import io.github.controlwear.virtual.joystick.android.JoystickView
 import java.util.jar.Attributes
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
@@ -15,6 +16,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     //private var paint : Paint = Paint()
     private val thread: GameThread
     private var plankton: Plankton? = null
+    //private var joystick: JoystickView? = null
 
     init {
 
@@ -41,6 +43,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     override fun surfaceCreated(p0: SurfaceHolder?) {
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
+
 
 
 
@@ -75,7 +78,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             canvas.drawText("dkjkdjktljdkljdkljkfdjtlkgjdkgj", 20f, 75f, paint)
 */
 
+
+        canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
         plankton!!.draw(canvas)
+
+        //setBackgroundResource(R.drawable.fondo_marino)
         //}
     }
 
