@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.GameView
 import com.example.frponsll40alumnes.runfish.R
 import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.*
@@ -14,21 +15,29 @@ import kotlinx.android.synthetic.main.fragment_game.*
 class GameFragment : Fragment() {
 
     lateinit var joystick : JoystickView
+    lateinit var gameView : GameView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
+
+
+        gameView = GameView(this.context!!)
+        activity!!.setContentView(gameView)
 
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
 
         return rootView
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         joystick.setOnMoveListener { angle, strength ->
             // aqui fer coses

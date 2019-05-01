@@ -74,6 +74,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             paint.textSize = 70f
             canvas.drawText("dkjkdjktljdkljdkljkfdjtlkgjdkgj", 20f, 75f, paint)
 */
+
         plankton!!.draw(canvas)
         //}
     }

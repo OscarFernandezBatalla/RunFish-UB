@@ -12,6 +12,8 @@ import java.nio.file.Files.size
 import android.R.attr.y
 import android.R.attr.x
 import com.example.frponsll40alumnes.runfish.GameView
+import com.example.frponsll40alumnes.runfish.R
+
 //import android.R
 
 
@@ -26,7 +28,7 @@ enum class LevelDirection {
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    lateinit var gameView : GameView
+    //lateinit var gameView : GameView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +38,13 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
 
-        //setContentView(R.layout.activity_main)
 
+        /*
         gameView = GameView(this)
         setContentView(gameView)
+*/
 
-
-        //binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
 
