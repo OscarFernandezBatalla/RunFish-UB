@@ -6,8 +6,15 @@ import android.os.Bundle
 import android.databinding.DataBindingUtil
 import android.view.Window
 import android.view.WindowManager
-import com.example.frponsll40alumnes.runfish.R
+//import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
+import java.nio.file.Files.size
+import android.R.attr.y
+import android.R.attr.x
+import com.example.frponsll40alumnes.runfish.GameView
+//import android.R
+
+
 
 var ReturnDirection : LevelDirection =
     LevelDirection.SINGLEPLAYER
@@ -19,6 +26,7 @@ enum class LevelDirection {
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    lateinit var gameView : GameView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +38,11 @@ class MainActivity : AppCompatActivity() {
 
         //setContentView(R.layout.activity_main)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        gameView = GameView(this)
+        setContentView(gameView)
+
+
+        //binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
 
