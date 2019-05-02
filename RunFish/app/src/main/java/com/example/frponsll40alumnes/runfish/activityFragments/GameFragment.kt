@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.GameView
 import com.example.frponsll40alumnes.runfish.R
@@ -16,6 +18,24 @@ class GameFragment : Fragment() {
 
     //lateinit var joystick : JoystickView
     lateinit var gameView : GameView
+    lateinit var game : FrameLayout
+    lateinit var gameWidgets: LinearLayout
+    lateinit var rootView : View
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //gameView = GameView(this.context!!)
+        game = FrameLayout(this.context)
+        gameView = GameView(this.context!!)
+        gameWidgets = LinearLayout(context)
+
+
+        game.addView(gameView)
+        game.addView(gameWidgets)
+
+
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,16 +43,25 @@ class GameFragment : Fragment() {
 
     ): View? {
 
+        val rootView = inflater.inflate(R.layout.fragment_game, container, false)
+        //joystick = rootView.findViewById(R.id.joystickView) as JoystickView
+        game.addView(rootView)
+        //rootView.visibility=View.INVISIBLE
+
+        return game
+
+        //return game
+
 
         //gameView = GameView(this.context!!)
 
         //activity!!.setContentView(gameView)
 
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_game, container, false)
+        //val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         //joystick = rootView.findViewById(R.id.joystickView) as JoystickView
 
-        return rootView
+        //return rootView
 
     }
 
