@@ -22,8 +22,8 @@ class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
         var height = image.height
         var width = image.width
 
-        x = 3000
-        y = screenHeight/2
+        y=3000
+        x = screenWidth/2
     }
 
     /**
@@ -52,7 +52,7 @@ class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
 */
 
 
-        x-= (xVelocity)
+        y-= (xVelocity)
 
 
     }
