@@ -7,16 +7,25 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.Button
+import android.widget.ImageButton
+import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 import io.github.controlwear.virtual.joystick.android.JoystickView
+import kotlinx.android.synthetic.main.fragment_test.view.*
 import java.util.jar.Attributes
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
+
     //private var paint : Paint = Paint()
     private val thread: GameThread
     private var plankton: Plankton? = null
-    //private var joystick: JoystickView? = null
+    private var shark : EnemyShark?= null
+    private var button : Button?=  null
+   //private var button: ImageButton? = null
+
+    private var joystick: JoystickView? = null
 
     init {
 
@@ -43,6 +52,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     override fun surfaceCreated(p0: SurfaceHolder?) {
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
+        shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
+        //button = findViewById(R.id.buttton)
 
 
 
@@ -60,6 +71,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
      */
     fun update() {
         plankton!!.update()
+        shark!!.update()
     }
 
     /**
@@ -79,8 +91,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 */
 
 
-        canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
+        //canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
         plankton!!.draw(canvas)
+        shark!!.draw(canvas)
+        //buttton!!.draw(canvas)
+
 
         //setBackgroundResource(R.drawable.fondo_marino)
         //}

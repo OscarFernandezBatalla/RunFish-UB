@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_game.view.*
 
 class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
 
-    
+
     private var xVelocity = 20
     private var yVelocity = 20
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
@@ -22,7 +22,7 @@ class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
         var height = image.height
         var width = image.width
 
-        x = screenWidth/2
+        x = 3000
         y = screenHeight/2
     }
 
@@ -38,6 +38,7 @@ class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
      */
     fun update() {
         // val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
+/*
 
         if (x > screenWidth - image.width || x < image.width) {
             xVelocity = xVelocity * -1
@@ -48,6 +49,11 @@ class Plankton(var image: Bitmap): NPC(value = 20, x = 200, y = 200) {
 
         x += (xVelocity)
         y += (yVelocity)
+*/
+
+
+        x-= (xVelocity)
+
 
     }
 

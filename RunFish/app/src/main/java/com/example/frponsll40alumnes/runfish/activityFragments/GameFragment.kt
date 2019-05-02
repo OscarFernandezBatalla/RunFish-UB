@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment() {
 
-    lateinit var joystick : JoystickView
+    //lateinit var joystick : JoystickView
     lateinit var gameView : GameView
 
     override fun onCreateView(
@@ -24,12 +24,13 @@ class GameFragment : Fragment() {
     ): View? {
 
 
-        gameView = GameView(this.context!!)
-        activity!!.setContentView(gameView)
+        //gameView = GameView(this.context!!)
+
+        //activity!!.setContentView(gameView)
 
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
-        joystick = rootView.findViewById(R.id.joystickView) as JoystickView
+        //joystick = rootView.findViewById(R.id.joystickView) as JoystickView
 
         return rootView
 
@@ -38,10 +39,12 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+/*
 
         joystick.setOnMoveListener { angle, strength ->
             // aqui fer coses
         }
+*/
 
         imageButton_pause.setOnClickListener(){
             pause_fragment.bringToFront()

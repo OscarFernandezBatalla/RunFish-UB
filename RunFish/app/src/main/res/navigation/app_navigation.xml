@@ -49,6 +49,7 @@
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_singlePlayerFragment_to_fishFragment" app:destination="@id/fishFragment"
                 app:popUpTo="@+id/singlePlayerFragment"/>
+        <action android:id="@+id/action_singlePlayerFragment_to_test" app:destination="@id/test"/>
     </fragment>
 
 
@@ -111,5 +112,7 @@
         <action android:id="@+id/action_fishFragment_to_multiplayerFragment" app:destination="@id/multiplayerFragment"
                 app:popUpTo="@+id/menuFragment"/>
     </fragment>
+    <fragment android:id="@+id/test" android:name="com.example.frponsll40alumnes.runfish.test"
+              android:label="fragment_test" tools:layout="@layout/fragment_test"/>
 
 </navigation>
