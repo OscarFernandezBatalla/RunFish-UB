@@ -66,9 +66,13 @@ abstract class Fish (
      * update properties for the game object
      */
 
-    fun update() {
+    fun update(xJoy : Int, yJoy : Int) {
 
-        y-= (xVelocity)
+        //y-= (xVelocity)
+
+        x += xJoy
+        y += yJoy
+
 
     }
 

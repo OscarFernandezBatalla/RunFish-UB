@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.GameView
 import com.example.frponsll40alumnes.runfish.R
@@ -16,11 +17,19 @@ import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment() {
 
-    //lateinit var joystick : JoystickView
+    lateinit var joystick : JoystickView
     lateinit var gameView : GameView
     lateinit var game : FrameLayout
     lateinit var gameWidgets: LinearLayout
+
     lateinit var rootView : View
+
+
+    var posX : Int = 0
+    var posY : Int = 0
+
+
+//    lateinit var text_y : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +44,7 @@ class GameFragment : Fragment() {
 
 
 
+
     }
 
     override fun onCreateView(
@@ -43,9 +53,19 @@ class GameFragment : Fragment() {
 
     ): View? {
 
+
+
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         //joystick = rootView.findViewById(R.id.joystickView) as JoystickView
+
+
+
+
+
+
+
         game.addView(rootView)
+
         //rootView.visibility=View.INVISIBLE
 
         return game
@@ -68,12 +88,14 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-/*
 
-        joystick.setOnMoveListener { angle, strength ->
-            // aqui fer coses
-        }
-*/
+
+
+        /*joystick.setOnMoveListener { angle, strength ->
+            posX = joystick.normalizedX
+            posY = joystick.normalizedY
+        }*/
+
 
         imageButton_pause.setOnClickListener(){
             pause_fragment.bringToFront()

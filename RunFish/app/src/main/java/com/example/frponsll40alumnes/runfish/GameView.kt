@@ -9,11 +9,13 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 import io.github.controlwear.virtual.joystick.android.JoystickView
+import kotlinx.android.synthetic.main.fragment_game.view.*
 import kotlinx.android.synthetic.main.fragment_test.view.*
 import java.util.jar.Attributes
 
@@ -22,11 +24,12 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
-    private var button : Button?=  null
+    //private var button : Button?=  null
     private var fish : Fish ?= null
-   //private var button: ImageButton? = null
+    private var textX: TextView? = null
+    //private var textY: TextView? = null
 
-   // private var joystick: JoystickView? = null
+    private var joystick: JoystickView? = null
 
     init {
 
@@ -55,6 +58,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
         shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
         fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone))
+        //textX = findViewById(R.id.valuex)
+        //textY = findViewById(R.id.valuey)
+
+        //joystick = findViewById(R.id.joystickView)
+        joystick = rootView.findViewById(R.id.joystickView) as JoystickView
 
 
         //button = findViewById(R.id.buttton)
@@ -65,6 +73,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     /**
@@ -73,8 +82,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     fun update() {
         plankton!!.update()
         shark!!.update()
-        fish!!.update()
+        //fish!!.update(3)
+        //fish!!.update(joystick!!.normalizedX)
+        //textX!!.text="hola"
+
+
+
+        joystick!!.setOnMoveListener { angle, strength ->
+            fish!!.update(joystick!!.normalizedX, joystick!!.normalizedY)
+        }
+
     }
+
 
     /**
      * Everything that has to be drawn on Canvas
@@ -97,11 +116,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         plankton!!.draw(canvas)
         shark!!.draw(canvas)
         fish!!.draw(canvas)
+        //textX!!.text="hola2"
+
+
+        //textX!!.text = "hola"
+        //textY!!.text = joystick!!.normalizedY.toString()
         //buttton!!.draw(canvas)
 
 
         //setBackgroundResource(R.drawable.fondo_marino)
         //}
     }
+
+
 
 }
