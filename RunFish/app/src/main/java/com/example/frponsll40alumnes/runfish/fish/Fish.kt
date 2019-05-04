@@ -1,24 +1,24 @@
 package com.example.frponsll40alumnes.runfish.fish
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import com.example.frponsll40alumnes.runfish.Dimension
-import com.example.frponsll40alumnes.runfish.Movable
-import com.example.frponsll40alumnes.runfish.Position
+import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 
 abstract class Fish (
-                    var image : Bitmap,
-                    var name : String,
-                    var life : Int,
-                    var capacity : Int,
-                    var ability : String,
-                    var price : Int
+                    //var image : Bitmap,
+                     //var context: Context,
+                     var name : String,
+                     var life : Int,
+                     var capacity : Int,
+                     var ability : String,
+                     var price : Int
 
 
-) : Position, Movable, Dimension {
+) : Position, Movable, Dimension, DrawableObject {
 
 
     private var xVelocity = 20
@@ -31,6 +31,7 @@ abstract class Fish (
     override var width: Int = 0
     override var height: Int = 0
     override var speed: Float = 0f
+    override lateinit var image: Bitmap
 
 
 

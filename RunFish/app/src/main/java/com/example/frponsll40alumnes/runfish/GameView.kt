@@ -28,10 +28,25 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
-    //private var button : Button?=  null
     private var fish : Fish ?= null
     private var textX: TextView? = null
     private var textY: TextView? = null
+
+
+    /*
+     Prova 1: Posar variables Joystick com a globals
+     */
+    var angleRad : Double = 0.0
+    var valy : Double = 0.0
+    var valx : Double = 0.0
+    var strength: Int = 0
+
+
+
+    lateinit var gameEngine: GameEngine
+
+
+
 
     private var joystick: JoystickView? = null
 
@@ -66,15 +81,57 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         LA CLAVE ES EL ROOTVIEW.
 
          */
-
-        plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
-        shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
-        fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone_reduced))
+        joystick = rootView.findViewById(R.id.joystickView) as JoystickView
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
 
+        joystick!!.setOnMoveListener { angle, strength ->
+
+            //var angleRad = angle * PI / 180
+
+            //var valy= sin(angleRad)
+            //var valx= cos(angleRad)
+            angleRad = angle * PI / 180
+            valy= sin(angleRad)
+            valx= cos(angleRad)
+            this.strength = strength
+
+            textX!!.text= "coordenada X:   $valx   strength: $strength"
+            textY!!.text= "coordenada Y:   $valy   angle: $angle"
+
+
+
+            //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
+            //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
+
+        }
+
+
+
+
+
+
+
+
+
+        /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE
+        plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
+        shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
+        fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone_reduced))
+*/
+        gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
+        gameEngine.startGame()
+
+
+
+
+
+
+
+
+
         //joystick = findViewById(R.id.joystickView)
-        joystick = rootView.findViewById(R.id.joystickView) as JoystickView
+
 
 
         //button = findViewById(R.id.buttton)
@@ -93,30 +150,24 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
      */
     //@SuppressLint("SetTextI18n")
     fun update() {
+
+
+        gameEngine.getJoystickInf(valx, valy, strength)
+        gameEngine.updateView()
+
+
+        /* PROVA 3
+        //TODO : Aquí crec que hauriem de fer un gameEngine.update() el qual actualitzarà tot com a engine.
         plankton!!.update()
         shark!!.update()
+        fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
         //fish!!.update(3)
         //fish!!.update(joystick!!.normalizedX)
         //textX!!.text="hola"
+           */
 
 
 
-        joystick!!.setOnMoveListener { angle, strength ->
-
-            var angleRad = angle * PI / 180
-
-            var valy= sin(angleRad)
-            var valx= cos(angleRad)
-
-            textX!!.text= "coordenada X:   $valx   strength: $strength"
-            textY!!.text= "coordenada Y:   $valy   angle: $angle"
-
-
-
-            //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
-            fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
-
-        }
 
     }
 
@@ -139,10 +190,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
 
         canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
+
+        gameEngine.drawView(canvas)
+
+/* PROVA 4
+        //TODO: TOT AIXÒ HA D'ANAR AL GAME ENGINE
         plankton!!.draw(canvas)
         shark!!.draw(canvas)
         fish!!.draw(canvas)
         //textX!!.text="hola2"
+
+*/
+
 
 
         //textX!!.text = "hola"

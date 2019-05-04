@@ -2,6 +2,8 @@ package com.example.frponsll40alumnes.runfish.fish
 
 import android.graphics.Bitmap
 
+
+/*
 class BlowFish(name: String = "BlowFish",
                life: Int = 20,
                capacity: Int = 20,
@@ -14,3 +16,4 @@ class BlowFish(name: String = "BlowFish",
     }
 
 }
+*/
