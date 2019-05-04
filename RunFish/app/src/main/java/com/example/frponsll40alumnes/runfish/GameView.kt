@@ -19,8 +19,6 @@ import java.util.jar.Attributes
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
-
-    //private var paint : Paint = Paint()
     private val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
@@ -28,7 +26,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var fish : Fish ?= null
    //private var button: ImageButton? = null
 
-    private var joystick: JoystickView? = null
+   // private var joystick: JoystickView? = null
 
     init {
 
@@ -56,7 +54,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     override fun surfaceCreated(p0: SurfaceHolder?) {
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
         shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
-        //fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone))
+        fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone))
 
 
         //button = findViewById(R.id.buttton)
