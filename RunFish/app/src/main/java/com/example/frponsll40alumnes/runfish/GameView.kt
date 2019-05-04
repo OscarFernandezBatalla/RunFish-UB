@@ -27,7 +27,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     //private var button : Button?=  null
     private var fish : Fish ?= null
     private var textX: TextView? = null
-    //private var textY: TextView? = null
+    private var textY: TextView? = null
 
     private var joystick: JoystickView? = null
 
@@ -55,11 +55,19 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     }
 
     override fun surfaceCreated(p0: SurfaceHolder?) {
+
+
+        /*
+
+        LA CLAVE ES EL ROOTVIEW.
+
+         */
+
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
         shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
         fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone))
-        //textX = findViewById(R.id.valuex)
-        //textY = findViewById(R.id.valuey)
+        textX = rootView.findViewById(R.id.valuex)
+        textY = rootView.findViewById(R.id.valuey)
 
         //joystick = findViewById(R.id.joystickView)
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
@@ -89,7 +97,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
 
         joystick!!.setOnMoveListener { angle, strength ->
+            textX!!.text=joystick!!.normalizedX.toString()
+            textY!!.text=joystick!!.normalizedY.toString()
             fish!!.update(joystick!!.normalizedX, joystick!!.normalizedY)
+
         }
 
     }
