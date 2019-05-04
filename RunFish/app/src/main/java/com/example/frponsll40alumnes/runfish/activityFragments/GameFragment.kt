@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment() {
 
-    lateinit var joystick : JoystickView
+    //lateinit var joystick : JoystickView
     lateinit var gameView : GameView
     lateinit var game : FrameLayout
     lateinit var gameWidgets: LinearLayout

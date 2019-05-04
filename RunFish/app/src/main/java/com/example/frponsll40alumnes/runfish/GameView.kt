@@ -1,5 +1,6 @@
 package com.example.frponsll40alumnes.runfish
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -18,6 +19,9 @@ import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.view.*
 import kotlinx.android.synthetic.main.fragment_test.view.*
 import java.util.jar.Attributes
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
@@ -65,7 +69,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
         shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
-        fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone))
+        fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone_reduced))
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
 
@@ -87,6 +91,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     /**
      * Function to update the positions of player and game objects
      */
+    //@SuppressLint("SetTextI18n")
     fun update() {
         plankton!!.update()
         shark!!.update()
@@ -97,9 +102,19 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
 
         joystick!!.setOnMoveListener { angle, strength ->
-            textX!!.text=joystick!!.normalizedX.toString()
-            textY!!.text=joystick!!.normalizedY.toString()
-            fish!!.update(joystick!!.normalizedX, joystick!!.normalizedY)
+
+            var angleRad = angle * PI / 180
+
+            var valy= sin(angleRad)
+            var valx= cos(angleRad)
+
+            textX!!.text= "coordenada X:   $valx   strength: $strength"
+            textY!!.text= "coordenada Y:   $valy   angle: $angle"
+
+
+
+            //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
+            fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
 
         }
 
