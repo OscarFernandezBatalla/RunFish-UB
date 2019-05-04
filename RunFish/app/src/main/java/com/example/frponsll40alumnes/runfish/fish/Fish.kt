@@ -1,5 +1,8 @@
 package com.example.frponsll40alumnes.runfish.fish
 
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.Dimension
 import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.Position
@@ -7,11 +10,29 @@ import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 
 abstract class Fish (
+                    var image : Bitmap,
                     var name : String,
                     var life : Int,
                     var capacity : Int,
                     var ability : String,
-                    var price : Int) : Position, Movable, Dimension {
+                    var price : Int
+
+
+) : Position, Movable, Dimension {
+
+
+    private var xVelocity = 20
+    private var yVelocity = 20
+    private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
+    private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+
+    override var x: Int = 0
+    override var y: Int = 0
+    override var width: Int = 0
+    override var height: Int = 0
+    override var speed: Float = 0f
+
+
 
 
 
@@ -33,5 +54,23 @@ abstract class Fish (
     override fun move() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+
+
+    fun draw(canvas: Canvas) {
+        canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
+    }
+
+
+/**
+     * update properties for the game object
+     */
+
+    fun update() {
+
+        y-= (xVelocity)
+
+    }
+
 
 }

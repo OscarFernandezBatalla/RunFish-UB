@@ -9,6 +9,8 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Button
 import android.widget.ImageButton
+import com.example.frponsll40alumnes.runfish.fish.Anemone
+import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 import io.github.controlwear.virtual.joystick.android.JoystickView
@@ -23,6 +25,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
     private var button : Button?=  null
+    private var fish : Fish ?= null
    //private var button: ImageButton? = null
 
     private var joystick: JoystickView? = null
@@ -53,10 +56,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     override fun surfaceCreated(p0: SurfaceHolder?) {
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
         shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
+        //fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone))
+
+
         //button = findViewById(R.id.buttton)
-
-
-
 
         thread.setRunning(true)
         thread.start()
@@ -72,6 +75,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     fun update() {
         plankton!!.update()
         shark!!.update()
+        fish!!.update()
     }
 
     /**
@@ -94,6 +98,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
         plankton!!.draw(canvas)
         shark!!.draw(canvas)
+        fish!!.draw(canvas)
         //buttton!!.draw(canvas)
 
 

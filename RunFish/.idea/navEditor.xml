@@ -319,11 +319,6 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_singlePlayerFragment_to_test">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -346,18 +341,6 @@
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="test">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-1425" />
-                            <option name="y" value="-918" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
