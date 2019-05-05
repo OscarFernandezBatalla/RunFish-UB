@@ -4,4 +4,7 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 
 
 class Player (var fishType : FishType) {
+
+
+
 }
