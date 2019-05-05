@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "429667137232",
+    "firebase_url": "https://runfish-72df9.firebaseio.com",
+    "project_id": "runfish-72df9",
+    "storage_bucket": "runfish-72df9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429667137232:android:ffef3eda1e371950",
+        "android_client_info": {
+          "package_name": "com.example.frponsll40alumnes.runfish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429667137232-a4jj1mgiqhed491hq50rgmtrlq66qg3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.frponsll40alumnes.runfish",
+            "certificate_hash": "67e91212f7786bd868ce491f8152ef4f294ed83c"
+          }
+        },
+        {
+          "client_id": "429667137232-uugnceu0enta43l23oma782of23431jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG6nw0PIBkLvx_q0xsa6J3sFuXKBGEZOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429667137232-uugnceu0enta43l23oma782of23431jk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
