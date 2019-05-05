@@ -21,16 +21,14 @@ abstract class Fish (
 ) : Position, Movable, Dimension, DrawableObject {
 
 
-    private var xVelocity = 20
-    private var yVelocity = 20
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
-    override var x: Int = 0
-    override var y: Int = 0
-    override var width: Int = 0
-    override var height: Int = 0
-    override var speed: Float = 0f
+    override var x: Int = screenWidth/2
+    override var y: Int = screenHeight/2
+    override var width: Int = 60
+    override var height: Int = 30
+    override var speed: Int = 70
     override lateinit var image: Bitmap
 
 
@@ -67,15 +65,45 @@ abstract class Fish (
      * update properties for the game object
      */
 
-    fun update(xJoy : Int, yJoy : Int) {
+    fun update(xJoy : Double, yJoy : Double, strength : Int) {
 
-        //y-= (xVelocity)
 
-        x += xJoy
-        y += yJoy
+    var aux : Int = if (strength>speed){
+        speed
+    }
+    else{
+        strength
+    }
 
+    var xV : Int = (xJoy*aux/3).toInt()
+    var yV : Int = -(yJoy*aux/3).toInt()
+
+
+    if (x > screenWidth - image.width){
+        xV = -1
+    }
+
+    if(x < 2) {
+        xV = +1
+    }
+
+    if (y > screenHeight - image.height){
+
+        yV = -1
+    }
+
+    if(y<2) {
+        yV = +1
+    }
+
+
+    x += xV
+    y += yV
 
     }
+
+
+
 
 
 }

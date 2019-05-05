@@ -56,7 +56,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Mètode que fa un update de cada objecte
     fun updateView(){
-        fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
+        fish!!.update(valx, valy, strength)
         plankton!!.update()
         shark!!.update()
         //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
