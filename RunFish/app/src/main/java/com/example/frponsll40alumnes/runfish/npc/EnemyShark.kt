@@ -7,7 +7,7 @@ import com.example.frponsll40alumnes.runfish.Movable
 
 class EnemyShark(var image : Bitmap) : NPC(value = 50),
     Movable {
-    override var speed: Float
+    override var speed: Int
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
         set(value) {}
 

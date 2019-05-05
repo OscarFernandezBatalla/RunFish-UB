@@ -1,7 +1,7 @@
 package com.example.frponsll40alumnes.runfish
 
 interface Movable{
-    var speed : Float
+    var speed : Int
     fun move()
 
 }
