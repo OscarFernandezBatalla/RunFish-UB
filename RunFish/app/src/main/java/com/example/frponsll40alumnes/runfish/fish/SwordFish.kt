@@ -1,14 +1,10 @@
 package com.example.frponsll40alumnes.runfish.fish
 
+import android.content.Context
 import android.graphics.Bitmap
-/*
-class SwordFish(name: String = "SwordFish",
-                life: Int = 20,
-                capacity: Int = 20,
-                ability: String = "speed",
-                price: Int = 1000, image : Bitmap
-) :
-    Fish(image, name, life, capacity, ability, price) {
+
+class SwordFish(context: Context) :
+    Fish("SwordFish", 20,20,"speed", 1000) {
     override fun changePosition() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -16,4 +12,3 @@ class SwordFish(name: String = "SwordFish",
 
 
 }
-        */
