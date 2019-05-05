@@ -2,6 +2,7 @@ package com.example.frponsll40alumnes.runfish.fish
 
 import android.graphics.Bitmap
 
+/*
 class CommonFish(
     name: String = "Common Fish",
     life: Int = 20,
@@ -15,4 +16,4 @@ class CommonFish(
     }
 
 
-}
+}*/
