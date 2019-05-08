@@ -52,7 +52,7 @@ class Plankton(context: Context, points : Int): NPC(points) {
     override fun collision(playerFish: Fish?) {
         if(playerFish != null){
             //el peix recull el Plankton e incrementa la càrrega
-            playerFish.capacity += value;
+            playerFish.gainCapacity(value);
         }
         super.collision(playerFish); // move offscreen
     }

@@ -54,7 +54,7 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
     override fun collision(playerFish: Fish?) {
         if(playerFish != null){
             //value es el nom de la variable que guarda dmg
-            playerFish.life -= value;
+            playerFish.looseLife(value);
         }
         super.collision(playerFish); // move offscreen
     }
