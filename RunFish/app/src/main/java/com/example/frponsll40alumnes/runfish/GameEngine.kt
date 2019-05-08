@@ -40,9 +40,16 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
-        //fish = factory.createFish(FishType.ANEMONE,context)
+        //fish = Anemone(context)         //player1.getFish()
+        fish = fishFactory.createFish(player1.fishType, context);
 
-        fish = Anemone(context)         //player1.getFish()
+        /*
+            Generar nombre d'enemics depenent del nivell.
+            La classe Level guardarà paràmetres amb els limits acceptables
+            ie:
+                Tutorial    1-2 taurons 1-2 bombes ...
+                Level 1     2-4 taurons 2-4 bombes ...
+         */
 
         //plankton amb punts per defecte
         plankton = npcFactory.createNPC(NPCType.PLANKTON, context)
@@ -84,7 +91,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         for(x in NPCList){
             // Change positions with "randomness" for the NPCs
-            x!!.changeCoordinates((0..950).shuffled().first(), (-3000..-1500).shuffled().first());
+            x!!.changeCoordinates((0..1300).shuffled().first(), (-3000..-1500).shuffled().first());
         }
     }
 
@@ -114,46 +121,13 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         for(x in NPCList){
             x!!.update();
         }
-        /*
-        plankton!!.update()
-        shark!!.update()
-        bomb!!.update()
-        plankton2!!.update()
-        shark2!!.update()
-        bomb2!!.update()
-        shark3!!.update()
-        */
 
         for(x in NPCList){
             if(collision(x)){
-                x!!.x = 10000000
+                //Error de polimorfisme, no es pot fer casting
+                x!!.collision();
             }
         }
-/*
-
-        if(collision(plankton!!)){
-            plankton!!.x = 100000000
-        }
-        if(collision(plankton2!!)){
-            plankton2!!.x = 100000000
-        }
-        if(collision(shark!!)){
-            shark!!.x = 100000000
-        }
-        if(collision(shark2!!)){
-            shark2!!.x = 100000000
-        }
-        if(collision(bomb!!)){
-            bomb!!.x = 100000000
-        }
-        if(collision(bomb2!!)){
-            bomb2!!.x = 100000000
-        }
-        if(collision(shark3!!)){
-            shark3!!.x = 100000000
-        }
-*/
-
 
         //TODO: For de tots els NPC de la array i dins: NPC.action()
     }

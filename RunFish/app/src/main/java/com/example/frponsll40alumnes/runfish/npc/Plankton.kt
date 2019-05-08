@@ -45,11 +45,7 @@ class Plankton(context: Context, points : Int): NPC(points) {
         x += (xVelocity)
         y += (yVelocity)
 */
-
-
         y+= (pes)
-
-
     }
 
 

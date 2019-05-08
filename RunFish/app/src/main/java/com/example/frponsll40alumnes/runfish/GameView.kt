@@ -81,6 +81,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         LA CLAVE ES EL ROOTVIEW.
 
          */
+        // Crear joystick virtual
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
@@ -99,20 +100,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             textX!!.text= "coordenada X:   $valx   strength: $strength"
             textY!!.text= "coordenada Y:   $valy   angle: $angle"
 
-
-
             //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
             //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
 
         }
-
-
-
-
-
-
-
-
 
         /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
