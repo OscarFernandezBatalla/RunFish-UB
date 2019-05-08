@@ -26,6 +26,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var shark3: NPC? = null
     var bomb: NPC? = null
     var bomb2: NPC? = null
+    var background : Map? = null
 
 
 
@@ -49,6 +50,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
         //fish = factory.createFish(FishType.ANEMONE,context)
+
+        background = Map(context)
+
 
         fish = Anemone(context)         //player1.getFish()
 
@@ -124,6 +128,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         bomb2!!.update()
         shark3!!.update()
 
+        background!!.update()
+
 
         for(x in NPCList){
             if(collision(x)){
@@ -161,6 +167,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
     fun drawView(canvas : Canvas){
+        background!!.draw(canvas)
         plankton!!.draw(canvas)
         bomb!!.draw(canvas)
         shark!!.draw(canvas)
@@ -169,6 +176,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         shark2!!.draw(canvas)
         shark3!!.draw(canvas)
         fish!!.draw(canvas)
+
     }
 
 

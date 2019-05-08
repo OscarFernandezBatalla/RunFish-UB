@@ -189,7 +189,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 */
 
 
-        canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
+        //canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
 
         gameEngine.drawView(canvas)
 
