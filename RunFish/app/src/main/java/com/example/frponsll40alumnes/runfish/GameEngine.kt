@@ -23,7 +23,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var plankton2: NPC? = null
     var shark: NPC? = null
     var shark2: NPC? = null
-    var shark3: EnemyShark? = null
+    var shark3: NPC? = null
     var bomb: NPC? = null
     var bomb2: NPC? = null
 
@@ -70,10 +70,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         shark2!!.changeCoordinates(950, -3000)
 
         //shark horitzontal
-        shark3 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50) as EnemyShark
+        shark3 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50, vertical = false, leftToRight = false)
         shark3!!.changeCoordinates(950, 250)
-        shark3!!.changeOrientation(false)
-        shark3!!.changeDirection(true)
+
 
         //bomb amb damage per defecte
         bomb = npcFactory.createNPC(NPCType.BOMB, context)
@@ -82,7 +81,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         //bomb amb 20 de damage
         bomb2 = npcFactory.createNPC(NPCType.BOMB, context, value = 20)
         bomb2!!.changeCoordinates(550, -2500)
-
 
 
         NPCList.add(plankton!!)

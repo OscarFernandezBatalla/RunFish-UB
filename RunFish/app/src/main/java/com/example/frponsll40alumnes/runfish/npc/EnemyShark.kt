@@ -5,10 +5,11 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.drawable.GradientDrawable
 import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.R
 
-class EnemyShark(context: Context, speed : Int) : NPC(speed),
+class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftToRight: Boolean) : NPC(speed),
     Movable {
 
     override var speed: Int = this.value
@@ -16,8 +17,6 @@ class EnemyShark(context: Context, speed : Int) : NPC(speed),
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top)
-    private var vertical : Boolean = true
-    private var leftToRight : Boolean = true
 
     override var width: Int = image.width
     override var height: Int = image.height
