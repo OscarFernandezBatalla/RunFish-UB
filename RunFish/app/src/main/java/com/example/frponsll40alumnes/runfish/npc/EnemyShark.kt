@@ -1,48 +1,52 @@
 package com.example.frponsll40alumnes.runfish.npc
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.Movable
+import com.example.frponsll40alumnes.runfish.R
 
-class EnemyShark(var image : Bitmap) : NPC(value = 50),
+class EnemyShark(context: Context, speed : Int) : NPC(speed),
     Movable {
-    override var speed: Int
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-        set(value) {}
+    override var speed: Int = this.value
 
-    override fun move() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private var xVelocity = 20
-    private var yVelocity = 20
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top)
+    private var vertical : Boolean = true
+    private var leftToRight : Boolean = true
 
     init {
 
         var height = image.height
         var width = image.width
 
-        x = screenWidth/2 //random positions
-        y = -screenHeight
+    }
+
+    fun changeOrientation(vertical : Boolean){
+        this.vertical = vertical
+    }
+
+    fun changeDirection(leftToRight : Boolean){
+        this.leftToRight = leftToRight
     }
 
     /**
      * Draws the object on to the canvas.
      */
-    fun draw(canvas: Canvas) {
+    override fun draw(canvas: Canvas) {
         canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
     }
 
     /**
      * update properties for the game object
      */
-    fun update() {
+    override fun update() {
         // val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
-/*
 
+/*
         if (x > screenWidth - image.width || x < image.width) {
             xVelocity = xVelocity * -1
         }
@@ -54,14 +58,19 @@ class EnemyShark(var image : Bitmap) : NPC(value = 50),
         y += (yVelocity)
 */
 
+        if (vertical){
+            y+= speed
+        }
 
-        y+= (yVelocity)
-
-
+        else{
+            if (leftToRight){
+                x-= speed
+            }
+            else{
+                x+= speed
+            }
+        }
     }
 
-    override fun changePosition() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 }

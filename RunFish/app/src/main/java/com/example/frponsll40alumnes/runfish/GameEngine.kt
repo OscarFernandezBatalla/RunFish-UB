@@ -6,8 +6,7 @@ import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
-import com.example.frponsll40alumnes.runfish.npc.EnemyShark
-import com.example.frponsll40alumnes.runfish.npc.Plankton
+import com.example.frponsll40alumnes.runfish.npc.*
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
 
@@ -20,8 +19,20 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var distanceTraveled: Int = 0
 
     var fish : Fish? = null
-    lateinit var plankton: Plankton
-    lateinit var shark: EnemyShark
+    var plankton: NPC? = null
+    var plankton2: NPC? = null
+    var shark: NPC? = null
+    var shark2: NPC? = null
+    var shark3: EnemyShark? = null
+    var bomb: NPC? = null
+    var bomb2: NPC? = null
+
+
+
+    //lateinit var shark: EnemyShark
+
+    var fishFactory = FishFactory()
+    var npcFactory = NPCFactory()
 
 
 
@@ -34,17 +45,40 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
-        //TODO: Obviament s'ha de fer bé, de moment volia probar si funciona tot correctament.
+        //fish = factory.createFish(FishType.ANEMONE,context)
 
-        //fish = Anemone(BitmapFactory.decodeResource(context.resources, R.drawable.anemone_reduced))
-        //fish = Fish(context) //fish = Fish(ANEMONE, context)
-        var factory = FishFactory()
-        fish = factory.createFish(FishType.ANEMONE,context)
+        fish = Anemone(context)         //player1.getFish()
 
-        plankton = Plankton(BitmapFactory.decodeResource(context.resources, R.drawable.placton))
-        shark = EnemyShark(BitmapFactory.decodeResource(context.resources, R.drawable.shark_top))
+        //plankton amb punts per defecte
+        plankton = npcFactory.createNPC(NPCType.PLANKTON, context)
+        plankton!!.changeCoordinates(300, -500)
 
+        //plankton amb 100 punts
 
+        plankton2 = npcFactory.createNPC(NPCType.PLANKTON, context, value = 100)
+        plankton2!!.changeCoordinates(100, -1000)
+
+        //shark amb damage per defecte
+        shark = npcFactory.createNPC(NPCType.ENEMYSHARK, context)
+        shark!!.changeCoordinates(400, -1500)
+
+        //shark amb 50 de damage
+        shark2 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50)
+        shark2!!.changeCoordinates(950, -3000)
+
+        //shark horitzontal
+        shark3 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50) as EnemyShark
+        shark3!!.changeCoordinates(950, 250)
+        shark3!!.changeOrientation(false)
+        shark3!!.changeDirection(true)
+
+        //bomb amb damage per defecte
+        bomb = npcFactory.createNPC(NPCType.BOMB, context)
+        bomb!!.changeCoordinates(600, -3000)
+
+        //bomb amb 20 de damage
+        bomb2 = npcFactory.createNPC(NPCType.BOMB, context, value = 20)
+        bomb2!!.changeCoordinates(550, -2500)
     }
 
     //Mètode que obté la informació del joystick
@@ -59,13 +93,24 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         fish!!.update(valx, valy, strength)
         plankton!!.update()
         shark!!.update()
+        bomb!!.update()
+
+        plankton2!!.update()
+        shark2!!.update()
+        bomb2!!.update()
+        shark3!!.update()
         //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
     }
 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
     fun drawView(canvas : Canvas){
         plankton!!.draw(canvas)
+        bomb!!.draw(canvas)
         shark!!.draw(canvas)
+        plankton2!!.draw(canvas)
+        bomb2!!.draw(canvas)
+        shark2!!.draw(canvas)
+        shark3!!.draw(canvas)
         fish!!.draw(canvas)
     }
 

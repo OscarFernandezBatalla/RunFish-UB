@@ -50,9 +50,6 @@ abstract class Fish (
         collision.collision()//parametres? fish? position?
     }
 
-    override fun move() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 
 
@@ -102,8 +99,9 @@ abstract class Fish (
 
     }
 
-
-
-
+    override fun changeCoordinates(x: Int, y: Int) {
+        this.x = x
+        this.y = y
+    }
 
 }

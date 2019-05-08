@@ -1,19 +1,18 @@
 package com.example.frponsll40alumnes.runfish.npc
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import com.example.frponsll40alumnes.runfish.R
 
-class Bomb(var image: Bitmap): NPC(value = 25) {
-    override fun changePosition() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class Bomb(context: Context, damage : Int): NPC(damage) {
 
-
-    private var xVelocity = 20
-    private var yVelocity = 20
+    private val pes = 20
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.mina)
     
 
     init {
@@ -22,22 +21,39 @@ class Bomb(var image: Bitmap): NPC(value = 25) {
         var width = image.width
 
         x = screenWidth/2 //random positions
-        y = -screenHeight
+        y = screenHeight/2
     }
 
     /**
      * Draws the object on to the canvas.
      */
-    fun draw(canvas: Canvas) {
+    /**
+     * Draws the object on to the canvas.
+     */
+    override fun draw(canvas: Canvas) {
         canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
     }
 
     /**
      * update properties for the game object
      */
-    fun update() {
+    override fun update() {
+        // val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
+/*
 
-        y+= (yVelocity)
+        if (x > screenWidth - image.width || x < image.width) {
+            xVelocity = xVelocity * -1
+        }
+        if (y > screenHeight - image.height || y < image.height) {
+            yVelocity = yVelocity * -1
+        }
+
+        x += (xVelocity)
+        y += (yVelocity)
+*/
+
+
+        y+= (pes)
 
 
     }

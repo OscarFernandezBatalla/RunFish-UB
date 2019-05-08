@@ -18,6 +18,7 @@ class Anemone(context: Context) :
     Fish(name = "Anemone", life = 20, capacity =  20, ability = "health", price =  1000) {
 
 
+
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone_reduced)
     }
@@ -34,9 +35,6 @@ init {
 }
 */
 
-    override fun changePosition() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 
 
