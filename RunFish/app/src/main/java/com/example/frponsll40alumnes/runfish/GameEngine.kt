@@ -14,7 +14,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     // LevelStats instanciat a player??????? Llavors quan tinguem dos, sol haurem de fer-nos carrec de player.stats
 
     var planktonCollected: Int = 0
-    var numberOfDeaths: Int = 0 //Potser un bool?
+    var numberOfDeaths: Int = 0 //Potser un bool? //Int per les stats
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
 
@@ -27,24 +27,16 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var bomb: NPC? = null
     var bomb2: NPC? = null
 
-
-
     //lateinit var shark: EnemyShark
 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
-
-
 
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
 
     var NPCList: MutableList<NPC> = mutableListOf()
-
-
-
-
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){

@@ -122,17 +122,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
         gameEngine.startGame()
 
-
-
-
-
-
-
-
-
         //joystick = findViewById(R.id.joystickView)
-
-
 
         //button = findViewById(R.id.buttton)
 
@@ -165,10 +155,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         //fish!!.update(joystick!!.normalizedX)
         //textX!!.text="hola"
            */
-
-
-
-
     }
 
 
@@ -202,8 +188,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
 */
 
-
-
         //textX!!.text = "hola"
         //textY!!.text = joystick!!.normalizedY.toString()
         //buttton!!.draw(canvas)
@@ -212,7 +196,5 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         //setBackgroundResource(R.drawable.fondo_marino)
         //}
     }
-
-
 
 }

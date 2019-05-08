@@ -5,8 +5,17 @@ package com.example.frponsll40alumnes.runfish
 
 class Repository{
 
-    var userList: ArrayList<User> = ArrayList()
-        get() = userList
+
+
+    var users : ArrayList<User> = ArrayList(1);
+
+    fun save(){
+
+    }
+
+    fun load(){
+
+    }
 
 
 
