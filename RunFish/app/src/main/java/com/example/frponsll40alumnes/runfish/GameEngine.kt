@@ -26,6 +26,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var shark3: NPC? = null
     var bomb: NPC? = null
     var bomb2: NPC? = null
+    var background : Map? = null
 
     //lateinit var shark: EnemyShark
 
@@ -43,6 +44,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         //fish = Anemone(context)         //player1.getFish()
         fish = fishFactory.createFish(player1.fishType, context);
 
+        background = Map(context)
+
+
+        //fish = Anemone(context)         //player1.getFish()
         /*
             Generar nombre d'enemics depenent del nivell.
             La classe Level guardarà paràmetres amb els limits acceptables
@@ -129,11 +134,14 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             }
         }
 
+        background!!.update();
+
         //TODO: For de tots els NPC de la array i dins: NPC.action()
     }
 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
     fun drawView(canvas : Canvas){
+        background!!.draw(canvas)
         plankton!!.draw(canvas)
         bomb!!.draw(canvas)
         shark!!.draw(canvas)
