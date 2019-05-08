@@ -10,6 +10,7 @@ import com.example.frponsll40alumnes.runfish.R
 
 class EnemyShark(context: Context, speed : Int) : NPC(speed),
     Movable {
+
     override var speed: Int = this.value
 
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
@@ -18,12 +19,8 @@ class EnemyShark(context: Context, speed : Int) : NPC(speed),
     private var vertical : Boolean = true
     private var leftToRight : Boolean = true
 
-    init {
-
-        var height = image.height
-        var width = image.width
-
-    }
+    override var width: Int = image.width
+    override var height: Int = image.height
 
     fun changeOrientation(vertical : Boolean){
         this.vertical = vertical

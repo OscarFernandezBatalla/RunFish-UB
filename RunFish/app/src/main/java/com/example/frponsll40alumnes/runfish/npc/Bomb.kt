@@ -13,16 +13,9 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.mina)
-    
+    override var width: Int = image.width
+    override var height: Int = image.height
 
-    init {
-
-        var height = image.height
-        var width = image.width
-
-        x = screenWidth/2 //random positions
-        y = screenHeight/2
-    }
 
     /**
      * Draws the object on to the canvas.

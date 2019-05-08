@@ -18,16 +18,9 @@ class Plankton(context: Context, points : Int): NPC(points) {
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
-    init {
+    override var width: Int = image.width
+    override var height: Int = image.height
 
-
-
-        var height = image.height
-        var width = image.width
-
-        //y=3000
-        //x = screenWidth/2
-    }
 
     /**
      * Draws the object on to the canvas.

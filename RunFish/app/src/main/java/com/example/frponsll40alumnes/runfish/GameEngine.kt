@@ -40,6 +40,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var valx : Double = 0.0
     var strength: Int = 0
 
+    var NPCList: MutableList<NPC> = mutableListOf()
+
+
 
 
 
@@ -79,6 +82,18 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         //bomb amb 20 de damage
         bomb2 = npcFactory.createNPC(NPCType.BOMB, context, value = 20)
         bomb2!!.changeCoordinates(550, -2500)
+
+
+
+        NPCList.add(plankton!!)
+        NPCList.add(plankton2!!)
+        NPCList.add(shark!!)
+        NPCList.add(shark2!!)
+        NPCList.add(shark3!!)
+        NPCList.add(bomb!!)
+        NPCList.add(bomb2!!)
+
+
     }
 
     //Mètode que obté la informació del joystick
@@ -88,18 +103,62 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         this.strength = strength
     }
 
+    fun collision(npc: NPC): Boolean{
+        if (fish!!.x < npc!!.x + npc!!.width &&
+            fish!!.x + fish!!.width > npc!!.x &&
+            fish!!.y < npc!!.y + npc!!.height &&
+            fish!!.height + fish!!.y > npc!!.y) {
+            return true
+            // ¡colision detectada!
+        }
+        return false
+    }
+
+
     //Mètode que fa un update de cada objecte
     fun updateView(){
         fish!!.update(valx, valy, strength)
         plankton!!.update()
         shark!!.update()
         bomb!!.update()
-
         plankton2!!.update()
         shark2!!.update()
         bomb2!!.update()
         shark3!!.update()
-        //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
+
+
+        for(x in NPCList){
+            if(collision(x)){
+                x!!.x = 10000000
+            }
+        }
+/*
+
+        if(collision(plankton!!)){
+            plankton!!.x = 100000000
+        }
+        if(collision(plankton2!!)){
+            plankton2!!.x = 100000000
+        }
+        if(collision(shark!!)){
+            shark!!.x = 100000000
+        }
+        if(collision(shark2!!)){
+            shark2!!.x = 100000000
+        }
+        if(collision(bomb!!)){
+            bomb!!.x = 100000000
+        }
+        if(collision(bomb2!!)){
+            bomb2!!.x = 100000000
+        }
+        if(collision(shark3!!)){
+            shark3!!.x = 100000000
+        }
+*/
+
+
+        //TODO: For de tots els NPC de la array i dins: NPC.action()
     }
 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
@@ -113,6 +172,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         shark3!!.draw(canvas)
         fish!!.draw(canvas)
     }
+
+
+
 
 
 
