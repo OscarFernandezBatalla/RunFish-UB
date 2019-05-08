@@ -41,13 +41,12 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
+
         //fish = Anemone(context)         //player1.getFish()
         fish = fishFactory.createFish(player1.fishType, context);
 
         background = Map(context)
 
-
-        //fish = Anemone(context)         //player1.getFish()
         /*
             Generar nombre d'enemics depenent del nivell.
             La classe Level guardarà paràmetres amb els limits acceptables
@@ -56,35 +55,19 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 Level 1     2-4 taurons 2-4 bombes ...
          */
 
-        //plankton amb punts per defecte
         plankton = npcFactory.createNPC(NPCType.PLANKTON, context)
-        //plankton!!.changeCoordinates(300, -500)
-
-        //plankton amb 100 punts
 
         plankton2 = npcFactory.createNPC(NPCType.PLANKTON, context, value = 100)
-        //plankton2!!.changeCoordinates(100, -1000)
 
-        //shark amb damage per defecte
         shark = npcFactory.createNPC(NPCType.ENEMYSHARK, context)
-        //shark!!.changeCoordinates(400, -1500)
 
-        //shark amb 50 de damage
         shark2 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50)
-        //shark2!!.changeCoordinates(950, -3000)
 
-        //shark horitzontal
         shark3 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50, vertical = false, leftToRight = false)
-        //shark3!!.changeCoordinates(950, 250)
 
-
-        //bomb amb damage per defecte
         bomb = npcFactory.createNPC(NPCType.BOMB, context)
-        //bomb!!.changeCoordinates(600, -3000)
 
-        //bomb amb 20 de damage
         bomb2 = npcFactory.createNPC(NPCType.BOMB, context, value = 20)
-        //bomb2!!.changeCoordinates(550, -2500)
 
         NPCList.add(plankton!!)
         NPCList.add(plankton2!!)
@@ -129,8 +112,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         for(x in NPCList){
             if(collision(x)){
-                //Error de polimorfisme, no es pot fer casting
-                x!!.collision();
+                x!!.collision(fish);
             }
         }
 
@@ -151,14 +133,5 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         shark3!!.draw(canvas)
         fish!!.draw(canvas)
     }
-
-
-
-
-
-
-
-
-
 
 }

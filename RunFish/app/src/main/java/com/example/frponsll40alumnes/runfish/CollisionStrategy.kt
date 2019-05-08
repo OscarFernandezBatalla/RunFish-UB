@@ -4,7 +4,8 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 
 interface CollisionStrategy : Position{
 
-    fun collision(){
+    //override implementation in each one of the npcs
+    fun collision(playerFish : Fish?){
 
         this.x = 10000000;
 

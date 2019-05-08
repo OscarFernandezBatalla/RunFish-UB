@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.CollisionStrategy
 import com.example.frponsll40alumnes.runfish.Dimension
 import com.example.frponsll40alumnes.runfish.Position
+import com.example.frponsll40alumnes.runfish.fish.Fish
 
 abstract class NPC(var value : Int, override var x: Int = 0, override var y: Int = 0) : Position, Dimension, CollisionStrategy {
 
@@ -17,5 +18,8 @@ abstract class NPC(var value : Int, override var x: Int = 0, override var y: Int
         this.y = y
     }
 
+    override fun collision(playerFish: Fish?) {
+        super.collision(playerFish); // move offscreen
+    }
 
 }
