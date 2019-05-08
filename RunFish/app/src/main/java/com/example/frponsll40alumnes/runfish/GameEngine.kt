@@ -46,34 +46,33 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         //plankton amb punts per defecte
         plankton = npcFactory.createNPC(NPCType.PLANKTON, context)
-        plankton!!.changeCoordinates(300, -500)
+        //plankton!!.changeCoordinates(300, -500)
 
         //plankton amb 100 punts
 
         plankton2 = npcFactory.createNPC(NPCType.PLANKTON, context, value = 100)
-        plankton2!!.changeCoordinates(100, -1000)
+        //plankton2!!.changeCoordinates(100, -1000)
 
         //shark amb damage per defecte
         shark = npcFactory.createNPC(NPCType.ENEMYSHARK, context)
-        shark!!.changeCoordinates(400, -1500)
+        //shark!!.changeCoordinates(400, -1500)
 
         //shark amb 50 de damage
         shark2 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50)
-        shark2!!.changeCoordinates(950, -3000)
+        //shark2!!.changeCoordinates(950, -3000)
 
         //shark horitzontal
         shark3 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50, vertical = false, leftToRight = false)
-        shark3!!.changeCoordinates(950, 250)
+        //shark3!!.changeCoordinates(950, 250)
 
 
         //bomb amb damage per defecte
         bomb = npcFactory.createNPC(NPCType.BOMB, context)
-        bomb!!.changeCoordinates(600, -3000)
+        //bomb!!.changeCoordinates(600, -3000)
 
         //bomb amb 20 de damage
         bomb2 = npcFactory.createNPC(NPCType.BOMB, context, value = 20)
-        bomb2!!.changeCoordinates(550, -2500)
-
+        //bomb2!!.changeCoordinates(550, -2500)
 
         NPCList.add(plankton!!)
         NPCList.add(plankton2!!)
@@ -83,7 +82,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         NPCList.add(bomb!!)
         NPCList.add(bomb2!!)
 
-
+        for(x in NPCList){
+            // Change positions with "randomness" for the NPCs
+            x!!.changeCoordinates((0..950).shuffled().first(), (-3000..-1500).shuffled().first());
+        }
     }
 
     //Mètode que obté la informació del joystick
@@ -108,6 +110,11 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     //Mètode que fa un update de cada objecte
     fun updateView(){
         fish!!.update(valx, valy, strength)
+
+        for(x in NPCList){
+            x!!.update();
+        }
+        /*
         plankton!!.update()
         shark!!.update()
         bomb!!.update()
@@ -115,7 +122,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         shark2!!.update()
         bomb2!!.update()
         shark3!!.update()
-
+        */
 
         for(x in NPCList){
             if(collision(x)){
