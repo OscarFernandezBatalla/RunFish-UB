@@ -9,7 +9,6 @@ import com.example.frponsll40alumnes.runfish.R
 
 class Bomb(context: Context, damage : Int): NPC(damage) {
 
-    private val pes = 20
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.mina)
