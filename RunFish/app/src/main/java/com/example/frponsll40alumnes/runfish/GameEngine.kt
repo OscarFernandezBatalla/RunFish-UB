@@ -9,10 +9,6 @@ import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
-
-    /* TODO: Potser hem de passar parametres a la classe, per exemple potser posar les imatges dels objectes aqui passant resources.*/
-    // LevelStats instanciat a player??????? Llavors quan tinguem dos, sol haurem de fer-nos carrec de player.stats
-
     var planktonCollected: Int = 0
     var numberOfDeaths: Int = 0 //Potser un bool? //Int per les stats
     var murderedFish: Int = 0
@@ -27,8 +23,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var bomb: NPC? = null
     var bomb2: NPC? = null
     var background : Map? = null
-
-    //lateinit var shark: EnemyShark
 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
@@ -53,7 +47,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         //plankton!!.changeCoordinates(300, -500)
 
         //plankton amb 100 punts
-
         plankton2 = npcFactory.createNPC(NPCType.PLANKTON, context, value = 100)
         //plankton2!!.changeCoordinates(100, -1000)
 
@@ -134,32 +127,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 x!!.x = 10000000
             }
         }
-/*
-
-        if(collision(plankton!!)){
-            plankton!!.x = 100000000
-        }
-        if(collision(plankton2!!)){
-            plankton2!!.x = 100000000
-        }
-        if(collision(shark!!)){
-            shark!!.x = 100000000
-        }
-        if(collision(shark2!!)){
-            shark2!!.x = 100000000
-        }
-        if(collision(bomb!!)){
-            bomb!!.x = 100000000
-        }
-        if(collision(bomb2!!)){
-            bomb2!!.x = 100000000
-        }
-        if(collision(shark3!!)){
-            shark3!!.x = 100000000
-        }
-*/
-
-
         //TODO: For de tots els NPC de la array i dins: NPC.action()
     }
 
@@ -174,16 +141,5 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         shark2!!.draw(canvas)
         shark3!!.draw(canvas)
         fish!!.draw(canvas)
-
     }
-
-
-
-
-
-
-
-
-
-
 }

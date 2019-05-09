@@ -1,6 +1,7 @@
 package com.example.frponsll40alumnes.runfish
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -10,7 +11,7 @@ class Map (context: Context){
 
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg)
     private var x : Int = 0
-    private var y : Int = 0
+    private var y : Int = -(image.height - Resources.getSystem().displayMetrics.heightPixels)
 
 
 
@@ -40,8 +41,12 @@ class Map (context: Context){
         y += (yVelocity)
 */
 
+        if(y <= 0){
+            y+= (5)
+        }
 
-        y-= (10)
+
+
 
 
     }

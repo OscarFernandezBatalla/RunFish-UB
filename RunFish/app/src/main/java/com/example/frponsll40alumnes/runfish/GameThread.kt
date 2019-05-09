@@ -53,7 +53,4 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
     companion object {
         private var canvas: Canvas? = null
     }
-
-
-
 }
