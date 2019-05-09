@@ -27,7 +27,10 @@ class RemoteRepository: DataModel{
     }
 
     fun register(){
-
+        //get user email and password from fragment
+        val email : String = "hello";
+        val password : String = "world";
+        database!!.createUserWithEmailAndPassword(email, password);
     }
 
     fun logOut(){
