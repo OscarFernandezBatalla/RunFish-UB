@@ -8,6 +8,7 @@ import android.graphics.Canvas
 import android.graphics.drawable.GradientDrawable
 import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.fish.Fish
 
 class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftToRight: Boolean) : NPC(speed),
     Movable {
@@ -66,6 +67,14 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
                 x+= speed
             }
         }
+    }
+
+    override fun collision(playerFish: Fish?) {
+        if(playerFish != null){
+            //value es el nom de la variable que guarda dmg
+            playerFish.looseLife(value);
+        }
+        super.collision(playerFish); // move offscreen
     }
 
 

@@ -16,6 +16,7 @@ class Map (context: Context){
 
 
 
+
     /**
      * Draws the object on to the canvas.
      */
@@ -44,10 +45,5 @@ class Map (context: Context){
         if(y <= 0){
             y+= (5)
         }
-
-
-
-
-
     }
 }

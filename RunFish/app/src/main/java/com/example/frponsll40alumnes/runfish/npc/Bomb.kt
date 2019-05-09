@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.fish.Fish
 
 class Bomb(context: Context, damage : Int): NPC(damage) {
 
@@ -48,6 +49,14 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
         y+= (pes)
 
 
+    }
+
+    override fun collision(playerFish: Fish?) {
+        if(playerFish != null){
+            //value es el nom de la variable que guarda dmg
+            playerFish.looseLife(value);
+        }
+        super.collision(playerFish); // move offscreen
     }
 
 }

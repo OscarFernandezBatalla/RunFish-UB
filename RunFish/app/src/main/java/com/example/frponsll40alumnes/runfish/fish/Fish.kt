@@ -32,16 +32,48 @@ abstract class Fish (
     override lateinit var image: Bitmap
 
 
+    /* STATS */
+    val maxLife : Int = life;
+    val minLife : Int = 0;
 
-
+    val maxCapacity : Int = capacity;
+    val minCapacity : Int = 0;
 
     /*
       TODO: A cada classe que haguem de dibuixar, haurem de fer un draw i un update? En cas que sí, com accedim al valor
       TODO: del joystick? Perque el fish es mourà a partir d'ell, amb un paràmetres a la propi mètode? Els demés si que podríem fer-ho automàtic.
      */
 
-    //fun looseLife(damage : Int){}
-    //fun looseCapacity(damage : Int){}
+    fun looseLife(damage : Int){
+        this.life -= damage;
+        if(this.life <= this.minLife){
+            //die();
+        }
+    }
+
+    fun gainLife(healing : Int){
+        if((this.life + healing) >= this.maxLife){
+            return;
+        }
+        this.life += healing;
+    }
+
+    fun gainCapacity(cargo : Int){
+        if((this.capacity + cargo) >= this.maxCapacity){
+            return;
+        }
+        this.capacity += cargo;
+    }
+
+    fun looseCapacity(cargo : Int){
+        if((this.capacity - cargo) <= this.minCapacity){
+            this.capacity = this.minCapacity;
+        } else {
+            this.capacity -= cargo;
+        }
+    }
+
+
     fun useAbility(ability : AbilityStrategy){
         ability.useAbility(this)
     }
