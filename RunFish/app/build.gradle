@@ -47,9 +47,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha01'
 
-    //QUICK FIX: The library com.google.android.gms:play-services-base is being requested by various other libraries at [[15.0.1,15.0.1]], but resolves to 16.0.1.
-    //WORKAROUND: Change from 16.0.1 to 15.0.1
-    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 
     // For Kotlin use navigation-ui-ktx
 }

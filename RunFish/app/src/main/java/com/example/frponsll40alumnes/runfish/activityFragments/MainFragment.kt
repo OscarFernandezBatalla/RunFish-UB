@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignInOptionsCreator
+//import com.google.android.gms.auth.api.signin.GoogleSignInOptionsCreator
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.fragment_main.*
 

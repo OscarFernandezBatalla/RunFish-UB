@@ -3,23 +3,26 @@ package com.example.frponsll40alumnes.runfish.activityFragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.fragment_sign_in.*
-
 
 class SignInFragment : Fragment() {
 
+    var RETURN_CODE_SIGN_IN : Int = 1;
+
     private lateinit var auth : FirebaseAuth;
+    private lateinit var googleSignInClient : GoogleSignInClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,10 @@ class SignInFragment : Fragment() {
         button_sign_in.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signInFragment_to_mainFragment))
     }
 
+    /*  ///////////////////////////////////////////////////////////////////////////////////
+        FIREBASE SIGNIN DOC: https://firebase.google.com/docs/auth/android/google-signin
+     ////////////////////////////////////////////////////////////////////////////////////// */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,6 +53,9 @@ class SignInFragment : Fragment() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
+
+        // DEBE SER UNA ACTIVITY
+        //googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         //Initialize Firebase
         auth = FirebaseAuth.getInstance();
@@ -65,17 +75,16 @@ class SignInFragment : Fragment() {
          */
     }
 
-    /*
     private fun signIn() {
-        val signInIntent = GoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RETURN_CODE_SIGN_IN)
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RETURN_CODE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
@@ -83,35 +92,35 @@ class SignInFragment : Fragment() {
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e)
+                //Log.w(TAG, "Google sign in failed", e)
                 // ...
             }
         }
     }
-    */
 
-    /*
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
+        //Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
+                // SIGN IN DEBE SER UNA ACTIVITY, NO UN FRAGMENT
+                /*
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithCredential:success")
+                        //Log.d(TAG, "signInWithCredential:success")
                         val user = auth.currentUser
-                        updateUI(user)
+                        //updateUI(user)
                     } else {
                         // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInWithCredential:failure", task.exception)
-                        Snackbar.make(main_layout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
-                        updateUI(null)
+                        //Log.w(TAG, "signInWithCredential:failure", task.exception)
+                        //Snackbar.make(main_layout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
+                        //updateUI(null)
                     }
 
                     // ...
                 }
-        }
-     */
+                */
+    }
 
 }
