@@ -1,9 +1,7 @@
 package com.example.frponsll40alumnes.runfish
 
-import com.example.frponsll40alumnes.runfish.fish.Fish
-import com.example.frponsll40alumnes.runfish.npc.Bomb
-import com.example.frponsll40alumnes.runfish.npc.EnemyShark
-import com.example.frponsll40alumnes.runfish.npc.Plankton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class RemoteRepository: DataModel{
     /*
@@ -12,44 +10,61 @@ class RemoteRepository: DataModel{
         setMap()
      */
 
-    fun getFish() : ArrayList<Fish> {
-        //Returns array of fish that are playing
-        var qwe = ArrayList<Fish>();
-        return qwe;
+    var database : FirebaseAuth? = null;
+    var user : FirebaseUser? = null;
+
+    init{
+        database = FirebaseAuth.getInstance();
+        user = database!!.currentUser;
     }
 
-    fun setFish(data: ArrayList<Fish>) {
-        //
+    fun logIn(){
+        //get user email and password from fragment
+        val email : String = "hello";
+        val password : String = "world";
+        database!!.signInWithEmailAndPassword(email, password);
+
     }
 
-    fun getBombs() : ArrayList<Bomb> {
-        //Returns all bombs created in map.
-        var qwe = ArrayList<Bomb>();
-        return qwe;
+    fun register(){
+
     }
 
-    fun setBombs(data: ArrayList<Bomb>){
-        //
+    fun logOut(){
+        database!!.signOut();
     }
 
-    fun getPlankton() : ArrayList<Plankton> {
-        //Returns array of all plankton created in map.
-        var qwe = ArrayList<Plankton>();
-        return qwe;
+    fun getCurrentUser() : FirebaseUser? {
+        if(database != null){
+            return database!!.currentUser;
+        } else {
+            return null;
+        }
     }
 
-    fun setPlankton(data: ArrayList<Plankton>) {
-        //
+    fun getCurrentUserName() : String {
+
+        var name : String? = getCurrentUser()!!.displayName;
+
+        if(name == null){
+            return "John Doe";
+        } else {
+            return name;
+        }
+
     }
 
-    fun getSharks() : ArrayList<EnemyShark> {
-        //Returns array of all sharks created in map.
-        var qwe = ArrayList<EnemyShark>();
-        return qwe;
+    fun getCurrentUserEmail() : String {
+
+        var email : String? = getCurrentUser()!!.email;
+
+        if(email == null){
+            return "johndoe@gmail.com";
+        } else {
+            return email;
+        }
+
     }
 
-    fun setSharks(data: ArrayList<EnemyShark>){
-        //
-    }
 
 }
