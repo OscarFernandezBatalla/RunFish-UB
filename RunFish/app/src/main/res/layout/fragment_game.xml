@@ -289,7 +289,7 @@
                 android:layout_width="167dp"
                 android:layout_height="182dp"
                 custom:JV_buttonColor="#FF6E40"
-                custom:JV_buttonSizeRatio="60%"
+                custom:JV_buttonSizeRatio="40%"
                 custom:JV_borderWidth="4dp"
                 custom:JV_fixedCenter="false"
                 android:layout_marginEnd="8dp"
@@ -297,11 +297,11 @@
                 android:layout_marginBottom="8dp"
                 custom:layout_constraintBottom_toBottomOf="parent"
                 custom:layout_constraintHorizontal_bias="0.028"
-                android:background="@drawable/joystick_exterior"
+                android:background="@drawable/joystick_exterior_big"
                 custom:JV_buttonImage="@drawable/joystick_interior"
                 custom:layout_constraintVertical_bias="0.963"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
         />
 
         <ImageButton
