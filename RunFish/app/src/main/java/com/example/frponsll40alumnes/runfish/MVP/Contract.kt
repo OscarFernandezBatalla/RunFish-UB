@@ -1,4 +1,4 @@
-package com.example.frponsll40alumnes.runfish
+package com.example.frponsll40alumnes.runfish.MVP
 
 interface Contract {
 
@@ -52,15 +52,11 @@ interface Contract {
         //aqui tots els metodes que han d'implementar repositori
 
 
-        fun signIn()
+
         fun buyFish()
-        fun music()
-        fun sounds()
-        fun vibration()
         fun language()
 
-        fun win()
-        fun gameOver()
+        /*GETTERS AQUI*/
 
 
 

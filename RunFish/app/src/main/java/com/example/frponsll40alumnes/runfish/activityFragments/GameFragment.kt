@@ -142,5 +142,18 @@ class GameFragment : Fragment() {
     }
 
 
+    /*PAS 1 EXEMPLE A
+
+     (SUPOSEM QUE AQUEST METODE ES CRIDA QUAN HAS MORT)*/
+    /*per a que es vegi la transferencia de dades invento una variable que et diu quantes vegades has mort
+    * en un nivell, pero es podria fer cridant-la cada cop que mors sense variable*/
+
+    var vegadesMort : Int = 3
+    /*fun increaseStatNumberOfDeath(){
+        (activity as MainActivity).increaseStatNumberOfDeath(vegadesMort)
+    }*/
+
+
+
 
 }

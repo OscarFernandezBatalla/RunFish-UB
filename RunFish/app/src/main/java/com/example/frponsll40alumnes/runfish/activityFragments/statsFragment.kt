@@ -24,4 +24,11 @@ class statsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_statsFragment_to_menuFragment))
     }
+
+    /*PAS 4 EXEMPLE B*/
+    /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
+
+    fun updateStatNumberofDeathOnView(statNumberOfDeath: Int) {
+        this.text_view_int_deaths.text = statNumberOfDeath.toString()
+    }
 }

@@ -60,7 +60,7 @@ class FishFragment : Fragment() {
         }
 
 
-        this.text_selected_fish.text = (activity as MainActivity).textFish
+        //this.text_selected_fish.text = (activity as MainActivity).textFish
         
 
     }

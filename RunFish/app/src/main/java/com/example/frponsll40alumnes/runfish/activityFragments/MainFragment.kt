@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish.activityFragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,14 @@ class MainFragment : Fragment() {
     var RC_SIGN_IN = 9001
     lateinit var mGoogleApiClient: GoogleApiClient*/
 
+
+
     //val fragmentMain :  MainFragment = fm.findFragmentById(R.id.your_fragment_id)
+
+
+
+
+
 
 
 
@@ -34,6 +42,13 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+
+
+
+
+
+
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -47,7 +62,10 @@ class MainFragment : Fragment() {
         //text_view_run.text = (activity as MainActivity).textFish
 
 
+
+
     }
+
 
 
 

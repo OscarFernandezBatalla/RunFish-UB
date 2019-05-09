@@ -9,10 +9,14 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_friends.*
-
+import kotlinx.android.synthetic.main.fragment_game.*
 
 
 class FriendsFragment : Fragment() {
+
+    var hola : String = "hola"
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,10 +33,10 @@ class FriendsFragment : Fragment() {
         button_Invite.setOnClickListener {
             edit_text_username_invite.setText("")
         }
-
-
-
-
-
     }
+
+   /* fun getBar() : Int{
+        return bar_capacity.progress
+    }*/
+
 }
