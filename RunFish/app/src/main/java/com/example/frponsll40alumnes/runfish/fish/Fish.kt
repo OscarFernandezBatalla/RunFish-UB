@@ -82,9 +82,6 @@ abstract class Fish (
         collision.collision()//parametres? fish? position?
     }
 
-
-
-
     fun draw(canvas: Canvas) {
         canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
     }

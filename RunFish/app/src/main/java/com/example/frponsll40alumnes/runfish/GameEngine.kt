@@ -115,6 +115,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         }
         background!!.update()
 
+        // Check if player is still alive
+
         //TODO: For de tots els NPC de la array i dins: NPC.action()
     }
 
