@@ -58,6 +58,9 @@ class FishFragment : Fragment() {
             speed_bar_selected_fish.progress = 80
             button_ability_selected_fish.setBackgroundResource(R.drawable.shark_icon_dos)
         }
+
+
+        this.text_selected_fish.text = (activity as MainActivity).textFish
         
 
     }

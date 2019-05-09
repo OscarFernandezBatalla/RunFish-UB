@@ -30,5 +30,9 @@ class FriendsFragment : Fragment() {
             edit_text_username_invite.setText("")
         }
 
+
+
+
+
     }
 }

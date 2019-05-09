@@ -11,7 +11,9 @@ import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
 import java.nio.file.Files.size
 import android.R.attr.y
 import android.R.attr.x
+import com.example.frponsll40alumnes.runfish.Contract
 import com.example.frponsll40alumnes.runfish.GameView
+import com.example.frponsll40alumnes.runfish.Presenter
 import com.example.frponsll40alumnes.runfish.R
 
 //import android.R
@@ -26,6 +28,19 @@ enum class LevelDirection {
 }
 
 class MainActivity : AppCompatActivity() {
+
+
+    /*TOTES les variables de tots els frag: Biblia*/
+    var textFish : String = "Select a fish"
+
+
+
+    //aixo despres de les declaracions
+    var presenter : Presenter = Presenter(this)
+
+
+
+
 
     lateinit var binding: ActivityMainBinding
     //lateinit var gameView : GameView
