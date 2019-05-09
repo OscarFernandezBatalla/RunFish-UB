@@ -104,15 +104,16 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         fish!!.update(valx, valy, strength)
 
         for(x in NPCList){
-            x!!.update();
+            x!!.update()
         }
 
         for(x in NPCList){
             if(collision(x)){
-                x!!.collision(fish);
+                x!!.collision(fish)
+                //x!!.action()
             }
         }
-        background!!.update();
+        background!!.update()
 
         //TODO: For de tots els NPC de la array i dins: NPC.action()
     }

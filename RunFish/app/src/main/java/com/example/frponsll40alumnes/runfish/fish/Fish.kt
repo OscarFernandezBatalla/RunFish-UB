@@ -33,11 +33,11 @@ abstract class Fish (
 
 
     /* STATS */
-    val maxLife : Int = life;
-    val minLife : Int = 0;
+    val maxLife : Int = life
+    val minLife : Int = 0
 
-    val maxCapacity : Int = capacity;
-    val minCapacity : Int = 0;
+    val maxCapacity : Int = capacity
+    val minCapacity : Int = 0
 
     /*
       TODO: A cada classe que haguem de dibuixar, haurem de fer un draw i un update? En cas que sí, com accedim al valor
@@ -45,7 +45,7 @@ abstract class Fish (
      */
 
     fun looseLife(damage : Int){
-        this.life -= damage;
+        this.life -= damage
         if(this.life <= this.minLife){
             //die();
         }
@@ -53,23 +53,23 @@ abstract class Fish (
 
     fun gainLife(healing : Int){
         if((this.life + healing) >= this.maxLife){
-            return;
+            return
         }
-        this.life += healing;
+        this.life += healing
     }
 
     fun gainCapacity(cargo : Int){
         if((this.capacity + cargo) >= this.maxCapacity){
-            return;
+            return
         }
-        this.capacity += cargo;
+        this.capacity += cargo
     }
 
     fun looseCapacity(cargo : Int){
         if((this.capacity - cargo) <= this.minCapacity){
-            this.capacity = this.minCapacity;
+            this.capacity = this.minCapacity
         } else {
-            this.capacity -= cargo;
+            this.capacity -= cargo
         }
     }
 

@@ -37,10 +37,10 @@ class GameFragment : Fragment() {
         game = FrameLayout(this.context)
         gameView = GameView(this.context!!)
         gameWidgets = LinearLayout(context)
-
-
         game.addView(gameView)
         game.addView(gameWidgets)
+
+        //(activity as MainActivity).presenter.engageGame()
 
 
 
