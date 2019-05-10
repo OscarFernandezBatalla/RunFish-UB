@@ -10,7 +10,7 @@ class BlowFish(context: Context) :
     Fish("BlowFish", 20, 20, "shield", 2000) {
 
     init{
-        this.image = BitmapFactory.decodeResource(context.resources, R.drawable.pez_globo)
+        this.image = BitmapFactory.decodeResource(context.resources, R.drawable.blow_fish)
     }
 
 

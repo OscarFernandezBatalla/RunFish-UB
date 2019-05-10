@@ -10,7 +10,7 @@ import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
-class Presenter(var viewActivity: MainActivity){
+class Presenter(var viewActivity: MainActivity) : Contract.Presenter{
 
 
     //var viewActivity: MainActivity = MainActivity()
@@ -40,19 +40,19 @@ class Presenter(var viewActivity: MainActivity){
     /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
 
 
-    fun uploadStats(): MutableList<Int> {
+    override fun uploadStats(): MutableList<Int> {
         return model.uploadStats()
     }
 
-    fun uploadMusicBar(): Int {
+    override fun uploadMusicBar(): Int {
         return model.uploadMusicBar()
     }
 
-    fun uploadSoundBar(): Int {
+    override fun uploadSoundBar(): Int {
         return model.uploadSoundBar()
     }
 
-    fun uploadVibrationSwitch(): Boolean {
+    override fun uploadVibrationSwitch(): Boolean {
         return model.uploadVibrationSwitch()
     }
 
@@ -60,82 +60,82 @@ class Presenter(var viewActivity: MainActivity){
     /*
         Functions to update CommonFish Shop & Fish Fragments
      */
-    fun uploadBarsCommonFish(): MutableList<Int> {
+    override fun uploadBarsCommonFish(): MutableList<Int> {
         return model.uploadBarsCommonFish()
     }
 
-    fun uploadPriceCommonFish(): Int {
+    override fun uploadPriceCommonFish(): Int {
         return model.uploadPriceCommonFish()
     }
 
-    fun uploadAbilityCommonFish(): Ability {
+    override fun uploadAbilityCommonFish(): Ability {
         return model.uploadAbilityCommonFish()
     }
 
 
-    fun uploadBarsClownFish(): MutableList<Int> {
+    override fun uploadBarsClownFish(): MutableList<Int> {
         return model.uploadBarsClownFish()
     }
 
-    fun uploadAbilityClownFish(): Ability {
+    override fun uploadAbilityClownFish(): Ability {
         return model.uploadAbilityClownFish()
     }
 
-    fun uploadPriceClownFish(): Int {
+    override fun uploadPriceClownFish(): Int {
         return model.uploadPriceClownFish()
     }
 
 
 
 
-    fun uploadBarsBlowFish(): MutableList<Int> {
+    override fun uploadBarsBlowFish(): MutableList<Int> {
         return model.uploadBarsBlowFish()
     }
-    fun uploadAbilityBlowFish(): Ability {
+    override fun uploadAbilityBlowFish(): Ability {
         return model.uploadAbilityBlowFish()
     }
 
 
 
-    fun uploadBarsSwordFish(): MutableList<Int> {
+    override fun uploadBarsSwordFish(): MutableList<Int> {
         return model.uploadBarsSwordFish()
     }
-    fun uploadAbilitySwordFish(): Ability {
+    override fun uploadAbilitySwordFish(): Ability {
         return model.uploadAbilitySwordFish()
     }
 
 
-    fun uploadBarsShark(): MutableList<Int> {
+    override fun uploadBarsShark(): MutableList<Int> {
         return model.uploadBarsShark()
     }
-    fun uploadAbilityShark(): Ability {
+    override fun uploadAbilityShark(): Ability {
         return model.uploadAbilityShark()
     }
 
 
-    fun uploadFishOwned() : MutableList<Boolean> {
+    override fun uploadFishOwned() : MutableList<Boolean> {
         return model.uploadFishOwned()
     }
 
 
-    fun uploadPriceBlowFish(): Int {
+    override fun uploadPriceBlowFish(): Int {
         return model.uploadPriceBlowFish()
     }
 
-    fun uploadPriceSwordFish(): Int {
+    override fun uploadPriceSwordFish(): Int {
         return model.uploadPriceSwordFish()
     }
 
-    fun uploadPriceShark(): Int {
+    override fun uploadPriceShark(): Int {
         return model.uploadPriceShark()
     }
 
-    fun uploadUsers(): Int {
+    override fun uploadUsers(): Int {
         return model.uploadUsers()
 
     }
 
-    fun uploadPlayerPlankton(): Int{
+    override fun uploadPlayerPlankton(): Int{
         return model.uploadPlayerPlankton()
     }
 

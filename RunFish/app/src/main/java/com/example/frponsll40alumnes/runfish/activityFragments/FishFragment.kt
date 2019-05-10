@@ -92,7 +92,7 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress =barsSword[1]
             speed_bar_selected_fish.progress =barsSword[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.camouflage_icon)
+            button_ability_selected_fish.setBackgroundResource(R.drawable.camouflage)
         }
 
         button_blowFish.setOnClickListener {
@@ -105,7 +105,7 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress =barsBlow[1]
             speed_bar_selected_fish.progress =barsBlow[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.fuerza)
+            button_ability_selected_fish.setBackgroundResource(R.drawable.strength)
         }
 
 

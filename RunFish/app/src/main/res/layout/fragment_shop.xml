@@ -144,7 +144,7 @@
                             android:layout_marginBottom="8dp"
                             android:contentDescription="@string/description_image_plankton"/>
                     <ImageView
-                            android:src="@drawable/pez_comun"
+                            android:src="@drawable/common_fish"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
                             android:id="@+id/image_common_fish"
@@ -441,7 +441,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:id="@+id/button_ability_blowfish"
-                            android:background="@drawable/fuerza"
+                            android:background="@drawable/strength"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp"
@@ -619,7 +619,7 @@
                             android:layout_marginBottom="8dp"
                             android:contentDescription="@string/description_image_plankton"/>
                     <ImageView
-                            android:src="@drawable/tiburon"
+                            android:src="@drawable/shark"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
                             android:id="@+id/image_shark"
@@ -759,7 +759,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:id="@+id/button_ability_swordfish"
-                            android:background="@drawable/camouflage_icon_dos"
+                            android:background="@drawable/camouflage"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp"

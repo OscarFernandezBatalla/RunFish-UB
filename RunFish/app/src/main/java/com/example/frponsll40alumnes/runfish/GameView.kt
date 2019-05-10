@@ -16,8 +16,7 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 import io.github.controlwear.virtual.joystick.android.JoystickView
-import kotlinx.android.synthetic.main.fragment_game.view.*
-import kotlinx.android.synthetic.main.fragment_test.view.*
+
 import java.util.jar.Attributes
 import kotlin.math.PI
 import kotlin.math.cos
