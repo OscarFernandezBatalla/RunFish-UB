@@ -20,7 +20,7 @@ class Anemone(context: Context) :
 
 
     init{
-        this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone_reduced)
+        this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone)
     }
 
 
