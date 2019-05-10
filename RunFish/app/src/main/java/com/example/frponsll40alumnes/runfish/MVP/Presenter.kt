@@ -67,8 +67,8 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadPriceCommonFish()
     }
 
-    fun uploadAbilityFish(): Enum<Ability> {
-        return model.uploadAbilityFish()
+    fun uploadAbilityCommonFish(): Ability {
+        return model.uploadAbilityCommonFish()
     }
 
 
@@ -76,16 +76,39 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadBarsClownFish()
     }
 
+    fun uploadAbilityClownFish(): Ability {
+        return model.uploadAbilityClownFish()
+    }
+
+    fun uploadPriceClownFish(): Int {
+        return model.uploadPriceClownFish()
+    }
+
+
+
+
     fun uploadBarsBlowFish(): MutableList<Int> {
         return model.uploadBarsBlowFish()
     }
+    fun uploadAbilityBlowFish(): Ability {
+        return model.uploadAbilityBlowFish()
+    }
+
+
 
     fun uploadBarsSwordFish(): MutableList<Int> {
         return model.uploadBarsSwordFish()
     }
+    fun uploadAbilitySwordFish(): Ability {
+        return model.uploadAbilitySwordFish()
+    }
+
 
     fun uploadBarsShark(): MutableList<Int> {
         return model.uploadBarsShark()
+    }
+    fun uploadAbilityShark(): Ability {
+        return model.uploadAbilityShark()
     }
 
 
@@ -93,6 +116,27 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadFishOwned()
     }
 
+
+    fun uploadPriceBlowFish(): Int {
+        return model.uploadPriceBlowFish()
+    }
+
+    fun uploadPriceSwordFish(): Int {
+        return model.uploadPriceSwordFish()
+    }
+
+    fun uploadPriceShark(): Int {
+        return model.uploadPriceShark()
+    }
+
+    fun uploadUsers(): Int {
+        return model.uploadUsers()
+
+    }
+
+    fun uploadPlayerPlankton(): Int{
+        return model.uploadPlayerPlankton()
+    }
 
 
 /*
