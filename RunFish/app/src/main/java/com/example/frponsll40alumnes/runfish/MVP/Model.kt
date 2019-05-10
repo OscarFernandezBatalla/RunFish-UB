@@ -8,7 +8,7 @@ class Model (var presenter: Presenter) {
 
 
     private var registrat : Boolean = false
-    private var friends : List<String>? = null
+    private var friends : MutableList<String> = mutableListOf()
     private var currentFish : Enum<FishType>? = null
     private var ownedFish : List<Enum<FishType>>? = null
 
@@ -178,6 +178,7 @@ class Model (var presenter: Presenter) {
         )
     }
 
+
     fun uploadAbilityClownFish(): Ability {
         return clownFishAbility
     }
@@ -208,6 +209,10 @@ class Model (var presenter: Presenter) {
 
     fun uploadPriceShark(): Int {
         return sharkPrice
+    }
+    fun uploadUsers(): Int {
+        return friends.size
+
     }
 
 

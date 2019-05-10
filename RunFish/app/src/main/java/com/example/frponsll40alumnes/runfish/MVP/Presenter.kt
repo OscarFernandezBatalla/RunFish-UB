@@ -72,7 +72,6 @@ class Presenter(var viewActivity: MainActivity){
     }
 
 
-
     fun uploadBarsClownFish(): MutableList<Int> {
         return model.uploadBarsClownFish()
     }
@@ -112,10 +111,10 @@ class Presenter(var viewActivity: MainActivity){
     }
 
 
-
     fun uploadFishOwned() : MutableList<Boolean> {
         return model.uploadFishOwned()
     }
+
 
     fun uploadPriceBlowFish(): Int {
         return model.uploadPriceBlowFish()
@@ -127,6 +126,11 @@ class Presenter(var viewActivity: MainActivity){
 
     fun uploadPriceShark(): Int {
         return model.uploadPriceShark()
+    }
+
+    fun uploadUsers(): Int {
+        return model.uploadUsers()
+
     }
 
 
