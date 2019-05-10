@@ -30,9 +30,7 @@ class Model (var presenter: Presenter) {
 
 
 
-    init {
-        updateStatNumberofDeathOnView()
-    }
+
 
 
 
@@ -47,13 +45,10 @@ class Model (var presenter: Presenter) {
 
     /*PAS 1 EXEMPLE B*/
     /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
-    fun updateStatNumberofDeathOnView(){
-        presenter.updateStatNumberofDeathOnView(statNumberOfDeath)
+
+    fun carregarDadesDeath(): Int {
+        return statNumberOfDeath
     }
-
-
-
-
 
 
 }

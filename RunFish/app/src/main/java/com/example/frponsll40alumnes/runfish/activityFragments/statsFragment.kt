@@ -22,13 +22,17 @@ class statsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        updateStatNumberofDeathOnView()
+
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_statsFragment_to_menuFragment))
     }
 
     /*PAS 4 EXEMPLE B*/
     /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
 
-    fun updateStatNumberofDeathOnView(statNumberOfDeath: Int) {
-        this.text_view_int_deaths.text = statNumberOfDeath.toString()
+    fun updateStatNumberofDeathOnView(){
+        //this.text_view_int_deaths.text = statNumberOfDeath.toString()
+        this.text_view_int_deaths.text = (activity as MainActivity).presenter.carregarStatNumberDeath().toString()
+
     }
 }

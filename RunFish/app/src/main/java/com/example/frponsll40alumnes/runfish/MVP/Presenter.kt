@@ -1,7 +1,11 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
+import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.activityFragments.MainActivity
 import com.example.frponsll40alumnes.runfish.GameEngine
+import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
+import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
 class Presenter(var viewActivity: MainActivity){
@@ -22,6 +26,7 @@ class Presenter(var viewActivity: MainActivity){
 */
 
 
+
     /*PAS 3 EXEMPLE A*/
     /*EXEMPLE AUGMENTAR statNumberOfDeath AGAFANT EL VALOR DEL FRAGMENT GAME*/
     /*fun increaseStatNumberOfDeath(vegadesMort: Int) {
@@ -31,8 +36,10 @@ class Presenter(var viewActivity: MainActivity){
 
     /*PAS 2 EXEMPLE B*/
     /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
-    fun updateStatNumberofDeathOnView(statNumberOfDeath: Int) {
-        viewActivity.updateStatNumberofDeathOnView(statNumberOfDeath)
+
+
+    fun carregarStatNumberDeath(): Int {
+        return model.carregarDadesDeath()
     }
 
 

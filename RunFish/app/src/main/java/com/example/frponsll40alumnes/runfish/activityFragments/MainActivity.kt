@@ -109,8 +109,6 @@ class MainActivity : AppCompatActivity() {
 
     /*PAS 3 EXEMPLE B*/
     /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
-    fun updateStatNumberofDeathOnView(statNumberOfDeath: Int) {
-        statsFragment!!.updateStatNumberofDeathOnView(statNumberOfDeath)        //peta aqui
-    }
+
 
 }
