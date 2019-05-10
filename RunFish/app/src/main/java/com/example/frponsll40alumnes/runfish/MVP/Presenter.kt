@@ -42,6 +42,18 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadStats()
     }
 
+    fun uploadMusicBar(): Int {
+        return model.uploadMusicBar()
+    }
+
+    fun uploadSoundBar(): Int {
+        return model.uploadSoundBar()
+    }
+
+    fun uploadVibrationSwitch(): Boolean {
+        return model.uploadVibrationSwitch()
+    }
+
 
 /*
     override fun updateHp(){

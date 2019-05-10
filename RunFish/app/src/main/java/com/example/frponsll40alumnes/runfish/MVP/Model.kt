@@ -105,5 +105,17 @@ class Model (var presenter: Presenter) {
         )
     }
 
+    fun uploadMusicBar(): Int {
+        return music
+    }
+
+    fun uploadSoundBar(): Int {
+        return sound
+    }
+
+    fun uploadVibrationSwitch(): Boolean {
+        return vibration
+    }
+
 
 }
