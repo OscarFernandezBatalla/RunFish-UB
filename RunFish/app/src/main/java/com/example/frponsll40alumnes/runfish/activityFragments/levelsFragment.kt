@@ -6,11 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_levels.*
-import java.security.KeyStore
 
 
 class levelsFragment : Fragment() {
@@ -34,15 +32,23 @@ class levelsFragment : Fragment() {
 
         //Posem un tablon bloquejat quan no els tinguem
         button_level2.isEnabled = false
-        //button_level2.setBackgroundResource(R.drawable.new_tablon)
+        button_level2.setBackgroundResource(R.drawable.tablon_block)
         button_level3.isEnabled = false
+        button_level3.setBackgroundResource(R.drawable.tablon_block)
         button_level4.isEnabled = false
+        button_level4.setBackgroundResource(R.drawable.tablon_block)
         button_level5.isEnabled = false
+        button_level5.setBackgroundResource(R.drawable.tablon_block)
         button_level6.isEnabled = false
+        button_level6.setBackgroundResource(R.drawable.tablon_block)
         button_level7.isEnabled = false
+        button_level7.setBackgroundResource(R.drawable.tablon_block)
         button_level8.isEnabled = false
+        button_level8.setBackgroundResource(R.drawable.tablon_block)
         button_level9.isEnabled = false
+        button_level9.setBackgroundResource(R.drawable.tablon_block)
         button_level10.isEnabled = false
+        button_level10.setBackgroundResource(R.drawable.tablon_block)
 
 
 
