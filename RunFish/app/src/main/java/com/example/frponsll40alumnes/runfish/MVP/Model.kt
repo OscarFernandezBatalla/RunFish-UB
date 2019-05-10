@@ -117,5 +117,50 @@ class Model (var presenter: Presenter) {
         return vibration
     }
 
+    fun uploadBarsCommonFish(): MutableList<Int> {
+        return mutableListOf(
+            commonFishLife,
+            commonFishCapacity,
+            commonFishSpeed
+        )
+    }
+    fun uploadBarsClownFish(): MutableList<Int> {
+        return mutableListOf(
+            clownFishLife,
+            clownFishCapacity,
+            clownFishSpeed
+        )
+    }
+    fun uploadBarsBlowFish(): MutableList<Int> {
+        return mutableListOf(
+            blowFishLife,
+            blowFishCapacity,
+            blowFishSpeed
+        )
+    }
+    fun uploadBarsSwordFish(): MutableList<Int> {
+        return mutableListOf(
+            swordFishLife,
+            swordFishCapacity,
+            swordFishSpeed
+        )
+    }
+    fun uploadBarsShark(): MutableList<Int> {
+        return mutableListOf(
+            sharkLife,
+            sharkCapacity,
+            sharkSpeed
+        )
+    }
+
+
+    fun uploadPriceCommonFish(): Int {
+        return commonFishPrice
+    }
+
+    fun uploadAbilityFish(): Enum<Ability> {
+        return commonFishAbility
+    }
+
 
 }

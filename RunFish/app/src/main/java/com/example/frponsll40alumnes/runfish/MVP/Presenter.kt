@@ -4,6 +4,7 @@ import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.activityFragments.MainActivity
 import com.example.frponsll40alumnes.runfish.GameEngine
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
@@ -53,6 +54,40 @@ class Presenter(var viewActivity: MainActivity){
     fun uploadVibrationSwitch(): Boolean {
         return model.uploadVibrationSwitch()
     }
+
+    /*
+        Functions to update CommonFish Shop & Fish Fragments
+     */
+    fun uploadBarsCommonFish(): MutableList<Int> {
+        return model.uploadBarsCommonFish()
+    }
+
+    fun uploadPriceCommonFish(): Int {
+        return model.uploadPriceCommonFish()
+    }
+
+    fun uploadAbilityFish(): Enum<Ability> {
+        return model.uploadAbilityFish()
+    }
+
+
+
+    fun uploadBarsClownFish(): MutableList<Int> {
+        return model.uploadBarsClownFish()
+    }
+
+    fun uploadBarsBlowFish(): MutableList<Int> {
+        return model.uploadBarsBlowFish()
+    }
+
+    fun uploadBarsSwordFish(): MutableList<Int> {
+        return model.uploadBarsSwordFish()
+    }
+
+    fun uploadBarsShark(): MutableList<Int> {
+        return model.uploadBarsShark()
+    }
+
 
 
 /*
