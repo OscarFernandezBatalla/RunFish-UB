@@ -1,14 +1,17 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
 
+import android.graphics.drawable.Drawable
 import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.abilities.Ability
 import kotlinx.android.synthetic.main.fragment_fish.*
 
 
@@ -53,7 +56,7 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress = barsCommon[1]
             speed_bar_selected_fish.progress = barsCommon[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.shield)
+            button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityCommonFish())
         }
 
         button_clownfish.setOnClickListener {
@@ -65,7 +68,7 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress = barsClown[1]
             speed_bar_selected_fish.progress = barsClown[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.salud)
+            button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityClownFish())
         }
 
 
@@ -79,7 +82,7 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress = barsShark[1]
             speed_bar_selected_fish.progress = barsShark[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.shark_icon_dos)
+            button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityShark())
         }
 
         button_swordFish.setOnClickListener {
@@ -92,7 +95,7 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress =barsSword[1]
             speed_bar_selected_fish.progress =barsSword[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.camouflage)
+            button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilitySwordFish())
         }
 
         button_blowFish.setOnClickListener {
@@ -105,17 +108,8 @@ class FishFragment : Fragment() {
             capactity_bar_selected_fish.progress =barsBlow[1]
             speed_bar_selected_fish.progress =barsBlow[2]
 
-            button_ability_selected_fish.setBackgroundResource(R.drawable.strength)
+            button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityBlowFish())
         }
-
-
-
-
-
-        //this.text_selected_fish.text = (activity as MainActivity).textFish
-
-        
-
     }
 
     private fun uploadFishOwned() {
@@ -136,6 +130,18 @@ class FishFragment : Fragment() {
         if (fishOwned[4]){
             button_shark.visibility = View.VISIBLE
         }
-
     }
+
+    fun getAbility(type: Ability): Drawable?{
+        return when (type){
+            Ability.SHIELD -> ContextCompat.getDrawable(context!!, R.drawable.shield)
+            Ability.HEALTH -> ContextCompat.getDrawable(context!!,R.drawable.salud)
+            Ability.BITE -> ContextCompat.getDrawable(context!!,R.drawable.shark_icon_dos)
+            Ability.CAMOUFLAGE -> ContextCompat.getDrawable(context!!,R.drawable.camouflage)
+            Ability.STRENGTH -> ContextCompat.getDrawable(context!!,R.drawable.strength)
+        }
+    }
+
+
+
 }
