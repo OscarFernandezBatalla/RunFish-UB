@@ -55,6 +55,7 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadVibrationSwitch()
     }
 
+
     /*
         Functions to update CommonFish Shop & Fish Fragments
      */
@@ -86,6 +87,12 @@ class Presenter(var viewActivity: MainActivity){
 
     fun uploadBarsShark(): MutableList<Int> {
         return model.uploadBarsShark()
+    }
+
+
+
+    fun uploadFishOwned() : MutableList<Boolean> {
+        return model.uploadFishOwned()
     }
 
 

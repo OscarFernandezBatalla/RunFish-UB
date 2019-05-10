@@ -43,13 +43,18 @@ class Model (var presenter: Presenter) {
     var commonFishAbility : Enum<Ability> = Ability.SHIELD
     var commonFishOwned : Boolean = true
 
+
+
+
+
     /*Clownfish*/
     var clownFishLife : Int = 30
     var clownFishCapacity : Int = 30
     var clownFishSpeed : Int = 30
     var clownFishPrice : Int = 30
     var clownFishAbility : Enum<Ability> = Ability.HEALTH
-    var clownFishOwned : Boolean = false
+    var clownFishOwned : Boolean = true
+
 
     /*Blow fish*/
     var blowFishLife : Int = 40
@@ -65,7 +70,7 @@ class Model (var presenter: Presenter) {
     var swordFishSpeed : Int = 50
     var swordFishPrice : Int = 50
     var swordFishAbility : Enum<Ability> = Ability.CAMOUFLAGE
-    var swordFishOwned : Boolean = false
+    var swordFishOwned : Boolean = true
 
     /*Shark*/
     var sharkLife : Int = 60
@@ -117,6 +122,7 @@ class Model (var presenter: Presenter) {
         return vibration
     }
 
+
     fun uploadBarsCommonFish(): MutableList<Int> {
         return mutableListOf(
             commonFishLife,
@@ -161,6 +167,17 @@ class Model (var presenter: Presenter) {
     fun uploadAbilityFish(): Enum<Ability> {
         return commonFishAbility
     }
+
+    fun uploadFishOwned() : MutableList<Boolean>{
+        return mutableListOf(
+            commonFishOwned,
+            clownFishOwned,
+            blowFishOwned,
+            swordFishOwned,
+            sharkOwned
+        )
+    }
+
 
 
 }
