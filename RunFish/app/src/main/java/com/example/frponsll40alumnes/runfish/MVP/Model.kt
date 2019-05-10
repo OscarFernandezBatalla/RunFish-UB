@@ -4,7 +4,7 @@ import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.abilities.Shield
 
-class Model (var presenter: Presenter) {
+class Model (var presenter: Presenter) : Contract.Model {
 
 
     private var registrat : Boolean = false
@@ -102,7 +102,7 @@ class Model (var presenter: Presenter) {
 
     }*/
 
-    fun uploadStats():  MutableList<Int> {
+    override fun uploadStats():  MutableList<Int> {
         return mutableListOf(
             statTotalFish,
             statPlanktonCollected,
@@ -112,48 +112,48 @@ class Model (var presenter: Presenter) {
         )
     }
 
-    fun uploadMusicBar(): Int {
+    override fun uploadMusicBar(): Int {
         return music
     }
 
-    fun uploadSoundBar(): Int {
+    override fun uploadSoundBar(): Int {
         return sound
     }
 
-    fun uploadVibrationSwitch(): Boolean {
+    override fun uploadVibrationSwitch(): Boolean {
         return vibration
     }
 
 
-    fun uploadBarsCommonFish(): MutableList<Int> {
+    override fun uploadBarsCommonFish(): MutableList<Int> {
         return mutableListOf(
             commonFishLife,
             commonFishCapacity,
             commonFishSpeed
         )
     }
-    fun uploadBarsClownFish(): MutableList<Int> {
+    override fun uploadBarsClownFish(): MutableList<Int> {
         return mutableListOf(
             clownFishLife,
             clownFishCapacity,
             clownFishSpeed
         )
     }
-    fun uploadBarsBlowFish(): MutableList<Int> {
+    override fun uploadBarsBlowFish(): MutableList<Int> {
         return mutableListOf(
             blowFishLife,
             blowFishCapacity,
             blowFishSpeed
         )
     }
-    fun uploadBarsSwordFish(): MutableList<Int> {
+    override fun uploadBarsSwordFish(): MutableList<Int> {
         return mutableListOf(
             swordFishLife,
             swordFishCapacity,
             swordFishSpeed
         )
     }
-    fun uploadBarsShark(): MutableList<Int> {
+    override fun uploadBarsShark(): MutableList<Int> {
         return mutableListOf(
             sharkLife,
             sharkCapacity,
@@ -162,15 +162,15 @@ class Model (var presenter: Presenter) {
     }
 
 
-    fun uploadPriceCommonFish(): Int {
+    override fun uploadPriceCommonFish(): Int {
         return commonFishPrice
     }
 
-    fun uploadAbilityCommonFish(): Ability {
+    override fun uploadAbilityCommonFish(): Ability {
         return commonFishAbility
     }
 
-    fun uploadFishOwned() : MutableList<Boolean>{
+    override fun uploadFishOwned() : MutableList<Boolean>{
         return mutableListOf(
             commonFishOwned,
             clownFishOwned,
@@ -181,43 +181,43 @@ class Model (var presenter: Presenter) {
     }
 
 
-    fun uploadAbilityClownFish(): Ability {
+    override fun uploadAbilityClownFish(): Ability {
         return clownFishAbility
     }
 
-    fun uploadAbilityBlowFish(): Ability {
+    override fun uploadAbilityBlowFish(): Ability {
         return blowFishAbility
     }
 
-    fun uploadAbilitySwordFish(): Ability {
+    override fun uploadAbilitySwordFish(): Ability {
         return swordFishAbility
     }
 
-    fun uploadAbilityShark(): Ability {
+    override fun uploadAbilityShark(): Ability {
         return sharkAbility
     }
 
-    fun uploadPriceClownFish(): Int {
+    override fun uploadPriceClownFish(): Int {
         return clownFishPrice
     }
 
-    fun uploadPriceBlowFish(): Int {
+    override fun uploadPriceBlowFish(): Int {
         return blowFishPrice
     }
 
-    fun uploadPriceSwordFish(): Int {
+    override fun uploadPriceSwordFish(): Int {
         return swordFishPrice
     }
 
-    fun uploadPriceShark(): Int {
+    override fun uploadPriceShark(): Int {
         return sharkPrice
     }
-    fun uploadUsers(): Int {
+    override fun uploadUsers(): Int {
         return friends.size
 
     }
 
-    fun uploadPlayerPlankton(): Int{
+    override fun uploadPlayerPlankton(): Int{
         return actualPlankton
     }
 

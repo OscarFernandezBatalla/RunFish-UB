@@ -63,8 +63,8 @@ class shopFragment : Fragment() {
             Ability.SHIELD ->  image = ContextCompat.getDrawable(context!!, R.drawable.shield)
             Ability.HEALTH -> image = ContextCompat.getDrawable(context!!,R.drawable.salud)
             Ability.BITE -> image = ContextCompat.getDrawable(context!!,R.drawable.shark_icon_dos)
-            Ability.CAMOUFLAGE -> image = ContextCompat.getDrawable(context!!,R.drawable.camouflage_icon_dos)
-            Ability.STRENGTH -> image = ContextCompat.getDrawable(context!!,R.drawable.fuerza)
+            Ability.CAMOUFLAGE -> image = ContextCompat.getDrawable(context!!,R.drawable.camouflage)
+            Ability.STRENGTH -> image = ContextCompat.getDrawable(context!!,R.drawable.strength)
         }
         return image
     }
@@ -83,7 +83,7 @@ class shopFragment : Fragment() {
         this.button_ability_common_fish.background = getAbility(act!!.presenter.uploadAbilityCommonFish())
 
         if(ownedFish!![0]){
-            this.image_common_fish.setImageResource(R.drawable.pez_comun)
+            this.image_common_fish.setImageResource(R.drawable.common_fish)
         }
     }
 
@@ -122,7 +122,7 @@ class shopFragment : Fragment() {
         this.button_ability_blowfish.background = getAbility(act!!.presenter.uploadAbilityBlowFish())
 
         if(ownedFish!![2]){
-            this.image_blowfish.setImageResource(R.drawable.pez_globo)
+            this.image_blowfish.setImageResource(R.drawable.blow_fish)
         }
         else{
             this.image_blowfish.setImageResource(R.drawable.blowfish_lock)
@@ -144,7 +144,7 @@ class shopFragment : Fragment() {
         this.button_ability_swordfish.background = getAbility(act!!.presenter.uploadAbilitySwordFish())
 
         if(ownedFish!![3]){
-            this.image_swordfish.setImageResource(R.drawable.pez_espada)
+            this.image_swordfish.setImageResource(R.drawable.sword_fish)
         }
         else{
             this.image_swordfish.setImageResource(R.drawable.swordfish_lock)
@@ -165,7 +165,7 @@ class shopFragment : Fragment() {
         this.button_ability_shark.background = getAbility(act!!.presenter.uploadAbilityShark())
 
         if(ownedFish!![4]){
-            this.image_shark.setImageResource(R.drawable.tiburon)
+            this.image_shark.setImageResource(R.drawable.shark)
         }
         else{
             this.image_shark.setImageResource(R.drawable.shark_lock)
