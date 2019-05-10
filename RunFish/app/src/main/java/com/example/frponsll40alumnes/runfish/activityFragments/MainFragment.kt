@@ -56,7 +56,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button_enter.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_menuFragment))
-        //button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signInFragment))
+        button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signIn))
 
 
         //text_view_run.text = (activity as MainActivity).textFish

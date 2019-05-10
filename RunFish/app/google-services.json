@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "429667137232-d3v4bs4onusk2unho6p9k5sfh71f8k8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.frponsll40alumnes.runfish",
+            "certificate_hash": "76e32434f593cd2bc3049610a89da930aec373d1"
+          }
+        },
+        {
+          "client_id": "429667137232-uujubsqk4ppofg160jha2bge0ri1fa65.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.frponsll40alumnes.runfish",
+            "certificate_hash": "320079476fc676d6b39d716a515d1288c14bd2b8"
+          }
+        },
+        {
           "client_id": "429667137232-a4jj1mgiqhed491hq50rgmtrlq66qg3t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
