@@ -50,5 +50,17 @@ class Model (var presenter: Presenter) {
         return statNumberOfDeath
     }
 
+    fun uploadMusicBar(): Int {
+        return music
+    }
+
+    fun uploadSoundBar(): Int {
+        return sound
+    }
+
+    fun uploadVibrationSwitch(): Boolean {
+        return vibration
+    }
+
 
 }
