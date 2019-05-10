@@ -54,6 +54,10 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadVibrationSwitch()
     }
 
+    fun uploadFishOwned() : MutableList<Boolean> {
+        return model.uploadFishOwned()
+    }
+
 
 /*
     override fun updateHp(){
