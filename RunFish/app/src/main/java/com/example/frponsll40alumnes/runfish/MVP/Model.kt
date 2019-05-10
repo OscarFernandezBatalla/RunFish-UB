@@ -40,7 +40,7 @@ class Model (var presenter: Presenter) {
     var commonFishCapacity : Int = 20
     var commonFishSpeed : Int = 20
     var commonFishPrice : Int = 20
-    var commonFishAbility : Enum<Ability> = Ability.SHIELD
+    var commonFishAbility : Ability = Ability.SHIELD
     var commonFishOwned : Boolean = true
 
 
@@ -52,7 +52,7 @@ class Model (var presenter: Presenter) {
     var clownFishCapacity : Int = 30
     var clownFishSpeed : Int = 30
     var clownFishPrice : Int = 30
-    var clownFishAbility : Enum<Ability> = Ability.HEALTH
+    var clownFishAbility : Ability = Ability.HEALTH
     var clownFishOwned : Boolean = true
 
 
@@ -61,7 +61,7 @@ class Model (var presenter: Presenter) {
     var blowFishCapacity : Int = 40
     var blowFishSpeed : Int = 40
     var blowFishPrice : Int = 40
-    var blowFishAbility : Enum<Ability> = Ability.STRENGTH
+    var blowFishAbility : Ability = Ability.STRENGTH
     var blowFishOwned : Boolean = false
 
     /*Sword fish*/
@@ -69,7 +69,7 @@ class Model (var presenter: Presenter) {
     var swordFishCapacity : Int = 50
     var swordFishSpeed : Int = 50
     var swordFishPrice : Int = 50
-    var swordFishAbility : Enum<Ability> = Ability.CAMOUFLAGE
+    var swordFishAbility : Ability = Ability.CAMOUFLAGE
     var swordFishOwned : Boolean = true
 
     /*Shark*/
@@ -77,7 +77,7 @@ class Model (var presenter: Presenter) {
     var sharkCapacity : Int = 60
     var sharkSpeed : Int = 60
     var sharkPrice : Int = 60
-    var sharkAbility : Enum<Ability> = Ability.BITE
+    var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
 
@@ -164,7 +164,7 @@ class Model (var presenter: Presenter) {
         return commonFishPrice
     }
 
-    fun uploadAbilityFish(): Enum<Ability> {
+    fun uploadAbilityCommonFish(): Ability {
         return commonFishAbility
     }
 
@@ -178,6 +178,37 @@ class Model (var presenter: Presenter) {
         )
     }
 
+    fun uploadAbilityClownFish(): Ability {
+        return clownFishAbility
+    }
+
+    fun uploadAbilityBlowFish(): Ability {
+        return blowFishAbility
+    }
+
+    fun uploadAbilitySwordFish(): Ability {
+        return swordFishAbility
+    }
+
+    fun uploadAbilityShark(): Ability {
+        return sharkAbility
+    }
+
+    fun uploadPriceClownFish(): Int {
+        return clownFishPrice
+    }
+
+    fun uploadPriceBlowFish(): Int {
+        return blowFishPrice
+    }
+
+    fun uploadPriceSwordFish(): Int {
+        return swordFishPrice
+    }
+
+    fun uploadPriceShark(): Int {
+        return sharkPrice
+    }
 
 
 }
