@@ -3,8 +3,9 @@ package com.example.frponsll40alumnes.runfish.MVP
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.abilities.Shield
+import com.example.frponsll40alumnes.runfish.fish.BlowFish
 
-class Model (var presenter: Presenter) {
+class Model (var presenter: Presenter) : Contract.Model {
 
 
     private var registrat : Boolean = false
@@ -32,6 +33,8 @@ class Model (var presenter: Presenter) {
     private var levelSelected : Int? = null
     private var planktonCollected : Int = 0
 
+    private var actualPlankton: Int = 50000
+
 
     /*FISH*/
 
@@ -40,7 +43,7 @@ class Model (var presenter: Presenter) {
     var commonFishCapacity : Int = 20
     var commonFishSpeed : Int = 20
     var commonFishPrice : Int = 20
-    var commonFishAbility : Enum<Ability> = Ability.SHIELD
+    var commonFishAbility : Ability = Ability.SHIELD
     var commonFishOwned : Boolean = true
 
 
@@ -52,7 +55,7 @@ class Model (var presenter: Presenter) {
     var clownFishCapacity : Int = 30
     var clownFishSpeed : Int = 30
     var clownFishPrice : Int = 30
-    var clownFishAbility : Enum<Ability> = Ability.HEALTH
+    var clownFishAbility : Ability = Ability.HEALTH
     var clownFishOwned : Boolean = true
 
 
@@ -61,7 +64,7 @@ class Model (var presenter: Presenter) {
     var blowFishCapacity : Int = 40
     var blowFishSpeed : Int = 40
     var blowFishPrice : Int = 40
-    var blowFishAbility : Enum<Ability> = Ability.STRENGTH
+    var blowFishAbility : Ability = Ability.STRENGTH
     var blowFishOwned : Boolean = false
 
     /*Sword fish*/
@@ -69,7 +72,7 @@ class Model (var presenter: Presenter) {
     var swordFishCapacity : Int = 50
     var swordFishSpeed : Int = 50
     var swordFishPrice : Int = 50
-    var swordFishAbility : Enum<Ability> = Ability.CAMOUFLAGE
+    var swordFishAbility : Ability = Ability.CAMOUFLAGE
     var swordFishOwned : Boolean = true
 
     /*Shark*/
@@ -77,7 +80,7 @@ class Model (var presenter: Presenter) {
     var sharkCapacity : Int = 60
     var sharkSpeed : Int = 60
     var sharkPrice : Int = 60
-    var sharkAbility : Enum<Ability> = Ability.BITE
+    var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
 
@@ -100,7 +103,7 @@ class Model (var presenter: Presenter) {
 
     }*/
 
-    fun uploadStats():  MutableList<Int> {
+    override fun uploadStats():  MutableList<Int> {
         return mutableListOf(
             statTotalFish,
             statPlanktonCollected,
@@ -110,48 +113,48 @@ class Model (var presenter: Presenter) {
         )
     }
 
-    fun uploadMusicBar(): Int {
+    override fun uploadMusicBar(): Int {
         return music
     }
 
-    fun uploadSoundBar(): Int {
+    override fun uploadSoundBar(): Int {
         return sound
     }
 
-    fun uploadVibrationSwitch(): Boolean {
+    override fun uploadVibrationSwitch(): Boolean {
         return vibration
     }
 
 
-    fun uploadBarsCommonFish(): MutableList<Int> {
+    override fun uploadBarsCommonFish(): MutableList<Int> {
         return mutableListOf(
             commonFishLife,
             commonFishCapacity,
             commonFishSpeed
         )
     }
-    fun uploadBarsClownFish(): MutableList<Int> {
+    override fun uploadBarsClownFish(): MutableList<Int> {
         return mutableListOf(
             clownFishLife,
             clownFishCapacity,
             clownFishSpeed
         )
     }
-    fun uploadBarsBlowFish(): MutableList<Int> {
+    override fun uploadBarsBlowFish(): MutableList<Int> {
         return mutableListOf(
             blowFishLife,
             blowFishCapacity,
             blowFishSpeed
         )
     }
-    fun uploadBarsSwordFish(): MutableList<Int> {
+    override fun uploadBarsSwordFish(): MutableList<Int> {
         return mutableListOf(
             swordFishLife,
             swordFishCapacity,
             swordFishSpeed
         )
     }
-    fun uploadBarsShark(): MutableList<Int> {
+    override fun uploadBarsShark(): MutableList<Int> {
         return mutableListOf(
             sharkLife,
             sharkCapacity,
@@ -160,15 +163,15 @@ class Model (var presenter: Presenter) {
     }
 
 
-    fun uploadPriceCommonFish(): Int {
+    override fun uploadPriceCommonFish(): Int {
         return commonFishPrice
     }
 
-    fun uploadAbilityFish(): Enum<Ability> {
+    override fun uploadAbilityCommonFish(): Ability {
         return commonFishAbility
     }
 
-    fun uploadFishOwned() : MutableList<Boolean>{
+    override fun uploadFishOwned() : MutableList<Boolean>{
         return mutableListOf(
             commonFishOwned,
             clownFishOwned,
@@ -178,8 +181,71 @@ class Model (var presenter: Presenter) {
         )
     }
 
-    fun uploadUsers(): Int {
+
+    override fun uploadAbilityClownFish(): Ability {
+        return clownFishAbility
+    }
+
+    override fun uploadAbilityBlowFish(): Ability {
+        return blowFishAbility
+    }
+
+    override fun uploadAbilitySwordFish(): Ability {
+        return swordFishAbility
+    }
+
+    override fun uploadAbilityShark(): Ability {
+        return sharkAbility
+    }
+
+    override fun uploadPriceClownFish(): Int {
+        return clownFishPrice
+    }
+
+    override fun uploadPriceBlowFish(): Int {
+        return blowFishPrice
+    }
+
+    override fun uploadPriceSwordFish(): Int {
+        return swordFishPrice
+    }
+
+    override fun uploadPriceShark(): Int {
+        return sharkPrice
+    }
+    override fun uploadUsers(): Int {
         return friends.size
+
+    }
+
+    override fun uploadPlayerPlankton(): Int{
+        return actualPlankton
+    }
+
+
+    fun buyFish(fishType: FishType) {
+        when(fishType){
+            FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
+                clownFishOwned = true
+            }
+            FishType.BLOWFISH -> if(!blowFishOwned && buyFishSupport(blowFishPrice)){
+                blowFishOwned = true
+            }
+            FishType.SWORDFISH -> if(!swordFishOwned && buyFishSupport(swordFishPrice)){
+                    swordFishOwned = true
+            }
+            FishType.SHARK -> if(!sharkOwned && buyFishSupport(sharkPrice)){
+                sharkOwned = true
+            }
+        }
+    }
+
+    private fun buyFishSupport(price: Int): Boolean {
+        if(actualPlankton > price){
+            actualPlankton -= price
+            return true
+        }
+        return false
     }
 
     fun uploadLevels() : Int{
