@@ -67,10 +67,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
+/*
     var fm : FragmentManager? = null
     var statsFragment : statsFragment? = supportFragmentManager.findFragmentById(R.id.statsFragment) as statsFragment?
+*/
 
 
 

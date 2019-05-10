@@ -9,11 +9,15 @@ class Model (var presenter: Presenter) {
     private var friends : List<String>? = null
     private var currentFish : Enum<FishType>? = null
     private var ownedFish : List<Enum<FishType>>? = null
+
+    /*stats*/
     private var statTotalFish : Int = 1                    // Un cop s'hagi creat serà algo tipo = ownedFish!!.size, si es fa abans de sobreescriure el null de la ownedFish peta!!!
     private var statPlanktonCollected : Int = 0
     private var statNumberOfDeath : Int = 5                 //canviar, era exemple de fun
     private var statMurderedFish : Int = 0
     private var statMaxDistanceTraveled : Int = 0
+
+
     private var music : Int = 50        //percentatge
     private var sound : Int = 50        //percentatge
     private var vibration : Boolean = true
@@ -23,6 +27,7 @@ class Model (var presenter: Presenter) {
     private var abilityUsed : Boolean = false
     private var levelSelected : Int? = null
     private var planktonCollected : Int = 0
+
 
     //private var levelsUnlocked : Int = 1      futura implementació
 
@@ -42,12 +47,14 @@ class Model (var presenter: Presenter) {
 
     }*/
 
-
-    /*PAS 1 EXEMPLE B*/
-    /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
-
-    fun carregarDadesDeath(): Int {
-        return statNumberOfDeath
+    fun uploadStats():  MutableList<Int> {
+        return mutableListOf(
+            statTotalFish,
+            statPlanktonCollected,
+            statNumberOfDeath,
+            statMurderedFish,
+            statMaxDistanceTraveled
+        )
     }
 
     fun uploadMusicBar(): Int {

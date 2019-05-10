@@ -38,8 +38,8 @@ class Presenter(var viewActivity: MainActivity){
     /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
 
 
-    fun carregarStatNumberDeath(): Int {
-        return model.carregarDadesDeath()
+    fun uploadStats(): MutableList<Int> {
+        return model.uploadStats()
     }
 
     fun uploadMusicBar(): Int {
