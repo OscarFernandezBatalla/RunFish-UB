@@ -97,6 +97,10 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadUsers()
     }
 
+    fun uploadLevels() : Int{
+        return model.uploadLevels()
+    }
+
 
 /*
     override fun updateHp(){

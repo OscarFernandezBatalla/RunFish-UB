@@ -9,7 +9,6 @@ import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_menu.*
 
-
 class menuFragment : Fragment() {
 
     var act : MainActivity ?= null
@@ -48,4 +47,3 @@ class menuFragment : Fragment() {
         this.text_view_users.text = act!!.presenter.uploadUsers().toString()
     }
 }
-

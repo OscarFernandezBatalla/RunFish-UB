@@ -19,7 +19,7 @@ class Model (var presenter: Presenter) {
     private var statMurderedFish : Int = 0
     private var statMaxDistanceTraveled : Int = 0
 
-    //private var levelsUnlocked : Int = 1      futura implementació
+    private var levelsUnlocked : Int = 1
 
 
     private var music : Int = 50        //percentatge
@@ -180,6 +180,10 @@ class Model (var presenter: Presenter) {
 
     fun uploadUsers(): Int {
         return friends.size
+    }
+
+    fun uploadLevels() : Int{
+        return levelsUnlocked
     }
 
 
