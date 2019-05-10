@@ -93,6 +93,9 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadFishOwned()
     }
 
+    fun uploadUsers(): Int {
+        return model.uploadUsers()
+    }
 
 
 /*
