@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish.MVP
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.abilities.Shield
+import com.example.frponsll40alumnes.runfish.fish.BlowFish
 
 class Model (var presenter: Presenter) {
 
@@ -32,7 +33,7 @@ class Model (var presenter: Presenter) {
     private var levelSelected : Int? = null
     private var planktonCollected : Int = 0
 
-    private var actualPlankton: Int = 0
+    private var actualPlankton: Int = 50000
 
 
     /*FISH*/
@@ -219,6 +220,32 @@ class Model (var presenter: Presenter) {
 
     fun uploadPlayerPlankton(): Int{
         return actualPlankton
+    }
+
+
+    fun buyFish(fishType: FishType) {
+        when(fishType){
+            FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
+                clownFishOwned = true
+            }
+            FishType.BLOWFISH -> if(!blowFishOwned && buyFishSupport(blowFishPrice)){
+                blowFishOwned = true
+            }
+            FishType.SWORDFISH -> if(!swordFishOwned && buyFishSupport(swordFishPrice)){
+                    swordFishOwned = true
+            }
+            FishType.SHARK -> if(!sharkOwned && buyFishSupport(sharkPrice)){
+                sharkOwned = true
+            }
+        }
+    }
+
+    private fun buyFishSupport(price: Int): Boolean {
+        if(actualPlankton > price){
+            actualPlankton -= price
+            return true
+        }
+        return false
     }
 
 

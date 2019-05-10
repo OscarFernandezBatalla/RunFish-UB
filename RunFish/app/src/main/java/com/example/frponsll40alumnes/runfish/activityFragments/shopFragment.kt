@@ -22,6 +22,7 @@ class shopFragment : Fragment() {
     var act : MainActivity ?= null
     var ownedFish : MutableList<Boolean>? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +38,39 @@ class shopFragment : Fragment() {
 
         uploadShopFragment()
 
+
+
         button_comeback_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shopFragment_to_menuFragment))
+
+        button_blowfish.setOnClickListener{
+            act!!.presenter.buyFish(FishType.BLOWFISH)
+            ownedFish = act!!.presenter.uploadFishOwned()
+            uploadBlowFish()
+            uploadPlayerPlankton()
+        }
+
+        button_clownfish.setOnClickListener {
+            act!!.presenter.buyFish(FishType.ANEMONE)
+            ownedFish = act!!.presenter.uploadFishOwned()
+            uploadClownFish()
+            uploadPlayerPlankton()
+        }
+
+        button_swordfish.setOnClickListener {
+            act!!.presenter.buyFish(FishType.SWORDFISH)
+            ownedFish = act!!.presenter.uploadFishOwned()
+            uploadSwordFish()
+            uploadPlayerPlankton()
+        }
+
+        button_shark.setOnClickListener {
+            act!!.presenter.buyFish(FishType.SHARK)
+            ownedFish = act!!.presenter.uploadFishOwned()
+            uploadShark()
+            uploadPlayerPlankton()
+        }
+
+
     }
 
 
@@ -58,15 +91,13 @@ class shopFragment : Fragment() {
 
 
     fun getAbility(type: Ability): Drawable?{
-        var image: Drawable? = null
-        when (type){
-            Ability.SHIELD ->  image = ContextCompat.getDrawable(context!!, R.drawable.shield)
-            Ability.HEALTH -> image = ContextCompat.getDrawable(context!!,R.drawable.salud)
-            Ability.BITE -> image = ContextCompat.getDrawable(context!!,R.drawable.shark_icon_dos)
-            Ability.CAMOUFLAGE -> image = ContextCompat.getDrawable(context!!,R.drawable.camouflage_icon_dos)
-            Ability.STRENGTH -> image = ContextCompat.getDrawable(context!!,R.drawable.fuerza)
+        return when (type){
+            Ability.SHIELD -> ContextCompat.getDrawable(context!!, R.drawable.shield)
+            Ability.HEALTH -> ContextCompat.getDrawable(context!!,R.drawable.salud)
+            Ability.BITE -> ContextCompat.getDrawable(context!!,R.drawable.shark_icon_dos)
+            Ability.CAMOUFLAGE -> ContextCompat.getDrawable(context!!,R.drawable.camouflage_icon_dos)
+            Ability.STRENGTH -> ContextCompat.getDrawable(context!!,R.drawable.fuerza)
         }
-        return image
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
 import android.widget.TextView
+import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.activityFragments.MainActivity
 import com.example.frponsll40alumnes.runfish.GameEngine
 import com.example.frponsll40alumnes.runfish.R
@@ -136,6 +137,11 @@ class Presenter(var viewActivity: MainActivity){
 
     fun uploadPlayerPlankton(): Int{
         return model.uploadPlayerPlankton()
+    }
+
+
+    fun buyFish(fishType: FishType) {
+        return model.buyFish(fishType)
     }
 
 
