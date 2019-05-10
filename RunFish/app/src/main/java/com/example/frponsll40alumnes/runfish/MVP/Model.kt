@@ -32,6 +32,8 @@ class Model (var presenter: Presenter) {
     private var levelSelected : Int? = null
     private var planktonCollected : Int = 0
 
+    private var actualPlankton: Int = 0
+
 
     /*FISH*/
 
@@ -213,6 +215,10 @@ class Model (var presenter: Presenter) {
     fun uploadUsers(): Int {
         return friends.size
 
+    }
+
+    fun uploadPlayerPlankton(): Int{
+        return actualPlankton
     }
 
 

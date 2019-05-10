@@ -49,8 +49,12 @@ class shopFragment : Fragment() {
         uploadClownFish()
         uploadSwordFish()
         uploadShark()
+        uploadPlayerPlankton()
     }
 
+    private fun uploadPlayerPlankton(){
+        this.actual_plankton.text = act!!.presenter.uploadPlayerPlankton().toString()
+    }
 
 
     fun getAbility(type: Ability): Drawable?{

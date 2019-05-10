@@ -103,6 +103,7 @@ class Presenter(var viewActivity: MainActivity){
         return model.uploadAbilitySwordFish()
     }
 
+
     fun uploadBarsShark(): MutableList<Int> {
         return model.uploadBarsShark()
     }
@@ -131,6 +132,10 @@ class Presenter(var viewActivity: MainActivity){
     fun uploadUsers(): Int {
         return model.uploadUsers()
 
+    }
+
+    fun uploadPlayerPlankton(): Int{
+        return model.uploadPlayerPlankton()
     }
 
 
