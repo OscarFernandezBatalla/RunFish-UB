@@ -101,6 +101,7 @@ class shopFragment : Fragment() {
     }
 
 
+
     private fun uploadCommonFish() {
 
         var barsCommonFish : MutableList<Int> = act!!.presenter.uploadBarsCommonFish()
