@@ -46,17 +46,25 @@ class FishFragment : Fragment() {
 
         button_common_fish.setOnClickListener {
             text_selected_fish.text =  "COMMON FISH"
-            life_bar_selected_fish.progress = 30
-            capactity_bar_selected_fish.progress = 20
-            speed_bar_selected_fish.progress = 30
+
+            var barsCommon = act!!.presenter.uploadBarsCommonFish()
+
+            life_bar_selected_fish.progress = barsCommon[0]
+            capactity_bar_selected_fish.progress = barsCommon[1]
+            speed_bar_selected_fish.progress = barsCommon[2]
+
             button_ability_selected_fish.setBackgroundResource(R.drawable.shield)
         }
 
         button_clownfish.setOnClickListener {
             text_selected_fish.text =  "CLOWNFISH"
-            life_bar_selected_fish.progress = 40
-            capactity_bar_selected_fish.progress = 30
-            speed_bar_selected_fish.progress = 30
+
+            var barsClown = act!!.presenter.uploadBarsClownFish()
+
+            life_bar_selected_fish.progress = barsClown[0]
+            capactity_bar_selected_fish.progress = barsClown[1]
+            speed_bar_selected_fish.progress = barsClown[2]
+
             button_ability_selected_fish.setBackgroundResource(R.drawable.salud)
         }
 
@@ -64,28 +72,40 @@ class FishFragment : Fragment() {
         button_shark.setOnClickListener {
 
             text_selected_fish.text =  "WHITE SHARK"
-            life_bar_selected_fish.progress = 100
-            capactity_bar_selected_fish.progress = 75
-            speed_bar_selected_fish.progress = 80
+
+            var barsShark = act!!.presenter.uploadBarsShark()
+
+            life_bar_selected_fish.progress =  barsShark[0]
+            capactity_bar_selected_fish.progress = barsShark[1]
+            speed_bar_selected_fish.progress = barsShark[2]
+
             button_ability_selected_fish.setBackgroundResource(R.drawable.shark_icon_dos)
         }
 
         button_swordFish.setOnClickListener {
 
             text_selected_fish.text =  "SWORD FISH"
-            life_bar_selected_fish.progress = 100
-            capactity_bar_selected_fish.progress = 75
-            speed_bar_selected_fish.progress = 80
-            button_ability_selected_fish.setBackgroundResource(R.drawable.shark_icon_dos)
+
+            var barsSword = act!!.presenter.uploadBarsSwordFish()
+
+            life_bar_selected_fish.progress = barsSword[0]
+            capactity_bar_selected_fish.progress =barsSword[1]
+            speed_bar_selected_fish.progress =barsSword[2]
+
+            button_ability_selected_fish.setBackgroundResource(R.drawable.camouflage_icon)
         }
 
         button_blowFish.setOnClickListener {
 
             text_selected_fish.text =  "BLOW SHARK"
-            life_bar_selected_fish.progress = 100
-            capactity_bar_selected_fish.progress = 75
-            speed_bar_selected_fish.progress = 80
-            button_ability_selected_fish.setBackgroundResource(R.drawable.shark_icon_dos)
+
+            var barsBlow = act!!.presenter.uploadBarsBlowFish()
+
+            life_bar_selected_fish.progress = barsBlow[0]
+            capactity_bar_selected_fish.progress =barsBlow[1]
+            speed_bar_selected_fish.progress =barsBlow[2]
+
+            button_ability_selected_fish.setBackgroundResource(R.drawable.fuerza)
         }
 
 
