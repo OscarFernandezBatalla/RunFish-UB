@@ -28,9 +28,9 @@ class Model (var presenter: Presenter) : Contract.Model {
     /*stats*/
 
     private var statTotalFish : Int = 0
-    private var statPlanktonCollected : Int = 1
-    private var statNumberOfDeath : Int = 16               //canviar, era exemple de fun
-    private var statMurderedFish : Int = 14
+    private var statPlanktonCollected : Int = 0
+    private var statNumberOfDeath : Int = 0               //canviar, era exemple de fun
+    private var statMurderedFish : Int = 0
     private var statMaxDistanceTraveled : Int = 0
 
 
@@ -41,7 +41,11 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statMurderedFish" to statMurderedFish,
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
+
     private var levelsUnlocked : Int = 1
+    var levelsMap: HashMap<String, Int> = hashMapOf(
+        "levelsUnlocked" to levelsUnlocked
+    )
 
     private var music : Int = 50        //percentatge
     private var sound : Int = 50        //percentatge
@@ -61,8 +65,11 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var levelSelected : Int? = null
     private var planktonCollected : Int = 0
 
-    private var actualPlankton: Int = 50000
+    private var actualPlankton: Int = 20000
 
+    var planctonMap: HashMap<String, Int> = hashMapOf(
+        "actualPlankton" to actualPlankton
+    )
 
     /*FISH*/
 
@@ -73,9 +80,6 @@ class Model (var presenter: Presenter) : Contract.Model {
     var commonFishPrice : Int = 20
     var commonFishAbility : Ability = Ability.SHIELD
     var commonFishOwned : Boolean = true
-
-
-
 
 
     /*Clownfish*/
@@ -111,12 +115,22 @@ class Model (var presenter: Presenter) : Contract.Model {
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
+    var fishMap: HashMap<String, Boolean> = hashMapOf(
+    "commonFishOwned" to commonFishOwned,
+    "clownFishOwned" to clownFishOwned,
+    "blowFishOwned" to blowFishOwned,
+    "swordFishOwned" to swordFishOwned,
+    "sharkOwned" to sharkOwned
+    )
+
+
     init{
         checkUserFromCloud()
         getStatsFromCloud()
-        setStatsToCloud()
         getOptionsFromCloud()
-        setOptionsToCloud()
+        getPlanctonFromCloud()
+        getLevelsFromCloud()
+        getFishFromCloud()
     }
 
 
@@ -242,15 +256,19 @@ class Model (var presenter: Presenter) : Contract.Model {
         when(fishType){
             FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
                 clownFishOwned = true
+                this.setPlanctonToCloud()
             }
             FishType.BLOWFISH -> if(!blowFishOwned && buyFishSupport(blowFishPrice)){
                 blowFishOwned = true
+                this.setPlanctonToCloud()
             }
             FishType.SWORDFISH -> if(!swordFishOwned && buyFishSupport(swordFishPrice)){
-                    swordFishOwned = true
+                swordFishOwned = true
+                this.setPlanctonToCloud()
             }
             FishType.SHARK -> if(!sharkOwned && buyFishSupport(sharkPrice)){
                 sharkOwned = true
+                this.setPlanctonToCloud()
             }
         }
     }
@@ -268,27 +286,32 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    //var stats = db.collection("statsss").document("stat99").set(stat5)
-
-
-    //var username = db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
-
-
-
     fun checkUserFromCloud(){
         var user = db.collection("usuarios").document("$user")
         if(user == null){
             user.collection("userContext").document("stats").set(statsMap)
             user.collection("userContext").document("options").set(optionsMap)
+            user.collection("userContext").document("plancton").set(planctonMap)
+            user.collection("userContext").document("levels").set(levelsMap)
+            user.collection("userContext").document("levels").set(fishMap)
         }
     }
 
 
-
-
-
     fun setStatsToCloud(){
+
         db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
+    }
+
+    fun setPlanctonToCloud(){
+        planctonMap["actualPlankton"] = actualPlankton
+        db.collection("usuarios").document("$user").collection("userContext").document("plancton").set(planctonMap)
+    }
+    fun setLevelsToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
+    }
+    fun setFishToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("fish").set(fishMap)
     }
 
 
@@ -374,6 +397,53 @@ class Model (var presenter: Presenter) : Contract.Model {
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
+    }
+
+    fun getPlanctonFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("plancton").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                     actualPlankton = document.data!!.get("actualPlankton").toString().toInt()
+                } else {
+                    Log.d(TAG, "No such document")
+
+                }
+            }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+    }
+
+    fun getLevelsFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("levels").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    levelsUnlocked = document.data!!.get("levelsUnlocked").toString().toInt()
+                } else {
+                    Log.d(TAG, "No such document")
+
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    fun getFishFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("fish").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    commonFishOwned = document.data!!.get("commonFishOwned").toString().toBoolean()
+                    clownFishOwned = document.data!!.get("clownFishOwned").toString().toBoolean()
+                    blowFishOwned = document.data!!.get("blowFishOwned").toString().toBoolean()
+                    swordFishOwned = document.data!!.get("swordFishOwned").toString().toBoolean()
+                    sharkOwned = document.data!!.get("sharkOwned").toString().toBoolean()
+
+                } else {
+                    Log.d(TAG, "No such document")
+
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
     }
 
 
