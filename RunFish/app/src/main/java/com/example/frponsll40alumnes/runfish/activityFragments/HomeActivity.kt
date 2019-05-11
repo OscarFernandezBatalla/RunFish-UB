@@ -17,19 +17,13 @@ class HomeActivity : AppCompatActivity() {
     var presenter : Presenter = Presenter(this)
     lateinit var signOut : Button
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         signOut = findViewById(R.id.sign_out_button)
         signOut.visibility = View.GONE
         setupUI()
-
-
-
     }
-
 
     private fun setupUI() {
         sign_out_button.setOnClickListener {

@@ -67,9 +67,6 @@ interface Contract {
         fun uploadPriceShark(): Int
         fun uploadUsers(): Int
         fun uploadPlayerPlankton(): Int
-
-
-
     }
 
 }

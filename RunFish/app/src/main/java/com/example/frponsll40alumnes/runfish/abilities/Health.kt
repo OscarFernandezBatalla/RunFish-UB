@@ -10,5 +10,4 @@ class Health(val additionHealth : Int = 30) : AbilityStrategy {
             fish.life = 100
         }
     }
-
 }

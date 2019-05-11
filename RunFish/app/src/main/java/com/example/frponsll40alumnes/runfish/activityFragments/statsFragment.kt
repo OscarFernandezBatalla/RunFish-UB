@@ -19,7 +19,6 @@ class statsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         act = (activity as HomeActivity)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_stats, container, false)
@@ -30,7 +29,6 @@ class statsFragment : Fragment() {
 
         uploadStats()
         act!!.signOut.visibility = View.VISIBLE
-
 
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_statsFragment_to_menuFragment))
     }
@@ -44,8 +42,4 @@ class statsFragment : Fragment() {
         this.text_view_int_murdered_fish.text = stats[3].toString()
         this.text_view_int_max_dist.text = stats[4].toString()
     }
-
-    /*PAS 4 EXEMPLE B*/
-    /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
-
 }

@@ -5,6 +5,4 @@ interface Position {
     var y: Int
 
     fun changeCoordinates(x : Int, y : Int)
-    //fun getPosition()
-    //fun setPosition()
 }

@@ -14,9 +14,7 @@ import kotlinx.android.synthetic.main.fragment_game.*
 
 class FriendsFragment : Fragment() {
 
-    //var hola : String = "hola"
     var act : HomeActivity ?= null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

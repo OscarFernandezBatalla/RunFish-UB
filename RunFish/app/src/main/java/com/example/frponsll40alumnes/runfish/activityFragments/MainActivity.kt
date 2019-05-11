@@ -41,42 +41,27 @@ enum class LevelDirection {
 
 class MainActivity : AppCompatActivity() {
 
-
-
-    lateinit var mGoogleSignInClient: GoogleSignInClient
-    lateinit var mGoogleSignInOptions: GoogleSignInOptions
-    lateinit var mGoogleButton : SignInButton
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var mGoogleSignInOptions: GoogleSignInOptions
+    private lateinit var mGoogleButton : SignInButton
     private val RC_SIGN_IN = 1
     private lateinit var firebaseAuth: FirebaseAuth
-    var user: FirebaseUser? = null
+    private var user: FirebaseUser? = null
 
-
-
-    //aixo despres de les declaracions
-    //var presenter : Presenter = Presenter(this)
     lateinit var binding: ActivityMainBinding
-    //lateinit var gameView : GameView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //Amaga la barra de notificacions.
 
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
-
         mGoogleButton = findViewById<SignInButton>(R.id.signInGoogleButton)
-
-        firebaseAuth = FirebaseAuth.getInstance()       //moure?
-
+        firebaseAuth = FirebaseAuth.getInstance()
 
         configureGoogleSignIn()
         setupUI()
-
-
     }
 
 
@@ -95,14 +80,10 @@ class MainActivity : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, mGoogleSignInOptions)
     }
 
-
-
     private fun signIn() {
         val signInIntent = mGoogleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
-
-//fins aqui va bé
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -117,7 +98,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
@@ -130,20 +110,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     override fun onStart() {
         super.onStart()
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
-
-            //aqui anar al fragment menu, aixo es temporal:
             startActivity(HomeActivity.getLaunchIntent(this))
             finish()
         }
     }
-
-
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, MainActivity::class.java).apply {
