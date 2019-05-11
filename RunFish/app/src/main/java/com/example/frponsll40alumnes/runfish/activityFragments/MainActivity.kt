@@ -25,6 +25,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 //import android.R
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mGoogleButton : SignInButton
     private val RC_SIGN_IN = 1
     private lateinit var firebaseAuth: FirebaseAuth
+    lateinit var db: FirebaseFirestore
 
 
     //aixo despres de les declaracions
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         mGoogleButton = findViewById<SignInButton>(R.id.signInGoogleButton)
 
         firebaseAuth = FirebaseAuth.getInstance()       //moure?
+        db = FirebaseFirestore.getInstance()
 
         configureGoogleSignIn()
         setupUI()
