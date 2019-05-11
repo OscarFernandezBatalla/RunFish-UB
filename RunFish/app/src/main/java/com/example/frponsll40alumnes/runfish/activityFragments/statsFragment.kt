@@ -29,6 +29,8 @@ class statsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         uploadStats()
+        act!!.signOut.visibility = View.VISIBLE
+
 
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_statsFragment_to_menuFragment))
     }

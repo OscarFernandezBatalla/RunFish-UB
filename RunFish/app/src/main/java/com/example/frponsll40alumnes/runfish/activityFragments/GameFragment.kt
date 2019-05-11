@@ -34,6 +34,7 @@ class GameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //gameView = GameView(this.context!!)
+        //act!!.signOut.visibility = View.GONE
         game = FrameLayout(this.context)
         gameView = GameView(this.context!!)
         gameWidgets = LinearLayout(context)

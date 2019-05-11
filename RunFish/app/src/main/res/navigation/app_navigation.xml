@@ -3,13 +3,6 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/app_navigation"
             app:startDestination="@+id/menuFragment">
-    <fragment android:id="@+id/mainFragment"
-              android:name="com.example.frponsll40alumnes.runfish.activityFragments.MainFragment"
-              android:label="fragment_main"
-              tools:layout="@layout/fragment_main">
-        <action android:id="@+id/action_mainFragment_to_menuFragment" app:destination="@id/menuFragment"
-                app:popUpTo="@+id/menuFragment"/>
-    </fragment>
     <fragment android:id="@+id/friendsFragment" android:name="com.example.frponsll40alumnes.runfish.activityFragments.FriendsFragment"
               android:label="fragment_friends" tools:layout="@layout/fragment_friends">
         <action android:id="@+id/action_friendsFragment_to_menuFragment" app:destination="@id/menuFragment"
@@ -57,7 +50,7 @@
                 app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
     </fragment>
 
-    <fragment android:id="@+id/options" android:name="com.example.frponsll40alumnes.runfish.activityFragments.options"
+    <fragment android:id="@+id/options" android:name="com.example.frponsll40alumnes.runfish.activityFragments.Options"
               android:label="fragment_options" tools:layout="@layout/fragment_options">
         <action android:id="@+id/action_options_to_menuFragment" app:destination="@id/menuFragment"
                 app:popUpTo="@+id/menuFragment"/>

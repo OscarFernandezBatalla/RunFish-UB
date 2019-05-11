@@ -22,6 +22,7 @@ class MultiplayerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //act!!.signOut.visibility = View.GONE
         ReturnDirection =
             LevelDirection.MULTIPLAYER
         super.onViewCreated(view, savedInstanceState)
