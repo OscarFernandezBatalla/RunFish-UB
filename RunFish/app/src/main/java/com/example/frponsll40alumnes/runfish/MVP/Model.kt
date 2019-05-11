@@ -98,27 +98,10 @@ class Model (var presenter: Presenter) : Contract.Model {
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
-
-
-
-
-
     init{
-        getStatsFromCloud()
+        //getStatsFromCloud()
     }
 
-
-
-
-
-
-    /*PAS 4 EXEMPLE A*/
-    /*EXEMPLE AUGMENTAR statNumberOfDeath AGAFANT EL VALOR DEL FRAGMENT GAME*/
-
-    /*fun IncreaseStatNumberOfDeath(vegadesMort: Int) {
-        statNumberOfDeath += vegadesMort
-
-    }*/
 
     override fun uploadStats():  MutableList<Int> {
         return mutableListOf(
@@ -179,7 +162,6 @@ class Model (var presenter: Presenter) : Contract.Model {
         )
     }
 
-
     override fun uploadPriceCommonFish(): Int {
         return commonFishPrice
     }
@@ -197,7 +179,6 @@ class Model (var presenter: Presenter) : Contract.Model {
             sharkOwned
         )
     }
-
 
     override fun uploadAbilityClownFish(): Ability {
         return clownFishAbility
@@ -269,6 +250,9 @@ class Model (var presenter: Presenter) : Contract.Model {
         return levelsUnlocked
     }
 
+    /*
+
+
     //var stat : HashMap<String, Int> = hashMapOf("statTotalFish" to 5, "statPlanktonCollected" to 3)
     //var stats = db.collection("statsss").document("stat1").set(stat)
 
@@ -288,7 +272,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         }
     }
 
-
+*/
 
 
 }
