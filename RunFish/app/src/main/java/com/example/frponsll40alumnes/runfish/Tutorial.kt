@@ -1,3 +1,7 @@
 package com.example.frponsll40alumnes.runfish
 
-class Tutorial : Level(numLevel = 0)
+import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
+
+class Tutorial : Level(numLevel = 0, difficultyLevel = DifficultyType.TUTORIAL) {
+    //
+}
