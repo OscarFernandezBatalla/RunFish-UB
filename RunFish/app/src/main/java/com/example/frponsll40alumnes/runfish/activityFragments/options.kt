@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_options.*
 
-class options : Fragment() {
+class Options : Fragment() {
 
     //var pres = (activity as MainActivity).presenter
     var act : HomeActivity ?= null
@@ -27,6 +27,7 @@ class options : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        act!!.signOut.visibility = View.VISIBLE
 
         uploadOptionsFragments()
 
@@ -39,9 +40,6 @@ class options : Fragment() {
         button_audio_music.setOnClickListener {
             this.seekBar_sounds.progress = 0
         }
-
-
-
     }
 
 
@@ -64,9 +62,4 @@ class options : Fragment() {
     fun uploadVibrationSwitch(){
         this.switch_vibration.isChecked = act!!.presenter.uploadVibrationSwitch()
     }
-
-
-
-
-
 }
