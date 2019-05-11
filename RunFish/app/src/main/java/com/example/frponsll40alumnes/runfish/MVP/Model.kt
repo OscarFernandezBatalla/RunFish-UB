@@ -48,6 +48,12 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var vibration : Boolean = true
     private var languageCat : Boolean = true
 
+    var optionsMap: HashMap<String, Any> = hashMapOf(
+        "music" to music,
+        "sound" to sound,
+        "vibration" to vibration,
+        "languageCat" to languageCat)
+
 
     private var lifeBar : Int = 100     //percentatge
     private var capacityBar : Int = 0   //percentatge
@@ -109,6 +115,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         checkUserFromCloud()
         getStatsFromCloud()
         setStatsToCloud()
+        getOptionsFromCloud()
+        setOptionsToCloud()
     }
 
 
@@ -271,6 +279,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         var user = db.collection("usuarios").document("$user")
         if(user == null){
             user.collection("userContext").document("stats").set(statsMap)
+            user.collection("userContext").document("options").set(optionsMap)
         }
     }
 
@@ -293,12 +302,80 @@ class Model (var presenter: Presenter) : Contract.Model {
                 statMaxDistanceTraveled = document.data!!.get("statMaxDistanceTraveled").toString().toInt()
             } else {
                 Log.d(TAG, "No such document")
+            }
+        }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fun setOptionsToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("options").set(optionsMap)
+    }
+
+    fun getOptionsFromCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("options").get().addOnSuccessListener { document ->
+            if (document != null) {
+                music = document.data!!.get("music").toString().toInt()
+                sound = document.data!!.get("sound").toString().toInt()
+                vibration = document.data!!.get("vibration").toString().toBoolean()
+                languageCat = document.data!!.get("languageCat").toString().toBoolean()
+            } else {
+                Log.d(TAG, "No such document")
 
             }
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
     }
+
 
 
 
