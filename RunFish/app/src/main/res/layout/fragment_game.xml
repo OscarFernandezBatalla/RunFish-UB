@@ -216,10 +216,10 @@
                 android:layout_height="54dp"
                 android:id="@+id/button_habilitat"
                 android:background="@drawable/salud"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="28dp"/>
+                android:layout_marginEnd="40dp"/>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="100dp"
@@ -286,23 +286,17 @@
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
 
-                android:layout_width="167dp"
-                android:layout_height="182dp"
+                android:layout_width="130dp"
+                android:layout_height="135dp"
                 custom:JV_buttonColor="#FF6E40"
-                custom:JV_buttonSizeRatio="40%"
-                custom:JV_borderWidth="4dp"
-                custom:JV_fixedCenter="false"
                 android:layout_marginEnd="8dp"
                 custom:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="8dp"
-                custom:layout_constraintBottom_toBottomOf="parent"
-                custom:layout_constraintHorizontal_bias="0.028"
+                custom:layout_constraintHorizontal_bias="0.01"
                 android:background="@drawable/joystick_exterior_big"
                 custom:JV_buttonImage="@drawable/joystick_interior"
-                custom:layout_constraintVertical_bias="0.963"
-                android:scaleX="0.9"
-                android:scaleY="0.9"
-        />
+                android:layout_marginBottom="8dp" custom:layout_constraintBottom_toBottomOf="parent"
+                custom:layout_constraintVertical_bias="1.0" custom:JV_fixedCenter="false"
+                custom:JV_buttonSizeRatio="25%"/>
 
         <ImageButton
                 android:src="@drawable/pause"

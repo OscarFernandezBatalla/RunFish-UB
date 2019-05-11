@@ -15,20 +15,21 @@ import kotlinx.android.synthetic.main.fragment_game.*
 class FriendsFragment : Fragment() {
 
     //var hola : String = "hola"
-    var act : MainActivity ?= null
+    var act : HomeActivity ?= null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        act = (activity as MainActivity)
+        act = (activity as HomeActivity)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_friends, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        act!!.signOut.visibility = View.GONE
 
         //uploadFriendsFragment()
 

@@ -40,7 +40,6 @@ class FishFragment : Fragment() {
 
         uploadFishOwned()
 
-
         if (ReturnDirection == LevelDirection.SINGLEPLAYER) {
             button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fishFragment_to_singlePlayerFragment))
         } else if (ReturnDirection == LevelDirection.MULTIPLAYER) {
