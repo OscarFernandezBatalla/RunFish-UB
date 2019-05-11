@@ -24,6 +24,7 @@ import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -47,7 +48,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var mGoogleButton : SignInButton
     private val RC_SIGN_IN = 1
     private lateinit var firebaseAuth: FirebaseAuth
-    lateinit var db: FirebaseFirestore
+    var user: FirebaseUser? = null
+
 
 
     //aixo despres de les declaracions
@@ -69,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         mGoogleButton = findViewById<SignInButton>(R.id.signInGoogleButton)
 
         firebaseAuth = FirebaseAuth.getInstance()       //moure?
-        db = FirebaseFirestore.getInstance()
+
 
         configureGoogleSignIn()
         setupUI()
@@ -120,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-
+                user = firebaseAuth.currentUser
                 startActivity(HomeActivity.getLaunchIntent(this))
             } else {
                 Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()

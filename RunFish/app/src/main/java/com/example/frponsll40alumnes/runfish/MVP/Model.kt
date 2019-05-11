@@ -1,12 +1,25 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.abilities.Shield
 import com.example.frponsll40alumnes.runfish.fish.BlowFish
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.DocumentReference
+
+
 
 class Model (var presenter: Presenter) : Contract.Model {
 
+
+    var db: FirebaseFirestore= FirebaseFirestore.getInstance()
+
+    var user = FirebaseAuth.getInstance().currentUser.toString()
 
     private var registrat : Boolean = false
     private var friends : MutableList<String> = mutableListOf()
@@ -14,19 +27,21 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var ownedFish : List<Enum<FishType>>? = null
 
     /*stats*/
-    private var statTotalFish : Int = 1                    // Un cop s'hagi creat serà algo tipo = ownedFish!!.size, si es fa abans de sobreescriure el null de la ownedFish peta!!!
+
+    private var statTotalFish : Int = 0
     private var statPlanktonCollected : Int = 0
-    private var statNumberOfDeath : Int = 5                 //canviar, era exemple de fun
+    private var statNumberOfDeath : Int = 0                 //canviar, era exemple de fun
     private var statMurderedFish : Int = 0
     private var statMaxDistanceTraveled : Int = 0
 
     private var levelsUnlocked : Int = 1
 
-
     private var music : Int = 50        //percentatge
     private var sound : Int = 50        //percentatge
     private var vibration : Boolean = true
     private var languageCat : Boolean = true
+
+
     private var lifeBar : Int = 100     //percentatge
     private var capacityBar : Int = 0   //percentatge
     private var abilityUsed : Boolean = false
@@ -88,7 +103,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
 
-
+    init{
+        getStatsFromCloud()
+    }
 
 
 
@@ -251,6 +268,27 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun uploadLevels() : Int{
         return levelsUnlocked
     }
+
+    //var stat : HashMap<String, Int> = hashMapOf("statTotalFish" to 5, "statPlanktonCollected" to 3)
+    //var stats = db.collection("statsss").document("stat1").set(stat)
+
+    fun getStatsFromCloud(){
+        db.collection("statsss").document("stat1").get().addOnSuccessListener { document ->
+            if (document != null) {
+                statTotalFish = document.data!!.get("statTotalFish").toString().toInt()
+                statPlanktonCollected = document.data!!.get("statPlanktonCollected").toString().toInt()
+                statNumberOfDeath = document.data!!.get("statNumberOfDeath").toString().toInt()
+                statMurderedFish = document.data!!.get("statMurderedFish").toString().toInt()
+                statMaxDistanceTraveled = document.data!!.get("statMaxDistanceTraveled").toString().toInt()
+            } else {
+                Log.d(TAG, "No such document")
+            }
+        }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+    }
+
+
 
 
 }

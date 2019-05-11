@@ -9,6 +9,7 @@ import android.widget.Button
 import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -16,12 +17,17 @@ class HomeActivity : AppCompatActivity() {
     var presenter : Presenter = Presenter(this)
     lateinit var signOut : Button
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         signOut = findViewById(R.id.sign_out_button)
         signOut.visibility = View.GONE
         setupUI()
+
+
+
     }
 
 
