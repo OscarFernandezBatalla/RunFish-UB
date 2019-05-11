@@ -41,7 +41,11 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statMurderedFish" to statMurderedFish,
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
+
     private var levelsUnlocked : Int = 1
+    var levelsMap: HashMap<String, Int> = hashMapOf(
+        "levelsUnlocked" to levelsUnlocked
+    )
 
     private var music : Int = 50        //percentatge
     private var sound : Int = 50        //percentatge
@@ -57,6 +61,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     private var actualPlankton: Int = 50000
 
+    var planctonMap: HashMap<String, Int> = hashMapOf(
+        "actualPlankton" to actualPlankton
+    )
 
     /*FISH*/
 
@@ -109,6 +116,10 @@ class Model (var presenter: Presenter) : Contract.Model {
         checkUserFromCloud()
         getStatsFromCloud()
         setStatsToCloud()
+        setPlanctonToCloud()
+        getPlanctonFromCloud()
+        setLevelsToCloud()
+        getLevelsFromCloud()
     }
 
 
@@ -260,27 +271,27 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    //var stats = db.collection("statsss").document("stat99").set(stat5)
-
-
-    //var username = db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
-
-
-
     fun checkUserFromCloud(){
         var user = db.collection("usuarios").document("$user")
         if(user == null){
             user.collection("userContext").document("stats").set(statsMap)
+            user.collection("userContext").document("plancton").set(planctonMap)
+            user.collection("userContext").document("levels").set(levelsMap)
         }
     }
-
-
-
 
 
     fun setStatsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
     }
+
+    fun setPlanctonToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("plancton").set(planctonMap)
+    }
+    fun setLevelsToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
+    }
+
 
 
     fun getStatsFromCloud(){
@@ -298,6 +309,34 @@ class Model (var presenter: Presenter) : Contract.Model {
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
+    }
+
+    fun getPlanctonFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("plancton").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                     actualPlankton = document.data!!.get("actualPlankton").toString().toInt()
+                } else {
+                    Log.d(TAG, "No such document")
+
+                }
+            }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+    }
+
+    fun getLevelsFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("levels").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    levelsUnlocked = document.data!!.get("levelsUnlocked").toString().toInt()
+                } else {
+                    Log.d(TAG, "No such document")
+
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
     }
 
 
