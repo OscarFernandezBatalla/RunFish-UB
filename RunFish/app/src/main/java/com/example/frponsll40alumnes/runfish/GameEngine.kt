@@ -45,9 +45,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
 
-        Log.w(TAG, "QWE Width: ${displayWidth}")
-        Log.w(TAG, "QWE Height: ${displayHeight}")
-
         //fish = Anemone(context)         //player1.getFish()
         fish = fishFactory.createFish(player1.fishType, context);
 
@@ -88,8 +85,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         for(x in NPCList){
             // Change positions with "randomness" for the NPCs
-            var posx = (0..displayWidth).random()
-            var posy = (0..displayHeight).random() - displayHeight
+            var posx = (0..1000).random()
+            var posy = (-1000..-100).random()
             x!!.changeCoordinates(
                 posx, posy
             );

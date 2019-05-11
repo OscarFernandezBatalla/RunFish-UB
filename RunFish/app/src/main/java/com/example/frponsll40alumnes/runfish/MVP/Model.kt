@@ -275,13 +275,11 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun getStatsFromCloud(){
         db.collection("statsss").document("stat1").get().addOnSuccessListener { document ->
             if (document != null) {
-                /*
                 statTotalFish = document.data!!.get("statTotalFish").toString().toInt()
                 statPlanktonCollected = document.data!!.get("statPlanktonCollected").toString().toInt()
                 statNumberOfDeath = document.data!!.get("statNumberOfDeath").toString().toInt()
                 statMurderedFish = document.data!!.get("statMurderedFish").toString().toInt()
                 statMaxDistanceTraveled = document.data!!.get("statMaxDistanceTraveled").toString().toInt()
-                */
             } else {
                 Log.d(TAG, "No such document")
             }
