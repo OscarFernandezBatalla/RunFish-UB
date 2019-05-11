@@ -19,20 +19,27 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     var db: FirebaseFirestore= FirebaseFirestore.getInstance()
 
-    var user = FirebaseAuth.getInstance().currentUser.toString()
+    var user = FirebaseAuth.getInstance().currentUser!!.uid
 
-    private var registrat : Boolean = false
+
     private var friends : MutableList<String> = mutableListOf()
-    private var currentFish : Enum<FishType>? = null
-    private var ownedFish : List<Enum<FishType>>? = null
+
 
     /*stats*/
 
     private var statTotalFish : Int = 0
-    private var statPlanktonCollected : Int = 0
-    private var statNumberOfDeath : Int = 0                 //canviar, era exemple de fun
-    private var statMurderedFish : Int = 0
+    private var statPlanktonCollected : Int = 1
+    private var statNumberOfDeath : Int = 16               //canviar, era exemple de fun
+    private var statMurderedFish : Int = 14
     private var statMaxDistanceTraveled : Int = 0
+
+
+    var statsMap : HashMap<String, Int> = hashMapOf(
+        "statTotalFish" to statTotalFish,
+        "statPlanktonCollected" to statPlanktonCollected,
+        "statNumberOfDeath" to statNumberOfDeath,
+        "statMurderedFish" to statMurderedFish,
+        "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
     private var levelsUnlocked : Int = 1
 
@@ -104,7 +111,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
     init{
+        checkUserFromCloud()
         getStatsFromCloud()
+        setStatsToCloud()
     }
 
 
@@ -269,11 +278,31 @@ class Model (var presenter: Presenter) : Contract.Model {
         return levelsUnlocked
     }
 
-    //var stat : HashMap<String, Int> = hashMapOf("statTotalFish" to 5, "statPlanktonCollected" to 3)
-    //var stats = db.collection("statsss").document("stat1").set(stat)
+
+    //var stats = db.collection("statsss").document("stat99").set(stat5)
+
+
+    //var username = db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
+
+
+
+    fun checkUserFromCloud(){
+        var user = db.collection("usuarios").document("$user")
+        if(user == null){
+            user.collection("userContext").document("stats").set(statsMap)
+        }
+    }
+
+
+
+
+
+    fun setStatsToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
+    }
 
     fun getStatsFromCloud(){
-        db.collection("statsss").document("stat1").get().addOnSuccessListener { document ->
+        db.collection("usuarios").document("$user").collection("userContext").document("stats").get().addOnSuccessListener { document ->
             if (document != null) {
                 statTotalFish = document.data!!.get("statTotalFish").toString().toInt()
                 statPlanktonCollected = document.data!!.get("statPlanktonCollected").toString().toInt()
@@ -282,12 +311,12 @@ class Model (var presenter: Presenter) : Contract.Model {
                 statMaxDistanceTraveled = document.data!!.get("statMaxDistanceTraveled").toString().toInt()
             } else {
                 Log.d(TAG, "No such document")
+
             }
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
     }
-
 
 
 
