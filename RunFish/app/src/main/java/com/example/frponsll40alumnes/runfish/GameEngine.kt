@@ -1,13 +1,18 @@
 package com.example.frponsll40alumnes.runfish
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.util.DisplayMetrics
+import android.util.Log
+import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
+import kotlin.random.Random
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
     var planktonCollected: Int = 0
@@ -15,9 +20,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
 
-    val displayMetrics = DisplayMetrics()
+    var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
-    var displayHeigh = displayMetrics.heightPixels
+    var displayHeight = displayMetrics.heightPixels
 
     var fish : Fish? = null
     var plankton: NPC? = null
@@ -32,6 +37,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
+    var level = Level(0, DifficultyType.VERY_HARD)
+
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
@@ -40,6 +47,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
+
+        Log.w(TAG, "QWE Width: ${displayWidth}")
+        Log.w(TAG, "QWE Height: ${displayHeight}")
 
         //fish = Anemone(context)         //player1.getFish()
         fish = fishFactory.createFish(player1.fishType, context);
@@ -57,18 +67,23 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         plankton = npcFactory.createNPC(NPCType.PLANKTON, context)
         //plankton!!.changeCoordinates(300, -500)
 
-        //plankton amb 100 punts
+        for((key, value) in level.npcs){
+            Log.w(TAG, "QWE creating ${key}")
+            for(i in 0..value){
+                var npc = npcFactory.createNPC(key, context)
+                if(npc != null){
+                    Log.w(TAG, "QWE Creating ${i}")
+                    NPCList.add(npc)
+                }
+            }
+        }
 
+/*
         plankton2 = npcFactory.createNPC(NPCType.PLANKTON, context, value = 100)
-
         shark = npcFactory.createNPC(NPCType.ENEMYSHARK, context)
-
         shark2 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50)
-
         shark3 = npcFactory.createNPC(NPCType.ENEMYSHARK, context, value = 50, vertical = false, leftToRight = false)
-
         bomb = npcFactory.createNPC(NPCType.BOMB, context)
-
         bomb2 = npcFactory.createNPC(NPCType.BOMB, context, value = 20)
 
         NPCList.add(plankton!!)
@@ -78,12 +93,13 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         NPCList.add(shark3!!)
         NPCList.add(bomb!!)
         NPCList.add(bomb2!!)
-
+*/
         for(x in NPCList){
             // Change positions with "randomness" for the NPCs
-            x!!.changeCoordinates(
-                /*x*/ (0..displayWidth).shuffled().first(),
-                /*y*/ (displayHeigh * 2 * (-1)..displayHeigh* (displayHeigh/2) *(-1)).shuffled().first()
+            var posx = (0..displayWidth).random()
+            var posy = (0..displayHeight).random() - displayHeight
+            x.changeCoordinates(
+                posx, posy
             );
         }
     }
@@ -96,10 +112,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     }
 
     fun collision(npc: NPC): Boolean{
-        if (fish!!.x < npc!!.x + npc!!.width &&
-            fish!!.x + fish!!.width > npc!!.x &&
-            fish!!.y < npc!!.y + npc!!.height &&
-            fish!!.height + fish!!.y > npc!!.y) {
+        if (fish!!.x < npc.x + npc.width &&
+            fish!!.x + fish!!.width > npc.x &&
+            fish!!.y < npc.y + npc.height &&
+            fish!!.height + fish!!.y > npc.y) {
             return true
             // ¡colision detectada!
         }
@@ -112,12 +128,12 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         fish!!.update(valx, valy, strength)
 
         for(x in NPCList){
-            x!!.update()
+            x.update()
         }
 
         for(x in NPCList){
             if(collision(x)){
-                x!!.collision(fish)
+                x.collision(fish)
                 //x!!.action()
             }
         }
@@ -131,6 +147,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
     fun drawView(canvas : Canvas){
         background!!.draw(canvas)
+        /*
         plankton!!.draw(canvas)
         bomb!!.draw(canvas)
         shark!!.draw(canvas)
@@ -138,6 +155,12 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         bomb2!!.draw(canvas)
         shark2!!.draw(canvas)
         shark3!!.draw(canvas)
+        */
+
+        for(x in NPCList){
+            x!!.draw(canvas)
+        }
+
         fish!!.draw(canvas)
     }
 }
