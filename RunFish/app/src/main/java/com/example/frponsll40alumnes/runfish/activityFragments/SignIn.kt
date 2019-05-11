@@ -23,6 +23,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 
 class SignIn : AppCompatActivity() {
+/*
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
     lateinit var mGoogleSignInOptions: GoogleSignInOptions
@@ -30,6 +31,7 @@ class SignIn : AppCompatActivity() {
     private val RC_SIGN_IN = 1
     private lateinit var auth: FirebaseAuth
 
+*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +39,13 @@ class SignIn : AppCompatActivity() {
 
         setContentView(R.layout.activity_sign_in)
 
-        auth = FirebaseAuth.getInstance()
+        /*auth = FirebaseAuth.getInstance()
         mGoogleButton = findViewById<SignInButton>(R.id.signInGoogleButton)
 
         // Configure Google Sign In
-        configureGoogleSignIn()
+        configureGoogleSignIn()*/
     }
+/*
 
     private fun setupUI() {
         mGoogleButton!!.setOnClickListener {
@@ -125,6 +128,7 @@ class SignIn : AppCompatActivity() {
         }
     }
 
+*/
 
 
 }
