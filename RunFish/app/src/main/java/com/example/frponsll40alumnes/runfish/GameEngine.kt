@@ -2,6 +2,7 @@ package com.example.frponsll40alumnes.runfish
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.util.DisplayMetrics
@@ -18,7 +19,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
 
-    var displayMetrics = DisplayMetrics()
+    var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
     var displayHeight = displayMetrics.heightPixels
 

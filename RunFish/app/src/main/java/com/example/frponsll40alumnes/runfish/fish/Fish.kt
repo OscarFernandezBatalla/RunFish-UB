@@ -94,15 +94,14 @@ abstract class Fish (
     fun update(xJoy : Double, yJoy : Double, strength : Int) {
 
 
-        var aux : Int = if (strength>speed){
-            speed
-        } else{
-            strength
-        }
+        var aux : Int = if (strength > speed){
+                            speed
+                        } else{
+                            strength
+                        }
 
         var xV : Int = (xJoy*aux/3).toInt()
         var yV : Int = -(yJoy*aux/3).toInt()
-
 
         if (x > screenWidth - image.width){
             xV = -1
