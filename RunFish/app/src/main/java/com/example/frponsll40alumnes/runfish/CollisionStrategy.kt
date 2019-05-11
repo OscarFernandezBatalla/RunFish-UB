@@ -6,9 +6,6 @@ interface CollisionStrategy : Position{
 
     //override implementation in each one of the npcs
     fun collision(playerFish : Fish?){
-
         this.x = 10000000;
-
     }
-
 }

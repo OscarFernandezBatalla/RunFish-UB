@@ -12,7 +12,4 @@ class BlowFish(context: Context) :
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.blow_fish)
     }
-
-
-
 }

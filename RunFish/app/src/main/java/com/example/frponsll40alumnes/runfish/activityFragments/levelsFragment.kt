@@ -50,8 +50,6 @@ class levelsFragment : Fragment() {
         button_level10.isEnabled = false
         button_level10.setBackgroundResource(R.drawable.tablon_block)
 
-
-
         uploadLevelsFragment()
 
         button_tutorial.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
@@ -73,7 +71,6 @@ class levelsFragment : Fragment() {
         button_level8.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
         button_level9.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
         button_level10.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-
     }
 
     fun uploadLevelsFragment(){
@@ -116,9 +113,6 @@ class levelsFragment : Fragment() {
                     button_level10.isEnabled = true
                     button_level10.setBackgroundResource(R.drawable.new_tablon)
                 }
-
-
-
             }
         }
     }

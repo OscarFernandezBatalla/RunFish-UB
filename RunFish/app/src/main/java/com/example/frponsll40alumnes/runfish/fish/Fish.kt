@@ -9,8 +9,6 @@ import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 
 abstract class Fish (
-                    //var image : Bitmap,
-                     //var context: Context,
                      var name : String,
                      var life : Int,
                      var capacity : Int,
@@ -19,7 +17,6 @@ abstract class Fish (
 
 
 ) : Position, Movable, Dimension, DrawableObject {
-
 
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
@@ -38,11 +35,6 @@ abstract class Fish (
 
     val maxCapacity : Int = capacity
     val minCapacity : Int = 0
-
-    /*
-      TODO: A cada classe que haguem de dibuixar, haurem de fer un draw i un update? En cas que sí, com accedim al valor
-      TODO: del joystick? Perque el fish es mourà a partir d'ell, amb un paràmetres a la propi mètode? Els demés si que podríem fer-ho automàtic.
-     */
 
     fun looseLife(damage : Int){
         this.life -= damage
@@ -72,7 +64,6 @@ abstract class Fish (
             this.capacity -= cargo
         }
     }
-
 
     fun useAbility(ability : AbilityStrategy){
         ability.useAbility(this)
@@ -122,15 +113,12 @@ abstract class Fish (
         yV = +1
     }
 
-
     x += xV
     y += yV
-
     }
 
     override fun changeCoordinates(x: Int, y: Int) {
         this.x = x
         this.y = y
     }
-
 }

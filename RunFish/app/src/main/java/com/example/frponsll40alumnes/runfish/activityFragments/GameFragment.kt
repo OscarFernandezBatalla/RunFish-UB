@@ -22,30 +22,19 @@ class GameFragment : Fragment() {
     lateinit var game : FrameLayout
     lateinit var gameWidgets: LinearLayout
 
-    lateinit var rootView : View
-
-
     var posX : Int = 0
     var posY : Int = 0
-
 
 //    lateinit var text_y : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //gameView = GameView(this.context!!)
         //act!!.signOut.visibility = View.GONE
         game = FrameLayout(this.context)
         gameView = GameView(this.context!!)
         gameWidgets = LinearLayout(context)
         game.addView(gameView)
         game.addView(gameWidgets)
-
-        //(activity as MainActivity).presenter.engageGame()
-
-
-
-
     }
 
     override fun onCreateView(
@@ -53,50 +42,13 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-
-
-
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
-        //joystick = rootView.findViewById(R.id.joystickView) as JoystickView
-
-
-
-
-
-
-
         game.addView(rootView)
-
-        //rootView.visibility=View.INVISIBLE
-
         return game
-
-        //return game
-
-
-        //gameView = GameView(this.context!!)
-
-        //activity!!.setContentView(gameView)
-
-        // Inflate the layout for this fragment
-        //val rootView = inflater.inflate(R.layout.fragment_game, container, false)
-        //joystick = rootView.findViewById(R.id.joystickView) as JoystickView
-
-        //return rootView
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
-        /*joystick.setOnMoveListener { angle, strength ->
-            posX = joystick.normalizedX
-            posY = joystick.normalizedY
-        }*/
-
 
         imageButton_pause.setOnClickListener(){
             pause_fragment.bringToFront()
@@ -141,20 +93,4 @@ class GameFragment : Fragment() {
             successful_layout.visibility=View.GONE
         }
     }
-
-
-    /*PAS 1 EXEMPLE A
-
-     (SUPOSEM QUE AQUEST METODE ES CRIDA QUAN HAS MORT)*/
-    /*per a que es vegi la transferencia de dades invento una variable que et diu quantes vegades has mort
-    * en un nivell, pero es podria fer cridant-la cada cop que mors sense variable*/
-
-    var vegadesMort : Int = 3
-    /*fun increaseStatNumberOfDeath(){
-        (activity as MainActivity).increaseStatNumberOfDeath(vegadesMort)
-    }*/
-
-
-
-
 }

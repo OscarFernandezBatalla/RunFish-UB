@@ -105,29 +105,12 @@ class Model (var presenter: Presenter) : Contract.Model {
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
-
-
-
-
-
     init{
         checkUserFromCloud()
         getStatsFromCloud()
         setStatsToCloud()
     }
 
-
-
-
-
-
-    /*PAS 4 EXEMPLE A*/
-    /*EXEMPLE AUGMENTAR statNumberOfDeath AGAFANT EL VALOR DEL FRAGMENT GAME*/
-
-    /*fun IncreaseStatNumberOfDeath(vegadesMort: Int) {
-        statNumberOfDeath += vegadesMort
-
-    }*/
 
     override fun uploadStats():  MutableList<Int> {
         return mutableListOf(
@@ -188,7 +171,6 @@ class Model (var presenter: Presenter) : Contract.Model {
         )
     }
 
-
     override fun uploadPriceCommonFish(): Int {
         return commonFishPrice
     }
@@ -206,7 +188,6 @@ class Model (var presenter: Presenter) : Contract.Model {
             sharkOwned
         )
     }
-
 
     override fun uploadAbilityClownFish(): Ability {
         return clownFishAbility
@@ -300,6 +281,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun setStatsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
     }
+
 
     fun getStatsFromCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").get().addOnSuccessListener { document ->

@@ -6,6 +6,4 @@ import android.graphics.Bitmap
 
 class CommonFish(context: Context) :
     Fish("Common Fish", 20, 20, "shield", 0) {
-
-
 }

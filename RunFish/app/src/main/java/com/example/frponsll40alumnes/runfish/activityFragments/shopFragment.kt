@@ -19,9 +19,8 @@ import kotlinx.android.synthetic.main.fragment_shop.*
 
 class shopFragment : Fragment() {
 
-    var act : HomeActivity ?= null
-    var ownedFish : MutableList<Boolean>? = null
-
+    private var act : HomeActivity ?= null
+    private var ownedFish : MutableList<Boolean>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +36,6 @@ class shopFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         uploadShopFragment()
-
-
 
         button_comeback_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shopFragment_to_menuFragment))
 
@@ -69,11 +66,7 @@ class shopFragment : Fragment() {
             uploadShark()
             uploadPlayerPlankton()
         }
-
-
     }
-
-
 
     private fun uploadShopFragment(){
         ownedFish = act!!.presenter.uploadFishOwned()
@@ -100,10 +93,7 @@ class shopFragment : Fragment() {
         }
     }
 
-
-
     private fun uploadCommonFish() {
-
         var barsCommonFish : MutableList<Int> = act!!.presenter.uploadBarsCommonFish()
 
         this.life_bar_common_fish.progress = barsCommonFish[0]
@@ -111,7 +101,6 @@ class shopFragment : Fragment() {
         this.speed_bar_common_fish.progress = barsCommonFish[2]
 
         this.text_preu_common_fish.text = act!!.presenter.uploadPriceCommonFish().toString()
-
         this.button_ability_common_fish.background = getAbility(act!!.presenter.uploadAbilityCommonFish())
 
         if(ownedFish!![0]){
@@ -121,7 +110,6 @@ class shopFragment : Fragment() {
 
 
     private fun uploadClownFish(){
-
         var barsClownFish: MutableList<Int> = act!!.presenter.uploadBarsClownFish()
 
         this.life_bar_clownfish.progress = barsClownFish[0]
@@ -142,7 +130,6 @@ class shopFragment : Fragment() {
     }
 
     private fun uploadBlowFish(){
-
         var barsBlowFish: MutableList<Int> = act!!.presenter.uploadBarsBlowFish()
 
         this.life_bar_blowfish.progress = barsBlowFish[0]
@@ -164,7 +151,6 @@ class shopFragment : Fragment() {
 
 
     private fun uploadSwordFish(){
-
         var barsSwordFish: MutableList<Int> = act!!.presenter.uploadBarsSwordFish()
 
         this.life_bar_swordfish.progress = barsSwordFish[0]
@@ -172,7 +158,6 @@ class shopFragment : Fragment() {
         this.speed_bar_swordfish.progress = barsSwordFish[2]
 
         this.text_preu_swordfish.text = act!!.presenter.uploadPriceSwordFish().toString()
-
         this.button_ability_swordfish.background = getAbility(act!!.presenter.uploadAbilitySwordFish())
 
         if(ownedFish!![3]){
@@ -181,7 +166,6 @@ class shopFragment : Fragment() {
         else{
             this.image_swordfish.setImageResource(R.drawable.swordfish_lock)
         }
-
     }
 
     private fun uploadShark(){
@@ -193,7 +177,6 @@ class shopFragment : Fragment() {
         this.speed_bar_shark.progress = barsShark[2]
 
         this.text_preu_shark.text = act!!.presenter.uploadPriceShark().toString()
-
         this.button_ability_shark.background = getAbility(act!!.presenter.uploadAbilityShark())
 
         if(ownedFish!![4]){
@@ -203,7 +186,4 @@ class shopFragment : Fragment() {
             this.image_shark.setImageResource(R.drawable.shark_lock)
         }
     }
-
-
-
 }

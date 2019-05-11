@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.fragment_options.*
 
 class Options : Fragment() {
 
-    //var pres = (activity as MainActivity).presenter
     var act : HomeActivity ?= null
 
     override fun onCreateView(
