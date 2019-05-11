@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
 
         //Amaga la barra de notificacions.
 
-        //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        //requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 

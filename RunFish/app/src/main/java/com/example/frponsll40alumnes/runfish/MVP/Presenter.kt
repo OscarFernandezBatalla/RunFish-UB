@@ -8,7 +8,7 @@ import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
-import kotlinx.android.synthetic.main.fragment_main.view.*
+//import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
 class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
@@ -18,28 +18,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     var model: Model = Model(this)
     var gameEngine: GameEngine? = null          //o tambe es pot crear aqui es igual
     //gameEngine.startGame()
-
-/*
-
-    fun getBar(){
-
-        viewActivity.getBar()
-
-    }
-*/
-
-
-
-    /*PAS 3 EXEMPLE A*/
-    /*EXEMPLE AUGMENTAR statNumberOfDeath AGAFANT EL VALOR DEL FRAGMENT GAME*/
-    /*fun increaseStatNumberOfDeath(vegadesMort: Int) {
-        model!!.IncreaseStatNumberOfDeath(vegadesMort)
-    }*/
-
-
-    /*PAS 2 EXEMPLE B*/
-    /*EXEMPLE CARREGAR statNumberOfDeath AL FRAGMENT STATS*/
-
 
     override fun uploadStats(): MutableList<Int> {
         return model.uploadStats()
@@ -57,7 +35,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadVibrationSwitch()
     }
 
-
     /*
         Functions to update CommonFish Shop & Fish Fragments
      */
@@ -73,7 +50,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadAbilityCommonFish()
     }
 
-
     override fun uploadBarsClownFish(): MutableList<Int> {
         return model.uploadBarsClownFish()
     }
@@ -86,17 +62,12 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadPriceClownFish()
     }
 
-
-
-
     override fun uploadBarsBlowFish(): MutableList<Int> {
         return model.uploadBarsBlowFish()
     }
     override fun uploadAbilityBlowFish(): Ability {
         return model.uploadAbilityBlowFish()
     }
-
-
 
     override fun uploadBarsSwordFish(): MutableList<Int> {
         return model.uploadBarsSwordFish()
@@ -105,7 +76,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadAbilitySwordFish()
     }
 
-
     override fun uploadBarsShark(): MutableList<Int> {
         return model.uploadBarsShark()
     }
@@ -113,11 +83,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadAbilityShark()
     }
 
-
     override fun uploadFishOwned() : MutableList<Boolean> {
         return model.uploadFishOwned()
     }
-
 
     override fun uploadPriceBlowFish(): Int {
         return model.uploadPriceBlowFish()
@@ -133,13 +101,11 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     override fun uploadUsers(): Int {
         return model.uploadUsers()
-
     }
 
     override fun uploadPlayerPlankton(): Int{
         return model.uploadPlayerPlankton()
     }
-
 
     fun buyFish(fishType: FishType) {
         return model.buyFish(fishType)
@@ -148,7 +114,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     fun uploadLevels() : Int{
         return model.uploadLevels()
     }
-
 
 /*
     override fun updateHp(){
