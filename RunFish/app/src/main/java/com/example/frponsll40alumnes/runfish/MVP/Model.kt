@@ -76,9 +76,6 @@ class Model (var presenter: Presenter) : Contract.Model {
     var commonFishOwned : Boolean = true
 
 
-
-
-
     /*Clownfish*/
     var clownFishLife : Int = 30
     var clownFishCapacity : Int = 30
@@ -112,6 +109,15 @@ class Model (var presenter: Presenter) : Contract.Model {
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
+    var fishMap: HashMap<String, Boolean> = hashMapOf(
+    "commonFishOwned" to commonFishOwned,
+    "clownFishOwned" to clownFishOwned,
+    "blowFishOwned" to blowFishOwned,
+    "swordFishOwned" to swordFishOwned,
+    "sharkOwned" to sharkOwned
+    )
+
+
     init{
         checkUserFromCloud()
         getStatsFromCloud()
@@ -120,6 +126,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         getPlanctonFromCloud()
         setLevelsToCloud()
         getLevelsFromCloud()
+        setFishToCloud()
+        getFishFromCloud()
     }
 
 
@@ -291,7 +299,9 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun setLevelsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
     }
-
+    fun setFishToCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("fish").set(fishMap)
+    }
 
 
     fun getStatsFromCloud(){
@@ -330,6 +340,25 @@ class Model (var presenter: Presenter) : Contract.Model {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     levelsUnlocked = document.data!!.get("levelsUnlocked").toString().toInt()
+                } else {
+                    Log.d(TAG, "No such document")
+
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    fun getFishFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("fish").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    commonFishOwned = document.data!!.get("commonFishOwned").toString().toBoolean()
+                    clownFishOwned = document.data!!.get("clownFishOwned").toString().toBoolean()
+                    blowFishOwned = document.data!!.get("blowFishOwned").toString().toBoolean()
+                    swordFishOwned = document.data!!.get("swordFishOwned").toString().toBoolean()
+                    sharkOwned = document.data!!.get("sharkOwned").toString().toBoolean()
+
                 } else {
                     Log.d(TAG, "No such document")
 
