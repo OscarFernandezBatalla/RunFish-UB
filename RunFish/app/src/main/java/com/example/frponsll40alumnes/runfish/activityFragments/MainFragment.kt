@@ -26,29 +26,13 @@ class MainFragment : Fragment() {
     lateinit var mGoogleApiClient: GoogleApiClient*/
 
 
-
     //val fragmentMain :  MainFragment = fm.findFragmentById(R.id.your_fragment_id)
-
-
-
-
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-
-
-
-
-
-
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -56,20 +40,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button_enter.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_menuFragment))
-        //button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signInFragment))
-
+        button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signInFragment))
 
         //text_view_run.text = (activity as MainActivity).textFish
 
-
-
-
     }
-
-
-
-
-
-
 
 }
