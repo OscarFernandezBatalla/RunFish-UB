@@ -6,11 +6,12 @@ import com.example.frponsll40alumnes.runfish.activityFragments.MainActivity
 import com.example.frponsll40alumnes.runfish.GameEngine
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
+import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
-class Presenter(var viewActivity: MainActivity) : Contract.Presenter{
+class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
 
     //var viewActivity: MainActivity = MainActivity()

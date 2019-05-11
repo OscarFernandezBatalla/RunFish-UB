@@ -21,21 +21,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
 
-    /*var TAG = "SignInActivity"
-    var RC_SIGN_IN = 9001
-    lateinit var mGoogleApiClient: GoogleApiClient*/
-
-
-
-    //val fragmentMain :  MainFragment = fm.findFragmentById(R.id.your_fragment_id)
-
-
-
-
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +34,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button_enter.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_menuFragment))
-        button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signIn))
+        //button_enter.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_menuFragment))
+        //button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signIn))
 
 
         //text_view_run.text = (activity as MainActivity).textFish

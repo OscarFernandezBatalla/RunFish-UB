@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
 
     //aixo despres de les declaracions
-    var presenter : Presenter = Presenter(this)
+    //var presenter : Presenter = Presenter(this)
     lateinit var binding: ActivityMainBinding
     //lateinit var gameView : GameView
 

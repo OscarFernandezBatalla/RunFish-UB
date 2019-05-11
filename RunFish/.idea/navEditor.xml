@@ -117,18 +117,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-861" />
-                            <option name="y" value="101" />
+                            <option name="x" value="-1009" />
+                            <option name="y" value="68" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_mainFragment_to_menuFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_mainFragment_to_signIn">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -225,17 +220,12 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-372" />
-                            <option name="y" value="313" />
+                            <option name="x" value="-541" />
+                            <option name="y" value="314" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_options_to_mainFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_options_to_menuFragment">
                               <value>
                                 <LayoutPositions />
@@ -263,18 +253,6 @@
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="signIn">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-1312" />
-                            <option name="y" value="124" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

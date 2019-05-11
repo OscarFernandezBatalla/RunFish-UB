@@ -13,13 +13,13 @@ import kotlinx.android.synthetic.main.fragment_levels.*
 
 class levelsFragment : Fragment() {
 
-    var act : MainActivity ?= null
+    var act : HomeActivity ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        act = (activity as MainActivity)
+        act = (activity as HomeActivity)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_levels, container, false)
     }
