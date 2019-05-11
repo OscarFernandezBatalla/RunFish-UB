@@ -19,9 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 
-
-
-
 class SignIn : AppCompatActivity() {
 /*
 
@@ -32,8 +29,6 @@ class SignIn : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
 */
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -114,8 +109,6 @@ class SignIn : AppCompatActivity() {
 
             //aqui anar al fragment menu, aixo es temporal:
             startActivity(HomeActivity.getLaunchIntent(this))
-
-
 
             finish()
         }

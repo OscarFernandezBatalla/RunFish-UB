@@ -15,10 +15,6 @@ import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
-
-
-
-
 class MainFragment : Fragment() {
 
 
@@ -37,18 +33,7 @@ class MainFragment : Fragment() {
         //button_enter.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_menuFragment))
         //button_SignIn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_signIn))
 
-
         //text_view_run.text = (activity as MainActivity).textFish
-
-
-
-
     }
-
-
-
-
-
-
 
 }

@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.util.DisplayMetrics
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
@@ -13,6 +14,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var numberOfDeaths: Int = 0 //Potser un bool? //Int per les stats
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
+
+    val displayMetrics = DisplayMetrics()
+    var displayWidth = displayMetrics.widthPixels
+    var displayHeigh = displayMetrics.heightPixels
 
     var fish : Fish? = null
     var plankton: NPC? = null
@@ -76,7 +81,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         for(x in NPCList){
             // Change positions with "randomness" for the NPCs
-            x!!.changeCoordinates((0..1300).shuffled().first(), (-3000..-1500).shuffled().first());
+            x!!.changeCoordinates(
+                /*x*/ (0..displayWidth).shuffled().first(),
+                /*y*/ (displayHeigh * 2 * (-1)..displayHeigh* (displayHeigh/2) *(-1)).shuffled().first()
+            );
         }
     }
 
