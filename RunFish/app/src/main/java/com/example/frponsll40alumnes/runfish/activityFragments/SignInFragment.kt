@@ -19,10 +19,9 @@ import kotlinx.android.synthetic.main.fragment_sign_in.*
 
 class SignInFragment : Fragment() {
 
-    /* Constant used in Intent */
-    var RETURN_CODE_SIGN_IN : Int = 1
+    var RETURN_CODE_SIGN_IN : Int = 1;
 
-    private lateinit var auth : FirebaseAuth
+    private lateinit var auth : FirebaseAuth;
     private lateinit var googleSignInClient : GoogleSignInClient
 
     override fun onCreateView(
@@ -36,15 +35,11 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signInFragment_to_mainFragment))
-        //button_sign_in.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signInFragment_to_mainFragment))
-        button_sign_in.setOnClickListener{
-            signIn();
-        }
+        button_sign_in.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signInFragment_to_mainFragment))
     }
 
     /*  ///////////////////////////////////////////////////////////////////////////////////
         FIREBASE SIGNIN DOC: https://firebase.google.com/docs/auth/android/google-signin
-                             https://developers.google.com/identity/sign-in/android/sign-in
      ////////////////////////////////////////////////////////////////////////////////////// */
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,18 +54,18 @@ class SignInFragment : Fragment() {
             .requestEmail()
             .build()
 
-        // Pass the activity
-        googleSignInClient = GoogleSignIn.getClient(this.requireActivity(), gso)
+        // DEBE SER UNA ACTIVITY
+        //googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         //Initialize Firebase
-        //auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance();
     }
 
     override fun onStart() {
         super.onStart()
 
         //Check if the user has already signed in
-        //val currentUser = auth.currentUser
+        val currentUser = auth.currentUser
         //updateUI(currentUser);
         /* if(currentuser != null){
                 // dont show sign in button
@@ -85,7 +80,7 @@ class SignInFragment : Fragment() {
         startActivityForResult(signInIntent, RETURN_CODE_SIGN_IN)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -109,7 +104,8 @@ class SignInFragment : Fragment() {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
                 // SIGN IN DEBE SER UNA ACTIVITY, NO UN FRAGMENT
-                .addOnCompleteListener(this.requireActivity()) { task ->
+                /*
+                .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         //Log.d(TAG, "signInWithCredential:success")
@@ -124,6 +120,7 @@ class SignInFragment : Fragment() {
 
                     // ...
                 }
+                */
     }
 
 }
