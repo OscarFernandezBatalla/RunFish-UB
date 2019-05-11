@@ -94,34 +94,38 @@ abstract class Fish (
     fun update(xJoy : Double, yJoy : Double, strength : Int) {
 
 
-        var aux : Int = if (strength>speed){
-            speed
-        } else{
-            strength
-        }
+    var aux : Int = if (strength>speed){
+        speed
+    }
+    else{
+        strength
+    }
 
-        var xV : Int = (xJoy*aux/3).toInt()
-        var yV : Int = -(yJoy*aux/3).toInt()
+    var xV : Int = (xJoy*aux/3).toInt()
+    var yV : Int = -(yJoy*aux/3).toInt()
 
 
-        if (x > screenWidth - image.width){
-            xV = -1
-        }
+    if (x > screenWidth - image.width){
+        xV = -1
+    }
 
-        if(x < 2) {
-            xV = +1
-        }
+    if(x < 2) {
+        xV = +1
+    }
 
-        if (y > screenHeight - image.height){
-            yV = -1
-        }
+    if (y > screenHeight - image.height){
 
-        if(y<2) {
-            yV = +1
-        }
+        yV = -1
+    }
 
-        x += xV
-        y += yV
+    if(y<2) {
+        yV = +1
+    }
+
+
+    x += xV
+    y += yV
+
     }
 
     override fun changeCoordinates(x: Int, y: Int) {

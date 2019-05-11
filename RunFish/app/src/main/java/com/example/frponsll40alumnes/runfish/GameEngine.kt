@@ -1,16 +1,13 @@
 package com.example.frponsll40alumnes.runfish
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.util.DisplayMetrics
-import android.util.Log
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
-import kotlin.random.Random
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
     var planktonCollected: Int = 0
@@ -18,9 +15,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
 
-    var displayMetrics = DisplayMetrics()
+    val displayMetrics = DisplayMetrics()
     var displayWidth = displayMetrics.widthPixels
-    var displayHeight = displayMetrics.heightPixels
+    var displayHeigh = displayMetrics.heightPixels
 
     var fish : Fish? = null
     var plankton: NPC? = null
@@ -84,10 +81,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         for(x in NPCList){
             // Change positions with "randomness" for the NPCs
-            var posx = (0..1000).random()
-            var posy = (-1000..-100).random()
             x!!.changeCoordinates(
-                posx, posy
+                /*x*/ (0..displayWidth).shuffled().first(),
+                /*y*/ (displayHeigh * 2 * (-1)..displayHeigh* (displayHeigh/2) *(-1)).shuffled().first()
             );
         }
     }

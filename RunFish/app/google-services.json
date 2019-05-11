@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "429667137232-ak9aqegl6fu37g638qn33avfapt136jd.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.frponsll40alumnes.runfish",
-            "certificate_hash": "c7c7fab9c304c5e59bb496ea9205063c659d038e"
-          }
-        },
-        {
           "client_id": "429667137232-d3v4bs4onusk2unho6p9k5sfh71f8k8p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
