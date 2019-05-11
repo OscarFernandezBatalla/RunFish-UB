@@ -13,14 +13,14 @@ import kotlinx.android.synthetic.main.fragment_options.*
 class options : Fragment() {
 
     //var pres = (activity as MainActivity).presenter
-    var act : MainActivity ?= null
+    var act : HomeActivity ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        act = (activity as MainActivity)
+        act = (activity as HomeActivity)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_options, container, false)
     }
@@ -31,7 +31,7 @@ class options : Fragment() {
         uploadOptionsFragments()
 
         button_comeback_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_menuFragment))
-        button_logOut.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_mainFragment))
+        //button_logOut.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_mainFragment))
         button_audio_music.setOnClickListener {
             this.seekBar_musica.progress = 0
         }

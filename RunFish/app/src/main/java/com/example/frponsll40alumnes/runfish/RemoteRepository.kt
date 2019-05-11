@@ -4,6 +4,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class RemoteRepository: DataModel{
+
+    /*
     /*
     TODO: Add methods:
         getMap() -> Calls other functions.
@@ -68,6 +70,6 @@ class RemoteRepository: DataModel{
         }
 
     }
-
+*/
 
 }

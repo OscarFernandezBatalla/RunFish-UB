@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_shop.*
 
 class shopFragment : Fragment() {
 
-    var act : MainActivity ?= null
+    var act : HomeActivity ?= null
     var ownedFish : MutableList<Boolean>? = null
 
 
@@ -28,7 +28,7 @@ class shopFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        act = (activity as MainActivity)
+        act = (activity as HomeActivity)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_shop, container, false)
     }

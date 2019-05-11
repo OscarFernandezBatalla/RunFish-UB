@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_menu.*
 
 class menuFragment : Fragment() {
 
-    var act : MainActivity ?= null
+    var act : HomeActivity ?= null                //    aixo feia que petes
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class menuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        act = (activity as MainActivity)
+        //act = (activity as MainActivity)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }
@@ -44,6 +44,6 @@ class menuFragment : Fragment() {
     }
 
     fun uploadUsers(){
-        this.text_view_users.text = act!!.presenter.uploadUsers().toString()
+        //this.text_view_users.text = act!!.presenter.uploadUsers().toString()
     }
 }

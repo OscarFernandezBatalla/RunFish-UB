@@ -18,14 +18,14 @@ import kotlinx.android.synthetic.main.fragment_fish.*
 
 class FishFragment : Fragment() {
 
-    var act : MainActivity? = null
+    var act : HomeActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        act = (activity as MainActivity)
+        act = (activity as HomeActivity)
         return inflater.inflate(R.layout.fragment_fish, container, false)
     }
 
