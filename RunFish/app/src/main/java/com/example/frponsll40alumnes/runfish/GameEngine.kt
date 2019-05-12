@@ -16,8 +16,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
 
-
-    var gameOver : Boolean = false
+    //var gameOver : Boolean = false
 
     var life = 100
     var capacity = 0
@@ -103,22 +102,24 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             if(collision(x)){
                 x.collision(fish)
                 if(x is Plankton){
-                    planktonCollected++
+                    //planktonCollected++
                     capacity += x.value
                 }
                 else{
 
-
-
-
-
                     life -= x.value
-                    if(life <=0){
+                    /*if(life <=0){
                         gameOver = true
-                    }
+                    }*/
                 }
             }
         }
+        /*
+        if(life<=0){
+            this.gameOver = false
+        }*/
+
+
 
         // Update scrolling of background
         background!!.update()

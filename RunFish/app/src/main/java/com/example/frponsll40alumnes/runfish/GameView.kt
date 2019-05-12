@@ -90,7 +90,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             textY!!.text= "coordenada Y:   $valy   angle: $angle"
         }
 
-
         ability!!.setOnClickListener {
             ability!!.visibility = View.GONE
             gameEngine.life += 20
@@ -110,28 +109,33 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     }
 
-    /**
-     * Function to update the positions of player and game objects
-     */
-
     fun update() {
 
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
 
-
-        //meters!!.text = (gameEngine.getMeters()-5).toString()
-
         bar_life!!.progress = gameEngine.life
         bar_capacity!!.progress = gameEngine.capacity
 
-        if(gameEngine.gameOver){
-            gameEngine.numberOfDeaths++
+
+        if(bar_life!!.progress <=0){
             this.thread.setRunning(false)
             constraint!!.visibility = View.VISIBLE
         }
-    }
 
+
+        /*
+
+        if(gameEngine.gameOver){
+            //gameEngine.numberOfDeaths++
+            this.thread.setRunning(false)
+            constraint!!.visibility = View.VISIBLE
+        }
+
+        */
+
+
+    }
 
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
