@@ -6,16 +6,21 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.support.constraint.ConstraintLayout
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
+import com.google.api.Distribution
 import io.github.controlwear.virtual.joystick.android.JoystickView
+import kotlinx.android.synthetic.main.fragment_game.view.*
 
 import java.util.jar.Attributes
 import kotlin.math.PI
@@ -31,6 +36,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var textX: TextView? = null
     private var textY: TextView? = null
 
+    private var meters: TextView? = null
+
+
 
     /*
      Prova 1: Posar variables Joystick com a globals
@@ -40,12 +48,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     var valx : Double = 0.0
     var strength: Int = 0
 
-
-
     lateinit var gameEngine: GameEngine
-
-
-
 
     private var joystick: JoystickView? = null
 
@@ -96,13 +99,15 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             valx= cos(angleRad)
             this.strength = strength
 
-            textX!!.text= "coordenada X:   $valx   strength: $strength"
-            textY!!.text= "coordenada Y:   $valy   angle: $angle"
+            textX!!.text = "coordenada X:   $valx   strength: $strength"
+            textY!!.text = "coordenada Y:   $valy   angle: $angle"
 
             //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
             //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
 
         }
+
+
 
         /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE
         plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
@@ -111,6 +116,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 */
         gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
         gameEngine.startGame()
+
+        meters = rootView.findViewById(R.id.textView_meters)
 
         //joystick = findViewById(R.id.joystickView)
 
@@ -134,6 +141,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
+
+        meters!!.text = (gameEngine.getMeters()-5).toString()
 
 
         /* PROVA 3
@@ -168,6 +177,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         //canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
 
         gameEngine.drawView(canvas)
+
+
+
 
 /* PROVA 4
         //TODO: TOT AIXÒ HA D'ANAR AL GAME ENGINE

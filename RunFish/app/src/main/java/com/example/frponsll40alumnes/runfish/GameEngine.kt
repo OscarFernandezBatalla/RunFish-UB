@@ -124,4 +124,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         fish!!.draw(canvas)
     }
 
+    fun getMeters(): Int{
+        return background!!.getY()
+    }
 }
