@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
+import android.widget.ProgressBar
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
@@ -14,6 +15,12 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var numberOfDeaths: Int = 0 //Potser un bool? //Int per les stats
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
+
+
+    var gameOver : Boolean = false
+
+    var life = 100
+    var capacity = 0
 
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
@@ -95,33 +102,43 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         for(x in NPCList){
             if(collision(x)){
                 x.collision(fish)
-                //x!!.action()
+                if(x is Plankton){
+                    planktonCollected++
+                    capacity += x.value
+                }
+                else{
+
+
+
+
+
+                    life -= x.value
+                    if(life <=0){
+                        gameOver = true
+                    }
+                }
             }
         }
 
         // Update scrolling of background
         background!!.update()
 
-        // Check if player is still alive
-        if(fish!!.isDead){
-            // Stop game
-        }
-
-        //TODO: For de tots els NPC de la array i dins: NPC.action()
     }
 
-    //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
     fun drawView(canvas : Canvas){
         // Draw background
         background!!.draw(canvas)
 
         // Draw npcs
         for(x in NPCList){
-            x!!.draw(canvas)
+            x.draw(canvas)
         }
 
         // Draw player
         fish!!.draw(canvas)
     }
 
+    fun getMeters(): Int{
+        return background!!.getY()
+    }
 }

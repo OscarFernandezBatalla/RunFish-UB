@@ -1,26 +1,26 @@
 package com.example.frponsll40alumnes.runfish
 
-import android.annotation.SuppressLint
+
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+
+import android.support.constraint.ConstraintLayout
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
+
+import android.widget.ProgressBar
 import android.widget.TextView
-import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
-import io.github.controlwear.virtual.joystick.android.JoystickView
 
-import java.util.jar.Attributes
+import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
@@ -31,26 +31,23 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var textX: TextView? = null
     private var textY: TextView? = null
 
+    private var constraint : ConstraintLayout? = null
 
-    /*
-     Prova 1: Posar variables Joystick com a globals
-     */
+    private var bar_life : ProgressBar? = null
+    private var bar_capacity : ProgressBar? = null
+
+    private var ability : Button? = null
+    
     var angleRad : Double = 0.0
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
 
-
-
     lateinit var gameEngine: GameEngine
-
-
-
 
     private var joystick: JoystickView? = null
 
     init {
-
         // add callback
         holder.addCallback(this)
 
@@ -67,30 +64,23 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
             retry = false
         }
     }
 
     override fun surfaceCreated(p0: SurfaceHolder?) {
-
-
-        /*
-
-        LA CLAVE ES EL ROOTVIEW.
-
-         */
         // Crear joystick virtual
+        constraint = rootView.findViewById(R.id.game_over_layout)
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
 
+        bar_life = rootView.findViewById(R.id.life_bar)
+        bar_capacity = rootView.findViewById(R.id.bar_capacity)
+
+        ability = rootView.findViewById(R.id.button_habilitat)
+
         joystick!!.setOnMoveListener { angle, strength ->
-
-            //var angleRad = angle * PI / 180
-
-            //var valy= sin(angleRad)
-            //var valx= cos(angleRad)
             angleRad = angle * PI / 180
             valy= sin(angleRad)
             valx= cos(angleRad)
@@ -98,93 +88,55 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
             textX!!.text= "coordenada X:   $valx   strength: $strength"
             textY!!.text= "coordenada Y:   $valy   angle: $angle"
-
-            //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
-            //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
-
         }
 
-        /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE
-        plankton = Plankton(BitmapFactory.decodeResource(resources, R.drawable.placton))
-        shark = EnemyShark(BitmapFactory.decodeResource(resources, R.drawable.shark_top))
-        fish = Anemone(BitmapFactory.decodeResource(resources, R.drawable.anemone_reduced))
-*/
+
+        ability!!.setOnClickListener {
+            ability!!.visibility = View.GONE
+            gameEngine.life += 20
+            android.os.Handler().postDelayed({
+                ability!!.visibility = View.VISIBLE
+            }, 8000)
+        }
+
         gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
         gameEngine.startGame()
-
-        //joystick = findViewById(R.id.joystickView)
-
-        //button = findViewById(R.id.buttton)
 
         thread.setRunning(true)
         thread.start()
     }
 
     override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
     }
 
     /**
      * Function to update the positions of player and game objects
      */
-    //@SuppressLint("SetTextI18n")
-    fun update() {
 
+    fun update() {
 
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
 
 
-        /* PROVA 3
-        //TODO : Aquí crec que hauriem de fer un gameEngine.update() el qual actualitzarà tot com a engine.
-        plankton!!.update()
-        shark!!.update()
-        fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
-        //fish!!.update(3)
-        //fish!!.update(joystick!!.normalizedX)
-        //textX!!.text="hola"
-           */
+        //meters!!.text = (gameEngine.getMeters()-5).toString()
+
+        bar_life!!.progress = gameEngine.life
+        bar_capacity!!.progress = gameEngine.capacity
+
+        if(gameEngine.gameOver){
+            gameEngine.numberOfDeaths++
+            this.thread.setRunning(false)
+            constraint!!.visibility = View.VISIBLE
+        }
     }
 
 
-    /**
-     * Everything that has to be drawn on Canvas
-     */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
-
-        //if (holder.surface.isValid){
-            /*
-            canvas.drawColor(Color.argb(255,0,0,0))
-
-            paint.color = Color.argb(255,0,255,0)
-            //paint.color = Color.argb(255,255,255,255)
-            paint.textSize = 70f
-            canvas.drawText("dkjkdjktljdkljdkljkfdjtlkgjdkgj", 20f, 75f, paint)
-*/
-
-
-        //canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
-
         gameEngine.drawView(canvas)
-
-/* PROVA 4
-        //TODO: TOT AIXÒ HA D'ANAR AL GAME ENGINE
-        plankton!!.draw(canvas)
-        shark!!.draw(canvas)
-        fish!!.draw(canvas)
-        //textX!!.text="hola2"
-
-*/
-
-        //textX!!.text = "hola"
-        //textY!!.text = joystick!!.normalizedY.toString()
-        //buttton!!.draw(canvas)
-
-
-        //setBackgroundResource(R.drawable.fondo_marino)
-        //}
     }
+
 
 }
