@@ -141,7 +141,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
         presenter.updateJoystickInf(valx,valy,strength)
         presenter.updateView()
-        meters!!.text = (presenter.updateMeters()-5).toString()
+        var metersString = (presenter.updateMeters()-5).toString()
+        meters!!.text = metersString
         //gameEngine.getJoystickInf(valx, valy, strength)
         //gameEngine.updateView()
 

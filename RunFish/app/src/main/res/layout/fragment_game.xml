@@ -267,7 +267,6 @@
                 app:layout_constraintStart_toStartOf="parent"
         />
         <TextView
-                android:text="@string/meters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_meters" style="@style/MistralStyle"
@@ -276,8 +275,8 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toEndOf="@+id/life_bar"
                 android:layout_marginStart="8dp"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton_pause"/>
+                app:layout_constraintHorizontal_bias="0.931"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_pause" android:text=" "/>
 
         <io.github.controlwear.virtual.joystick.android.JoystickView
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
