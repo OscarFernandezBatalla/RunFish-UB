@@ -13,7 +13,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
@@ -28,8 +27,6 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
-
-
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     private val thread: GameThread
@@ -39,14 +36,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var textX: TextView? = null
     private var textY: TextView? = null
 
-
     private var meters: TextView? = null
-
-
-    private var bar_life : ProgressBar? = null
-    private var bar_capacity : ProgressBar? = null
-
-    private var ability : Button? = null
 
 
 
@@ -93,16 +83,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         LA CLAVE ES EL ROOTVIEW.
 
          */
-
         // Crear joystick virtual
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
-
-        bar_life = rootView.findViewById(R.id.life_bar)
-        bar_capacity = rootView.findViewById(R.id.bar_capacity)
-
-        ability = rootView.findViewById(R.id.button_habilitat)
 
         joystick!!.setOnMoveListener { angle, strength ->
 
@@ -123,16 +107,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
         }
 
-
-
-
-        ability!!.setOnClickListener {
-            ability!!.visibility = View.GONE
-            gameEngine.life += 20
-            android.os.Handler().postDelayed({
-                ability!!.visibility = View.VISIBLE
-            }, 8000)
-        }
 
 
         /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE
@@ -168,11 +142,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
 
-
         meters!!.text = (gameEngine.getMeters()-5).toString()
-
-        bar_life!!.progress = gameEngine.life
-        bar_capacity!!.progress = gameEngine.capacity
 
 
         /* PROVA 3
@@ -228,6 +198,5 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         //setBackgroundResource(R.drawable.fondo_marino)
         //}
     }
-
 
 }
