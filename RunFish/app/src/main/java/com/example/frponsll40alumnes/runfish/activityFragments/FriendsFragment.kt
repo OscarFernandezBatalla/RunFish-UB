@@ -34,8 +34,14 @@ class FriendsFragment : Fragment() {
         imageButton_cross.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_friendsFragment_to_menuFragment))
 
         button_Invite.setOnClickListener {
+            //var posibleFriend = edit_text_username_invite.text.toString()
+            //addFriend(posibleFriend)
             edit_text_username_invite.setText("")
         }
+    }
+
+    fun addFriend(friendName: String){
+        act!!.presenter.addFriend(friendName)
     }
 
     /*fun uploadFriendsFragment(){

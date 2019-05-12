@@ -115,6 +115,10 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadLevels()
     }
 
+    fun addFriend(friendName: String) {
+        model.addFriend(friendName)
+    }
+
 /*
     override fun updateHp(){
         viewActivity.life_bar.progress = 10

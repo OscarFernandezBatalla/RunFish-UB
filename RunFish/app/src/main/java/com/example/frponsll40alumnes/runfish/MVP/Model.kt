@@ -22,7 +22,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var user = FirebaseAuth.getInstance().currentUser!!.uid
 
 
-    private var friends : MutableList<String> = mutableListOf()
+    private var friends : List<String> = mutableListOf()
 
 
     /*stats*/
@@ -40,6 +40,11 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statNumberOfDeath" to statNumberOfDeath,
         "statMurderedFish" to statMurderedFish,
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
+
+
+    var friendsMap: HashMap<String, List<String>> = hashMapOf(
+        "friends" to friends
+    )
 
 
     private var levelsUnlocked : Int = 1
@@ -131,6 +136,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         getPlanctonFromCloud()
         getLevelsFromCloud()
         getFishFromCloud()
+        //getFriendsFromCloud()
     }
 
 
@@ -446,6 +452,36 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
     }
 
+    fun addFriend(friendName: String) {
+        if (db.collection("usuarios").document("$friendName") != null){
+            friends += "friendName"
+            setFriendsToCloud()
+        }
+    }
+
+
+
+    fun getFriendsFromCloud() {
+        db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    friends = document.data!!.get("friendList").toString().split("")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    fun setFriendsToCloud(){
+        this.actualitzaFriendsMap()
+        db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
+    }
+
+    fun actualitzaFriendsMap(){
+        friendsMap["friends"] = friends
+    }
 
 
 
