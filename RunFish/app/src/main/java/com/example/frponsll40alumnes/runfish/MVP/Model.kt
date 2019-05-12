@@ -130,7 +130,14 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
     init{
-        checkUserFromCloud()
+        //checkUserFromCloud()
+        setStatsToCloud()
+        setOptionsToCloud()
+        setPlanctonToCloud()
+        setLevelsToCloud()
+        setFishToCloud()
+        //setFriendsToCloud()
+
         getStatsFromCloud()
         getOptionsFromCloud()
         getPlanctonFromCloud()
@@ -292,20 +299,20 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    fun checkUserFromCloud(){
-        var user = db.collection("usuarios").document("$user")
-        if(user == null){
-            user.collection("userContext").document("stats").set(statsMap)
-            user.collection("userContext").document("options").set(optionsMap)
-            user.collection("userContext").document("plancton").set(planctonMap)
-            user.collection("userContext").document("levels").set(levelsMap)
-            user.collection("userContext").document("levels").set(fishMap)
-        }
-    }
+    /*fun checkUserFromCloud(){
+        var usari = db.collection("usuarios").document("$user")
+        //if(usari == null){
+        usari.collection("userContext").document("stats").set(statsMap)
+        usari.collection("userContext").document("options").set(optionsMap)
+        usari.collection("userContext").document("plancton").set(planctonMap)
+        usari.collection("userContext").document("levels").set(levelsMap)
+        usari.collection("userContext").document("levels").set(fishMap)
+        //usari.collection("userContext").document("friends").set(friendsMap)
+        //}
+    }*/
 
 
     fun setStatsToCloud(){
-
         db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
     }
 
@@ -453,10 +460,10 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     fun addFriend(friendName: String) {
-        if (db.collection("usuarios").document("$friendName") != null){
-            friends += "friendName"
-            setFriendsToCloud()
-        }
+        //if (db.collection("usuarios").document("$friendName") != null){
+        friends += "friendName"
+        setFriendsToCloud()
+        //}
     }
 
 
