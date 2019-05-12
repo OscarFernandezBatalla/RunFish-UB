@@ -36,6 +36,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var bar_life : ProgressBar? = null
     private var bar_capacity : ProgressBar? = null
 
+    private var ability : Button? = null
+
 
     /*
      Prova 1: Posar variables Joystick com a globals
@@ -94,6 +96,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         bar_life = rootView.findViewById(R.id.life_bar)
         bar_capacity = rootView.findViewById(R.id.bar_capacity)
 
+        ability = rootView.findViewById(R.id.button_habilitat)
+
         joystick!!.setOnMoveListener { angle, strength ->
 
             //var angleRad = angle * PI / 180
@@ -111,6 +115,12 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             //fish!!.update((valx*40).toInt(), -(valy*40).toInt())
             //fish!!.update((valx*strength/3).toInt(), -(valy*strength/3).toInt())
 
+        }
+
+
+
+        ability!!.setOnClickListener {
+            bar_life!!.progress += 50
         }
 
         /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE
