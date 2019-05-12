@@ -19,7 +19,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var displayWidth = displayMetrics.widthPixels
     var displayHeight = displayMetrics.heightPixels
 
-    var fish : Fish? = null
+    var fishs : Fish? = null
 
     var background : Map? = null
 
@@ -38,7 +38,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     fun startGame(){
 
         // Create player fish
-        fish = fishFactory.createFish(player1.fishType, context);
+        fishs = fishFactory.createFish(player1.fishType, context);
 
         // Create background
         background = Map(context)
@@ -70,10 +70,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     }
 
     fun collision(npc: NPC): Boolean{
-        if (fish!!.x < npc.x + npc.width &&
-            fish!!.x + fish!!.width > npc.x &&
-            fish!!.y < npc.y + npc.height &&
-            fish!!.height + fish!!.y > npc.y) {
+        if (fishs!!.x < npc.x + npc.width &&
+            fishs!!.x + fishs!!.width > npc.x &&
+            fishs!!.y < npc.y + npc.height &&
+            fishs!!.height + fishs!!.y > npc.y) {
             return true
             // ¡colision detectada!
         }
@@ -84,7 +84,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     //Mètode que fa un update de cada objecte
     fun updateView(){
         // Update positions for player's fish
-        fish!!.update(valx, valy, strength)
+        fishs!!.update(valx, valy, strength)
 
         // Update positions for npcs
         for(x in NPCList){
@@ -94,7 +94,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         // Check if npcs had a collision
         for(x in NPCList){
             if(collision(x)){
-                x.collision(fish)
+                x.collision(fishs)
                 //x!!.action()
             }
         }
@@ -103,7 +103,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         background!!.update()
 
         // Check if player is still alive
-        if(fish!!.isDead){
+        if(fishs!!.isDead){
             // Stop game
         }
 
@@ -121,7 +121,30 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         }
 
         // Draw player
-        fish!!.draw(canvas)
+        fishs!!.draw(canvas)
+    }
+
+    fun getNPC(): MutableList<NPC> {
+        return this.NPCList
+    }
+
+    fun getMap(): Map {
+        return this.background!!
+    }
+
+    fun getFish(): Fish {
+        return this.fishs!!
+    }
+
+    fun updateMeters(): Int{
+        //var y = level.getMetersLevel() //100
+        //var x = background!!.getImagePixel()  // -1500
+
+        return background!!.getY()
+        //-1500 -> 100
+        //0 -> x
+
+        //return this.meters
     }
 
 }

@@ -17,7 +17,6 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
         while (isRunning){
             var startTime = System.nanoTime()
             canvas = null
-
             try{
                 canvas = this.surfaceHolder.lockCanvas()
                 synchronized(surfaceHolder) {
