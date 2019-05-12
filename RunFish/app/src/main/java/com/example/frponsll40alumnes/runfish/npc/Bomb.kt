@@ -10,8 +10,8 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 
 class Bomb(context: Context, damage : Int): NPC(damage) {
 
-    private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+    //private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
+    //private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.mina)
     override var width: Int = image.width
     override var height: Int = image.height

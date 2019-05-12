@@ -8,7 +8,7 @@ open class Level (var numLevel : Int, val difficultyLevel : DifficultyType, var 
 {
 
     var npcs = HashMap<NPCType, Int>()
-    val difficultyFactory = DifficultyFactory()
+    private val difficultyFactory = DifficultyFactory()
     var difficulty = difficultyFactory.createDifficulty(difficultyLevel)
 
 

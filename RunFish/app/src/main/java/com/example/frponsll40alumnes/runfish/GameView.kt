@@ -1,10 +1,12 @@
 package com.example.frponsll40alumnes.runfish
 
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Canvas
 
 import android.support.constraint.ConstraintLayout
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
@@ -33,6 +35,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var textY: TextView? = null
 
     private var constraint : ConstraintLayout? = null
+
+    private var paused : Boolean = false
 
     private var bar_life : ProgressBar? = null
     private var bar_capacity : ProgressBar? = null
@@ -123,14 +127,28 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         bar_life!!.progress = gameEngine.life
         bar_capacity!!.progress = gameEngine.capacity
 
+        /* in game pause */
+        constraint = rootView.findViewById(R.id.pause_fragment)
+        if(constraint!!.visibility == View.VISIBLE){
+            paused = true
+            this.thread.setRunning(false)
+        }else if(paused && constraint!!.visibility != View.VISIBLE){
+            Log.w(TAG, "QWE Resuming")
+            this.thread.setRunning(true)
+            //this.thread.run()
+            //TODO: No retorna al game
+        }
+
 
         if(bar_life!!.progress <=0){
             this.thread.setRunning(false)
+            Log.w(TAG, "QWE You died")
             constraint = rootView.findViewById(R.id.game_over_layout)
             constraint!!.visibility = View.VISIBLE
         }
 
         if(gameEngine.background!!.getY() >= 0){
+            Log.w(TAG, "QWE You win")
             this.thread.setRunning(false)
             constraint = rootView.findViewById(R.id.successful_layout)
             constraint!!.visibility = View.VISIBLE

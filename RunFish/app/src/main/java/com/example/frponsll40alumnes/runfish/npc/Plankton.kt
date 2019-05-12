@@ -15,8 +15,8 @@ class Plankton(context: Context, points : Int): NPC(points) {
 
 
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.placton)
-    private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
+    //private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
+    //private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
     override var width: Int = image.width
     override var height: Int = image.height
