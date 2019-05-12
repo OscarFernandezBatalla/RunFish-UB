@@ -41,20 +41,6 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
      * update properties for the game object
      */
     override fun update() {
-        // val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
-
-/*
-        if (x > screenWidth - image.width || x < image.width) {
-            xVelocity = xVelocity * -1
-        }
-        if (y > screenHeight - image.height || y < image.height) {
-            yVelocity = yVelocity * -1
-        }
-
-        x += (xVelocity)
-        y += (yVelocity)
-*/
-
         if (vertical){
             y+= speed
         }

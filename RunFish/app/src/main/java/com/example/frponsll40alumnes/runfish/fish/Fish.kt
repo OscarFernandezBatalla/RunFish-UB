@@ -14,8 +14,6 @@ abstract class Fish (
                      var capacity : Int,
                      var ability : String,
                      var price : Int
-
-
 ) : Position, Movable, Dimension, DrawableObject {
 
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
@@ -28,6 +26,8 @@ abstract class Fish (
     override var speed: Int = 70
     override lateinit var image: Bitmap
 
+    var isDead : Boolean = false
+
 
     /* STATS */
     val maxLife : Int = life
@@ -39,7 +39,7 @@ abstract class Fish (
     fun looseLife(damage : Int){
         this.life -= damage
         if(this.life <= this.minLife){
-            //die();
+            die();
         }
     }
 
@@ -63,6 +63,10 @@ abstract class Fish (
         } else {
             this.capacity -= cargo
         }
+    }
+
+    fun die(){
+        this.isDead = true
     }
 
     fun useAbility(ability : AbilityStrategy){
