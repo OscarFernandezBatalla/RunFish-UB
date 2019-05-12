@@ -23,6 +23,8 @@ class HomeActivity : AppCompatActivity() {
         signOut = findViewById(R.id.sign_out_button)
         signOut.visibility = View.GONE
         setupUI()
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
     }
 
     private fun setupUI() {
