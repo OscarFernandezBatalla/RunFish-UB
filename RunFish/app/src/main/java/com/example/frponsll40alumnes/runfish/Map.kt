@@ -39,8 +39,4 @@ class Map (context: Context){
             y+= (5)
         }
     }
-
-    fun getY(): Int {
-        return y
-    }
 }
