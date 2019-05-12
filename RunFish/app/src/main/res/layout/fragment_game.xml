@@ -277,7 +277,7 @@
                 app:layout_constraintStart_toEndOf="@+id/life_bar"
                 android:layout_marginStart="8dp"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton_pause"/>
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_pause" android:visibility="gone"/>
 
         <io.github.controlwear.virtual.joystick.android.JoystickView
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -332,7 +332,6 @@
                 app:layout_constraintVertical_bias="0.654" android:background="@drawable/fusta_animation"
                 style="@style/MistralStyle" android:visibility="gone"/>
         <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/valuex" android:layout_marginTop="8dp"
@@ -342,7 +341,6 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintVertical_bias="0.141" app:layout_constraintTop_toBottomOf="@+id/valuey"/>
         <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/valuey" android:layout_marginTop="8dp"

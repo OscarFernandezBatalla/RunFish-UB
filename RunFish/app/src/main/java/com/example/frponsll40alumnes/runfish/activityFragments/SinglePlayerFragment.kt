@@ -13,15 +13,20 @@ import kotlinx.android.synthetic.main.fragment_single_player.*
 
 class SinglePlayerFragment : Fragment() {
 
+    var act : HomeActivity? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        act = (activity as HomeActivity)
         return inflater.inflate(R.layout.fragment_single_player, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        act!!.signOut.visibility = View.GONE
+
         ReturnDirection =
             LevelDirection.SINGLEPLAYER
         super.onViewCreated(view, savedInstanceState)

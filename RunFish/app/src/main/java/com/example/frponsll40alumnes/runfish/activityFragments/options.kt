@@ -20,6 +20,7 @@ class Options : Fragment() {
     ): View? {
 
         act = (activity as HomeActivity)
+        act!!.signOut.visibility = View.VISIBLE
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_options, container, false)
     }

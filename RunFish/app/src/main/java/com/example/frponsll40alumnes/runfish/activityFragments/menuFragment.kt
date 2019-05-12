@@ -18,6 +18,7 @@ class menuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         act = (activity as HomeActivity)
+        act!!.signOut.visibility = View.GONE
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }

@@ -38,6 +38,8 @@ class FishFragment : Fragment() {
         button_swordFish.visibility = View.GONE
         button_shark.visibility = View.GONE
 
+        act!!.signOut.visibility = View.GONE
+
         uploadFishOwned()
 
         if (ReturnDirection == LevelDirection.SINGLEPLAYER) {

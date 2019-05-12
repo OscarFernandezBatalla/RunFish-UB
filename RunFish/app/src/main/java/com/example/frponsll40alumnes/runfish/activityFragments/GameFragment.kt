@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment() {
 
+    var act : HomeActivity? = null
     //lateinit var joystick : JoystickView
     lateinit var gameView : GameView
     lateinit var game : FrameLayout
@@ -42,6 +43,11 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
+
+        act = (activity as HomeActivity)
+
+        act!!.signOut.visibility = View.GONE
+
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
         return game
@@ -53,11 +59,11 @@ class GameFragment : Fragment() {
         imageButton_pause.setOnClickListener(){
             pause_fragment.bringToFront()
             pause_fragment.visibility=View.VISIBLE
+            //gameView.thread.setRunning(false)
         }
 
-        button_restart.setOnClickListener(){
-            pause_fragment.visibility=View.GONE
-        }
+        button_restart.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
+
         button_resume.setOnClickListener(){
             pause_fragment.visibility=View.GONE
         }
@@ -80,17 +86,12 @@ class GameFragment : Fragment() {
         button_retry.setOnClickListener(){
             game_over_layout.visibility=View.GONE
         }
+        button_back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
 
-        button_back.setOnClickListener(){
-            game_over_layout.visibility=View.GONE
-        }
-
-        button_back_successful.setOnClickListener(){
-           successful_layout.visibility=View.GONE
-        }
+        button_back_successful.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
 
         button_next_level.setOnClickListener(){
-            successful_layout.visibility=View.GONE
+            //successful_layout.visibility=View.GONE
         }
     }
 }

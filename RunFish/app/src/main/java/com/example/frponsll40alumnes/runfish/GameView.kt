@@ -25,7 +25,7 @@ import kotlin.math.sin
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     //private var meters : TextView? = null
-    private val thread: GameThread
+    val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
     private var fish : Fish ?= null
@@ -89,8 +89,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             valx= cos(angleRad)
             this.strength = strength
 
-            textX!!.text= "coordenada X:   $valx   strength: $strength"
-            textY!!.text= "coordenada Y:   $valy   angle: $angle"
+            textX!!.text= ""//"coordenada X:   $valx   strength: $strength"
+            textY!!.text= ""//"coordenada Y:   $valy   angle: $angle"
         }
 
 
