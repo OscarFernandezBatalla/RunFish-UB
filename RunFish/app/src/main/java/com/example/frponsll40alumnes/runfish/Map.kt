@@ -10,12 +10,6 @@ class Map (context: Context){
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg)
     private var x : Int = 0
     private var y : Int = -(image.height - Resources.getSystem().displayMetrics.heightPixels)
-    private var pos: Int = image.height + Resources.getSystem().displayMetrics.heightPixels
-    private var imagePixel = image.height
-
-    fun getY(): Int{
-        return y
-    }
 
     /**
      * Draws the object on to the canvas.
@@ -42,17 +36,7 @@ class Map (context: Context){
         y += (yVelocity)
 */
         if(y <= 0){
-            //y=0 -> 85 metres (100%)
-            //y al principi -> 0 metres (0%)
             y+= (5)
-
-
         }
     }
-
-    fun getImagePixel(): Int{
-        return imagePixel
-    }
-
-
 }

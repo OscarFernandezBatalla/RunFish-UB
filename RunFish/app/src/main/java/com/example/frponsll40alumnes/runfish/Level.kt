@@ -18,9 +18,5 @@ open class Level (var numLevel : Int, val difficultyLevel : DifficultyType, var 
         npcs.put(NPCType.ENEMYSHARK, difficulty!!.getNSharks())
     }
 
-    fun getMetersLevel(): Int{
-        return meters
-    }
-
 }
 

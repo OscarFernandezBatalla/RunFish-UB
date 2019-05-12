@@ -11,21 +11,18 @@ import android.view.SurfaceView
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
-import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 import io.github.controlwear.virtual.joystick.android.JoystickView
-import org.w3c.dom.Text
 
 import java.util.jar.Attributes
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
-class GameView(context: Context, var presenter: Presenter) : SurfaceView(context), SurfaceHolder.Callback{
+class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     private val thread: GameThread
     private var plankton: Plankton? = null
@@ -33,10 +30,6 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var fish : Fish ?= null
     private var textX: TextView? = null
     private var textY: TextView? = null
-    private var meters: TextView? = null
-
-
-
 
 
     /*
@@ -47,9 +40,12 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     var valx : Double = 0.0
     var strength: Int = 0
 
-    var paint: Paint = Paint()
+
 
     lateinit var gameEngine: GameEngine
+
+
+
 
     private var joystick: JoystickView? = null
 
@@ -85,13 +81,9 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
          */
         // Crear joystick virtual
-        meters = rootView.findViewById<TextView>(R.id.textView_meters)
-
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
-
-
 
         joystick!!.setOnMoveListener { angle, strength ->
 
@@ -139,11 +131,9 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     //@SuppressLint("SetTextI18n")
     fun update() {
 
-        presenter.updateJoystickInf(valx,valy,strength)
-        presenter.updateView()
-        meters!!.text = (presenter.updateMeters()-5).toString()
-        //gameEngine.getJoystickInf(valx, valy, strength)
-        //gameEngine.updateView()
+
+        gameEngine.getJoystickInf(valx, valy, strength)
+        gameEngine.updateView()
 
 
         /* PROVA 3
@@ -176,22 +166,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
 
         //canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.fondo_marino),0f,0f,null)
-        var NPC: MutableList<NPC> = presenter.getNPC()
-        var map: Map = presenter.getMap()
-        var fish: Fish = presenter.getFish()
 
-
-        map.draw(canvas)
-        for(x in NPC){
-            x.draw(canvas)
-        }
-        //canvas.drawText("Metres",20f,64f, paint)
-        fish.draw(canvas)
-
-
-
-
-        //gameEngine.drawView(canvas)
+        gameEngine.drawView(canvas)
 
 /* PROVA 4
         //TODO: TOT AIXÒ HA D'ANAR AL GAME ENGINE
@@ -211,8 +187,4 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //}
     }
 
-
-    fun hola(){
-        meters!!.text="100"
-    }
 }

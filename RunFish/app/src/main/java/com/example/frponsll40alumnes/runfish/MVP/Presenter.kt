@@ -1,19 +1,13 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
-import android.content.Context
 import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.activityFragments.MainActivity
 import com.example.frponsll40alumnes.runfish.GameEngine
-import com.example.frponsll40alumnes.runfish.Map
-import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
-import com.example.frponsll40alumnes.runfish.fish.Fish
-import com.example.frponsll40alumnes.runfish.npc.NPC
-
 //import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
@@ -124,37 +118,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     fun addFriend(friendName: String) {
         model.addFriend(friendName)
     }
-
-
-    fun startGame(player1: Player, player2: Player? = null, context: Context){
-        gameEngine = GameEngine(player1,player2,context)
-        gameEngine!!.startGame()
-    }
-
-    fun updateJoystickInf(valx: Double, valy: Double, strength: Int) {
-        gameEngine!!.getJoystickInf(valx, valy, strength)
-    }
-
-    fun updateView() {
-        gameEngine!!.updateView()
-    }
-
-    fun getNPC(): MutableList<NPC> {
-        return gameEngine!!.getNPC()
-    }
-
-    fun getMap(): Map {
-        return gameEngine!!.getMap()
-    }
-
-    fun getFish(): Fish {
-        return gameEngine!!.getFish()
-    }
-
-    fun updateMeters(): Int {
-        return gameEngine!!.updateMeters()
-    }
-
 
 /*
     override fun updateHp(){

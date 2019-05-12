@@ -10,9 +10,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.Navigation
-import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.GameView
-import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.R
 import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.*
@@ -23,7 +21,6 @@ class GameFragment : Fragment() {
     lateinit var gameView : GameView
     lateinit var game : FrameLayout
     lateinit var gameWidgets: LinearLayout
-    var act : HomeActivity ?= null
 
     var posX : Int = 0
     var posY : Int = 0
@@ -33,9 +30,8 @@ class GameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //act!!.signOut.visibility = View.GONE
-        act = (activity as HomeActivity)
         game = FrameLayout(this.context)
-        gameView = GameView(this.context!!,act!!.presenter)
+        gameView = GameView(this.context!!)
         gameWidgets = LinearLayout(context)
         game.addView(gameView)
         game.addView(gameWidgets)
@@ -48,8 +44,6 @@ class GameFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
-        //Mirar de ferho amb multiplayer
-        act!!.presenter.startGame(Player(FishType.ANEMONE),context = this.gameView.context)
         return game
     }
 
