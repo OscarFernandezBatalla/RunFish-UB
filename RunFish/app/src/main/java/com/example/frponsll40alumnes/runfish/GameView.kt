@@ -24,6 +24,7 @@ import kotlin.math.sin
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
+    //private var meters : TextView? = null
     private val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
@@ -70,8 +71,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     override fun surfaceCreated(p0: SurfaceHolder?) {
         // Crear joystick virtual
-        constraint = rootView.findViewById(R.id.game_over_layout)
+
+        //constraint = rootView.findViewById(R.id.game_over_layout)
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
+        //meters = rootView.findViewById(R.id.textView_meters)
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
 
@@ -89,6 +92,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
             textX!!.text= "coordenada X:   $valx   strength: $strength"
             textY!!.text= "coordenada Y:   $valy   angle: $angle"
         }
+
 
         ability!!.setOnClickListener {
             ability!!.visibility = View.GONE
@@ -111,6 +115,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     fun update() {
 
+        //meters!!.text = (gameEngine.getMeters()-5).toString()
+
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
 
@@ -120,6 +126,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
         if(bar_life!!.progress <=0){
             this.thread.setRunning(false)
+            constraint = rootView.findViewById(R.id.game_over_layout)
+            constraint!!.visibility = View.VISIBLE
+        }
+
+        if(gameEngine.background!!.getY() >= 0){
+            this.thread.setRunning(false)
+            constraint = rootView.findViewById(R.id.successful_layout)
             constraint!!.visibility = View.VISIBLE
         }
 
