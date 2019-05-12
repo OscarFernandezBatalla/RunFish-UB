@@ -327,7 +327,6 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("fish").set(fishMap)
     }
 
-
     fun getStatsFromCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").get().addOnSuccessListener { document ->
             if (document != null) {
@@ -343,54 +342,6 @@ class Model (var presenter: Presenter) : Contract.Model {
             Log.d(TAG, "get failed with ", exception)
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     fun setOptionsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("options").set(optionsMap)

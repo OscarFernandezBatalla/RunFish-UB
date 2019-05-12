@@ -15,6 +15,9 @@ import com.example.frponsll40alumnes.runfish.npc.*
 import kotlin.random.Random
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
+
+    var numLevel = 0
+
     var planktonCollected: Int = 0
     var numberOfDeaths: Int = 0 //Potser un bool? //Int per les stats
     var murderedFish: Int = 0
@@ -37,7 +40,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
-    var level = Level(0, DifficultyType.VERY_HARD)
+    var level = Level(0, DifficultyType.VERY_HARD, 0)
 
     var valy : Double = 0.0
     var valx : Double = 0.0
@@ -97,10 +100,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         for(x in NPCList){
             // Change positions with "randomness" for the NPCs
             var posx = (0..displayWidth).random()
-            var posy = (0..displayHeight).random() - displayHeight
+            var posy = (-4000..0).random()
             x.changeCoordinates(
                 posx, posy
-            );
+            )
         }
     }
 
@@ -163,4 +166,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         fish!!.draw(canvas)
     }
+
+    /*
+    fun selectedLevel(level : Int){
+        this.numLevel = level
+    }
+    */
 }
