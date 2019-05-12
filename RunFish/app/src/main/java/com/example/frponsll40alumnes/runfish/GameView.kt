@@ -10,12 +10,14 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 import io.github.controlwear.virtual.joystick.android.JoystickView
+import kotlinx.android.synthetic.main.fragment_game.view.*
 
 import java.util.jar.Attributes
 import kotlin.math.PI
@@ -30,6 +32,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
     private var fish : Fish ?= null
     private var textX: TextView? = null
     private var textY: TextView? = null
+
+    private var bar_life : ProgressBar? = null
+    private var bar_capacity : ProgressBar? = null
 
 
     /*
@@ -80,10 +85,14 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         LA CLAVE ES EL ROOTVIEW.
 
          */
+
         // Crear joystick virtual
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
+
+        bar_life = rootView.findViewById(R.id.life_bar)
+        bar_capacity = rootView.findViewById(R.id.bar_capacity)
 
         joystick!!.setOnMoveListener { angle, strength ->
 
@@ -134,6 +143,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
+
+        bar_life!!.progress -= 1
+        bar_capacity!!.progress -= 1
 
 
         /* PROVA 3
@@ -186,5 +198,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         //setBackgroundResource(R.drawable.fondo_marino)
         //}
     }
+
 
 }

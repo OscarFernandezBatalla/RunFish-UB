@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
+import android.widget.ProgressBar
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
@@ -42,6 +43,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         // Create background
         background = Map(context)
+
+
 
         // Create npcs for the level
         for((key, value) in level.npcs){
@@ -107,7 +110,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             // Stop game
         }
 
-        //TODO: For de tots els NPC de la array i dins: NPC.action()
+
+
+
     }
 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
