@@ -113,58 +113,52 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_multiplayer"
             android:background="@drawable/new_tablon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/button_singleplayer" style="@style/MistralStyle"/>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/button_singleplayer" style="@style/MistralStyle"
+            app:layout_constraintEnd_toEndOf="@+id/button_singleplayer"
+            app:layout_constraintStart_toStartOf="@+id/button_singleplayer"/>
     <Button
             android:text="@string/singleplayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_singleplayer"
             android:background="@drawable/new_tablon"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton_friends" style="@style/MistralStyle"/>
+            style="@style/MistralStyle" android:layout_marginTop="24dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_view_menu" android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/imageButton_friends"/>
     <Button
             android:text="@string/options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_options"
             android:background="@drawable/new_tablon"
-            app:layout_constraintEnd_toEndOf="parent"
             style="@style/MistralStyle"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/button_stats"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/button_stats" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintStart_toStartOf="@+id/button_stats"
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintEnd_toEndOf="@+id/button_stats"/>
     <Button
             android:text="@string/shop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_shop"
             android:background="@drawable/new_tablon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/button_multiplayer" style="@style/MistralStyle"/>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/button_multiplayer" style="@style/MistralStyle"
+            app:layout_constraintStart_toStartOf="@+id/button_multiplayer"
+            app:layout_constraintEnd_toEndOf="@+id/button_multiplayer"/>
     <Button
             android:text="@string/stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_stats"
             android:background="@drawable/new_tablon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/button_shop" style="@style/MistralStyle"/>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/button_shop" style="@style/MistralStyle"
+            app:layout_constraintEnd_toEndOf="@+id/button_shop"
+            app:layout_constraintStart_toStartOf="@+id/button_shop"/>
     <TextView
             android:text="@string/menu"
             android:layout_width="wrap_content"
