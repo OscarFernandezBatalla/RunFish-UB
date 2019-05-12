@@ -154,8 +154,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
         gameEngine.getJoystickInf(valx, valy, strength)
         gameEngine.updateView()
 
-        bar_life!!.progress -= 1
-        bar_capacity!!.progress -= 1
+        bar_life!!.progress = gameEngine.life
+        bar_capacity!!.progress = gameEngine.capacity
 
 
         /* PROVA 3
