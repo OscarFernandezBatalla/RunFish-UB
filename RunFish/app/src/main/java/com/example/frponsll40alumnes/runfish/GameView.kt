@@ -23,6 +23,12 @@ import java.util.jar.Attributes
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import android.view.View
+import java.util.*
+import android.support.v4.os.HandlerCompat.postDelayed
+import android.util.Log
+import java.util.logging.Handler
+
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
@@ -120,7 +126,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
 
         ability!!.setOnClickListener {
-            bar_life!!.progress += 50
+            ability!!.visibility = View.GONE
+            gameEngine.life += 20
+            android.os.Handler().postDelayed({
+                ability!!.visibility = View.VISIBLE
+            }, 8000)
         }
 
         /* TODO: PROVA 2, INTENTAR USAR GAME ENGINE

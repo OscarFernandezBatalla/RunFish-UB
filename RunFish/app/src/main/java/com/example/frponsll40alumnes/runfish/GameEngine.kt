@@ -118,10 +118,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         if(fish!!.isDead){
             // Stop game
         }
-
-
-
-
     }
 
     //Mètode que dibuixa sobre el canvas, no estic molt segur de si aniría aqui, pero el update jo estic casi segur que si.
