@@ -66,6 +66,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_gameFragment_self">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_gameFragment_to_menuFragment">
                               <value>
                                 <LayoutPositions />
