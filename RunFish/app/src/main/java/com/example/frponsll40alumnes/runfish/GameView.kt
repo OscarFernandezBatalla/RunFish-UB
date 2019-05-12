@@ -99,6 +99,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
 
         ability!!.setOnClickListener {
+
             ability!!.visibility = View.GONE
             gameEngine.life += 20
             android.os.Handler().postDelayed({
