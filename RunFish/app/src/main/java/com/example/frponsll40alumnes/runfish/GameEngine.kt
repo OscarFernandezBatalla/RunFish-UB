@@ -9,6 +9,9 @@ import android.os.Vibrator
 import android.support.v4.content.ContextCompat.getSystemService
 import android.widget.ProgressBar
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
+import com.example.frponsll40alumnes.runfish.abilities.Ability
+import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
+import com.example.frponsll40alumnes.runfish.abilities.Health
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
@@ -22,8 +25,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //var gameOver : Boolean = false
 
-    var life = 100
-    var capacity = 0
+
 
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
@@ -48,7 +50,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     fun startGame(){
 
         // Create player fish
-        fish = fishFactory.createFish(player1.fishType, context);
+        fish = fishFactory.createFish(player1.fishType, context)
+
 
         // Create background
         background = Map(context)
@@ -107,14 +110,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 x!!.collision(fish)
                 if(x is Plankton){
                     //planktonCollected++
-                    capacity += x.value
+                    fish!!.gainCapacity(x.value)
                 }
                 else{
-
-
-                    life -= x.value
-
-
+                    fish!!.loseLife(x.value)
                     //falta comprovar vibracio de options
 
                     val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -157,5 +156,17 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     fun getFishGE(): Fish? {
         return fish!!
+    }
+
+    fun useAbilityGE(){
+        fish!!.useAbility(Health())
+    }
+
+    fun getLife(): Int {
+        return fish!!.life
+    }
+
+    fun getCapacity(): Int {
+        return fish!!.capacity
     }
 }

@@ -104,7 +104,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         ability!!.setOnClickListener {
 
             ability!!.visibility = View.GONE
-            presenter.useAbility(20)//gameEngine.life += 20
+            presenter.useAbility()//gameEngine.life += 20
             android.os.Handler().postDelayed({
                 ability!!.visibility = View.VISIBLE
             }, 8000)

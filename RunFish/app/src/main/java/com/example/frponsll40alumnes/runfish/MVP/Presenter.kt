@@ -156,20 +156,21 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
     fun getLife(): Int {
-        return gameEngine!!.life
+        return gameEngine!!.getLife()
     }
 
     fun getCapacity(): Int {
-        return gameEngine!!.capacity
+        return gameEngine!!.getCapacity()
     }
 
     fun getBackground(): Map {
         return gameEngine!!.background!!
     }
 
-    fun useAbility(i: Int) : Int{
-        gameEngine!!.life += i
-        return gameEngine!!.life!!
+    fun useAbility(){
+
+        //gameEngine!!.life += i
+        gameEngine!!.useAbilityGE()
     }
 
 

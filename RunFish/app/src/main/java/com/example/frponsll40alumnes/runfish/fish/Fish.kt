@@ -13,7 +13,9 @@ abstract class Fish (
                      var life : Int,
                      var capacity : Int,
                      var ability : String,
-                     var price : Int
+                     var price : Int,
+                     val maxLife: Int,
+                     val maxCapacity: Int
 ) : Position, Movable, Dimension, DrawableObject {
 
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
@@ -30,36 +32,39 @@ abstract class Fish (
 
 
     /* STATS */
-    val maxLife : Int = life
-    val minLife : Int = 0
+    //val maxLife : Int = life
+    //val minLife : Int = 0
 
-    val maxCapacity : Int = capacity
-    val minCapacity : Int = 0
+    //val maxCapacity : Int = capacity
+    //val minCapacity : Int = 0
 
-    fun looseLife(damage : Int){
+    fun loseLife(damage : Int){
         this.life -= damage
-        if(this.life <= this.minLife){
+        if(this.life <= 0){
             die();
         }
     }
 
     fun gainLife(healing : Int){
         if((this.life + healing) >= this.maxLife){
-            return
+            this.life = maxLife
+        }else {
+            this.life += healing
         }
-        this.life += healing
     }
 
     fun gainCapacity(cargo : Int){
         if((this.capacity + cargo) >= this.maxCapacity){
-            return
+            this.capacity = maxCapacity
         }
-        this.capacity += cargo
+        else{
+            this.capacity += cargo
+        }
     }
 
     fun looseCapacity(cargo : Int){
-        if((this.capacity - cargo) <= this.minCapacity){
-            this.capacity = this.minCapacity
+        if((this.capacity - cargo) <= 0){
+            this.capacity = 0
         } else {
             this.capacity -= cargo
         }
@@ -70,7 +75,7 @@ abstract class Fish (
     }
 
     fun useAbility(ability : AbilityStrategy){
-        ability.useAbility(this)
+        return ability.useAbility(this)
     }
 
     fun collision(collision : CollisionStrategy){
@@ -125,4 +130,6 @@ abstract class Fish (
         this.x = x
         this.y = y
     }
+
+
 }

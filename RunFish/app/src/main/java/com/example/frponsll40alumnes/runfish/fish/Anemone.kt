@@ -7,7 +7,7 @@ import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.R
 
 class Anemone(context: Context) :
-    Fish(name = "Anemone", life = 20, capacity =  20, ability = "health", price =  1000) {
+    Fish(name = "Anemone", life = 20, capacity =  0, ability = "health", price =  1000, maxLife = 20, maxCapacity = 20) {
 
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone)
