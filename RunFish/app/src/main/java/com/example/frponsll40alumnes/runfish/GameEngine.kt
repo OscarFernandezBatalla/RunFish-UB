@@ -18,14 +18,9 @@ import com.example.frponsll40alumnes.runfish.npc.*
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
 
-    var planktonCollected: Int = 0
-    var numberOfDeaths: Int = 0 //Potser un bool? //Int per les stats
+    var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
-
-    //var gameOver : Boolean = false
-
-
 
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
@@ -51,7 +46,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         // Create player fish
         fish = fishFactory.createFish(player1.fishType, context)
-
 
         // Create background
         background = Map(context)
@@ -109,7 +103,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             if(collision(x!!)){
                 x!!.collision(fish)
                 if(x is Plankton){
-                    //planktonCollected++
                     fish!!.gainCapacity(x.value)
                 }
                 else{
@@ -176,5 +169,13 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     fun capacityBar(): Int{
         return fish!!.capacity*100 / fish!!.maxCapacity
+    }
+
+    fun increaseDeath() {
+        this.numberOfDeaths++
+    }
+
+    fun getPlanktonCollected(): Int {
+        return this.fish!!.capacity
     }
 }

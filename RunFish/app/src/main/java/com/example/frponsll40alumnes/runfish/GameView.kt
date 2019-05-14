@@ -35,6 +35,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var fish : Fish ?= null
     private var textX: TextView? = null
     private var textY: TextView? = null
+    private var planktonCollected : TextView? = null
 
     private var constraint : ConstraintLayout? = null
 
@@ -84,6 +85,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //meters = rootView.findViewById(R.id.textView_meters)
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
+
+        planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
 
         bar_life = rootView.findViewById(R.id.life_bar)
         bar_capacity = rootView.findViewById(R.id.bar_capacity)
@@ -135,6 +138,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
             if(bar_life!!.progress <=0){
                 this.thread.setRunning(false)
+                Log.w(TAG, "QWE You died")
+                this.presenter.increaseDeath()
                 constraint = rootView.findViewById(R.id.game_over_layout)
                 constraint!!.visibility = View.VISIBLE
                 if(constraint!!.visibility == View.VISIBLE) {
@@ -144,6 +149,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             if(presenter.getBackground().getY() >= 0){
                 Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
+                planktonCollected!!.text = presenter.getPlanktonCollected().toString()
                 constraint = rootView.findViewById(R.id.successful_layout)
                 Log.w(TAG, "QWE fragment found")
                 constraint!!.visibility = View.VISIBLE
