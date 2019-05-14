@@ -169,4 +169,12 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     fun getCapacity(): Int {
         return fish!!.capacity
     }
+
+    fun lifeBar(): Int{
+        return fish!!.life*100 / fish!!.maxLife
+    }
+
+    fun capacityBar(): Int{
+        return fish!!.capacity*100 / fish!!.maxCapacity
+    }
 }

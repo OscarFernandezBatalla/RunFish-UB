@@ -173,6 +173,14 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         gameEngine!!.useAbilityGE()
     }
 
+    fun lifeBar(): Int{
+        return gameEngine!!.lifeBar()
+    }
+
+    fun capacityBar(): Int{
+        return gameEngine!!.capacityBar()
+    }
+
 
 /*
     override fun updateHp(){

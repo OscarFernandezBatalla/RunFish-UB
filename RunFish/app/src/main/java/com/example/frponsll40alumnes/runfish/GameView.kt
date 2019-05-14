@@ -124,22 +124,22 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
     fun update() {
 
-
-
         constraint = rootView.findViewById(R.id.pause_fragment)
         if(constraint!!.visibility != View.VISIBLE) {
             presenter.updateJoystickInf(valx,valy,strength)
             presenter.updateView()
             //TODO: FER-HO AL PRESENTER...
-            bar_life!!.progress = presenter.getLife()//gameEngine.life
-            bar_capacity!!.progress = presenter.getCapacity()//gameEngine.capacity
+
+            bar_life!!.progress = presenter.lifeBar()
+            bar_capacity!!.progress = presenter.capacityBar()
+
             if(bar_life!!.progress <=0){
                 this.thread.setRunning(false)
                 Log.w(TAG, "QWE You died")
                 constraint = rootView.findViewById(R.id.game_over_layout)
                 constraint!!.visibility = View.VISIBLE
             }
-            if(presenter.getBackground()!!.getY() >= 0){
+            if(presenter.getBackground().getY() >= 0){
                 Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
                 constraint = rootView.findViewById(R.id.successful_layout)
