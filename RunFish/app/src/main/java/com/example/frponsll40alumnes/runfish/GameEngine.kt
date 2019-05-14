@@ -101,12 +101,17 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         for(x in NPCList!!){
             if(collision(x!!)){
                 x!!.collision(fish)
+                //fish!!.collision(x!!) // per mirar si té el shield activat
+
+                /* aixo hauria d'estar dintre de fish.collision()*/
                 if(x is Plankton){
                     fish!!.gainCapacity(x.value)
                 }
                 else{
                     fish!!.loseLife(x.value)
                     //falta comprovar vibracio de options
+
+                    // Possible solució: Hem de crear el gameEngine passant-li les opcions?
                     val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
                     if (vibrator.hasVibrator()) { // aqui comprovar
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {   // perque amb apis antigues no va
@@ -114,6 +119,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                         }
                     }
                 }
+                /* '''''''''''''''''''''''''''''''''''''''''''''''''''*/
+
             }
         }
 

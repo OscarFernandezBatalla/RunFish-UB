@@ -7,6 +7,8 @@ import android.graphics.Canvas
 import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
+import com.example.frponsll40alumnes.runfish.npc.NPC
+import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 abstract class Fish (
                      var name : String,
@@ -35,6 +37,7 @@ abstract class Fish (
         if(this.life <= 0){
             die();
         }
+        // emit vibration
     }
 
     /* Increments, if possible, the current cargo the fish carries */
@@ -64,9 +67,19 @@ abstract class Fish (
     fun useAbility(ability : AbilityStrategy){
         return ability.useAbility(this)
     }
-
+/*
     fun collision(collision : CollisionStrategy){
         collision.collision(this)//parametres? fish? position?
+    }
+*/
+    open fun collision(npc : NPC){
+        if(npc is Plankton){
+            this.gainCapacity(npc.value)
+        }
+        else {
+            this.loseLife(npc.value)
+            // emite vibration in loseLife
+        }
     }
 
     /* draw fish bitmap */
@@ -79,7 +92,8 @@ abstract class Fish (
      * update properties for the game object
      */
 
-    fun update(xJoy : Double, yJoy : Double, strength : Int) {
+    /* declared open so the types of fish can override it */
+    open fun update(xJoy : Double, yJoy : Double, strength : Int) {
         var aux : Int = if (strength>speed){
             speed
         }
