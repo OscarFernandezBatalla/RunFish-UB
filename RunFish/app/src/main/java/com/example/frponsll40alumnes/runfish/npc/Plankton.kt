@@ -15,12 +15,9 @@ class Plankton(context: Context, points : Int): NPC(points) {
 
 
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.placton)
-    //private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    //private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
     override var width: Int = image.width
     override var height: Int = image.height
-
 
     /**
      * Draws the object on to the canvas.
@@ -33,19 +30,6 @@ class Plankton(context: Context, points : Int): NPC(points) {
      * update properties for the game object
      */
     override fun update() {
-        // val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
-/*
-
-        if (x > screenWidth - image.width || x < image.width) {
-            xVelocity = xVelocity * -1
-        }
-        if (y > screenHeight - image.height || y < image.height) {
-            yVelocity = yVelocity * -1
-        }
-
-        x += (xVelocity)
-        y += (yVelocity)
-*/
         y+= (pes)
     }
 

@@ -13,8 +13,6 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
 
     override var speed: Int = this.value
 
-    //private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
-    //private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top)
 
     override var width: Int = image.width

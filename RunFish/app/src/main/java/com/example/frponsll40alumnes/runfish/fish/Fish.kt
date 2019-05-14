@@ -30,14 +30,6 @@ abstract class Fish (
 
     var isDead : Boolean = false
 
-
-    /* STATS */
-    //val maxLife : Int = life
-    //val minLife : Int = 0
-
-    //val maxCapacity : Int = capacity
-    //val minCapacity : Int = 0
-
     fun loseLife(damage : Int){
         this.life -= damage
         if(this.life <= 0){
@@ -45,6 +37,7 @@ abstract class Fish (
         }
     }
 
+    /* Increments, if possible, the current cargo the fish carries */
     fun gainCapacity(cargo : Int){
         if((this.capacity + cargo) >= this.maxCapacity){
             this.capacity = maxCapacity
@@ -62,10 +55,12 @@ abstract class Fish (
         }
     }
 
+    /* Signals the fish is dead */
     fun die(){
         this.isDead = true
     }
 
+    /* Use the fish special ability */
     fun useAbility(ability : AbilityStrategy){
         return ability.useAbility(this)
     }
@@ -74,6 +69,7 @@ abstract class Fish (
         collision.collision(this)//parametres? fish? position?
     }
 
+    /* draw fish bitmap */
     fun draw(canvas: Canvas) {
         canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
     }
