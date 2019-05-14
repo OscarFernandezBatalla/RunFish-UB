@@ -114,28 +114,28 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadPlayerPlankton()
     }
 
-    fun buyFish(fishType: FishType) {
+    override fun buyFish(fishType: FishType) {
         return model.buyFish(fishType)
     }
 
-    fun uploadLevels() : Int{
+    override fun uploadLevels() : Int{
         return model.uploadLevels()
     }
 
-    fun addFriend(friendName: String) {
+    override fun addFriend(friendName: String) {
         model.addFriend(friendName)
     }
 
-    fun startGame(player1: Player, player2: Player? = null, context: Context) {
+    override fun startGame(player1: Player, player2: Player?, context: Context) {
         gameEngine = GameEngine(player1,player2,context)
         gameEngine!!.startGame()
     }
 
-    fun updateJoystickInf(valx: Double, valy: Double, strength: Int) {
+    override fun updateJoystickInf(valx: Double, valy: Double, strength: Int) {
         gameEngine!!.getJoystickInf(valx, valy, strength)
     }
 
-    fun updateView() {
+    override fun updateView() {
         gameEngine!!.updateView()
     }
 
@@ -143,53 +143,48 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         gameEngine!!.drawView(canvas)
     }*/
 
-    fun getNPC(): MutableList<NPC?>? {
+    override fun getNPC(): MutableList<NPC?>? {
         return gameEngine!!.getNPC()
     }
 
-    fun getMap(): Map? {
+    override fun getMap(): Map? {
         return gameEngine!!.getMap()
     }
 
-    fun getFish(): Fish? {
+    override fun getFish(): Fish? {
         return gameEngine!!.getFishGE()
     }
 
-    fun getLife(): Int {
+    /*fun getLife(): Int {
         return gameEngine!!.getLife()
     }
 
     fun getCapacity(): Int {
         return gameEngine!!.getCapacity()
-    }
+    }*/
 
-    fun getBackground(): Map {
+    override fun getBackground(): Map {
         return gameEngine!!.background!!
     }
 
-    fun useAbility(){
-
+    override fun useAbility(){
         //gameEngine!!.life += i
         gameEngine!!.useAbilityGE()
     }
 
-    fun lifeBar(): Int{
+    override fun lifeBar(): Int{
         return gameEngine!!.lifeBar()
     }
 
-    fun capacityBar(): Int{
+    override fun capacityBar(): Int{
         return gameEngine!!.capacityBar()
     }
 
-
-/*
-    override fun updateHp(){
-        viewActivity.life_bar.progress = 10
+    override fun increaseDeath() {
+        this.gameEngine!!.increaseDeath()
     }
 
-    override fun engageGame(){
-        gameEngine = GameEngine(Player(FishType.ANEMONE),context = viewActivity)
+    override fun getPlanktonCollected(): Int {
+        return this.gameEngine!!.getPlanktonCollected()
     }
-*/
-
 }
