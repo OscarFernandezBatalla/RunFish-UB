@@ -5,6 +5,11 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 class Health(val additionHealth : Int = 30) : AbilityStrategy {
 
     override fun useAbility(fish: Fish) {
-        fish.gainLife(additionHealth)
+        if((fish.life + additionHealth) >= fish.maxLife){
+            fish.life = fish.maxLife
+        }else {
+            fish.life += additionHealth
+        }
+
     }
 }

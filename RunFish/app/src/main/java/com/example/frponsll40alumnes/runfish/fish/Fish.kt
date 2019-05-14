@@ -45,14 +45,6 @@ abstract class Fish (
         }
     }
 
-    fun gainLife(healing : Int){
-        if((this.life + healing) >= this.maxLife){
-            this.life = maxLife
-        }else {
-            this.life += healing
-        }
-    }
-
     fun gainCapacity(cargo : Int){
         if((this.capacity + cargo) >= this.maxCapacity){
             this.capacity = maxCapacity
@@ -62,7 +54,7 @@ abstract class Fish (
         }
     }
 
-    fun looseCapacity(cargo : Int){
+    fun loseCapacity(cargo : Int){
         if((this.capacity - cargo) <= 0){
             this.capacity = 0
         } else {
