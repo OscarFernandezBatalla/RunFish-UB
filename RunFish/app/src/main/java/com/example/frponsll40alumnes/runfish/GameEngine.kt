@@ -42,7 +42,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var valx : Double = 0.0
     var strength: Int = 0
 
-    var NPCList: MutableList<NPC> = mutableListOf()
+    var NPCList: MutableList<NPC?>? = mutableListOf()
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
@@ -58,17 +58,17 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             for(i in 0..value){
                 var npc = npcFactory.createNPC(key, context)
                 if(npc != null){
-                    NPCList.add(npc)
+                    NPCList!!.add(npc)
                 }
             }
         }
 
         // Spawn created npcs
-        for(x in NPCList){
+        for(x in NPCList!!){
             // Handpicked values that fit the demo
             var posx = (10..(displayWidth - 200)).random()
             var posy = (displayHeight..(level.meters * 53)).random() * (-1)
-            x.changeCoordinates(posx, posy)
+            x!!.changeCoordinates(posx, posy)
         }
     }
 
@@ -97,14 +97,14 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         fish!!.update(valx, valy, strength)
 
         // Update positions for npcs
-        for(x in NPCList){
-            x.update()
+        for(x in NPCList!!){
+            x!!.update()
         }
 
         // Check if npcs had a collision
-        for(x in NPCList){
-            if(collision(x)){
-                x.collision(fish)
+        for(x in NPCList!!){
+            if(collision(x!!)){
+                x!!.collision(fish)
                 if(x is Plankton){
                     //planktonCollected++
                     capacity += x.value
@@ -132,8 +132,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     }
 
-    fun drawView(canvas : Canvas){
+    /*fun drawView(canvas : Canvas){
         // Draw background
+
         background!!.draw(canvas)
 
         // Draw npcs
@@ -143,9 +144,18 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         // Draw player
         fish!!.draw(canvas)
+    }*/
+
+
+    fun getNPC(): MutableList<NPC?>? {
+        return NPCList!!
     }
 
-    fun getMeters(): Int{
-        return background!!.getY()
+    fun getMap(): Map? {
+        return background!!
+    }
+
+    fun getFishGE(): Fish? {
+        return fish!!
     }
 }

@@ -10,7 +10,9 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.GameView
+import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.R
 import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.*
@@ -31,8 +33,9 @@ class GameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //act!!.signOut.visibility = View.GONE
+        act = (activity as HomeActivity)
         game = FrameLayout(this.context)
-        gameView = GameView(this.context!!)
+        gameView = GameView(this.context!!, act!!.presenter)
         gameWidgets = LinearLayout(context)
         game.addView(gameView)
         game.addView(gameWidgets)
@@ -43,13 +46,20 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
+        //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
 
-        act = (activity as HomeActivity)
+
+
+
+
 
         act!!.signOut.visibility = View.GONE
 
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
+
+        act!!.presenter.startGame(Player(FishType.ANEMONE),context = this.gameView.context)
+
         return game
     }
 
@@ -83,9 +93,9 @@ class GameFragment : Fragment() {
             successful_layout.visibility=View.VISIBLE
         }
 
-        button_retry.setOnClickListener(){
-            game_over_layout.visibility=View.GONE
-        }
+        button_retry.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
+
+        
         button_back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
 
         button_back_successful.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
