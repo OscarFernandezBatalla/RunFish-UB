@@ -3,6 +3,10 @@ package com.example.frponsll40alumnes.runfish
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.support.v4.content.ContextCompat.getSystemService
 import android.widget.ProgressBar
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.fish.Fish
@@ -107,19 +111,21 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 }
                 else{
 
+
                     life -= x.value
-                    /*if(life <=0){
-                        gameOver = true
-                    }*/
+
+
+                    //falta comprovar vibracio de options
+
+                    val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                    if (vibrator.hasVibrator()) { // aqui comprovar
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {   // perque amb apis antigues no va
+                            vibrator.vibrate(VibrationEffect.createOneShot(250, VibrationEffect.DEFAULT_AMPLITUDE))
+                        }
+                    }
                 }
             }
         }
-        /*
-        if(life<=0){
-            this.gameOver = false
-        }*/
-
-
 
         // Update scrolling of background
         background!!.update()

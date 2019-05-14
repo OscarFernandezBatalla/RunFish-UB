@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 
 class Map (context: Context){
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg)
+    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg_degradat)
     private var x : Int = 0
     private var y : Int = -(image.height - Resources.getSystem().displayMetrics.heightPixels)
 
