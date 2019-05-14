@@ -1,7 +1,7 @@
 package com.example.frponsll40alumnes.runfish.npc
 
 import android.graphics.Canvas
-import com.example.frponsll40alumnes.runfish.CollisionStrategy
+import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 import com.example.frponsll40alumnes.runfish.Dimension
 import com.example.frponsll40alumnes.runfish.Position
 import com.example.frponsll40alumnes.runfish.fish.Fish

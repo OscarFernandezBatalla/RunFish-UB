@@ -71,7 +71,7 @@ abstract class Fish (
     }
 
     fun collision(collision : CollisionStrategy){
-        collision.collision()//parametres? fish? position?
+        collision.collision(this)//parametres? fish? position?
     }
 
     fun draw(canvas: Canvas) {
@@ -84,38 +84,34 @@ abstract class Fish (
      */
 
     fun update(xJoy : Double, yJoy : Double, strength : Int) {
+        var aux : Int = if (strength>speed){
+            speed
+        }
+        else{
+            strength
+        }
 
+        var xV : Int = (xJoy*aux/3).toInt()
+        var yV : Int = -(yJoy*aux/3).toInt()
 
-    var aux : Int = if (strength>speed){
-        speed
-    }
-    else{
-        strength
-    }
+        if (x > screenWidth - image.width){
+            xV = -1
+        }
 
-    var xV : Int = (xJoy*aux/3).toInt()
-    var yV : Int = -(yJoy*aux/3).toInt()
+        if(x < 2) {
+            xV = +1
+        }
 
+        if (y > screenHeight - image.height){
+            yV = -1
+        }
 
-    if (x > screenWidth - image.width){
-        xV = -1
-    }
+        if(y<2) {
+            yV = +1
+        }
 
-    if(x < 2) {
-        xV = +1
-    }
-
-    if (y > screenHeight - image.height){
-
-        yV = -1
-    }
-
-    if(y<2) {
-        yV = +1
-    }
-
-    x += xV
-    y += yV
+        x += xV
+        y += yV
     }
 
     override fun changeCoordinates(x: Int, y: Int) {

@@ -135,15 +135,23 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
             if(bar_life!!.progress <=0){
                 this.thread.setRunning(false)
-                Log.w(TAG, "QWE You died")
                 constraint = rootView.findViewById(R.id.game_over_layout)
                 constraint!!.visibility = View.VISIBLE
+                if(constraint!!.visibility == View.VISIBLE) {
+                    Log.w(TAG, "QWE fragment is visible")
+                }
             }
             if(presenter.getBackground().getY() >= 0){
                 Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
                 constraint = rootView.findViewById(R.id.successful_layout)
+                Log.w(TAG, "QWE fragment found")
                 constraint!!.visibility = View.VISIBLE
+                Log.w(TAG, "QWE setting visibility")
+                if(constraint!!.visibility == View.VISIBLE) {
+                    Log.w(TAG, "QWE fragment is visible")
+                }
+
             }
 
         }
