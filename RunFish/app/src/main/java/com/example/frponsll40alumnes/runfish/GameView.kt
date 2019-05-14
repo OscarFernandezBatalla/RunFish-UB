@@ -100,15 +100,15 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             textY!!.text= ""//"coordenada Y:   $valy   angle: $angle"
         }
 
-        /* TODO: Do it with presenter
+        //Use ability
         ability!!.setOnClickListener {
 
             ability!!.visibility = View.GONE
-            gameEngine.life += 20
+            presenter.useAbility(20)//gameEngine.life += 20
             android.os.Handler().postDelayed({
                 ability!!.visibility = View.VISIBLE
             }, 8000)
-        }*/
+        }
 
         //gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
         //gameEngine.startGame()

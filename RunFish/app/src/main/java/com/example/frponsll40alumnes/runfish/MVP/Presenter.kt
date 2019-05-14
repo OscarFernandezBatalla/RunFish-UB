@@ -167,6 +167,11 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return gameEngine!!.background!!
     }
 
+    fun useAbility(i: Int) : Int{
+        gameEngine!!.life += i
+        return gameEngine!!.life!!
+    }
+
 
 /*
     override fun updateHp(){
