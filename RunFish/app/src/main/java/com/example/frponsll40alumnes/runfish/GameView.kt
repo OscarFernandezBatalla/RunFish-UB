@@ -120,53 +120,29 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback{
 
     fun update() {
 
-        //meters!!.text = (gameEngine.getMeters()-5).toString()
 
-        gameEngine.getJoystickInf(valx, valy, strength)
-        gameEngine.updateView()
-
-        bar_life!!.progress = gameEngine.life
-        bar_capacity!!.progress = gameEngine.capacity
-
-        /* in game pause */
+        //Prova
         constraint = rootView.findViewById(R.id.pause_fragment)
-        if(constraint!!.visibility == View.VISIBLE){
-            paused = true
-            this.thread.setRunning(false)
-        }else if(paused && constraint!!.visibility != View.VISIBLE){
-            Log.w(TAG, "QWE Resuming")
-            this.thread.setRunning(true)
-            //this.thread.run()
-            //TODO: No retorna al game
+        if(constraint!!.visibility != View.VISIBLE) {
+            gameEngine.getJoystickInf(valx, valy, strength)
+            gameEngine.updateView()
+
+            bar_life!!.progress = gameEngine.life
+            if(bar_life!!.progress <=0){
+                this.thread.setRunning(false)
+                Log.w(TAG, "QWE You died")
+                constraint = rootView.findViewById(R.id.game_over_layout)
+                constraint!!.visibility = View.VISIBLE
+            }
+
+            if(gameEngine.background!!.getY() >= 0){
+                Log.w(TAG, "QWE You win")
+                this.thread.setRunning(false)
+                constraint = rootView.findViewById(R.id.successful_layout)
+                constraint!!.visibility = View.VISIBLE
+            }
         }
-
-
-        if(bar_life!!.progress <=0){
-            this.thread.setRunning(false)
-            Log.w(TAG, "QWE You died")
-            constraint = rootView.findViewById(R.id.game_over_layout)
-            constraint!!.visibility = View.VISIBLE
-        }
-
-        if(gameEngine.background!!.getY() >= 0){
-            Log.w(TAG, "QWE You win")
-            this.thread.setRunning(false)
-            constraint = rootView.findViewById(R.id.successful_layout)
-            constraint!!.visibility = View.VISIBLE
-        }
-
-
-        /*
-
-        if(gameEngine.gameOver){
-            //gameEngine.numberOfDeaths++
-            this.thread.setRunning(false)
-            constraint!!.visibility = View.VISIBLE
-        }
-
-        */
-
-
+        //End prova
     }
 
     override fun draw(canvas: Canvas) {
