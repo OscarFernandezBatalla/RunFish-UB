@@ -25,6 +25,8 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     private var friends : List<String> = mutableListOf()
 
+    //private var friend1 : List<Any?> = mutableListOf()
+
 
     /*stats*/
 
@@ -441,8 +443,8 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
-        db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend1").set(friendsMap)
+        //db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
+        db.collection("usuarios").document("$user").collection("userContext").document("friend1").set(friendsMap)
         //db.collection("usuarios").document("$user").collection("userContext").document("friend2")
         //db.collection("usuarios").document("$user").collection("userContext").document("friend3")
         //db.collection("usuarios").document("$user").collection("userContext").document("friend4")
@@ -474,6 +476,14 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun setUsername(username: String) {
         this.username = username
     }
+
+    /* TODO: Fer-ho demà a PIS
+        1. IMPLEMENTAR ELS AMICS
+            1.1. Fer una llista per cada amic del tipus: username, connected, fishType
+            1.2. Agafar cada argument des de Firebase (getFriendsFromCloud) -> S'ha de canviar el mètode. (S'ha de tenir en compte tant user (lletres y numeros random) com username (creat pel client)
+            1.3. Actualitzar la vista mitjançant la nova implementació dels amics de model
+        2. FER QUE LA BASE DE DADES ES MANTINGUI FIXE (no cada cop que entres es resetegi)
+     */
 
 
 }

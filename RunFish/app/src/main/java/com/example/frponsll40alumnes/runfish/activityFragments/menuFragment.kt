@@ -45,7 +45,7 @@ class menuFragment : Fragment() {
                     menu_layout.visibility = View.VISIBLE
                 }
                 else{
-                    Toast.makeText(this.act!!.baseContext,"Unvalid username",Toast.LENGTH_SHORT)
+                    Toast.makeText(this.context,"Unvalid username",Toast.LENGTH_SHORT).show()
                 }
             }
         }
