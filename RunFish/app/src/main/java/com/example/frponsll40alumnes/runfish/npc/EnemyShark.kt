@@ -13,7 +13,7 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
 
     override var speed: Int = this.value
 
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top)
+    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top_test)
 
     override var width: Int = image.width
     override var height: Int = image.height
