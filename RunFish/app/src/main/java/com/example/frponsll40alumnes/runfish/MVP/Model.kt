@@ -17,6 +17,7 @@ import java.security.KeyStore
 class Model (var presenter: Presenter) : Contract.Model {
 
 
+
     var db: FirebaseFirestore= FirebaseFirestore.getInstance()
 
     var user = FirebaseAuth.getInstance().currentUser!!.uid
@@ -35,6 +36,8 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     //boolean if user is connected
 
+    //For friends logic
+    private var username: String = ""
     private var connected: Boolean = false
 
 
@@ -259,7 +262,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     override fun uploadPriceShark(): Int {
         return sharkPrice
     }
-    override fun uploadUsers(): Int {
+    override fun uploadFriends(): Int {
         return friends.size
 
     }
@@ -439,6 +442,10 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
         db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
+        //db.collection("usuarios").document("$user").collection("userContext").document("friend1").set(friendsMap)
+        //db.collection("usuarios").document("$user").collection("userContext").document("friend2")
+        //db.collection("usuarios").document("$user").collection("userContext").document("friend3")
+        //db.collection("usuarios").document("$user").collection("userContext").document("friend4")
     }
 
     fun actualitzaFriendsMap(){
@@ -458,6 +465,14 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
     fun setConnected(connected: Boolean){
         this.connected = connected
+    }
+
+    fun getUsername(): String {
+        return this.username
+    }
+
+    fun setUsername(username: String) {
+        this.username = username
     }
 
 

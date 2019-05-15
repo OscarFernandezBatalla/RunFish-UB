@@ -1,17 +1,12 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
-import android.graphics.Canvas
-import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.FishType
-import com.example.frponsll40alumnes.runfish.activityFragments.MainActivity
 import com.example.frponsll40alumnes.runfish.GameEngine
 import com.example.frponsll40alumnes.runfish.Map
 import com.example.frponsll40alumnes.runfish.Player
-import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
-import com.example.frponsll40alumnes.runfish.activityFragments.statsFragment
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
@@ -105,8 +100,8 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadPriceShark()
     }
 
-    override fun uploadUsers(): Int {
-        return model.uploadUsers()
+    override fun uploadFriends(): Int {
+        return model.uploadFriends()
     }
 
     override fun uploadPlayerPlankton(): Int{
@@ -203,6 +198,14 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     fun setConnected(connected: Boolean){
         this.model.setConnected(connected)
+    }
+
+    fun getUsername(): String {
+        return this.model.getUsername()
+    }
+
+    fun setUsername(username: String) {
+        this.model.setUsername(username)
     }
 
 

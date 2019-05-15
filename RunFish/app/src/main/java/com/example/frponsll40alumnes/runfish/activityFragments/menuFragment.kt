@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_menu.*
@@ -26,21 +27,38 @@ class menuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        uploadMenuFragment()
+        if(act!!.presenter.getUsername() != ""){
+            uploadMenuFragment()
+            button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
+            button_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_multiplayerFragment))
+            button_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_shopFragment))
+            button_stats.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_statsFragment))
+            button_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_options))
+            imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))
+        }
+        else{
+            button_user_petition.setOnClickListener{
+                var username = edit_text_username.text.toString()
+                if(username != ""){    //TODO: COMPROVAR QUE L'USERNAME NO EXISTEIX...
+                    act!!.presenter.setUsername(username)
+                    welcome_username.visibility = View.GONE
+                    menu_layout.visibility = View.VISIBLE
+                }
+                else{
+                    Toast.makeText(this.act!!.baseContext,"Unvalid username",Toast.LENGTH_SHORT)
+                }
+            }
+        }
 
-        button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
-        button_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_multiplayerFragment))
-        button_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_shopFragment))
-        button_stats.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_statsFragment))
-        button_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_options))
-        imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))
+
+
     }
 
     fun uploadMenuFragment(){
-        uploadUsers()
+        uploadFriends()
     }
 
-    fun uploadUsers(){
-        //this.text_view_users.text = act!!.presenter.uploadUsers().toString()
+    fun uploadFriends(){
+        this.text_view_users.text = act!!.presenter.uploadFriends().toString()
     }
 }
