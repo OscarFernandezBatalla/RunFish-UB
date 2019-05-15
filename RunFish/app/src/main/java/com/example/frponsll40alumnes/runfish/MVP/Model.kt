@@ -441,6 +441,9 @@ class Model (var presenter: Presenter) : Contract.Model {
         friendsMap["friends"] = friends
     }
 
+    fun setVibrationState(activated: Boolean) {
+        this.vibration = activated
+    }
 
 
 }

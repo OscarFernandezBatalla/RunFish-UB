@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_options.*
@@ -40,6 +41,11 @@ class Options : Fragment() {
         button_audio_music.setOnClickListener {
             this.seekBar_sounds.progress = 0
         }
+
+        switch_vibration.setOnCheckedChangeListener { buttonView, isChecked ->
+            setVibrationState(isChecked)
+        }
+
     }
 
 
@@ -61,5 +67,9 @@ class Options : Fragment() {
 
     fun uploadVibrationSwitch(){
         this.switch_vibration.isChecked = act!!.presenter.uploadVibrationSwitch()
+    }
+
+    fun setVibrationState(activated : Boolean){
+        act!!.presenter.setVibrationState(activated)
     }
 }

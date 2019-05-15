@@ -128,6 +128,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     override fun startGame(player1: Player, player2: Player?, context: Context) {
         gameEngine = GameEngine(player1,player2,context)
+        gameEngine!!.updateVibration(uploadVibrationSwitch())
         gameEngine!!.startGame()
     }
 
@@ -186,5 +187,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     override fun getPlanktonCollected(): Int {
         return this.gameEngine!!.getPlanktonCollected()
+    }
+
+    fun setVibrationState(activated: Boolean) {
+        this.model.setVibrationState(activated)
     }
 }

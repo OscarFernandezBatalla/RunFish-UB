@@ -21,6 +21,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
+    var vibration = false
 
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
@@ -43,6 +44,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
+
+        //vibration = this.uploadVibration()
 
         // Create player fish
         fish = fishFactory.createFish(player1.fishType, context)
@@ -68,6 +71,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             x!!.changeCoordinates(posx, posy)
         }
     }
+
 
     //Mètode que obté la informació del joystick
     fun getJoystickInf(xJoy: Double, yJoy: Double, strength: Int){
@@ -110,7 +114,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                     //falta comprovar vibracio de options
 
                     val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                    if (vibrator.hasVibrator()) { // aqui comprovar
+                    if (vibrator.hasVibrator() && this.vibration) { // aqui comprovar
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {   // perque amb apis antigues no va
                             vibrator.vibrate(VibrationEffect.createOneShot(250, VibrationEffect.DEFAULT_AMPLITUDE))
                         }
@@ -137,6 +141,10 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         // Draw player
         fish!!.draw(canvas)
     }*/
+
+    fun updateVibration(activated : Boolean){
+        this.vibration = activated
+    }
 
 
     fun getNPC(): MutableList<NPC?>? {
