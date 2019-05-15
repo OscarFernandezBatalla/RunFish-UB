@@ -17,7 +17,6 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 
 //import kotlinx.android.synthetic.main.fragment_main.view.*
 
-
 class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
 
