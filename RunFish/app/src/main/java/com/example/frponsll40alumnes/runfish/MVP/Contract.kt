@@ -64,6 +64,10 @@ interface Contract {
         fun capacityBar(): Int
         fun increaseDeath()
         fun getPlanktonCollected(): Int
+        fun setVibrationState(activated: Boolean)
+        fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?>
+        fun startMusic()
+        fun stopMusic()
     }
 
     interface Model {

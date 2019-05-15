@@ -141,10 +141,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         gameEngine!!.updateView()
     }
 
-    /*fun drawView(canvas: Canvas){
-        gameEngine!!.drawView(canvas)
-    }*/
-
     override fun getNPC(): MutableList<NPC?>? {
         return gameEngine!!.getNPC()
     }
@@ -157,20 +153,11 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return gameEngine!!.getFishGE()
     }
 
-    /*fun getLife(): Int {
-        return gameEngine!!.getLife()
-    }
-
-    fun getCapacity(): Int {
-        return gameEngine!!.getCapacity()
-    }*/
-
     override fun getBackground(): Map {
         return gameEngine!!.background!!
     }
 
     override fun useAbility(){
-        //gameEngine!!.life += i
         gameEngine!!.useAbilityGE()
     }
 
@@ -191,18 +178,18 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
 
-    fun setVibrationState(activated: Boolean) {
+    override fun setVibrationState(activated: Boolean) {
         this.model.setVibrationState(activated)
     }
 
-    fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?> {
+    override fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?> {
         return this.gameEngine!!.getNPCsInArea(x_start, x_end, y_start, y_end)
     }
 
-    fun startMusic(){
+    override fun startMusic(){
         this.viewActivity.getMusic().start()
     }
-    fun stopMusic(){
+    override fun stopMusic(){
         this.viewActivity.getMusic().pause()
         this.viewActivity.getMusic().seekTo(0)
     }
