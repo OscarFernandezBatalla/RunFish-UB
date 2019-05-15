@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Rect
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
@@ -12,6 +13,8 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.mina)
     override var width: Int = image.width
     override var height: Int = image.height
+
+    override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
 
     /**
@@ -28,7 +31,9 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
      * update properties for the game object
      */
     override fun update() {
+
         y+= (pes)
+        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {

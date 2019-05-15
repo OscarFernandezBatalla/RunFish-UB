@@ -206,6 +206,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         }
         //canvas.drawText("Metres",20f,64f, paint)
         fish!!.draw(canvas)
+        
 
         //this.presenter.drawView(canvas)
         //gameEngine.drawView(canvas)

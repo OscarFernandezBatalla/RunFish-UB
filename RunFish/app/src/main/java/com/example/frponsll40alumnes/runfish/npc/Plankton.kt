@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.example.frponsll40alumnes.runfish.R
@@ -19,6 +20,8 @@ class Plankton(context: Context, points : Int): NPC(points) {
     override var width: Int = image.width
     override var height: Int = image.height
 
+    override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
+
     /**
      * Draws the object on to the canvas.
      */
@@ -31,6 +34,7 @@ class Plankton(context: Context, points : Int): NPC(points) {
      */
     override fun update() {
         y+= (pes)
+        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {

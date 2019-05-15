@@ -83,9 +83,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     fun collision(npc: NPC): Boolean{
 
-        val npcRect = Rect(npc.x, npc.y, npc.x+npc.width, npc.y+npc.height)
-        val playerRect = Rect(fish!!.x, fish!!.y, fish!!.x+fish!!.width, fish!!.y+fish!!.height)
-        if(npcRect.intersect(playerRect)){
+        val npcRect = npc.rectangle
+        val playerRect = fish!!.rectangle
+        if(playerRect.intersect(npcRect)){
             return true
         }
         return false

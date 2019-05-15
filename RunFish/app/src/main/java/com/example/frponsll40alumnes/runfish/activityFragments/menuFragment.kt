@@ -29,12 +29,12 @@ class menuFragment : Fragment() {
 
         if(act!!.presenter.getUsername() != ""){
             uploadMenuFragment()
-            button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
+            /*button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
             button_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_multiplayerFragment))
             button_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_shopFragment))
             button_stats.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_statsFragment))
             button_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_options))
-            imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))
+            imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))*/
         }
         else{
             button_user_petition.setOnClickListener{
@@ -45,10 +45,17 @@ class menuFragment : Fragment() {
                     menu_layout.visibility = View.VISIBLE
                 }
                 else{
-                    Toast.makeText(this.act!!.baseContext,"Unvalid username",Toast.LENGTH_SHORT)
+                    Toast.makeText(this.context,"Unvalid username",Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
+        button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
+        button_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_multiplayerFragment))
+        button_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_shopFragment))
+        button_stats.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_statsFragment))
+        button_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_options))
+        imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))
 
 
 

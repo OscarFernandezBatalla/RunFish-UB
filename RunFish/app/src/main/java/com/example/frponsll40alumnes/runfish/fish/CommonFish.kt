@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish.fish
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Rect
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
@@ -18,6 +19,8 @@ class CommonFish(context: Context) :
     }
     override val width: Int = image.width
     override val height: Int = image.height
+
+    override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
     override fun update(xJoy : Double, yJoy : Double, strength : Int) {
         super.update(xJoy, yJoy, strength)

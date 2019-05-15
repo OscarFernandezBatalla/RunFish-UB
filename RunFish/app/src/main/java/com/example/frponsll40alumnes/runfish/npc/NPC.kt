@@ -26,4 +26,6 @@ abstract class NPC(var value : Int, override var x: Int = 0, override var y: Int
         this.x = 10000000; //TODO: Instead of moving offscreen, delete the npc
     }
 
+
+
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Rect
 import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
@@ -123,6 +124,8 @@ abstract class Fish (
 
         x += xV
         y += yV
+
+        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun changeCoordinates(x: Int, y: Int) {

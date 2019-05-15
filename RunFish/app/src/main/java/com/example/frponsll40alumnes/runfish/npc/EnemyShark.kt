@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Rect
 import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
@@ -17,6 +18,8 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
 
     override var width: Int = image.width
     override var height: Int = image.height
+
+    override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
     fun changeOrientation(vertical : Boolean){
         this.vertical = vertical
@@ -49,6 +52,7 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
                 x+= speed
             }
         }
+        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {
