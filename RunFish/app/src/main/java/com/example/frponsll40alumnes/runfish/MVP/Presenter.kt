@@ -194,4 +194,17 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.getMusic().seekTo(0)
     }
 
+    fun getFriendsList(): List<String>{
+        return this.model.getFriendsList()
+    }
+
+    fun getConnected(): Boolean{
+        return this.model.getConnected()
+    }
+
+    fun setConnected(connected: Boolean){
+        this.setConnected(connected)
+    }
+
+
 }

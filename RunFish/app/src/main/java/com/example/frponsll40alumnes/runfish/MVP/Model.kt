@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.DocumentReference
-
+import java.security.KeyStore
 
 
 class Model (var presenter: Presenter) : Contract.Model {
@@ -32,6 +32,10 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var statNumberOfDeath : Int = 0               //canviar, era exemple de fun
     private var statMurderedFish : Int = 0
     private var statMaxDistanceTraveled : Int = 0
+
+    //boolean if user is connected
+
+    private var connected: Boolean = false
 
 
     var statsMap : HashMap<String, Int> = hashMapOf(
@@ -136,14 +140,14 @@ class Model (var presenter: Presenter) : Contract.Model {
         setPlanctonToCloud()
         setLevelsToCloud()
         setFishToCloud()
-        //setFriendsToCloud()
+        setFriendsToCloud()
 
         getStatsFromCloud()
         getOptionsFromCloud()
         getPlanctonFromCloud()
         getLevelsFromCloud()
         getFishFromCloud()
-        //getFriendsFromCloud()
+        getFriendsFromCloud()
     }
 
 
@@ -443,6 +447,17 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun setVibrationState(activated: Boolean) {
         this.vibration = activated
+    }
+
+    fun getFriendsList(): List<String>{
+        return this.friends
+    }
+
+    fun getConnected(): Boolean{
+        return this.connected
+    }
+    fun setConnected(connected: Boolean){
+        this.connected = connected
     }
 
 

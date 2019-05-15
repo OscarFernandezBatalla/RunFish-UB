@@ -29,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
         setupUI()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
+        presenter.setConnected(true)
     }
 
     private fun setupUI() {

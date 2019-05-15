@@ -31,17 +31,59 @@ class FriendsFragment : Fragment() {
 
         //uploadFriendsFragment()
 
+        refreshFriendListView()
+
         imageButton_cross.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_friendsFragment_to_menuFragment))
 
         button_Invite.setOnClickListener {
-            //var posibleFriend = edit_text_username_invite.text.toString()
-            //addFriend(posibleFriend)
+            var posibleFriend = edit_text_username_invite.text.toString()
+            addFriend(posibleFriend)
             edit_text_username_invite.setText("")
         }
     }
 
     fun addFriend(friendName: String){
         act!!.presenter.addFriend(friendName)
+    }
+
+    fun getFriendList(): List<String>{
+        return act!!.presenter.getFriendsList()
+    }
+
+    fun refreshFriendListView(){
+        var friendList = mutableListOf("Pepito","Pepe",null,null)  //TODO : MÀXIM 4
+        text_friend0.text = friendList[0]
+        text_friend1.text = friendList[1]
+        text_friend2.text = friendList[2]
+        text_friend3.text = friendList[3]
+
+        //friendList ha de retornar el amic sencer y no una array
+
+        if (friendList[0] != null) {
+            image_ball_friend0.setImageResource(R.drawable.bola_verde)
+        } else {
+            image_ball_friend0.setImageResource(R.drawable.bola_gris)
+        }
+
+        if (friendList[1] != null) {
+            image_ball_friend1.setImageResource(R.drawable.bola_verde)
+        } else {
+            image_ball_friend1.setImageResource(R.drawable.bola_gris)
+        }
+
+        if (friendList[2] != null) {
+            image_ball_friend2.setImageResource(R.drawable.bola_verde)
+        } else {
+            image_ball_friend2.setImageResource(R.drawable.bola_gris)
+        }
+
+        if (friendList[3] != null) {
+            image_ball_friend3.setImageResource(R.drawable.bola_verde)
+        } else {
+            image_ball_friend3.setImageResource(R.drawable.bola_gris)
+        }
+
+
     }
 
     /*fun uploadFriendsFragment(){

@@ -89,31 +89,31 @@
                     <TextView
                             android:text="@string/friend"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/text_friend"
+                            android:layout_height="wrap_content" android:id="@+id/text_friend0"
                             style="@style/MistralStyle"
                             android:layout_marginTop="16dp"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/image_ball_friend"
+                            app:layout_constraintStart_toEndOf="@+id/image_ball_friend0"
                             android:layout_marginStart="24dp"/>
                     <ImageView
                             android:src="@drawable/bola_verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/image_ball_friend"
+                            android:id="@+id/image_ball_friend0"
                             android:contentDescription="@string/description_image_green_ball"
                             style="@style/MistralStyle"
                             android:layout_marginTop="24dp"
                             app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="24dp"
                             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/text_friend"/>
+                            app:layout_constraintBottom_toBottomOf="@+id/text_friend0"/>
                     <ImageView
                             android:src="@drawable/bola_verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" android:id="@+id/image_ball_friend1"
                             style="@style/MistralStyle"
                             app:layout_constraintBottom_toBottomOf="@+id/text_friend1"
-                            app:layout_constraintStart_toStartOf="@+id/image_ball_friend"
-                            app:layout_constraintTop_toBottomOf="@+id/image_ball_friend"
+                            app:layout_constraintStart_toStartOf="@+id/image_ball_friend0"
+                            app:layout_constraintTop_toBottomOf="@+id/image_ball_friend0"
                             app:layout_constraintVertical_bias="1.0"
                             android:contentDescription="@string/description_image_green_ball"/>
                     <TextView
@@ -122,7 +122,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/text_friend1"
                             style="@style/MistralStyle"
-                            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/text_friend"
+                            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/text_friend0"
                             app:layout_constraintStart_toEndOf="@+id/image_ball_friend1"
                             android:layout_marginStart="24dp"/>
                     <ImageView
@@ -130,7 +130,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" android:id="@+id/image_ball_friend2"
                             style="@style/MistralStyle"
-                            app:layout_constraintStart_toStartOf="@+id/image_ball_friend"
+                            app:layout_constraintStart_toStartOf="@+id/image_ball_friend0"
                             app:layout_constraintBottom_toBottomOf="@+id/text_friend2"
                             app:layout_constraintTop_toBottomOf="@+id/image_ball_friend1"
                             app:layout_constraintVertical_bias="1.0"
@@ -149,17 +149,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" android:id="@+id/text_friend3"
                             app:layout_constraintTop_toBottomOf="@+id/text_friend2" android:layout_marginTop="24dp"
-                            style="@style/MistralStyle" app:layout_constraintStart_toEndOf="@+id/imageView8"
+                            style="@style/MistralStyle" app:layout_constraintStart_toEndOf="@+id/image_ball_friend3"
                             android:layout_marginStart="24dp"/>
                     <ImageView
                             android:src="@drawable/bola_gris"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView8"
+                            android:id="@+id/image_ball_friend3"
                             app:layout_constraintBottom_toBottomOf="@+id/text_friend3"
                             app:layout_constraintTop_toBottomOf="@+id/image_ball_friend2"
                             app:layout_constraintVertical_bias="1.0"
-                            app:layout_constraintStart_toStartOf="@+id/image_ball_friend"
+                            app:layout_constraintStart_toStartOf="@+id/image_ball_friend0"
                             android:contentDescription="@string/description_image_grey_ball"/>
                 </android.support.constraint.ConstraintLayout>
             </ScrollView>
