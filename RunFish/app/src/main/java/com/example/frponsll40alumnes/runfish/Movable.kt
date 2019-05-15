@@ -1,5 +1,5 @@
 package com.example.frponsll40alumnes.runfish
 
-interface Movable{
+interface Movable {
     var speed : Int
 }

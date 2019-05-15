@@ -91,7 +91,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         return false
     }
 
-
     //Mètode que fa un update de cada objecte
     fun updateView(){
         // Update positions for player's fish
@@ -106,6 +105,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         for(x in NPCList!!){
             if(collision(x!!)){
                 x!!.collision(fish)
+                //fish!!.collision(x!!) // per mirar si té el shield activat
+
+                /* aixo hauria d'estar dintre de fish.collision()*/
                 if(x is Plankton){
                     fish!!.gainCapacity(x.value)
                 }
@@ -113,6 +115,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                     fish!!.loseLife(x.value)
                     //falta comprovar vibracio de options
 
+                    // Possible solució: Hem de crear el gameEngine passant-li les opcions?
                     val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
                     if (vibrator.hasVibrator() && this.vibration) { // aqui comprovar
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {   // perque amb apis antigues no va
@@ -120,6 +123,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                         }
                     }
                 }
+                /* '''''''''''''''''''''''''''''''''''''''''''''''''''*/
+
             }
         }
 
@@ -128,24 +133,11 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     }
 
-    /*fun drawView(canvas : Canvas){
-        // Draw background
 
-        background!!.draw(canvas)
-
-        // Draw npcs
-        for(x in NPCList){
-            x.draw(canvas)
-        }
-
-        // Draw player
-        fish!!.draw(canvas)
-    }*/
 
     fun updateVibration(activated : Boolean){
         this.vibration = activated
     }
-
 
     fun getNPC(): MutableList<NPC?>? {
         return NPCList!!
@@ -185,5 +177,19 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     fun getPlanktonCollected(): Int {
         return this.fish!!.capacity
+    }
+
+    /* Get an array of npcs positioned inside a rectangular area */
+    fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?> {
+        /* the are to scan in is delimited by the parameters */
+        var NPCsInArea: MutableList<NPC?> = mutableListOf()
+
+        for(npc in NPCList!!){
+            if(npc!!.y in y_start..y_end && npc!!.x in x_start..x_end){
+                NPCsInArea.add(npc!!)
+            }
+        }
+
+        return NPCsInArea
     }
 }

@@ -189,7 +189,12 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.gameEngine!!.getPlanktonCollected()
     }
 
+
     fun setVibrationState(activated: Boolean) {
         this.model.setVibrationState(activated)
+    }
+
+    fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?> {
+        return this.gameEngine!!.getNPCsInArea(x_start, x_end, y_start, y_end)
     }
 }

@@ -1,7 +1,7 @@
 package com.example.frponsll40alumnes.runfish.npc
 
 import android.graphics.Canvas
-import com.example.frponsll40alumnes.runfish.CollisionStrategy
+import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 import com.example.frponsll40alumnes.runfish.Dimension
 import com.example.frponsll40alumnes.runfish.Position
 import com.example.frponsll40alumnes.runfish.fish.Fish
@@ -20,6 +20,10 @@ abstract class NPC(var value : Int, override var x: Int = 0, override var y: Int
 
     override fun collision(playerFish: Fish?) {
         super.collision(playerFish); // move offscreen
+    }
+
+    fun die() {
+        this.x = 10000000; //TODO: Instead of moving offscreen, delete the npc
     }
 
 }
