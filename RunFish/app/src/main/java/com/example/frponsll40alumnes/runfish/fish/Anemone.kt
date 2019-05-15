@@ -10,6 +10,6 @@ class Anemone(context: Context) :
     Fish(name = "Anemone", life = 20, capacity =  0, ability = "health", price =  1000, maxLife = 20, maxCapacity = 20) {
 
     init{
-        this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone)
+        this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone_test)
     }
 }
