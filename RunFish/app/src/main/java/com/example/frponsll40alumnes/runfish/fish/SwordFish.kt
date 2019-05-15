@@ -9,4 +9,6 @@ class SwordFish(context: Context) : Fish("SwordFish", 20,0,"speed", 1000, 20, 20
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.sword_fish)
     }
+    override val width: Int = image.width
+    override val height: Int = image.height
 }

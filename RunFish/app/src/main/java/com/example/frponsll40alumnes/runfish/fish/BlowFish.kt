@@ -12,4 +12,7 @@ class BlowFish(context: Context) :
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.blow_fish)
     }
+
+    override val width: Int = image.width
+    override val height: Int = image.height
 }

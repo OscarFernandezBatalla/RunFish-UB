@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -81,14 +82,25 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     }
 
     fun collision(npc: NPC): Boolean{
-        if (fish!!.x < npc.x + npc.width &&
+
+        val npcRect = Rect(npc.x, npc.y, npc.x+npc.width, npc.y+npc.height)
+        val playerRect = Rect(fish!!.x, fish!!.y, fish!!.x+fish!!.width, fish!!.y+fish!!.height)
+        if(npcRect.intersect(playerRect)){
+            return true
+        }
+        return false
+
+
+
+
+       /* if (fish!!.x < npc.x + npc.width &&
             fish!!.x + fish!!.width > npc.x &&
             fish!!.y < npc.y + npc.height &&
             fish!!.height + fish!!.y > npc.y) {
             return true
             // ¡colision detectada!
         }
-        return false
+        return false*/
     }
 
     //Mètode que fa un update de cada objecte

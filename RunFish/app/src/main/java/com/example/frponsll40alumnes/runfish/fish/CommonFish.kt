@@ -16,6 +16,8 @@ class CommonFish(context: Context) :
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.common_fish)
     }
+    override val width: Int = image.width
+    override val height: Int = image.height
 
     override fun update(xJoy : Double, yJoy : Double, strength : Int) {
         super.update(xJoy, yJoy, strength)

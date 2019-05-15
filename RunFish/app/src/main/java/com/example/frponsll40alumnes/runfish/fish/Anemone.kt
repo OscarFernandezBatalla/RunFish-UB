@@ -12,4 +12,7 @@ class Anemone(context: Context) :
     init{
         this.image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone_test)
     }
+
+    override val width: Int = image.width
+    override val height: Int = image.height
 }
