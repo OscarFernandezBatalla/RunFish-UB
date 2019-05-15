@@ -104,7 +104,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         // Check if npcs had a collision
         for(x in NPCList!!){
             if(collision(x!!)){
-                x!!.collision(fish)
+                x.collision(fish)
                 //fish!!.collision(x!!) // per mirar si té el shield activat
 
                 /* aixo hauria d'estar dintre de fish.collision()*/
@@ -113,26 +113,25 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 }
                 else{
                     fish!!.loseLife(x.value)
-                    //falta comprovar vibracio de options
-
-                    // Possible solució: Hem de crear el gameEngine passant-li les opcions?
-                    val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                    if (vibrator.hasVibrator() && this.vibration) { // aqui comprovar
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {   // perque amb apis antigues no va
-                            vibrator.vibrate(VibrationEffect.createOneShot(250, VibrationEffect.DEFAULT_AMPLITUDE))
-                        }
+                    if(vibration){
+                        vibrate()
                     }
                 }
                 /* '''''''''''''''''''''''''''''''''''''''''''''''''''*/
-
             }
         }
-
         // Update scrolling of background
         background!!.update()
-
     }
 
+    private fun vibrate() {
+        val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (vibrator.hasVibrator()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {   // necessari ja que que amb apis antigues no va
+                vibrator.vibrate(VibrationEffect.createOneShot(250, VibrationEffect.DEFAULT_AMPLITUDE))
+            }
+        }
+    }
 
 
     fun updateVibration(activated : Boolean){
@@ -153,14 +152,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     fun useAbilityGE(){
         fish!!.useAbility(Health())
-    }
-
-    fun getLife(): Int {
-        return fish!!.life
-    }
-
-    fun getCapacity(): Int {
-        return fish!!.capacity
     }
 
     fun lifeBar(): Int{
@@ -185,8 +176,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         var NPCsInArea: MutableList<NPC?> = mutableListOf()
 
         for(npc in NPCList!!){
-            if(npc!!.y in y_start..y_end && npc!!.x in x_start..x_end){
-                NPCsInArea.add(npc!!)
+            if(npc!!.y in y_start..y_end && npc.x in x_start..x_end){
+                NPCsInArea.add(npc)
             }
         }
 
