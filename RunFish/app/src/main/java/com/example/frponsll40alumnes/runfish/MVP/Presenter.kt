@@ -202,7 +202,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
     fun setConnected(connected: Boolean){
-        this.setConnected(connected)
+        this.model.setConnected(connected)
     }
 
 

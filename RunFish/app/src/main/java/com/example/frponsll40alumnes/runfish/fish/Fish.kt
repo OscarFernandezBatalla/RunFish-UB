@@ -23,8 +23,8 @@ abstract class Fish (
     private val screenWidth = Resources.getSystem().displayMetrics.widthPixels
     private val screenHeight = Resources.getSystem().displayMetrics.heightPixels
 
-    override var x: Int = screenWidth/2
-    override var y: Int = screenHeight/2
+    override var x: Int = screenWidth
+    override var y: Int = screenHeight
     override var width: Int = 60
     override var height: Int = 30
     override var speed: Int = 70
