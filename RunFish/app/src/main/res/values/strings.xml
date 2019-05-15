@@ -116,5 +116,7 @@
     -->
 
     <string name="actual_plankton">Actual Plankton</string>
+    <string name="welcome">WELCOME TO RUNFISH!</string>
+    <string name="username_petition">HEY, TO CONTINUE USING RUNFISH YOU WILL NEED TO CREATE YOUR USERNAME:</string>
 
 </resources>

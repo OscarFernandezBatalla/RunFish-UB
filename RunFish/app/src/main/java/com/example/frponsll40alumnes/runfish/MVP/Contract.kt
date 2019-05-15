@@ -47,7 +47,7 @@ interface Contract {
         fun uploadPriceBlowFish(): Int
         fun uploadPriceSwordFish(): Int
         fun uploadPriceShark(): Int
-        fun uploadUsers(): Int
+        fun uploadFriends(): Int
         fun uploadPlayerPlankton(): Int
         fun buyFish(fishType: FishType)
         fun uploadLevels() : Int
@@ -91,7 +91,7 @@ interface Contract {
         fun uploadPriceBlowFish(): Int
         fun uploadPriceSwordFish(): Int
         fun uploadPriceShark(): Int
-        fun uploadUsers(): Int
+        fun uploadFriends(): Int
         fun uploadPlayerPlankton(): Int
     }
 
