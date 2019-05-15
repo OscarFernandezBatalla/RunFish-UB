@@ -2,6 +2,7 @@ package com.example.frponsll40alumnes.runfish.activityFragments
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,11 +15,14 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
+    lateinit var song : MediaPlayer
     var presenter : Presenter = Presenter(this)
     lateinit var signOut : Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        song = MediaPlayer.create(this, R.raw.run_boy_run)
         setContentView(R.layout.activity_home)
         signOut = findViewById(R.id.sign_out_button)
         signOut.visibility = View.GONE
@@ -37,6 +41,11 @@ class HomeActivity : AppCompatActivity() {
         startActivity(MainActivity.getLaunchIntent(this))
         FirebaseAuth.getInstance().signOut()
     }
+
+    fun getMusic() : MediaPlayer{
+        return song
+    }
+
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {

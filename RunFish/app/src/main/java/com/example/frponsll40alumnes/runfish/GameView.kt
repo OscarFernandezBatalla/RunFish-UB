@@ -139,6 +139,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             if(bar_life!!.progress <=0){
                 this.thread.setRunning(false)
                 Log.w(TAG, "QWE You died")
+                this.presenter.stopMusic()
                 this.presenter.increaseDeath()
                 constraint = rootView.findViewById(R.id.game_over_layout)
                 constraint!!.visibility = View.VISIBLE

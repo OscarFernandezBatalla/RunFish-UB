@@ -48,16 +48,10 @@ class GameFragment : Fragment() {
     ): View? {
         //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
 
-
-
-
-
-
         act!!.signOut.visibility = View.GONE
 
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
-
         act!!.presenter.startGame(Player(FishType.ANEMONE),context = this.gameView.context)
 
         return game
@@ -103,5 +97,10 @@ class GameFragment : Fragment() {
         button_next_level.setOnClickListener(){
             //successful_layout.visibility=View.GONE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        this.act!!.presenter.stopMusic()
     }
 }

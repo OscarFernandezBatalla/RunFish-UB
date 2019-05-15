@@ -129,6 +129,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     override fun startGame(player1: Player, player2: Player?, context: Context) {
         gameEngine = GameEngine(player1,player2,context)
         gameEngine!!.updateVibration(uploadVibrationSwitch())
+        this.startMusic()
         gameEngine!!.startGame()
     }
 
@@ -197,4 +198,13 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?> {
         return this.gameEngine!!.getNPCsInArea(x_start, x_end, y_start, y_end)
     }
+
+    fun startMusic(){
+        this.viewActivity.getMusic().start()
+    }
+    fun stopMusic(){
+        this.viewActivity.getMusic().pause()
+        this.viewActivity.getMusic().seekTo(0)
+    }
+
 }
