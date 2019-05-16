@@ -5,6 +5,8 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
@@ -29,6 +31,9 @@ abstract class Fish (
 
     override var speed: Int = 70
     override lateinit var image: Bitmap
+    override var rec: ShapeDrawable = ShapeDrawable(RectShape())
+
+
 
 
 
@@ -125,7 +130,9 @@ abstract class Fish (
         x += xV
         y += yV
 
-        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
+        this.rectangle.set(this.x, this.y, this.x+width, this.y+height)
+        //test de col·lisions (temporal):
+        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun changeCoordinates(x: Int, y: Int) {

@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        mGoogleButton = findViewById<SignInButton>(R.id.signInGoogleButton)
+        mGoogleButton = findViewById(R.id.signInGoogleButton)
         firebaseAuth = FirebaseAuth.getInstance()
 
         configureGoogleSignIn()

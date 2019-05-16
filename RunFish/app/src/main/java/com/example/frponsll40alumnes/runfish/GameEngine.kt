@@ -82,37 +82,26 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     }
 
     fun collision(npc: NPC): Boolean{
-
         val npcRect = npc.rectangle
         val playerRect = fish!!.rectangle
         if(playerRect.intersect(npcRect)){
             return true
         }
         return false
-
-
-
-
-       /* if (fish!!.x < npc.x + npc.width &&
-            fish!!.x + fish!!.width > npc.x &&
-            fish!!.y < npc.y + npc.height &&
-            fish!!.height + fish!!.y > npc.y) {
-            return true
-            // ¡colision detectada!
-        }
-        return false*/
     }
 
     //Mètode que fa un update de cada objecte
     fun updateView(){
+
+
         // Update positions for player's fish
         fish!!.update(valx, valy, strength)
 
         // Update positions for npcs
+
         for(x in NPCList!!){
             x!!.update()
         }
-
         // Check if npcs had a collision
         for(x in NPCList!!){
             if(collision(x!!)){
@@ -132,6 +121,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 /* '''''''''''''''''''''''''''''''''''''''''''''''''''*/
             }
         }
+
         // Update scrolling of background
         background!!.update()
     }

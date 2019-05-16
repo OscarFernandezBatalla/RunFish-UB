@@ -1,10 +1,9 @@
 package com.example.frponsll40alumnes.runfish.npc
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Rect
+import android.graphics.*
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
@@ -16,7 +15,14 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
 
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
-
+    init {
+        //test de col·lisions (temporal):
+        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
+        rec.paint.color = Color.parseColor("#009944")
+        rec.paint.color=Color.TRANSPARENT
+        rec.paint.style=Paint.Style.STROKE
+        rec.paint.color = Color.RED
+    }
     /**
      * Draws the object on to the canvas.
      */
@@ -33,7 +39,9 @@ class Bomb(context: Context, damage : Int): NPC(damage) {
     override fun update() {
 
         y+= (pes)
-        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
+        this.rectangle.set(this.x, this.y, this.x+width, this.y+height)
+        //test de col·lisions (temporal):
+        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {

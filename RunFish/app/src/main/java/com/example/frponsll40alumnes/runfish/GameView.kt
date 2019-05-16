@@ -121,17 +121,15 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
     }
 
-    override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
-
-    }
+    override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {}
 
     fun update() {
 
         constraint = rootView.findViewById(R.id.pause_fragment)
         if(constraint!!.visibility != View.VISIBLE) {
+
             presenter.updateJoystickInf(valx,valy,strength)
             presenter.updateView()
-            //TODO: FER-HO AL PRESENTER...
 
             bar_life!!.progress = presenter.lifeBar()
             bar_capacity!!.progress = presenter.capacityBar()
@@ -158,9 +156,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 if(constraint!!.visibility == View.VISIBLE) {
                     Log.w(TAG, "QWE fragment is visible")
                 }
-
             }
-
         }
 
 
@@ -198,18 +194,19 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         var map: Map? = presenter.getMap()
         var fish: Fish? = presenter.getFish()
 
-
         map!!.draw(canvas)
 
         for(x in NPC!!){
             x!!.draw(canvas)
+
+            //test de col·lisions (temporal):
+            x.rec.draw(canvas)
         }
         //canvas.drawText("Metres",20f,64f, paint)
         fish!!.draw(canvas)
-        
 
-        //this.presenter.drawView(canvas)
-        //gameEngine.drawView(canvas)
+        //test de col·lisions (temporal):
+        fish.rec.draw(canvas)
     }
 
 

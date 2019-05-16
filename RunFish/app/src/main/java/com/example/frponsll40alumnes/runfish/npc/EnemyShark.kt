@@ -1,10 +1,10 @@
 package com.example.frponsll40alumnes.runfish.npc
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Rect
+import android.graphics.*
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RectShape
+import android.graphics.drawable.shapes.Shape
 import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
@@ -14,12 +14,23 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
 
     override var speed: Int = this.value
 
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top_test)
+    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top)
 
     override var width: Int = image.width
     override var height: Int = image.height
 
-    override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
+    override var rectangle: Rect = Rect(this.x+95, this.y+75, this.x+width-125, this.y+height)
+
+    init {
+        //test de col·lisions (temporal):
+        rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
+        rec.paint.color = Color.parseColor("#009944")
+        rec.paint.color=Color.TRANSPARENT
+        rec.paint.style=Paint.Style.STROKE
+        rec.paint.color = Color.RED
+    }
+
+
 
     fun changeOrientation(vertical : Boolean){
         this.vertical = vertical
@@ -52,15 +63,14 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
                 x+= speed
             }
         }
-        this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
+        this.rectangle.set(this.x+95, this.y+75, this.x+width-125, this.y+height)
+        //test de col·lisions (temporal):
+        rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {
-        if(playerFish != null){
-            //value es el nom de la variable que guarda dmg
-            playerFish.loseLife(value);
-        }
-        super.collision(playerFish); // move offscreen
+        playerFish?.loseLife(value)
+        super.collision(playerFish) // move offscreen
     }
 
 
