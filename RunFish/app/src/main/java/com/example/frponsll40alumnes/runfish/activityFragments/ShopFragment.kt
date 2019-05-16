@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.R
@@ -17,10 +18,11 @@ import com.example.frponsll40alumnes.runfish.abilities.Ability
 import kotlinx.android.synthetic.main.fragment_shop.*
 
 
-class shopFragment : Fragment() {
+class ShopFragment : Fragment() {
 
     private var act : HomeActivity ?= null
     private var ownedFish : MutableList<Boolean>? = null
+    private var message : String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,31 +43,35 @@ class shopFragment : Fragment() {
         button_comeback_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shopFragment_to_menuFragment))
 
         button_blowfish.setOnClickListener{
-            act!!.presenter.buyFish(FishType.BLOWFISH)
+            message = act!!.presenter.buyFish(FishType.BLOWFISH)
             ownedFish = act!!.presenter.uploadFishOwned()
             uploadBlowFish()
             uploadPlayerPlankton()
+            Toast.makeText(this.context,message,Toast.LENGTH_SHORT).show()
         }
 
         button_clownfish.setOnClickListener {
-            act!!.presenter.buyFish(FishType.ANEMONE)
+            message = act!!.presenter.buyFish(FishType.ANEMONE)
             ownedFish = act!!.presenter.uploadFishOwned()
             uploadClownFish()
             uploadPlayerPlankton()
+            Toast.makeText(this.context,message,Toast.LENGTH_SHORT).show()
         }
 
         button_swordfish.setOnClickListener {
-            act!!.presenter.buyFish(FishType.SWORDFISH)
+            message = act!!.presenter.buyFish(FishType.SWORDFISH)
             ownedFish = act!!.presenter.uploadFishOwned()
             uploadSwordFish()
             uploadPlayerPlankton()
+            Toast.makeText(this.context,message,Toast.LENGTH_SHORT).show()
         }
 
         button_shark.setOnClickListener {
-            act!!.presenter.buyFish(FishType.SHARK)
+            message = act!!.presenter.buyFish(FishType.SHARK)
             ownedFish = act!!.presenter.uploadFishOwned()
             uploadShark()
             uploadPlayerPlankton()
+            Toast.makeText(this.context,message,Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -106,6 +112,7 @@ class shopFragment : Fragment() {
 
         if(ownedFish!![0]){
             this.image_common_fish.setImageResource(R.drawable.common_fish)
+            this.button_common_fish.isEnabled = false
         }
     }
 
@@ -123,6 +130,7 @@ class shopFragment : Fragment() {
 
         if(ownedFish!![1]){
             this.image_clownfish.setImageResource(R.drawable.anemone)
+            this.button_clownfish.isEnabled = false
         }
         else{
             this.image_clownfish.setImageResource(R.drawable.anemone_lock)
@@ -143,6 +151,7 @@ class shopFragment : Fragment() {
 
         if(ownedFish!![2]){
             this.image_blowfish.setImageResource(R.drawable.blow_fish)
+            this.button_blowfish.isEnabled = false
         }
         else{
             this.image_blowfish.setImageResource(R.drawable.blowfish_lock)
@@ -163,6 +172,7 @@ class shopFragment : Fragment() {
 
         if(ownedFish!![3]){
             this.image_swordfish.setImageResource(R.drawable.sword_fish)
+            this.button_swordfish.isEnabled = false
         }
         else{
             this.image_swordfish.setImageResource(R.drawable.swordfish_lock)
@@ -182,6 +192,7 @@ class shopFragment : Fragment() {
 
         if(ownedFish!![4]){
             this.image_shark.setImageResource(R.drawable.shark)
+            this.button_shark.isEnabled = false
         }
         else{
             this.image_shark.setImageResource(R.drawable.shark_lock)

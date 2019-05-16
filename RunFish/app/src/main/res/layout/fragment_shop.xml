@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".activityFragments.shopFragment"
+                                             tools:context=".activityFragments.ShopFragment"
                                              android:background="@drawable/fons"
                                              android:id="@+id/frameLayout2">
     <TextView

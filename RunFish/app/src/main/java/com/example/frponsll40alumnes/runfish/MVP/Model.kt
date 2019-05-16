@@ -274,24 +274,37 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    fun buyFish(fishType: FishType) {
+    fun buyFish(fishType: FishType) : String{
         when(fishType){
             FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
                 clownFishOwned = true
                 this.setPlanctonToCloud()
+                return "Great! Now you own an Anemone!"
+            }else{
+                return "You'll need no eat more plankton to own this fish..."
             }
             FishType.BLOWFISH -> if(!blowFishOwned && buyFishSupport(blowFishPrice)){
                 blowFishOwned = true
                 this.setPlanctonToCloud()
+                return "Great! Now you own a Blowfish!"
+            }else{
+                return "You'll need no eat more plankton to own this fish..."
             }
             FishType.SWORDFISH -> if(!swordFishOwned && buyFishSupport(swordFishPrice)){
                 swordFishOwned = true
                 this.setPlanctonToCloud()
+                return "Great! Now you own a Swordfish!"
+            }else{
+                return "You'll need no eat more plankton to own this fish..."
             }
             FishType.SHARK -> if(!sharkOwned && buyFishSupport(sharkPrice)){
                 sharkOwned = true
                 this.setPlanctonToCloud()
+                return "Great! Now you own a Shark!"
+            }else{
+                return "You'll need no eat more plankton to own this fish..."
             }
+            else -> return ""
         }
     }
 

@@ -108,7 +108,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadPlayerPlankton()
     }
 
-    override fun buyFish(fishType: FishType) {
+    override fun buyFish(fishType: FishType) : String{
         return model.buyFish(fishType)
     }
 

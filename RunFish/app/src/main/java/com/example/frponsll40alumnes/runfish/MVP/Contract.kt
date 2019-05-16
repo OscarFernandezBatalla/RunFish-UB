@@ -49,7 +49,7 @@ interface Contract {
         fun uploadPriceShark(): Int
         fun uploadFriends(): Int
         fun uploadPlayerPlankton(): Int
-        fun buyFish(fishType: FishType)
+        fun buyFish(fishType: FishType) : String
         fun uploadLevels() : Int
         fun addFriend(friendName: String)
         fun startGame(player1: Player, player2: Player? = null, context: Context)
