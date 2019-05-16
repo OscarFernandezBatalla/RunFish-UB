@@ -27,9 +27,11 @@ class menuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         if(act!!.presenter.getUsername() == ""){
 
             button_user_petition.setOnClickListener{
+                act!!.hideNav()
                 var username = edit_text_username.text.toString()
                 if(username != ""){    //TODO: COMPROVAR QUE L'USERNAME NO EXISTEIX...
                     act!!.presenter.setUsername(username)
@@ -64,6 +66,8 @@ class menuFragment : Fragment() {
 
 
     }
+
+
 
     fun uploadMenuFragment(){
         uploadFriends()
