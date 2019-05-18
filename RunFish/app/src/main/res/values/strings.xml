@@ -118,5 +118,10 @@
     <string name="actual_plankton">Actual Plankton</string>
     <string name="welcome">WELCOME TO RUNFISH!</string>
     <string name="username_petition">HEY, TO CONTINUE USING RUNFISH YOU WILL NEED TO CREATE YOUR USERNAME:</string>
+    <string name="blowFish">BLOW SHARK</string>
+    <string name="swordFish">SWORD FISH</string>
+    <string name="whiteShark">WHITE SHARK</string>
+    <string name="clownFish">CLOWNFISH</string>
+    <string name="commonFish">COMMON FISH</string>
 
 </resources>

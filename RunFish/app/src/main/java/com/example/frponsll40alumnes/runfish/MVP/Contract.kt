@@ -68,6 +68,13 @@ interface Contract {
         fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?>
         fun startMusic()
         fun stopMusic()
+        fun getFriendsList(): List<String>
+        fun getConnected(): Boolean
+        fun setConnected(connected: Boolean)
+        fun getUsername(): String
+        fun setUsername(username: String)
+        fun getCurrentFish() : FishType
+        fun setCurrentFish(fish: FishType)
     }
 
     interface Model {
@@ -93,6 +100,30 @@ interface Contract {
         fun uploadPriceShark(): Int
         fun uploadFriends(): Int
         fun uploadPlayerPlankton(): Int
+        fun buyFish(fishType: FishType) : String
+        fun uploadLevels() : Int
+        fun setStatsToCloud()
+        fun setPlanctonToCloud()
+        fun setLevelsToCloud()
+        fun setFishToCloud()
+        fun getStatsFromCloud()
+        fun setOptionsToCloud()
+        fun getOptionsFromCloud()
+        fun getPlanctonFromCloud()
+        fun getLevelsFromCloud()
+        fun getFishFromCloud()
+        fun addFriend(friendName: String)
+        fun getFriendsFromCloud()
+        fun setFriendsToCloud()
+        fun actualitzaFriendsMap()
+        fun setVibrationState(activated: Boolean)
+        fun getFriendsList(): List<String>
+        fun getConnected(): Boolean
+        fun setConnected(connected: Boolean)
+        fun getUsername(): String
+        fun setUsername(username: String)
+        fun getCurrentFish() : FishType
+        fun setCurrentFish(fish: FishType)
     }
 
 }

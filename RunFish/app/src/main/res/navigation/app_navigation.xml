@@ -38,7 +38,7 @@
     </fragment>
 
 
-    <fragment android:id="@+id/levelsFragment" android:name="com.example.frponsll40alumnes.runfish.activityFragments.levelsFragment"
+    <fragment android:id="@+id/levelsFragment" android:name="com.example.frponsll40alumnes.runfish.activityFragments.LevelsFragment"
               android:label="fragment_levels" tools:layout="@layout/fragment_levels">
         <action android:id="@+id/action_levelsFragment_to_singlePlayerFragment"
                 app:destination="@id/singlePlayerFragment"/>

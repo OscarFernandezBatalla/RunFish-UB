@@ -42,34 +42,34 @@ class Options : Fragment() {
             this.seekBar_sounds.progress = 0
         }
 
-        switch_vibration.setOnCheckedChangeListener { buttonView, isChecked ->
+        switch_vibration.setOnCheckedChangeListener { _, isChecked ->
             setVibrationState(isChecked)
         }
 
     }
 
 
-    fun uploadOptionsFragments(){
+    private fun uploadOptionsFragments(){
         uploadMusicBar()
         uploadSoundBar()
         uploadVibrationSwitch()
     }
 
-    fun uploadMusicBar(){
+    private fun uploadMusicBar(){
         //this.text_view_int_deaths.text = statNumberOfDeath.toString()
         this.seekBar_musica.progress = act!!.presenter.uploadMusicBar()
     }
 
-    fun uploadSoundBar(){
+    private fun uploadSoundBar(){
         //this.text_view_int_deaths.text = statNumberOfDeath.toString()
         this.seekBar_sounds.progress = act!!.presenter.uploadSoundBar()
     }
 
-    fun uploadVibrationSwitch(){
+    private fun uploadVibrationSwitch(){
         this.switch_vibration.isChecked = act!!.presenter.uploadVibrationSwitch()
     }
 
-    fun setVibrationState(activated : Boolean){
+    private fun setVibrationState(activated : Boolean){
         act!!.presenter.setVibrationState(activated)
     }
 }

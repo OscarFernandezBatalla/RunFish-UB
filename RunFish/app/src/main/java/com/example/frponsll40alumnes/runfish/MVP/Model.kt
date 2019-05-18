@@ -4,14 +4,8 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
-import com.example.frponsll40alumnes.runfish.abilities.Shield
-import com.example.frponsll40alumnes.runfish.fish.BlowFish
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.DocumentReference
-import java.security.KeyStore
 
 
 class Model (var presenter: Presenter) : Contract.Model {
@@ -25,8 +19,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     private var friends : List<String> = mutableListOf()
 
-    //private var friend1 : List<Any?> = mutableListOf()
+    private var currentFish : String? = null
 
+    //private var friend1 : List<Any?> = mutableListOf()
 
     /*stats*/
 
@@ -274,7 +269,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    fun buyFish(fishType: FishType) : String{
+    override fun buyFish(fishType: FishType) : String{
         when(fishType){
             FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
                 clownFishOwned = true
@@ -316,7 +311,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         return false
     }
 
-    fun uploadLevels() : Int{
+    override fun uploadLevels() : Int{
         return levelsUnlocked
     }
 
@@ -334,22 +329,22 @@ class Model (var presenter: Presenter) : Contract.Model {
     }*/
 
 
-    fun setStatsToCloud(){
+    override fun setStatsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
     }
 
-    fun setPlanctonToCloud(){
+    override fun setPlanctonToCloud(){
         planctonMap["actualPlankton"] = actualPlankton
         db.collection("usuarios").document("$user").collection("userContext").document("plancton").set(planctonMap)
     }
-    fun setLevelsToCloud(){
+    override fun setLevelsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
     }
-    fun setFishToCloud(){
+    override fun setFishToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("fish").set(fishMap)
     }
 
-    fun getStatsFromCloud(){
+    override fun getStatsFromCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").get().addOnSuccessListener { document ->
             if (document != null) {
                 statTotalFish = document.data!!.get("statTotalFish").toString().toInt()
@@ -365,11 +360,11 @@ class Model (var presenter: Presenter) : Contract.Model {
         }
     }
 
-    fun setOptionsToCloud(){
+    override fun setOptionsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("options").set(optionsMap)
     }
 
-    fun getOptionsFromCloud(){
+    override fun getOptionsFromCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("options").get().addOnSuccessListener { document ->
             if (document != null) {
                 music = document.data!!.get("music").toString().toInt()
@@ -385,7 +380,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         }
     }
 
-    fun getPlanctonFromCloud() {
+    override fun getPlanctonFromCloud() {
         db.collection("usuarios").document("$user").collection("userContext").document("plancton").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -399,7 +394,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         }
     }
 
-    fun getLevelsFromCloud() {
+    override fun getLevelsFromCloud() {
         db.collection("usuarios").document("$user").collection("userContext").document("levels").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -413,7 +408,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
     }
 
-    fun getFishFromCloud() {
+    override fun getFishFromCloud() {
         db.collection("usuarios").document("$user").collection("userContext").document("fish").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -432,7 +427,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
     }
 
-    fun addFriend(friendName: String) {
+    override fun addFriend(friendName: String) {
         //if (db.collection("usuarios").document("$friendName") != null){
         friends += "friendName"
         setFriendsToCloud()
@@ -441,7 +436,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
 
-    fun getFriendsFromCloud() {
+    override fun getFriendsFromCloud() {
         db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -454,7 +449,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
     }
 
-    fun setFriendsToCloud(){
+    override fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
         //db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
         db.collection("usuarios").document("$user").collection("userContext").document("friend1").set(friendsMap)
@@ -463,32 +458,54 @@ class Model (var presenter: Presenter) : Contract.Model {
         //db.collection("usuarios").document("$user").collection("userContext").document("friend4")
     }
 
-    fun actualitzaFriendsMap(){
+    override fun actualitzaFriendsMap(){
         friendsMap["friends"] = friends
     }
 
-    fun setVibrationState(activated: Boolean) {
+    override fun setVibrationState(activated: Boolean) {
         this.vibration = activated
     }
 
-    fun getFriendsList(): List<String>{
+    override fun getFriendsList(): List<String>{
         return this.friends
     }
 
-    fun getConnected(): Boolean{
+    override fun getConnected(): Boolean{
         return this.connected
     }
-    fun setConnected(connected: Boolean){
+    override fun setConnected(connected: Boolean){
         this.connected = connected
     }
 
-    fun getUsername(): String {
+    override fun getUsername(): String {
         return this.username
     }
 
-    fun setUsername(username: String) {
+    override fun setUsername(username: String) {
         this.username = username
     }
+
+    override fun getCurrentFish() : FishType{
+        return when(currentFish){
+            "Commonfish" -> FishType.COMMONFISH
+            "Anemone" -> FishType.ANEMONE
+            "Blowfish" -> FishType.BLOWFISH
+            "Swordfish" -> FishType.SWORDFISH
+            "Shark" -> FishType.SHARK
+            else -> FishType.COMMONFISH         //Com posar error?
+        }
+    }
+
+    override fun setCurrentFish(fish: FishType) {
+        this.currentFish = when(fish){
+            FishType.COMMONFISH -> "Commonfish"
+            FishType.ANEMONE -> "Anemone"
+            FishType.BLOWFISH -> "Blowfish"
+            FishType.SWORDFISH -> "Swordfish"
+            FishType.SHARK -> "Shark"
+        }
+    }
+
 
     /* TODO: Fer-ho demà a PIS
         1. IMPLEMENTAR ELS AMICS

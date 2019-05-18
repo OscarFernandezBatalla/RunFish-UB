@@ -11,7 +11,7 @@ import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_levels.*
 
 
-class levelsFragment : Fragment() {
+class LevelsFragment : Fragment() {
 
     var act : HomeActivity ?= null
 
@@ -75,7 +75,7 @@ class levelsFragment : Fragment() {
     }
 
     fun uploadLevelsFragment(){
-        var numLevels: Int = act!!.presenter.uploadLevels()
+        val numLevels: Int = act!!.presenter.uploadLevels()
         for(i in 2..numLevels){
             when(numLevels){
                 2 -> {

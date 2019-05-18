@@ -36,13 +36,13 @@ class FriendsFragment : Fragment() {
         imageButton_cross.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_friendsFragment_to_menuFragment))
 
         button_Invite.setOnClickListener {
-            var posibleFriend = edit_text_username_invite.text.toString()
+            val posibleFriend = edit_text_username_invite.text.toString()
             addFriend(posibleFriend)
             edit_text_username_invite.setText("")
         }
     }
 
-    fun addFriend(friendName: String){
+    private fun addFriend(friendName: String){
         act!!.presenter.addFriend(friendName)
     }
 
@@ -50,8 +50,8 @@ class FriendsFragment : Fragment() {
         return act!!.presenter.getFriendsList()
     }
 
-    fun refreshFriendListView(){
-        var friendList = mutableListOf("Pepito","Pepe",null,null)  //TODO : MÀXIM 4
+    private fun refreshFriendListView(){
+        val friendList = mutableListOf("Pepito","Pepe",null,null)  //TODO : MÀXIM 4
         text_friend0.text = friendList[0]
         text_friend1.text = friendList[1]
         text_friend2.text = friendList[2]
@@ -82,15 +82,5 @@ class FriendsFragment : Fragment() {
         } else {
             image_ball_friend3.setImageResource(R.drawable.bola_gris)
         }
-
-
     }
-
-    /*fun uploadFriendsFragment(){
-    }
-    */
-   /* fun getBar() : Int{
-        return bar_capacity.progress
-    }*/
-
 }

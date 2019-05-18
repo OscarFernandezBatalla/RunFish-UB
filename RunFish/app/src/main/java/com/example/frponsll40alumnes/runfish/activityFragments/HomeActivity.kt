@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var song : MediaPlayer
+    private lateinit var song : MediaPlayer
     var presenter : Presenter = Presenter(this)
     lateinit var signOut : Button
 
@@ -45,7 +45,6 @@ class HomeActivity : AppCompatActivity() {
         if (hasFocus){
             hideNav()
         }
-
     }
 
 

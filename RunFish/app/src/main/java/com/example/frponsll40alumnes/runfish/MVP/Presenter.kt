@@ -171,7 +171,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.gameEngine!!.getPlanktonCollected()
     }
 
-
     override fun setVibrationState(activated: Boolean) {
         this.model.setVibrationState(activated)
     }
@@ -188,25 +187,31 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.getMusic().seekTo(0)
     }
 
-    fun getFriendsList(): List<String>{
+    override fun getFriendsList(): List<String>{
         return this.model.getFriendsList()
     }
 
-    fun getConnected(): Boolean{
+    override fun getConnected(): Boolean{
         return this.model.getConnected()
     }
 
-    fun setConnected(connected: Boolean){
+    override fun setConnected(connected: Boolean){
         this.model.setConnected(connected)
     }
 
-    fun getUsername(): String {
+    override fun getUsername(): String {
         return this.model.getUsername()
     }
 
-    fun setUsername(username: String) {
+    override fun setUsername(username: String) {
         this.model.setUsername(username)
     }
 
+    override fun getCurrentFish() : FishType{
+        return model.getCurrentFish()
+    }
 
+    override fun setCurrentFish(fish: FishType) {
+        model.setCurrentFish(fish)
+    }
 }

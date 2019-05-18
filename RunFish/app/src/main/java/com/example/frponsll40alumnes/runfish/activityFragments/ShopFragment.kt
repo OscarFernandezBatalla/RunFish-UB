@@ -90,7 +90,7 @@ class ShopFragment : Fragment() {
     }
 
 
-    fun getAbility(type: Ability): Drawable?{
+    private fun getAbility(type: Ability): Drawable?{
         return when (type){
             Ability.SHIELD -> ContextCompat.getDrawable(context!!, R.drawable.shield)
             Ability.HEALTH -> ContextCompat.getDrawable(context!!,R.drawable.salud)
@@ -101,7 +101,7 @@ class ShopFragment : Fragment() {
     }
 
     private fun uploadCommonFish() {
-        var barsCommonFish : MutableList<Int> = act!!.presenter.uploadBarsCommonFish()
+        val barsCommonFish : MutableList<Int> = act!!.presenter.uploadBarsCommonFish()
 
         this.life_bar_common_fish.progress = barsCommonFish[0]
         this.capactity_bar_common_fish.progress = barsCommonFish[1]
@@ -118,7 +118,7 @@ class ShopFragment : Fragment() {
 
 
     private fun uploadClownFish(){
-        var barsClownFish: MutableList<Int> = act!!.presenter.uploadBarsClownFish()
+        val barsClownFish: MutableList<Int> = act!!.presenter.uploadBarsClownFish()
 
         this.life_bar_clownfish.progress = barsClownFish[0]
         this.capactity_bar_clownfish.progress = barsClownFish[1]
@@ -139,7 +139,7 @@ class ShopFragment : Fragment() {
     }
 
     private fun uploadBlowFish(){
-        var barsBlowFish: MutableList<Int> = act!!.presenter.uploadBarsBlowFish()
+        val barsBlowFish: MutableList<Int> = act!!.presenter.uploadBarsBlowFish()
 
         this.life_bar_blowfish.progress = barsBlowFish[0]
         this.capactity_bar_blowfish.progress = barsBlowFish[1]
@@ -161,7 +161,7 @@ class ShopFragment : Fragment() {
 
 
     private fun uploadSwordFish(){
-        var barsSwordFish: MutableList<Int> = act!!.presenter.uploadBarsSwordFish()
+        val barsSwordFish: MutableList<Int> = act!!.presenter.uploadBarsSwordFish()
 
         this.life_bar_swordfish.progress = barsSwordFish[0]
         this.capactity_bar_swordfish.progress = barsSwordFish[1]
@@ -181,7 +181,7 @@ class ShopFragment : Fragment() {
 
     private fun uploadShark(){
 
-        var barsShark: MutableList<Int> = act!!.presenter.uploadBarsShark()
+        val barsShark: MutableList<Int> = act!!.presenter.uploadBarsShark()
 
         this.life_bar_shark.progress = barsShark[0]
         this.capactity_bar_shark.progress = barsShark[1]

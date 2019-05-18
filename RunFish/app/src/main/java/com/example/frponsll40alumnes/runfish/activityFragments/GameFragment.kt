@@ -21,9 +21,9 @@ class GameFragment : Fragment() {
 
     var act : HomeActivity? = null
     //lateinit var joystick : JoystickView
-    lateinit var gameView : GameView
+    private lateinit var gameView : GameView
     lateinit var game : FrameLayout
-    lateinit var gameWidgets: LinearLayout
+    private lateinit var gameWidgets: LinearLayout
 
     var posX : Int = 0
     var posY : Int = 0
@@ -34,7 +34,7 @@ class GameFragment : Fragment() {
         super.onCreate(savedInstanceState)
         //act!!.signOut.visibility = View.GONE
         act = (activity as HomeActivity)
-        game = FrameLayout(this.context)
+        game = FrameLayout(this.context!!)
         gameView = GameView(this.context!!, act!!.presenter)
         gameWidgets = LinearLayout(context)
         game.addView(gameView)
@@ -52,7 +52,7 @@ class GameFragment : Fragment() {
 
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
-        act!!.presenter.startGame(Player(FishType.ANEMONE),context = this.gameView.context)
+        act!!.presenter.startGame(Player(act!!.presenter.getCurrentFish()),context = this.gameView.context)
 
         return game
     }

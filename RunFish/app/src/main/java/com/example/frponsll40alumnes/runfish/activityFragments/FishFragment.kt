@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import kotlinx.android.synthetic.main.fragment_fish.*
@@ -49,72 +50,77 @@ class FishFragment : Fragment() {
         }
 
         button_common_fish.setOnClickListener {
-            text_selected_fish.text =  "COMMON FISH"
+            text_selected_fish.text =  getString(R.string.commonFish)
 
-            var barsCommon = act!!.presenter.uploadBarsCommonFish()
+            val barsCommon = act!!.presenter.uploadBarsCommonFish()
 
             life_bar_selected_fish.progress = barsCommon[0]
             capactity_bar_selected_fish.progress = barsCommon[1]
             speed_bar_selected_fish.progress = barsCommon[2]
 
             button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityCommonFish())
+            act!!.presenter.setCurrentFish(FishType.COMMONFISH)
         }
 
         button_clownfish.setOnClickListener {
-            text_selected_fish.text =  "CLOWNFISH"
+            text_selected_fish.text =  getString(R.string.clownFish)
 
-            var barsClown = act!!.presenter.uploadBarsClownFish()
+            val barsClown = act!!.presenter.uploadBarsClownFish()
 
             life_bar_selected_fish.progress = barsClown[0]
             capactity_bar_selected_fish.progress = barsClown[1]
             speed_bar_selected_fish.progress = barsClown[2]
 
             button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityClownFish())
+            act!!.presenter.setCurrentFish(FishType.ANEMONE)
         }
 
 
         button_shark.setOnClickListener {
 
-            text_selected_fish.text =  "WHITE SHARK"
+            text_selected_fish.text =  getString(R.string.whiteShark)
 
-            var barsShark = act!!.presenter.uploadBarsShark()
+            val barsShark = act!!.presenter.uploadBarsShark()
 
             life_bar_selected_fish.progress =  barsShark[0]
             capactity_bar_selected_fish.progress = barsShark[1]
             speed_bar_selected_fish.progress = barsShark[2]
 
             button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityShark())
+            act!!.presenter.setCurrentFish(FishType.SHARK)
         }
 
         button_swordFish.setOnClickListener {
 
-            text_selected_fish.text =  "SWORD FISH"
+            text_selected_fish.text =  getString(R.string.swordFish)
 
-            var barsSword = act!!.presenter.uploadBarsSwordFish()
+            val barsSword = act!!.presenter.uploadBarsSwordFish()
 
             life_bar_selected_fish.progress = barsSword[0]
             capactity_bar_selected_fish.progress =barsSword[1]
             speed_bar_selected_fish.progress =barsSword[2]
 
             button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilitySwordFish())
+            act!!.presenter.setCurrentFish(FishType.SWORDFISH)
         }
 
         button_blowFish.setOnClickListener {
 
-            text_selected_fish.text =  "BLOW SHARK"
+            text_selected_fish.text =  getString(R.string.blowFish)
 
-            var barsBlow = act!!.presenter.uploadBarsBlowFish()
+            val barsBlow = act!!.presenter.uploadBarsBlowFish()
 
             life_bar_selected_fish.progress = barsBlow[0]
             capactity_bar_selected_fish.progress =barsBlow[1]
             speed_bar_selected_fish.progress =barsBlow[2]
 
             button_ability_selected_fish.background = getAbility(act!!.presenter.uploadAbilityBlowFish())
+            act!!.presenter.setCurrentFish(FishType.BLOWFISH)
         }
     }
 
     private fun uploadFishOwned() {
-        var fishOwned = act!!.presenter.uploadFishOwned()
+        val fishOwned = act!!.presenter.uploadFishOwned()
 
         if (fishOwned[0]){
             button_common_fish.visibility = View.VISIBLE
@@ -133,7 +139,7 @@ class FishFragment : Fragment() {
         }
     }
 
-    fun getAbility(type: Ability): Drawable?{
+    private fun getAbility(type: Ability): Drawable?{
         return when (type){
             Ability.SHIELD -> ContextCompat.getDrawable(context!!, R.drawable.shield)
             Ability.HEALTH -> ContextCompat.getDrawable(context!!,R.drawable.salud)

@@ -34,7 +34,7 @@ class statsFragment : Fragment() {
     }
 
     private fun uploadStats() {
-        var stats : MutableList<Int> = act!!.presenter.uploadStats()
+        val stats : MutableList<Int> = act!!.presenter.uploadStats()
 
         this.text_view_int_total_fish.text = stats[0].toString()
         this.text_view_int_plankton.text = stats[1].toString()
