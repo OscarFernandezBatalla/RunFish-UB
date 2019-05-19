@@ -13,8 +13,10 @@ class Map (context: Context){
     private var x : Int = 0
     private var y : Int = -(image2.height - Resources.getSystem().displayMetrics.heightPixels)
 
+    private var heightNavegationBar = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"))
 
-    private var image : Bitmap = Bitmap.createScaledBitmap(image2, Resources.getSystem().displayMetrics.widthPixels, image2.height, false)
+
+    private var image : Bitmap = Bitmap.createScaledBitmap(image2, Resources.getSystem().displayMetrics.widthPixels+heightNavegationBar, image2.height, false)
 
 
 
