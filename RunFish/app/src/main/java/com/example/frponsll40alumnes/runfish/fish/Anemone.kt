@@ -16,6 +16,8 @@ class Anemone(context: Context) :
     override val height: Int = image.height
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
+    var speedIncreaseForNFrames = 0;
+
     init{
         //test de col·lisions (temporal):
         rec.setBounds(this.x, this.y, this.x+width, this.y+height)
@@ -25,7 +27,15 @@ class Anemone(context: Context) :
         rec.paint.color = Color.GREEN
     }
 
-
+    override fun update(xJoy : Double, yJoy : Double, strength : Int) {
+        super.update(xJoy, yJoy, strength)
+        if(this.speedIncreaseForNFrames > 0){
+            // decrease speed boost per frame
+            this.speedIncreaseForNFrames--
+        }else{
+            this.speed /= 2;
+        }
+    }
 
 
 
