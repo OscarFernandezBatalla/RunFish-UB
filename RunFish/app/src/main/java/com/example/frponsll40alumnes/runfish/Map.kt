@@ -6,17 +6,30 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 
-class Map (context: Context){
-    private val image2 : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg_hd_m)
+class Map (context: Context, var meters: Int){
+    private var image2 : Bitmap? = null
 
 
     private var x : Int = 0
-    private var y : Int = -(image2.height - Resources.getSystem().displayMetrics.heightPixels)
+    private var y : Int = 0
 
     private var heightNavegationBar = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"))
+    private var image : Bitmap
 
 
-    private var image : Bitmap = Bitmap.createScaledBitmap(image2, Resources.getSystem().displayMetrics.widthPixels+heightNavegationBar, image2.height, false)
+
+    init {
+        image2 = if (meters == 50){
+            BitmapFactory.decodeResource(context.resources, R.drawable.map_s)
+        } else{
+            BitmapFactory.decodeResource(context.resources, R.drawable.map_m)
+        }
+
+        image = Bitmap.createScaledBitmap(image2!!, Resources.getSystem().displayMetrics.widthPixels+heightNavegationBar, image2!!.height, false)
+
+        y = -(image.height - Resources.getSystem().displayMetrics.heightPixels)
+    }
+
 
 
 
@@ -33,7 +46,6 @@ class Map (context: Context){
     fun update() {
         // val randomNum = ThreadLocalRandom.current().nextInt(1, 5)
 /*
-
         if (x > screenWidth - image.width || x < image.width) {
             xVelocity = xVelocity * -1
         }
@@ -45,11 +57,16 @@ class Map (context: Context){
         y += (yVelocity)
 */
         if(y <= 0){
+            this.meters -= 5
             y+= (5)
         }
     }
 
     fun getY(): Int {
         return y
+    }
+
+    fun getMeter() : Int{
+        return this.meters
     }
 }

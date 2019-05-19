@@ -1,5 +1,6 @@
 package com.example.frponsll40alumnes.runfish
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
@@ -8,6 +9,7 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.support.v4.content.ContextCompat.getSystemService
+import android.util.Log
 import android.widget.ProgressBar
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
@@ -16,6 +18,7 @@ import com.example.frponsll40alumnes.runfish.abilities.Health
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
+import java.util.*
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
 
@@ -35,7 +38,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
-    var level = Level(0, DifficultyType.VERY_HARD, 85)
+    var level = Level(4, context)
 
     var valy : Double = 0.0
     var valx : Double = 0.0
@@ -51,13 +54,13 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         // Create player fish
         fish = fishFactory.createFish(player1.fishType, context)
 
-        // Create background
-        background = Map(context)
+        // Get background
+        background = level.getMap()
 
         // Create npcs for the level
-        for((key, value) in level.npcs){
+        for((key, value) in level.getNpc()){
             for(i in 0..value){
-                var npc = npcFactory.createNPC(key, context)
+                val npc = npcFactory.createNPC(key, context, vertical = Random().nextBoolean(), leftToRight = Random().nextBoolean())
                 if(npc != null){
                     NPCList!!.add(npc)
                 }
@@ -67,9 +70,31 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         // Spawn created npcs
         for(x in NPCList!!){
             // Handpicked values that fit the demo
-            var posx = (10..(displayWidth - 200)).random()
-            var posy = (displayHeight..(level.meters * 53)).random() * (-1)
-            x!!.changeCoordinates(posx, posy)
+
+            var posx: Int
+            var posy: Int
+
+            if (x is EnemyShark){
+                if(x.vertical){
+                    posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
+                    posy = (displayHeight..this.level.getMeters()*40).random() * (-1)       //ajustar el 40
+                }
+                else{
+                    if (x.leftToRight){
+                        posx = (-2000..0).random()     //si no va fer-ho amb -1 i invertir random
+                        posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
+                    }
+                    else{
+                        posx = (0..2000).random()     //si no va fer-ho amb -1 i invertir random
+                        posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
+                    }
+                }
+            }
+            else{
+                posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
+                posy = (displayHeight..this.level.getMeters()*40).random() * (-1)       //ajustar el 40
+            }
+            x.changeCoordinates(posx, posy)
         }
     }
 
