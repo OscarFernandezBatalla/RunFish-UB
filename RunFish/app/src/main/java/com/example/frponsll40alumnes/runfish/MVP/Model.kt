@@ -23,7 +23,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var user = FirebaseAuth.getInstance().currentUser!!.uid
 
 
-    private var friends : List<String> = mutableListOf()
+    private var friends: MutableList<String> = mutableListOf()
 
     //private var friend1 : List<Any?> = mutableListOf()
 
@@ -51,7 +51,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
 
-    var friendsMap: HashMap<String, List<String>> = hashMapOf(
+    var friendsMap: HashMap<String, MutableList<String>> = hashMapOf(
         "friends" to friends
     )
 
@@ -143,6 +143,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     init{
         //checkUserFromCloud()
+
         setUsernameToCloud()
         setStatsToCloud()
         setOptionsToCloud()
@@ -439,7 +440,8 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun addFriend(friendName: String) {
         //if (db.collection("usuarios").document("$friendName") != null){
-        friends += "friendName"
+
+        friends.add(friendName)
         setFriendsToCloud()
         //}
     }
@@ -450,7 +452,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    friends = document.data!!.get("friendList").toString().split("")
+                    //TODO: no funciona el get
+                    //friends = document.data!!.get("friendList").toString().split("").toMutableList() //as MutableList<String> //toString().split("").toMutableList()
                 } else {
                     Log.d(TAG, "No such document")
                 }
