@@ -72,6 +72,9 @@ class Model (var presenter: Presenter) : Contract.Model {
         "vibration" to vibration,
         "languageCat" to languageCat)
 
+    var usernameMap: HashMap<String, Any> = hashMapOf(
+        "username" to username)
+
 
     private var lifeBar : Int = 100     //percentatge
     private var capacityBar : Int = 0   //percentatge
@@ -140,19 +143,21 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     init{
         //checkUserFromCloud()
+        setUsernameToCloud()
         setStatsToCloud()
         setOptionsToCloud()
         setPlanctonToCloud()
         setLevelsToCloud()
         setFishToCloud()
-        setFriendsToCloud()
+        //setFriendsToCloud()
 
+        getUsernameFromCloud()
         getStatsFromCloud()
         getOptionsFromCloud()
         getPlanctonFromCloud()
         getLevelsFromCloud()
         getFishFromCloud()
-        getFriendsFromCloud()
+        //getFriendsFromCloud()
     }
 
 
@@ -467,6 +472,10 @@ class Model (var presenter: Presenter) : Contract.Model {
         friendsMap["friends"] = friends
     }
 
+    fun actualitzaUsernameMap(){
+        usernameMap["username"] = username
+    }
+
     fun setVibrationState(activated: Boolean) {
         this.vibration = activated
     }
@@ -488,6 +497,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun setUsername(username: String) {
         this.username = username
+        this.setUsernameToCloud()
     }
 
     /* TODO: Fer-ho demà a PIS
@@ -498,5 +508,24 @@ class Model (var presenter: Presenter) : Contract.Model {
         2. FER QUE LA BASE DE DADES ES MANTINGUI FIXE (no cada cop que entres es resetegi)
      */
 
+    fun setUsernameToCloud(){
+        this.actualitzaUsernameMap()
+        db.collection("usuarios").document("$user").collection("userContext").document("username").set(usernameMap)
+
+    }
+
+    fun getUsernameFromCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("username").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    username = document.data!!.get("username").toString()
+
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
 
 }
