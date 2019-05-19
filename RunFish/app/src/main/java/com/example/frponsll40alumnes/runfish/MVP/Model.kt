@@ -149,7 +149,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         setPlanctonToCloud()
         setLevelsToCloud()
         setFishToCloud()
-        //setFriendsToCloud()
+        setFriendsToCloud()
 
         getUsernameFromCloud()
         getStatsFromCloud()
@@ -157,7 +157,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         getPlanctonFromCloud()
         getLevelsFromCloud()
         getFishFromCloud()
-        //getFriendsFromCloud()
+        getFriendsFromCloud()
     }
 
 
@@ -462,7 +462,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
         //db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
-        db.collection("usuarios").document("$user").collection("userContext").document("friend1").set(friendsMap)
+        db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
         //db.collection("usuarios").document("$user").collection("userContext").document("friend2")
         //db.collection("usuarios").document("$user").collection("userContext").document("friend3")
         //db.collection("usuarios").document("$user").collection("userContext").document("friend4")

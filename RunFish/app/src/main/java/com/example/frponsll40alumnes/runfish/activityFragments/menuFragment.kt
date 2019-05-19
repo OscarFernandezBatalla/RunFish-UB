@@ -54,7 +54,7 @@ class menuFragment : Fragment() {
         }
 
 
-        //uploadMenuFragment()
+        uploadMenuFragment()
         button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
         button_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_multiplayerFragment))
         button_shop.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_shopFragment))
