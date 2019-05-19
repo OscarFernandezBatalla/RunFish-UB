@@ -14,7 +14,7 @@ class SwordFish(context: Context) : Fish("SwordFish", 20,0,"speed", 1000, 20, 20
 
     var speedIncreaseForNFrames = 0;
     var speedIncreaseActivated = false;
-    var speedIncreaseFactor = 2
+    var speedIncrease = 20
 
     init{
         //test de col·lisions (temporal):
@@ -26,13 +26,17 @@ class SwordFish(context: Context) : Fish("SwordFish", 20,0,"speed", 1000, 20, 20
     }
 
     override fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        super.update(xJoy, yJoy, strength)
         if(this.speedIncreaseForNFrames > 0){
             // decrease speed boost per frame
             this.speedIncreaseForNFrames--
         }else{
-            this.speed /= speedIncreaseFactor;
+            if(speedIncreaseActivated){
+                this.speedIncreaseActivated = false;
+            }
+            this.speed -= speedIncrease;
         }
+        super.update(xJoy, yJoy, strength)
+
     }
 
 }

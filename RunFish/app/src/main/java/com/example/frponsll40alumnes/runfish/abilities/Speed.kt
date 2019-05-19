@@ -10,7 +10,8 @@ class Speed : AbilityStrategy {
     override fun useAbility(fish: Fish) {
 
         if(fish is SwordFish) {
-            fish.speed *= fish.speedIncreaseFactor;
+            fish.speedIncreaseActivated = true;
+            //fish.speed += fish.speedIncrease;
             fish.speedIncreaseForNFrames = SPEED_INCREASE_DURATION;
         }
 

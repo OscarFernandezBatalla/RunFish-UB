@@ -3,7 +3,7 @@ package com.example.frponsll40alumnes.runfish.abilities
 import com.example.frponsll40alumnes.runfish.fish.BlowFish
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
-class Strength : AbilityStrategy {
+class DamageReduction : AbilityStrategy {
 
     val DAMAGE_REDUCTION_DURATION = 60;
 
