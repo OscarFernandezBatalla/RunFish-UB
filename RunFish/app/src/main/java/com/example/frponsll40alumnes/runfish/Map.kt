@@ -7,9 +7,16 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 
 class Map (context: Context){
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg_degradat)
+    private val image2 : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.fons_mari_llarg_hd_m)
+
+
     private var x : Int = 0
-    private var y : Int = -(image.height - Resources.getSystem().displayMetrics.heightPixels)
+    private var y : Int = -(image2.height - Resources.getSystem().displayMetrics.heightPixels)
+
+
+    private var image : Bitmap = Bitmap.createScaledBitmap(image2, Resources.getSystem().displayMetrics.widthPixels, image2.height, false)
+
+
 
     /**
      * Draws the object on to the canvas.
