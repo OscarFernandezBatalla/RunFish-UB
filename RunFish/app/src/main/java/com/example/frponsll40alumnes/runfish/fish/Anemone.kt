@@ -25,8 +25,4 @@ class Anemone(context: Context) :
         rec.paint.color = Color.GREEN
     }
 
-
-
-
-
 }

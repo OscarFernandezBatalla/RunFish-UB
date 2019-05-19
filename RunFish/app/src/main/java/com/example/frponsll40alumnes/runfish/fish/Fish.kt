@@ -33,10 +33,6 @@ abstract class Fish (
     override lateinit var image: Bitmap
     override var rec: ShapeDrawable = ShapeDrawable(RectShape())
 
-
-
-
-
     var isDead : Boolean = false
 
     fun loseLife(damage : Int){
@@ -101,7 +97,7 @@ abstract class Fish (
 
     /* declared open so the types of fish can override it */
     open fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        var aux : Int = if (strength>speed){
+        var aux : Int = if (strength > speed){
             speed
         }
         else{
