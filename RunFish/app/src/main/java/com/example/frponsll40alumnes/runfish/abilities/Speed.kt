@@ -11,7 +11,7 @@ class Speed : AbilityStrategy {
 
         if(fish is SwordFish) {
             fish.speedIncreaseActivated = true;
-            //fish.speed += fish.speedIncrease;
+            fish.speed += fish.speedIncrease;
             fish.speedIncreaseForNFrames = SPEED_INCREASE_DURATION;
         }
 
