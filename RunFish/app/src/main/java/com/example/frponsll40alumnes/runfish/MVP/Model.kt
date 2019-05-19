@@ -150,7 +150,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         setPlanctonToCloud()
         setLevelsToCloud()
         setFishToCloud()
-        setFriendsToCloud()
+        //setFriendsToCloud()
 
         getUsernameFromCloud()
         getStatsFromCloud()
@@ -440,7 +440,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun addFriend(friendName: String) {
         //if (db.collection("usuarios").document("$friendName") != null){
-
+        //TODO: COMPROVAR QUE EXISTEIX L'USUARI
         friends.add(friendName)
         setFriendsToCloud()
         //}
@@ -454,6 +454,15 @@ class Model (var presenter: Presenter) : Contract.Model {
                 if (document != null) {
                     //TODO: no funciona el get
                     //friends = document.data!!.get("friendList").toString().split("").toMutableList() //as MutableList<String> //toString().split("").toMutableList()
+                    var x = document.data!!.get("friends")//.toString().split("")
+                    var y: ArrayList<String> = x as ArrayList<String>
+                    for(i in 0 until y.size){
+                        friends.add(y[i])
+                        var z = friends
+                        var k = z
+                    }
+                    //var z = y.get(0)
+                    //Log.d(TAG, y.toString())
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -461,6 +470,8 @@ class Model (var presenter: Presenter) : Contract.Model {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
+
+
 
     fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
@@ -483,7 +494,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         this.vibration = activated
     }
 
-    fun getFriendsList(): List<String>{
+    fun getFriendsList(): MutableList<String>{
         return this.friends
     }
 

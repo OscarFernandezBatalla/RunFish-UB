@@ -188,7 +188,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.getMusic().seekTo(0)
     }
 
-    fun getFriendsList(): List<String>{
+    fun getFriendsList(): MutableList<String>{
         return this.model.getFriendsList()
     }
 

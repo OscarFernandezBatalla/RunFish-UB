@@ -62,8 +62,6 @@ class menuFragment : Fragment() {
         button_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_options))
         imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))
 
-
-
     }
 
 
