@@ -12,6 +12,10 @@ class SwordFish(context: Context) : Fish("SwordFish", 20,0,"speed", 1000, 20, 20
     override val height: Int = image.height
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
+    var speedIncreaseForNFrames = 0;
+    var speedIncreaseActivated = false;
+    var speedIncreaseFactor = 2
+
     init{
         //test de col·lisions (temporal):
         rec.setBounds(this.x, this.y, this.x+width, this.y+height)
@@ -20,4 +24,15 @@ class SwordFish(context: Context) : Fish("SwordFish", 20,0,"speed", 1000, 20, 20
         rec.paint.style= Paint.Style.STROKE
         rec.paint.color = Color.GREEN
     }
+
+    override fun update(xJoy : Double, yJoy : Double, strength : Int) {
+        super.update(xJoy, yJoy, strength)
+        if(this.speedIncreaseForNFrames > 0){
+            // decrease speed boost per frame
+            this.speedIncreaseForNFrames--
+        }else{
+            this.speed /= speedIncreaseFactor;
+        }
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.example.frponsll40alumnes.runfish.abilities
 
-import com.example.frponsll40alumnes.runfish.fish.Anemone
 import com.example.frponsll40alumnes.runfish.fish.Fish
+import com.example.frponsll40alumnes.runfish.fish.SwordFish
 
 class Speed : AbilityStrategy {
 
@@ -9,8 +9,8 @@ class Speed : AbilityStrategy {
 
     override fun useAbility(fish: Fish) {
 
-        if(fish is Anemone) {
-            fish.speed *= 2;
+        if(fish is SwordFish) {
+            fish.speed *= fish.speedIncreaseFactor;
             fish.speedIncreaseForNFrames = SPEED_INCREASE_DURATION;
         }
 
