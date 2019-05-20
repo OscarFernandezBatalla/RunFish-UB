@@ -105,7 +105,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var blowFishCapacity : Int = 40
     var blowFishSpeed : Int = 40
     var blowFishPrice : Int = 40
-    var blowFishAbility : Ability = Ability.STRENGTH
+    var blowFishAbility : Ability = Ability.DAMAGE_REDUCTION
     var blowFishOwned : Boolean = false
 
     /*Sword fish*/
@@ -113,7 +113,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var swordFishCapacity : Int = 50
     var swordFishSpeed : Int = 50
     var swordFishPrice : Int = 50
-    var swordFishAbility : Ability = Ability.CAMOUFLAGE
+    var swordFishAbility : Ability = Ability.SPEED
     var swordFishOwned : Boolean = true
 
     /*Shark*/

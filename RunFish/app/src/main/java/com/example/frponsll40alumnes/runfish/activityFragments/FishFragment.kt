@@ -144,8 +144,8 @@ class FishFragment : Fragment() {
             Ability.SHIELD -> ContextCompat.getDrawable(context!!, R.drawable.shield)
             Ability.HEALTH -> ContextCompat.getDrawable(context!!,R.drawable.salud)
             Ability.BITE -> ContextCompat.getDrawable(context!!,R.drawable.shark_icon_dos)
-            Ability.CAMOUFLAGE -> ContextCompat.getDrawable(context!!,R.drawable.camouflage)
-            Ability.STRENGTH -> ContextCompat.getDrawable(context!!,R.drawable.strength)
+            Ability.DAMAGE_REDUCTION -> ContextCompat.getDrawable(context!!,R.drawable.strength)
+            Ability.SPEED -> ContextCompat.getDrawable(context!!,R.drawable.rayo)
         }
     }
 
