@@ -208,6 +208,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setUsername(username)
     }
 
+
     fun addUserId() {
         this.model.setUserIdToList()
     }

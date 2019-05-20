@@ -4,14 +4,8 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
-import com.example.frponsll40alumnes.runfish.abilities.Shield
-import com.example.frponsll40alumnes.runfish.fish.BlowFish
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.DocumentReference
-import java.security.KeyStore
 
 
 class Model (var presenter: Presenter) : Contract.Model {
@@ -154,7 +148,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     init{
         //checkUserFromCloud()
 
-        setUsernameToCloud()
+        //setUsernameToCloud()
         setStatsToCloud()
         setOptionsToCloud()
         setPlanctonToCloud()
@@ -459,8 +453,27 @@ class Model (var presenter: Presenter) : Contract.Model {
             friends.add(friendName)
             setFriendsToCloud()
         }
+    }
+    /*TODO: PROVAR METODE*/
+    fun searchUsernameInUserIdList(name: String): Boolean{
+        for(x in userIdList){
+            var usernameFriend: String = ""
+            db.collection("usuarios").document("$x").collection("userContext").document("username").get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        usernameFriend = document.data!!.get("username").toString()
 
-        //}
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }.addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+            if(name == usernameFriend){
+                return true
+            }
+        }
+        return false
     }
 
 
@@ -469,17 +482,13 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    //TODO: no funciona el get
-                    //friends = document.data!!.get("friendList").toString().split("").toMutableList() //as MutableList<String> //toString().split("").toMutableList()
-                    var x = document.data!!.get("friends")//.toString().split("")
+                    var x = document.data!!.get("friends")
                     var y: ArrayList<String> = x as ArrayList<String>
                     for(i in 0 until y.size){
                         friends.add(y[i])
                         var z = friends
                         var k = z
                     }
-                    //var z = y.get(0)
-                    //Log.d(TAG, y.toString())
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -492,11 +501,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
-        //db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
         db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend2")
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend3")
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend4")
     }
 
     fun actualitzaFriendsMap(){
@@ -552,7 +557,6 @@ class Model (var presenter: Presenter) : Contract.Model {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     username = document.data!!.get("username").toString()
-
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -567,14 +571,12 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("userID").document("userList").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    //TODO: no funciona el get
-                    //friends = document.data!!.get("friendList").toString().split("").toMutableList() //as MutableList<String> //toString().split("").toMutableList()
-                    var x = document.data!!.get("userId")//.toString().split("")
+                    var x = document.data!!.get("userId")
                     var y: ArrayList<String> = x as ArrayList<String>
                     for(i in 0 until y.size){
                         userIdList.add(y[i])
                     }
-                    var z = !searchUsernameInUserIdList("$user")
+                    var z = !searchUserIdInUserIdList("$user")
                     if(z) {
                         this.userIdList.add(user)
                         userIdMap["userId"] = userIdList
@@ -588,59 +590,29 @@ class Model (var presenter: Presenter) : Contract.Model {
             }.addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
-
-        //var x = db.collection("usuarios").get()
-        //var y = x
-
     }
     fun setAllUsernameListToCloud(){
-        //userIdMap["userId"] = userIdList
+        userIdMap["userId"] = userIdList
         db.collection("userID").document("userList").set(userIdMap)
 
     }
 
     fun setUserIdToList(){
-        //var x = !searchUsernameInUserIdList()
-        //if(x) {
         this.userIdList.add(user)
-        userIdMap["userId"] = userIdList
+        //userIdMap["userId"] = userIdList
         setAllUsernameListToCloud()
-        //}
     }
 
 
     /*
         Mètode que et diu si un id d'usuari està a la llista d'usuaris. Per no poder ficar dos al hora, potser ho puc posar dins del MAIN METHOD...
      */
-    fun searchUsernameInUserIdList(name: String): Boolean{
-        /*for(x in 0 until userIdList.size){
-            if(x.toString().equals(name)){
-                return true
-            }
-        }*/
+    fun searchUserIdInUserIdList(name: String): Boolean{
+
         if(name in userIdList){
             return true
         }
         return false
     }
-        /*for(x in userIdList){
-            var probUsername: String? = null
-            db.collection("usuarios").document("$x").collection("userContext").document("username").get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        probUsername = document.data!!.get("username").toString()
-
-                    } else {
-                        Log.d(TAG, "No such document")
-                    }
-                }.addOnFailureListener { exception ->
-                    Log.d(TAG, "get failed with ", exception)
-                }
-            if(probUsername.equals(name)){
-                return true
-            }
-        }
-        return false
-    }*/
 
 }
