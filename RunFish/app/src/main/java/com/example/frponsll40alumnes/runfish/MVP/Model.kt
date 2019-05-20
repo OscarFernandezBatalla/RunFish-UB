@@ -17,7 +17,11 @@ class Model (var presenter: Presenter) : Contract.Model {
     var user = FirebaseAuth.getInstance().currentUser!!.uid
 
 
-    private var friends : List<String> = mutableListOf()
+    private var friends: MutableList<String> = mutableListOf()
+
+    private var usernameList: MutableList<String> = mutableListOf()
+
+    private var userIdList: MutableList<String> = mutableListOf()
 
     private var currentFish : String? = null
 
@@ -46,7 +50,10 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
 
-    var friendsMap: HashMap<String, List<String>> = hashMapOf(
+    var usernameUserIdMap : HashMap<String, String> = hashMapOf() //TODO: Posar idUser to username
+
+
+    var friendsMap: HashMap<String, MutableList<String>> = hashMapOf(
         "friends" to friends
     )
 
@@ -66,6 +73,12 @@ class Model (var presenter: Presenter) : Contract.Model {
         "sound" to sound,
         "vibration" to vibration,
         "languageCat" to languageCat)
+
+    var usernameMap: HashMap<String, Any> = hashMapOf(
+        "username" to username)
+
+    var userIdMap: HashMap<String, MutableList<String>> = hashMapOf(
+        "userId" to userIdList)
 
 
     private var lifeBar : Int = 100     //percentatge
@@ -135,19 +148,25 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     init{
         //checkUserFromCloud()
+
+        //setUsernameToCloud()
         setStatsToCloud()
         setOptionsToCloud()
         setPlanctonToCloud()
         setLevelsToCloud()
         setFishToCloud()
-        setFriendsToCloud()
+        //setFriendsToCloud()
+        //setUserIdToList()
 
+        getUsernameFromCloud()
         getStatsFromCloud()
         getOptionsFromCloud()
         getPlanctonFromCloud()
         getLevelsFromCloud()
         getFishFromCloud()
         getFriendsFromCloud()
+        getAllUsernameListFromCloud()
+        //setUserIdToList()
     }
 
 
@@ -429,9 +448,33 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     override fun addFriend(friendName: String) {
         //if (db.collection("usuarios").document("$friendName") != null){
-        friends += "friendName"
-        setFriendsToCloud()
-        //}
+        //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
+        getFriendsFromCloud()
+        if(searchUsernameInUserIdList(friendName)){
+            friends.add(friendName)
+            setFriendsToCloud()
+        }
+    }
+    /*TODO: PROVAR METODE*/
+    fun searchUsernameInUserIdList(name: String): Boolean{
+        for(x in userIdList){
+            var usernameFriend: String = ""
+            db.collection("usuarios").document("$x").collection("userContext").document("username").get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        usernameFriend = document.data!!.get("username").toString()
+
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }.addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+            if(name == usernameFriend){
+                return true
+            }
+        }
+        return false
     }
 
 
@@ -440,7 +483,13 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    friends = document.data!!.get("friendList").toString().split("")
+                    var x = document.data!!.get("friends")
+                    var y: ArrayList<String> = x as ArrayList<String>
+                    for(i in 0 until y.size){
+                        friends.add(y[i])
+                        var z = friends
+                        var k = z
+                    }
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -449,24 +498,29 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
     }
 
+
     override fun setFriendsToCloud(){
         this.actualitzaFriendsMap()
-        //db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
-        db.collection("usuarios").document("$user").collection("userContext").document("friend1").set(friendsMap)
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend2")
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend3")
-        //db.collection("usuarios").document("$user").collection("userContext").document("friend4")
+        db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
     }
 
     override fun actualitzaFriendsMap(){
         friendsMap["friends"] = friends
     }
 
+
     override fun setVibrationState(activated: Boolean) {
         this.vibration = activated
     }
 
-    override fun getFriendsList(): List<String>{
+
+    fun actualitzaUsernameMap(){
+        usernameMap["username"] = username
+    }
+
+
+
+    override fun getFriendsList(): MutableList<String>{
         return this.friends
     }
 
@@ -483,6 +537,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     override fun setUsername(username: String) {
         this.username = username
+        this.setUsernameToCloud()
     }
 
     override fun getCurrentFish() : FishType{
@@ -515,5 +570,73 @@ class Model (var presenter: Presenter) : Contract.Model {
         2. FER QUE LA BASE DE DADES ES MANTINGUI FIXE (no cada cop que entres es resetegi)
      */
 
+    fun setUsernameToCloud(){
+        this.actualitzaUsernameMap()
+        db.collection("usuarios").document("$user").collection("userContext").document("username").set(usernameMap)
+
+    }
+
+    fun getUsernameFromCloud(){
+        db.collection("usuarios").document("$user").collection("userContext").document("username").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    username = document.data!!.get("username").toString()
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+
+    }
+
+
+    fun getAllUsernameListFromCloud(){
+        db.collection("userID").document("userList").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    var x = document.data!!.get("userId")
+                    var y: ArrayList<String> = x as ArrayList<String>
+                    for(i in 0 until y.size){
+                        userIdList.add(y[i])
+                    }
+                    var z = !searchUserIdInUserIdList("$user")
+                    if(z) {
+                        this.userIdList.add(user)
+                        userIdMap["userId"] = userIdList
+                        setAllUsernameListToCloud()
+                    }
+
+
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+    fun setAllUsernameListToCloud(){
+        userIdMap["userId"] = userIdList
+        db.collection("userID").document("userList").set(userIdMap)
+
+    }
+
+    fun setUserIdToList(){
+        this.userIdList.add(user)
+        //userIdMap["userId"] = userIdList
+        setAllUsernameListToCloud()
+    }
+
+
+    /*
+        Mètode que et diu si un id d'usuari està a la llista d'usuaris. Per no poder ficar dos al hora, potser ho puc posar dins del MAIN METHOD...
+     */
+    fun searchUserIdInUserIdList(name: String): Boolean{
+
+        if(name in userIdList){
+            return true
+        }
+        return false
+    }
 
 }
