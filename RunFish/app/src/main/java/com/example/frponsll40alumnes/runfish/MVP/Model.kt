@@ -82,7 +82,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var usernameMap: HashMap<String, Any> = hashMapOf(
         "username" to username)
 
-    var userIdMap: HashMap<String, Any> = hashMapOf(
+    var userIdMap: HashMap<String, MutableList<String>> = hashMapOf(
         "userId" to userIdList)
 
 
@@ -171,7 +171,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         getFishFromCloud()
         getFriendsFromCloud()
         getAllUsernameListFromCloud()
-        setUserIdToList()
+        //setUserIdToList()
     }
 
 
@@ -453,9 +453,13 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun addFriend(friendName: String) {
         //if (db.collection("usuarios").document("$friendName") != null){
-        //TODO: COMPROVAR QUE EXISTEIX L'USUARI
-        friends.add(friendName)
-        setFriendsToCloud()
+        //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
+        getFriendsFromCloud()
+        if(searchUsernameInUserIdList(friendName)){
+            friends.add(friendName)
+            setFriendsToCloud()
+        }
+
         //}
     }
 
@@ -555,6 +559,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             }.addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
+
     }
 
 
@@ -569,6 +574,13 @@ class Model (var presenter: Presenter) : Contract.Model {
                     for(i in 0 until y.size){
                         userIdList.add(y[i])
                     }
+                    var z = !searchUsernameInUserIdList("$user")
+                    if(z) {
+                        this.userIdList.add(user)
+                        userIdMap["userId"] = userIdList
+                        setAllUsernameListToCloud()
+                    }
+
 
                 } else {
                     Log.d(TAG, "No such document")
@@ -582,27 +594,32 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     }
     fun setAllUsernameListToCloud(){
-        userIdMap["userId"] = userIdList
+        //userIdMap["userId"] = userIdList
         db.collection("userID").document("userList").set(userIdMap)
+
     }
 
     fun setUserIdToList(){
-        var x = !searchUsernameInUserIdList()
-        if(x) {
-            this.userIdList.add(user)
-            setAllUsernameListToCloud()
-        }
+        //var x = !searchUsernameInUserIdList()
+        //if(x) {
+        this.userIdList.add(user)
+        userIdMap["userId"] = userIdList
+        setAllUsernameListToCloud()
+        //}
     }
 
 
     /*
         Mètode que et diu si un id d'usuari està a la llista d'usuaris. Per no poder ficar dos al hora, potser ho puc posar dins del MAIN METHOD...
      */
-    fun searchUsernameInUserIdList(name: String = "oscar"): Boolean{
-        for(x in 0 until userIdList.size){
+    fun searchUsernameInUserIdList(name: String): Boolean{
+        /*for(x in 0 until userIdList.size){
             if(x.toString().equals(name)){
                 return true
             }
+        }*/
+        if(name in userIdList){
+            return true
         }
         return false
     }
