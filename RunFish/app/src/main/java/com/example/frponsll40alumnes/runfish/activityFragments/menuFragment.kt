@@ -64,7 +64,9 @@ class menuFragment : Fragment() {
 
     }
 
-
+    fun addUserId(){
+        this.act!!.presenter.addUserId()
+    }
 
     fun uploadMenuFragment(){
         uploadFriends()

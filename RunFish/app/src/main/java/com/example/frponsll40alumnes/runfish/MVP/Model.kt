@@ -25,6 +25,10 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     private var friends: MutableList<String> = mutableListOf()
 
+    private var usernameList: MutableList<String> = mutableListOf()
+
+    private var userIdList: MutableList<String> = mutableListOf()
+
     //private var friend1 : List<Any?> = mutableListOf()
 
 
@@ -51,6 +55,9 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
 
+    var usernameUserIdMap : HashMap<String, String> = hashMapOf() //TODO: Posar idUser to username
+
+
     var friendsMap: HashMap<String, MutableList<String>> = hashMapOf(
         "friends" to friends
     )
@@ -74,6 +81,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     var usernameMap: HashMap<String, Any> = hashMapOf(
         "username" to username)
+
+    var userIdMap: HashMap<String, Any> = hashMapOf(
+        "userId" to userIdList)
 
 
     private var lifeBar : Int = 100     //percentatge
@@ -151,6 +161,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         setLevelsToCloud()
         setFishToCloud()
         //setFriendsToCloud()
+        //setUserIdToList()
 
         getUsernameFromCloud()
         getStatsFromCloud()
@@ -159,6 +170,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         getLevelsFromCloud()
         getFishFromCloud()
         getFriendsFromCloud()
+        getAllUsernameListFromCloud()
+        setUserIdToList()
     }
 
 
@@ -490,6 +503,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         usernameMap["username"] = username
     }
 
+
+
     fun setVibrationState(activated: Boolean) {
         this.vibration = activated
     }
@@ -541,5 +556,74 @@ class Model (var presenter: Presenter) : Contract.Model {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
+
+
+    fun getAllUsernameListFromCloud(){
+        db.collection("userID").document("userList").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    //TODO: no funciona el get
+                    //friends = document.data!!.get("friendList").toString().split("").toMutableList() //as MutableList<String> //toString().split("").toMutableList()
+                    var x = document.data!!.get("userId")//.toString().split("")
+                    var y: ArrayList<String> = x as ArrayList<String>
+                    for(i in 0 until y.size){
+                        userIdList.add(y[i])
+                    }
+
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+
+        //var x = db.collection("usuarios").get()
+        //var y = x
+
+    }
+    fun setAllUsernameListToCloud(){
+        userIdMap["userId"] = userIdList
+        db.collection("userID").document("userList").set(userIdMap)
+    }
+
+    fun setUserIdToList(){
+        var x = !searchUsernameInUserIdList()
+        if(x) {
+            this.userIdList.add(user)
+            setAllUsernameListToCloud()
+        }
+    }
+
+
+    /*
+        Mètode que et diu si un id d'usuari està a la llista d'usuaris. Per no poder ficar dos al hora, potser ho puc posar dins del MAIN METHOD...
+     */
+    fun searchUsernameInUserIdList(name: String = "oscar"): Boolean{
+        for(x in 0 until userIdList.size){
+            if(x.toString().equals(name)){
+                return true
+            }
+        }
+        return false
+    }
+        /*for(x in userIdList){
+            var probUsername: String? = null
+            db.collection("usuarios").document("$x").collection("userContext").document("username").get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        probUsername = document.data!!.get("username").toString()
+
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }.addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+            if(probUsername.equals(name)){
+                return true
+            }
+        }
+        return false
+    }*/
 
 }

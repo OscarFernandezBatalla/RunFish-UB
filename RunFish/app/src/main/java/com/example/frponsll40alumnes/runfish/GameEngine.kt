@@ -182,7 +182,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 NPCsInArea.add(npc)
             }
         }
-
         return NPCsInArea
     }
 }
