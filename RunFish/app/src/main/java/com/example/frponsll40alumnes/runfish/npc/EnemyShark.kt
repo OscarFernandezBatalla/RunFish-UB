@@ -14,14 +14,29 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
 
     override var speed: Int = this.value
 
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.shark_top)
+    private var image : Bitmap? = null
 
-    override var width: Int = image.width
-    override var height: Int = image.height
+    override var width: Int = 0
+    override var height: Int = 0
 
-    override var rectangle: Rect = Rect(this.x+95, this.y+75, this.x+width-125, this.y+height)
+    override var rectangle: Rect = Rect()
 
     init {
+        image = if (vertical){
+            BitmapFactory.decodeResource(context.resources, R.drawable.shark_top_v)
+        } else{
+            if (leftToRight){
+                BitmapFactory.decodeResource(context.resources, R.drawable.shark_top_h_r)
+            } else{
+                BitmapFactory.decodeResource(context.resources, R.drawable.shark_top_h_l)
+            }
+        }
+
+        width = image!!.width
+        height = image!!.height
+
+        rectangle.set(this.x+95, this.y+75, this.x+width-125, this.y+height)
+
         //test de col·lisions (temporal):
         rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
         rec.paint.color = Color.parseColor("#009944")
@@ -57,10 +72,10 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
 
         else{
             if (leftToRight){
-                x-= speed
+                x+= speed
             }
             else{
-                x+= speed
+                x-= speed
             }
         }
         this.rectangle.set(this.x+95, this.y+75, this.x+width-125, this.y+height)

@@ -212,7 +212,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="150dp"
             android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/welcome_username"
-            android:background="@drawable/tablon_grande">
+            android:background="@drawable/tablon_grande" android:visibility="invisible">
 
         <android.support.constraint.ConstraintLayout
                 android:layout_width="297dp"

@@ -187,7 +187,8 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.getMusic().seekTo(0)
     }
 
-    override fun getFriendsList(): List<String>{
+
+    override fun getFriendsList(): MutableList<String>{
         return this.model.getFriendsList()
     }
 
@@ -211,7 +212,14 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.getCurrentFish()
     }
 
+
     override fun setCurrentFish(fish: FishType) {
         model.setCurrentFish(fish)
     }
+
+    fun addUserId() {
+        this.model.setUserIdToList()
+    }
+
+
 }
