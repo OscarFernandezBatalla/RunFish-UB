@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_menu.*
 class menuFragment : Fragment() {
 
     var act : HomeActivity ?= null                //    aixo feia que petes
+    var userChecked: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,29 +33,31 @@ class menuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!userChecked){
+            android.os.Handler().postDelayed({
 
-        android.os.Handler().postDelayed({
-
-            if(act!!.presenter.getUsername() == ""){
-                welcome_username.visibility = View.VISIBLE
-                button_user_petition.setOnClickListener{
-                    act!!.hideNav()
-                    var username = edit_text_username.text.toString()
-                    if(username != ""){    //TODO: COMPROVAR QUE L'USERNAME NO EXISTEIX...
-                        act!!.presenter.setUsername(username)
-                        welcome_username.visibility = View.GONE
-                        menu_layout.visibility = View.VISIBLE
-                    }
-                    else{
-                        Toast.makeText(this.context,"Unvalid username",Toast.LENGTH_SHORT).show()
+                if(act!!.presenter.getUsername() == ""){
+                    welcome_username.visibility = View.VISIBLE
+                    button_user_petition.setOnClickListener{
+                        act!!.hideNav()
+                        var username = edit_text_username.text.toString()
+                        if(username != ""){    //TODO: COMPROVAR QUE L'USERNAME NO EXISTEIX...
+                            act!!.presenter.setUsername(username)
+                            welcome_username.visibility = View.GONE
+                            menu_layout.visibility = View.VISIBLE
+                        }
+                        else{
+                            Toast.makeText(this.context,"Unvalid username",Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
-            }
-            else{
-                welcome_username.visibility = View.GONE
-                menu_layout.visibility = View.VISIBLE
-            }
-        }, 8000)
+                else{
+                    welcome_username.visibility = View.GONE
+                    menu_layout.visibility = View.VISIBLE
+                }
+                userChecked = true
+            }, 8000)
+        }
 
         uploadMenuFragment()
         button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
