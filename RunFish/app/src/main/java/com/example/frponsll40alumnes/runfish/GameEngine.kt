@@ -109,16 +109,17 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     fun collision(npc: NPC): Boolean{
         val npcRect = npc.rectangle
         val playerRect = fish!!.rectangle
+
+        return playerRect.intersect(npcRect)
+        /*
         if(playerRect.intersect(npcRect)){
             return true
         }
-        return false
+        return false*/
     }
 
     //Mètode que fa un update de cada objecte
     fun updateView(){
-
-
         // Update positions for player's fish
         fish!!.update(valx, valy, strength)
 
@@ -146,7 +147,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                 /* '''''''''''''''''''''''''''''''''''''''''''''''''''*/
             }
         }
-
         // Update scrolling of background
         background!!.update()
     }

@@ -93,6 +93,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
         ability = rootView.findViewById(R.id.button_habilitat)
 
+        loadAbilityImage()
+
         joystick!!.setOnMoveListener { angle, strength ->
             angleRad = angle * PI / 180
             valy= sin(angleRad)
@@ -119,6 +121,17 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         thread.setRunning(true)
         thread.start()
 
+    }
+
+    private fun loadAbilityImage() {
+        val fish = this.presenter.getCurrentFish()
+        when(fish){
+            FishType.COMMONFISH -> this.ability!!.setBackgroundResource(R.drawable.shield)
+            FishType.ANEMONE -> this.ability!!.setBackgroundResource(R.drawable.salud)
+            FishType.BLOWFISH -> this.ability!!.setBackgroundResource(R.drawable.strength)
+            FishType.SWORDFISH -> this.ability!!.setBackgroundResource(R.drawable.rayo)
+            FishType.SHARK -> this.ability!!.setBackgroundResource(R.drawable.shark_icon_dos)
+        }
     }
 
     override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {}
@@ -190,9 +203,9 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
 
-        var NPC: MutableList<NPC?>? = presenter.getNPC()
-        var map: Map? = presenter.getMap()
-        var fish: Fish? = presenter.getFish()
+        val NPC: MutableList<NPC?>? = presenter.getNPC()
+        val map: Map? = presenter.getMap()
+        val fish: Fish? = presenter.getFish()
 
         map!!.draw(canvas)
 
