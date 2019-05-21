@@ -128,8 +128,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         when(fish){
             FishType.COMMONFISH -> this.ability!!.setBackgroundResource(R.drawable.shield)
             FishType.ANEMONE -> this.ability!!.setBackgroundResource(R.drawable.salud)
-            FishType.BLOWFISH -> this.ability!!.setBackgroundResource(R.drawable.strength)
-            FishType.SWORDFISH -> this.ability!!.setBackgroundResource(R.drawable.rayo)
+            FishType.BLOWFISH -> this.ability!!.setBackgroundResource(R.drawable.strength_hd)
+            FishType.SWORDFISH -> this.ability!!.setBackgroundResource(R.drawable.thunderbolt)
             FishType.SHARK -> this.ability!!.setBackgroundResource(R.drawable.shark_icon_dos)
         }
     }
