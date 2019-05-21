@@ -128,7 +128,7 @@ abstract class Fish (
 
         this.rectangle.set(this.x, this.y, this.x+width, this.y+height)
         //test de col·lisions (temporal):
-        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
+        //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun changeCoordinates(x: Int, y: Int) {

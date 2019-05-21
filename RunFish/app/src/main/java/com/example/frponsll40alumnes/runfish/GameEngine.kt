@@ -38,7 +38,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
-    var level = Level(4, context)
+    var level = Level(8, context)
 
     var valy : Double = 0.0
     var valx : Double = 0.0
@@ -60,7 +60,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         // Create npcs for the level
         for((key, value) in level.getNpc()){
             for(i in 0..value){
-                val npc = npcFactory.createNPC(key, context, vertical = Random().nextBoolean(), leftToRight = Random().nextBoolean())
+                val npc = npcFactory.createNPC(key, context, vertical = true) //vertical = Random().nextBoolean(), leftToRight = Random().nextBoolean())
                 if(npc != null){
                     NPCList!!.add(npc)
                 }
@@ -77,7 +77,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             if (x is EnemyShark){
                 if(x.vertical){
                     posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
-                    posy = (displayHeight..this.level.getMeters()*40).random() * (-1)       //ajustar el 40
+                    posy = (displayHeight..8000).random()* (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                 }
                 else{
                     if (x.leftToRight){
@@ -92,7 +92,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             }
             else{
                 posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
-                posy = (displayHeight..this.level.getMeters()*40).random() * (-1)       //ajustar el 40
+                posy = (displayHeight..4860).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
             }
             x.changeCoordinates(posx, posy)
         }

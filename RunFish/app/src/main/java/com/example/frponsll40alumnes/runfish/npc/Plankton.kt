@@ -24,11 +24,11 @@ class Plankton(context: Context, points : Int): NPC(points) {
 
     init {
         //test de col·lisions (temporal):
-        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
+        /*rec.setBounds(this.x, this.y, this.x+width, this.y+height)
         rec.paint.color = Color.parseColor("#009944")
         rec.paint.color=Color.TRANSPARENT
         rec.paint.style=Paint.Style.STROKE
-        rec.paint.color = Color.RED
+        rec.paint.color = Color.RED*/
     }
     /**
      * Draws the object on to the canvas.
@@ -44,7 +44,7 @@ class Plankton(context: Context, points : Int): NPC(points) {
         y+= (pes)
         this.rectangle.set(this.x, this.y, this.x+width, this.y+height)
         //test de col·lisions (temporal):
-        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
+        //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {

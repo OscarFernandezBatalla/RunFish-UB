@@ -58,6 +58,9 @@ class menuFragment : Fragment() {
                 userChecked = true
             }, 8000)
         }
+        else{
+            menu_layout.visibility = View.VISIBLE
+        }
 
         uploadMenuFragment()
         button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))

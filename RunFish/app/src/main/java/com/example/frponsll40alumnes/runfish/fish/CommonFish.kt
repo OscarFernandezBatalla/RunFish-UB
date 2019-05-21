@@ -21,11 +21,11 @@ class CommonFish(context: Context) :
 
     init{
         //test de col·lisions (temporal):
-        rec.setBounds(this.x, this.y, this.x+width, this.y+height)
+       /* rec.setBounds(this.x, this.y, this.x+width, this.y+height)
         rec.paint.color = Color.parseColor("#009944")
         rec.paint.color= Color.TRANSPARENT
         rec.paint.style= Paint.Style.STROKE
-        rec.paint.color = Color.GREEN
+        rec.paint.color = Color.GREEN*/
     }
 
     override fun update(xJoy : Double, yJoy : Double, strength : Int) {

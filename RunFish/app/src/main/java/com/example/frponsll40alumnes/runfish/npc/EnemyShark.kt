@@ -38,11 +38,11 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
         rectangle.set(this.x+95, this.y+75, this.x+width-125, this.y+height)
 
         //test de col·lisions (temporal):
-        rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
+        /*rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
         rec.paint.color = Color.parseColor("#009944")
         rec.paint.color=Color.TRANSPARENT
         rec.paint.style=Paint.Style.STROKE
-        rec.paint.color = Color.RED
+        rec.paint.color = Color.RED*/
     }
 
 
@@ -80,7 +80,7 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
         }
         this.rectangle.set(this.x+95, this.y+75, this.x+width-125, this.y+height)
         //test de col·lisions (temporal):
-        rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
+        //rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
     }
 
     override fun collision(playerFish: Fish?) {
