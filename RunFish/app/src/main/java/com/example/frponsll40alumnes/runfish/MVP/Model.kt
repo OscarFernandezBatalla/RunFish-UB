@@ -104,6 +104,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var commonFishOwned : Boolean = true
 
 
+
     /*Clownfish*/
     var clownFishLife : Int = 30
     var clownFishCapacity : Int = 30

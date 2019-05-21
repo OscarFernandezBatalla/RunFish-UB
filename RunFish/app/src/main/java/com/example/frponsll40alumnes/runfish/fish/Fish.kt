@@ -38,7 +38,7 @@ abstract class Fish (
     fun loseLife(damage : Int){
         this.life -= damage
         if(this.life <= 0){
-            die();
+            die()
         }
         // emit vibration
     }

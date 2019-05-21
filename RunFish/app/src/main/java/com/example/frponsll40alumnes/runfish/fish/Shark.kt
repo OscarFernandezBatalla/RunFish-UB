@@ -8,7 +8,7 @@ import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 
-class Shark(context: Context) : Fish("Shark",20,0,"bite",1000,20,20){
+class Shark(context: Context) : Fish("Shark",200,0,"bite",1000,200,100){
     override var image = BitmapFactory.decodeResource(context.resources, R.drawable.shark)
     override val width: Int = image.width
     override val height: Int = image.height

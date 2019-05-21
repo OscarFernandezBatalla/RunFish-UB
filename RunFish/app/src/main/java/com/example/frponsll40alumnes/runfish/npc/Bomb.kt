@@ -7,7 +7,7 @@ import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
-class Bomb(context: Context, damage : Int): NPC(damage) {
+class Bomb(context: Context, damage : Int= 10): NPC(value=damage) {
 
     private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.mina)
     override var width: Int = image.width

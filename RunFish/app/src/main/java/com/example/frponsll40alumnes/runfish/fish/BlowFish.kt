@@ -10,7 +10,7 @@ import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 
 class BlowFish(context: Context) :
-    Fish("BlowFish", 20, 0, "shield", 2000, 20, 20) {
+    Fish("BlowFish", 65, 0, "shield", 2000, 65, 50) {
 
     override var image = BitmapFactory.decodeResource(context.resources, R.drawable.blow_fish)
     override val width: Int = image.width

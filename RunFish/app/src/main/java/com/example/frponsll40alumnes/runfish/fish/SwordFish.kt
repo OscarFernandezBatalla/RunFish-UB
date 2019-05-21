@@ -6,7 +6,7 @@ import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.R
 
-class SwordFish(context: Context) : Fish("SwordFish", 20,0,"speed", 1000, 20, 20){
+class SwordFish(context: Context) : Fish("SwordFish", 125,0,"speed", 1000, 125, 30){
     override var image = BitmapFactory.decodeResource(context.resources, R.drawable.sword_fish)
     override val width: Int = image.width
     override val height: Int = image.height
