@@ -35,7 +35,7 @@ class CommonFish(context: Context) :
             this.invencibilityForNFrames--
         }
     }
-
+/*
     override fun collision(npc: NPC) {
         if(npc is Plankton){
             this.gainCapacity(npc.value)
@@ -47,5 +47,5 @@ class CommonFish(context: Context) :
                 // emite vibration in loseLife
             }
         }
-    }
+    }*/
 }

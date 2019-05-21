@@ -43,6 +43,7 @@ class Bomb(context: Context, damage : Int= 10): NPC(value=damage) {
         //test de col·lisions (temporal):
         //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
+/*
 
     override fun collision(playerFish: Fish?) {
         if(playerFish != null){
@@ -51,5 +52,6 @@ class Bomb(context: Context, damage : Int= 10): NPC(value=damage) {
         }
         super.collision(playerFish) // move offscreen
     }
+*/
 
 }

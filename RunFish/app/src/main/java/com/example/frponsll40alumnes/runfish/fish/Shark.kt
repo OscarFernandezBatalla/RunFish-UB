@@ -44,7 +44,7 @@ class Shark(context: Context) : Fish("Shark",200,0,"bite",1000,200,100){
             this.collisionScaled = true;
         }
     }
-
+/*
     override fun collision(npc: NPC) {
         if(npc is Plankton){
             this.gainCapacity(npc.value)
@@ -58,6 +58,6 @@ class Shark(context: Context) : Fish("Shark",200,0,"bite",1000,200,100){
                 this.loseLife(npc.value)
             }
         }
-    }
+    }*/
 }
 

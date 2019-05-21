@@ -82,11 +82,13 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
         //test de col·lisions (temporal):
         //rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
     }
+/*
 
     override fun collision(playerFish: Fish?) {
         playerFish?.loseLife(value)
         super.collision(playerFish) // move offscreen
     }
+*/
 
 
 }

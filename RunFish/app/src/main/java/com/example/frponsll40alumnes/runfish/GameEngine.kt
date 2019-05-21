@@ -77,7 +77,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             if (x is EnemyShark){
                 if(x.vertical){
                     posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
-                    posy = (displayHeight..8000).random()* (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                    posy = (2500..30000).random()* (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                 }
                 else{
                     if (x.leftToRight){
@@ -92,7 +92,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             }
             else{
                 posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
-                posy = (displayHeight..4860).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                posy = (displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
             }
             x.changeCoordinates(posx, posy)
         }
@@ -144,7 +144,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
                         vibrate()
                     }
                 }
-                /* '''''''''''''''''''''''''''''''''''''''''''''''''''*/
             }
         }
         // Update scrolling of background

@@ -42,7 +42,7 @@ class BlowFish(context: Context) :
             }
         }
     }
-
+/*
     override fun collision(npc : NPC){
         if(npc is Plankton){
             this.gainCapacity(npc.value)
@@ -55,6 +55,6 @@ class BlowFish(context: Context) :
             }
             // emite vibration in loseLife
         }
-    }
+    }*/
 
 }

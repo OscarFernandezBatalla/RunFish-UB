@@ -75,7 +75,7 @@ abstract class Fish (
         collision.collision(this)//parametres? fish? position?
     }
 */
-    open fun collision(npc : NPC){
+/*    open fun collision(npc : NPC){
         if(npc is Plankton){
             this.gainCapacity(npc.value)
         }
@@ -83,7 +83,7 @@ abstract class Fish (
             this.loseLife(npc.value)
             // emite vibration in loseLife
         }
-    }
+    }*/
 
     /* draw fish bitmap */
     fun draw(canvas: Canvas) {
