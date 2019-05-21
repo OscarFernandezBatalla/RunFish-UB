@@ -6,6 +6,42 @@
                                              android:layout_height="match_parent"
                                              tools:context=".activityFragments.menuFragment" android:id="@+id/constraintLayout"
                                              android:background="@drawable/fons">
+    <ImageView
+            android:src="@drawable/anemone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/imageView_nemo"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintVertical_bias="0.726"/>
+    <ImageView
+            android:src="@drawable/shark_shop"
+            android:layout_width="206dp"
+            android:layout_height="106dp" android:id="@+id/imageView_shark"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.137" app:layout_constraintVertical_bias="0.283"/>
+    <ImageView
+            android:src="@drawable/common_fish_shop"
+            android:layout_width="70dp"
+            android:layout_height="45dp" android:id="@+id/imageView_commonFishh"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.685"
+            app:layout_constraintVertical_bias="0.234"/>
+    <TextView
+            android:text="@string/loadingData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/text_view_loading"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" style="@style/MistralStyle" android:textSize="50sp"/>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" tools:layout_editor_absoluteY="8dp"

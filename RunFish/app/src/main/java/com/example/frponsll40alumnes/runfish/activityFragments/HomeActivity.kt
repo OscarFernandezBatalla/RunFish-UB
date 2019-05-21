@@ -20,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var song : MediaPlayer
     var presenter : Presenter = Presenter(this)
     lateinit var signOut : Button
+    var userChecked: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_menu.*
 class menuFragment : Fragment() {
 
     var act : HomeActivity ?= null                //    aixo feia que petes
-    var userChecked: Boolean = false
+    //var userChecked: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +33,14 @@ class menuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!userChecked){
+        if(!act!!.userChecked){
             android.os.Handler().postDelayed({
 
                 if(act!!.presenter.getUsername() == ""){
+                    imageView_commonFishh.visibility = View.GONE
+                    imageView_nemo.visibility = View.GONE
+                    imageView_shark.visibility = View.GONE
+                    text_view_loading.visibility = View.GONE
                     welcome_username.visibility = View.VISIBLE
                     button_user_petition.setOnClickListener{
                         act!!.hideNav()
@@ -52,13 +56,21 @@ class menuFragment : Fragment() {
                     }
                 }
                 else{
+                    imageView_commonFishh.visibility = View.GONE
+                    imageView_nemo.visibility = View.GONE
+                    imageView_shark.visibility = View.GONE
+                    text_view_loading.visibility = View.GONE
                     welcome_username.visibility = View.GONE
                     menu_layout.visibility = View.VISIBLE
                 }
-                userChecked = true
-            }, 8000)
+                act!!.userChecked = true
+            }, 4000)
         }
         else{
+            imageView_commonFishh.visibility = View.GONE
+            imageView_nemo.visibility = View.GONE
+            imageView_shark.visibility = View.GONE
+            text_view_loading.visibility = View.GONE
             menu_layout.visibility = View.VISIBLE
         }
 

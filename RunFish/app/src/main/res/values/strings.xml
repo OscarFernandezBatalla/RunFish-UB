@@ -123,5 +123,6 @@
     <string name="whiteShark">WHITE SHARK</string>
     <string name="clownFish">CLOWNFISH</string>
     <string name="commonFish">COMMON FISH</string>
+    <string name="loadingData">LOADING DATA...</string>
 
 </resources>
