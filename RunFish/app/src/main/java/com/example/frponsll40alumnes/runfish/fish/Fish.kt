@@ -9,6 +9,7 @@ import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
+import com.example.frponsll40alumnes.runfish.abilities.Speed
 import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
@@ -17,7 +18,7 @@ abstract class Fish (
                      var name : String,
                      var life : Int,
                      var capacity : Int,
-                     var ability : String,
+                     var ability : AbilityStrategy,
                      var price : Int,
                      val maxLife: Int,
                      val maxCapacity: Int
@@ -32,6 +33,8 @@ abstract class Fish (
     override var speed: Int = 70
     override lateinit var image: Bitmap
     override var rec: ShapeDrawable = ShapeDrawable(RectShape())
+
+    //val ability : AbilityStrategy = Speed()
 
     var isDead : Boolean = false
 
@@ -67,8 +70,8 @@ abstract class Fish (
     }
 
     /* Use the fish special ability */
-    fun useAbility(ability : AbilityStrategy){
-        return ability.useAbility(this)
+    fun useAbility(){
+        return this.ability.useAbility(this)
     }
 /*
     fun collision(collision : CollisionStrategy){
@@ -97,15 +100,9 @@ abstract class Fish (
 
     /* declared open so the types of fish can override it */
     open fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        var aux : Int = if (strength > speed){
-            speed
-        }
-        else{
-            strength
-        }
 
-        var xV : Int = (xJoy*aux/3).toInt()
-        var yV : Int = -(yJoy*aux/3).toInt()
+        var xV : Int = (xJoy*strength/3).toInt()
+        var yV : Int = -(yJoy*speed/3).toInt()
 
         if (x > screenWidth - image.width){
             xV = -1
