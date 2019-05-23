@@ -484,7 +484,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    var x = document.data!!.get("friends")
+                    var x = document.data!!.get("friends") /*TODO: KotlinNullPointerException. Peta */
                     var y: ArrayList<String> = x as ArrayList<String>
                     for(i in 0 until y.size){
                         friends.add(y[i])
