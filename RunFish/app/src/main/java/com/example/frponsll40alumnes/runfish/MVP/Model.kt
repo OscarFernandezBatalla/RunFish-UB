@@ -149,7 +149,24 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     init{
         //checkUserFromCloud()
+        getAllUsernameListFromCloud() // Agafem tots els usuaris i els posem a dins la llista d'ID
 
+
+        android.os.Handler().postDelayed({
+
+            if(!searchUserIdInUserIdList(user)){
+                setUsernameToCloud()
+                setStatsToCloud()
+                setOptionsToCloud()
+                setPlanctonToCloud()
+                setLevelsToCloud()
+                setFishToCloud()
+                setFriendsToCloud()
+                setUserIdToList()
+            }
+        }, 10000)
+
+        /*
         //setUsernameToCloud()
         setStatsToCloud()
         setOptionsToCloud()
@@ -158,6 +175,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         setFishToCloud()
         //setFriendsToCloud()
         //setUserIdToList()
+        */
 
         getUsernameFromCloud()
         getStatsFromCloud()
@@ -169,6 +187,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         getAllUsernameListFromCloud()
         //setUserIdToList()
     }
+
 
 
     override fun uploadStats():  MutableList<Int> {
@@ -294,6 +313,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
                 clownFishOwned = true
                 this.setPlanctonToCloud()
+                this.setFishToCloud()
                 return "Great! Now you own an Anemone!"
             }else{
                 return "You'll need no eat more plankton to own this fish..."
@@ -301,6 +321,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             FishType.BLOWFISH -> if(!blowFishOwned && buyFishSupport(blowFishPrice)){
                 blowFishOwned = true
                 this.setPlanctonToCloud()
+                this.setFishToCloud()
                 return "Great! Now you own a Blowfish!"
             }else{
                 return "You'll need no eat more plankton to own this fish..."
@@ -308,6 +329,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             FishType.SWORDFISH -> if(!swordFishOwned && buyFishSupport(swordFishPrice)){
                 swordFishOwned = true
                 this.setPlanctonToCloud()
+                this.setFishToCloud()
                 return "Great! Now you own a Swordfish!"
             }else{
                 return "You'll need no eat more plankton to own this fish..."
@@ -315,6 +337,7 @@ class Model (var presenter: Presenter) : Contract.Model {
             FishType.SHARK -> if(!sharkOwned && buyFishSupport(sharkPrice)){
                 sharkOwned = true
                 this.setPlanctonToCloud()
+                this.setFishToCloud()
                 return "Great! Now you own a Shark!"
             }else{
                 return "You'll need no eat more plankton to own this fish..."
@@ -361,8 +384,14 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
     }
     override fun setFishToCloud(){
+        fishMap["commonFishOwned"]=commonFishOwned
+        fishMap["clownFishOwned"]=clownFishOwned
+        fishMap["blowFishOwned"]=blowFishOwned
+        fishMap["swordFishOwned"]=swordFishOwned
+        fishMap["sharkOwned"]=sharkOwned
         db.collection("usuarios").document("$user").collection("userContext").document("fish").set(fishMap)
     }
+
 
     override fun getStatsFromCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("stats").get().addOnSuccessListener { document ->
@@ -601,12 +630,13 @@ class Model (var presenter: Presenter) : Contract.Model {
                     for(i in 0 until y.size){
                         userIdList.add(y[i])
                     }
+                    /*
                     var z = !searchUserIdInUserIdList("$user")
                     if(z) {
                         this.userIdList.add(user)
                         userIdMap["userId"] = userIdList
                         setAllUsernameListToCloud()
-                    }
+                    }*/
 
 
                 } else {
@@ -631,7 +661,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     /*
         Mètode que et diu si un id d'usuari està a la llista d'usuaris. Per no poder ficar dos al hora, potser ho puc posar dins del MAIN METHOD...
-     */
+    */
     fun searchUserIdInUserIdList(name: String): Boolean{
 
         if(name in userIdList){
