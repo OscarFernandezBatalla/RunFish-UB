@@ -484,7 +484,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    var x = document.data!!.get("friends") /*TODO: KotlinNullPointerException. Peta */
+                    var x = document.data!!.get("friends")
                     var y: ArrayList<String> = x as ArrayList<String>
                     for(i in 0 until y.size){
                         friends.add(y[i])
@@ -581,7 +581,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("username").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    username = document.data!!.get("username").toString() /*TODO: KotlinNullPointerException. Això peta*/
+                    username = document.data!!.get("username").toString()
                 } else {
                     Log.d(TAG, "No such document")
                 }
