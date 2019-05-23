@@ -157,6 +157,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 if(constraint!!.visibility == View.VISIBLE) {
                     Log.w(TAG, "QWE fragment is visible")
                 }
+                this.presenter.setStatsToCloud()
             }
             if(presenter.getBackground().getY() >= 0){
                 Log.w(TAG, "QWE You win")
@@ -169,6 +170,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 if(constraint!!.visibility == View.VISIBLE) {
                     Log.w(TAG, "QWE fragment is visible")
                 }
+                this.presenter.setStatsToCloud()
             }
         }
 

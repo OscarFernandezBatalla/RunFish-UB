@@ -146,6 +146,19 @@ class Model (var presenter: Presenter) : Contract.Model {
     "sharkOwned" to sharkOwned
     )
 
+    fun setTotalFishStat(){
+        statTotalFish = 0
+        for ((key, value) in fishMap) {
+            if(value){
+                statTotalFish += 1
+            }
+        }
+    }
+
+    fun increaseTotalFishStat(){
+        statTotalFish += 1
+    }
+
 
     init{
         //checkUserFromCloud()
@@ -156,6 +169,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
             if(!searchUserIdInUserIdList(user)){
                 setUsernameToCloud()
+                setTotalFishStat()
                 setStatsToCloud()
                 setOptionsToCloud()
                 setPlanctonToCloud()
@@ -164,28 +178,18 @@ class Model (var presenter: Presenter) : Contract.Model {
                 setFriendsToCloud()
                 setUserIdToList()
             }
+            else{
+                getUsernameFromCloud()
+                getStatsFromCloud()
+                getOptionsFromCloud()
+                getPlanctonFromCloud()
+                getLevelsFromCloud()
+                getFishFromCloud()
+                getFriendsFromCloud()
+                getAllUsernameListFromCloud()
+            }
         }, 10000)
 
-        /*
-        //setUsernameToCloud()
-        setStatsToCloud()
-        setOptionsToCloud()
-        setPlanctonToCloud()
-        setLevelsToCloud()
-        setFishToCloud()
-        //setFriendsToCloud()
-        //setUserIdToList()
-        */
-
-        getUsernameFromCloud()
-        getStatsFromCloud()
-        getOptionsFromCloud()
-        getPlanctonFromCloud()
-        getLevelsFromCloud()
-        getFishFromCloud()
-        getFriendsFromCloud()
-        getAllUsernameListFromCloud()
-        //setUserIdToList()
     }
 
 
@@ -312,6 +316,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         when(fishType){
             FishType.ANEMONE -> if(!clownFishOwned && buyFishSupport(clownFishPrice)){
                 clownFishOwned = true
+                this.increaseTotalFishStat()
+                this.setStatsToCloud()
                 this.setPlanctonToCloud()
                 this.setFishToCloud()
                 return "Great! Now you own an Anemone!"
@@ -320,6 +326,8 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
             FishType.BLOWFISH -> if(!blowFishOwned && buyFishSupport(blowFishPrice)){
                 blowFishOwned = true
+                this.increaseTotalFishStat()
+                this.setStatsToCloud()
                 this.setPlanctonToCloud()
                 this.setFishToCloud()
                 return "Great! Now you own a Blowfish!"
@@ -328,6 +336,8 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
             FishType.SWORDFISH -> if(!swordFishOwned && buyFishSupport(swordFishPrice)){
                 swordFishOwned = true
+                this.increaseTotalFishStat()
+                this.setStatsToCloud()
                 this.setPlanctonToCloud()
                 this.setFishToCloud()
                 return "Great! Now you own a Swordfish!"
@@ -336,6 +346,8 @@ class Model (var presenter: Presenter) : Contract.Model {
             }
             FishType.SHARK -> if(!sharkOwned && buyFishSupport(sharkPrice)){
                 sharkOwned = true
+                this.increaseTotalFishStat()
+                this.setStatsToCloud()
                 this.setPlanctonToCloud()
                 this.setFishToCloud()
                 return "Great! Now you own a Shark!"
@@ -371,8 +383,12 @@ class Model (var presenter: Presenter) : Contract.Model {
         //}
     }*/
 
-
     override fun setStatsToCloud(){
+        statsMap["statTotalFish"] = statTotalFish
+        statsMap["statPlanktonCollected"] = statPlanktonCollected
+        statsMap["statNumberOfDeath"] = statNumberOfDeath
+        statsMap["statMurderedFish"] = statMurderedFish
+        statsMap["statMaxDistanceTraveled"] = statMaxDistanceTraveled
         db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
     }
 
@@ -668,6 +684,10 @@ class Model (var presenter: Presenter) : Contract.Model {
             return true
         }
         return false
+    }
+
+    fun increaseDeath() {
+        statNumberOfDeath++
     }
 
 }

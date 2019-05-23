@@ -164,7 +164,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
     override fun increaseDeath() {
-        this.gameEngine!!.increaseDeath()
+        this.model.increaseDeath()
     }
 
     override fun getPlanktonCollected(): Int {
@@ -219,6 +219,10 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     fun addUserId() {
         this.model.setUserIdToList()
+    }
+
+    fun setStatsToCloud() {
+        this.model.setStatsToCloud()
     }
 
 
