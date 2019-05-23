@@ -188,7 +188,7 @@ class Model (var presenter: Presenter) : Contract.Model {
                 getFriendsFromCloud()
                 getAllUsernameListFromCloud()
             }
-        }, 10000)
+        }, 4000)
 
     }
 

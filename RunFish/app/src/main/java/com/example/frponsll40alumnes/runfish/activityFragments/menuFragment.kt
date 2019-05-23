@@ -64,7 +64,7 @@ class menuFragment : Fragment() {
                     menu_layout.visibility = View.VISIBLE
                 }
                 act!!.userChecked = true
-            }, 4000)
+            }, 5000)
         }
         else{
             imageView_commonFishh.visibility = View.GONE
