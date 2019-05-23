@@ -100,16 +100,9 @@ abstract class Fish (
 
     /* declared open so the types of fish can override it */
     open fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        var aux : Int = if (strength > speed){
-            speed
-        }
-        else{
-            speed
-            //strength
-        }
 
-        var xV : Int = (xJoy*aux/3).toInt()
-        var yV : Int = -(yJoy*aux/3).toInt()
+        var xV : Int = (xJoy*strength/3).toInt()
+        var yV : Int = -(yJoy*speed/3).toInt()
 
         if (x > screenWidth - image.width){
             xV = -1
