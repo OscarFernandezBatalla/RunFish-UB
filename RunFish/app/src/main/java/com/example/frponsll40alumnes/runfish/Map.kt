@@ -9,6 +9,7 @@ import android.graphics.Canvas
 class Map (context: Context, var meters: Int){
     private var image2 : Bitmap? = null
 
+    private var auxMeters = 0
 
     private var x : Int = 0
     private var y : Int = 0
@@ -26,7 +27,7 @@ class Map (context: Context, var meters: Int){
         }
 
         image = Bitmap.createScaledBitmap(image2!!, Resources.getSystem().displayMetrics.widthPixels+heightNavegationBar, image2!!.height, false)
-
+        auxMeters = image.height
         y = -(image.height - Resources.getSystem().displayMetrics.heightPixels)
     }
 
@@ -57,7 +58,14 @@ class Map (context: Context, var meters: Int){
         y += (yVelocity)
 */
         if(y <= 0){
-            this.meters -= 5
+
+
+            this.auxMeters -= 1
+
+            //image.height ----- 100
+
+
+
             y+= (5)
         }
     }
@@ -67,6 +75,6 @@ class Map (context: Context, var meters: Int){
     }
 
     fun getMeter() : Int{
-        return this.meters
+        return this.auxMeters
     }
 }

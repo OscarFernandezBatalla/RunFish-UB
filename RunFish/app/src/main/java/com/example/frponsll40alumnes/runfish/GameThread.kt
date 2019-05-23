@@ -5,7 +5,7 @@ import android.view.SurfaceHolder
 
 
 class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView: GameView) : Thread(){
-    private val FPS : Int = 30
+    private val FPS : Int = 20
     private var isRunning : Boolean = false
 
     fun setRunning(isRunning: Boolean) {

@@ -221,5 +221,12 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setUserIdToList()
     }
 
+    fun getMeters() : Int{
+        return this.gameEngine!!.getMeters()
+    }
+
+    fun setMeters(meters : Int){
+        this.viewActivity.setMeters(meters)
+    }
 
 }

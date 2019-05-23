@@ -267,18 +267,6 @@
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
         />
-        <TextView
-                android:text="@string/meters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView_meters" style="@style/MistralStyle"
-                android:layout_marginTop="20dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toEndOf="@+id/life_bar"
-                android:layout_marginStart="8dp"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton_pause" android:visibility="gone"/>
 
         <io.github.controlwear.virtual.joystick.android.JoystickView
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -350,6 +338,16 @@
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintVertical_bias="0.234"/>
+        <TextView
+                android:text="@string/meters"
+                android:layout_width="150dp"
+                android:layout_height="37dp"
+                android:id="@+id/textView_metersMap" android:layout_marginTop="28dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_pause" android:layout_marginEnd="32dp"
+                app:layout_constraintVertical_bias="0.005" style="@style/MistralBarStyle"
+                android:textAlignment="textEnd"/>
 
     </android.support.constraint.ConstraintLayout>
 

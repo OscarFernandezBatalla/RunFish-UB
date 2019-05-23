@@ -208,4 +208,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         }
         return NPCsInArea
     }
+
+    fun getMeters() : Int{
+        return this.level.getMeters()
+    }
 }

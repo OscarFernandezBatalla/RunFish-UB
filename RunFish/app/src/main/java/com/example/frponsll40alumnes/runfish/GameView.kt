@@ -1,6 +1,7 @@
 package com.example.frponsll40alumnes.runfish
 
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Canvas
@@ -29,6 +30,7 @@ import kotlin.math.sin
 class GameView(context: Context, var presenter: Presenter) : SurfaceView(context), SurfaceHolder.Callback{
 
     //private var meters : TextView? = null
+    var num = 0
     val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
@@ -36,6 +38,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var textX: TextView? = null
     private var textY: TextView? = null
     private var planktonCollected : TextView? = null
+    //private var textMeters : TextView? = null
 
     private var constraint : ConstraintLayout? = null
 
@@ -85,6 +88,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //meters = rootView.findViewById(R.id.textView_meters)
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
+        //textMeters = rootView.findViewById(R.id.textView_metersMap)
+        //textMeters!!.text= "àkjfsdklgn"
 
         planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
 
@@ -147,6 +152,15 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             bar_life!!.progress = presenter.lifeBar()
             bar_capacity!!.progress = presenter.capacityBar()
 
+
+
+            //textMeters!!.text = num.toString()//presenter.getMeters().toString()
+            //num += 1
+            //textMeters!!.text= "àkjfsdklgn"
+
+            this.presenter.setMeters(presenter.getMeters())
+
+
             if(bar_life!!.progress <=0){
                 this.thread.setRunning(false)
                 Log.w(TAG, "QWE You died")
@@ -199,6 +213,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         */
         //End prova
     }
+
 
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
