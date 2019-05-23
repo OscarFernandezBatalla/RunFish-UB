@@ -177,7 +177,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     }
 
     fun useAbilityGE(){
-        fish!!.useAbility(Health())
+        fish!!.useAbility()
     }
 
     fun lifeBar(): Int{

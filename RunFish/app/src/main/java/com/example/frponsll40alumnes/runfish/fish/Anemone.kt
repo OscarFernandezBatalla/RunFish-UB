@@ -5,9 +5,10 @@ import android.graphics.*
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.abilities.Health
 
 class Anemone(context: Context) :
-    Fish(name = "Anemone", life = 75, capacity =  0, ability = "health", price =  1000, maxLife = 75, maxCapacity = 20) {
+    Fish(name = "Anemone", life = 75, capacity =  0, ability = Health(), price =  1000, maxLife = 75, maxCapacity = 20) {
 
 
     override var image = BitmapFactory.decodeResource(context.resources, R.drawable.anemone)

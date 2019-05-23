@@ -626,7 +626,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         db.collection("usuarios").document("$user").collection("userContext").document("username").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    username = document.data!!.get("username").toString()
+                    username = document.data!!.get("username").toString() /*TODO: KotlinNullPointerException. Això peta*/
                 } else {
                     Log.d(TAG, "No such document")
                 }

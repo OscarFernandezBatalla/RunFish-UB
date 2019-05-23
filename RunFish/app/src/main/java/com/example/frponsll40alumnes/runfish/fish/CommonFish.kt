@@ -5,12 +5,13 @@ import android.graphics.*
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.abilities.Shield
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 
 class CommonFish(context: Context) :
-    Fish("Common Fish", 50, 0, "shield", 0, 50, 10) {
+    Fish("Common Fish", 50, 0, Shield(), 0, 50, 10) {
 
     var invencibilityForNFrames = 0
 
