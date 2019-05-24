@@ -495,8 +495,8 @@ class Model (var presenter: Presenter) : Contract.Model {
     override fun addFriend(friendName: String) {
         //if (db.collection("usuarios").document("$friendName") != null){
         //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
-        getFriendsFromCloud()
-        if(searchUsernameInUserIdList(friendName)){
+        //getFriendsFromCloud()
+        if(searchUsernameInUserIdList(friendName)){ //Comprovar també que no el tinc com amic
             friends.add(friendName)
             setFriendsToCloud()
         }
@@ -516,9 +516,10 @@ class Model (var presenter: Presenter) : Contract.Model {
                 }.addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
-            if(name == usernameFriend){
+            if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^ 
                 return true
             }
+
         }
         return false
     }
@@ -546,14 +547,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
     override fun setFriendsToCloud(){
-        this.actualitzaFriendsMap()
+        friendsMap["friends"] = friends
         db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
     }
-
-    override fun actualitzaFriendsMap(){
-        friendsMap["friends"] = friends
-    }
-
 
     override fun setVibrationState(activated: Boolean) {
         this.vibration = activated

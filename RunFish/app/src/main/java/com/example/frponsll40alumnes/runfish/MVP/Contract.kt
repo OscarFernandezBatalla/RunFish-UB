@@ -115,7 +115,6 @@ interface Contract {
         fun addFriend(friendName: String)
         fun getFriendsFromCloud()
         fun setFriendsToCloud()
-        fun actualitzaFriendsMap()
         fun setVibrationState(activated: Boolean)
         fun getFriendsList(): MutableList<String>
         fun getConnected(): Boolean
