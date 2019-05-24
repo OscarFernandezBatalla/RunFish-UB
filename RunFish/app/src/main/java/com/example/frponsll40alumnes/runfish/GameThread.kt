@@ -46,6 +46,8 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
             }
         }
 
+        //aqui el gameOver / successful? ojo
+
     }
 
     companion object {
