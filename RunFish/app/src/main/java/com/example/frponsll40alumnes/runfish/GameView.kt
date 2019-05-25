@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 
 import android.support.constraint.ConstraintLayout
 import android.util.Log
@@ -172,7 +173,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                     Log.w(TAG, "QWE fragment is visible")
                 }
             }
-            if(presenter.getBackground().getY() >= 0){
+            if(presenter.getMeters() >= 0){
                 Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
                 planktonCollected!!.text = presenter.getPlanktonCollected().toString()
@@ -217,12 +218,13 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
+        canvas.drawColor(Color.parseColor("#00fff2"))   //background
 
         val NPC: MutableList<NPC?>? = presenter.getNPC()
-        val map: Map? = presenter.getMap()
+        //val map: Map? = presenter.getMap()
         val fish: Fish? = presenter.getFish()
 
-        map!!.draw(canvas)
+        //map!!.draw(canvas)
 
         for(x in NPC!!){
             x!!.draw(canvas)

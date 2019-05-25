@@ -33,7 +33,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
     var fish : Fish? = null
 
-    var background : Map? = null
+    //var background : Map? = null
 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
@@ -55,7 +55,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         fish = fishFactory.createFish(player1.fishType, context)
 
         // Get background
-        background = level.getMap()
+        //background = level.getMap()
 
         // Create npcs for the level
         for((key, value) in level.getNpc()){
@@ -147,7 +147,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             }
         }
         // Update scrolling of background
-        background!!.update()
+        //background!!.update()
+        level.update()
     }
 
     private fun vibrate() {
@@ -168,9 +169,9 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         return NPCList!!
     }
 
-    fun getMap(): Map? {
+    /*fun getMap(): Map? {
         return background!!
-    }
+    }*/
 
     fun getFishGE(): Fish? {
         return fish!!
@@ -210,6 +211,6 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     }
 
     fun getMeters() : Int{
-        return this.level.getMeters()
+        return this.level.getMeter()
     }
 }
