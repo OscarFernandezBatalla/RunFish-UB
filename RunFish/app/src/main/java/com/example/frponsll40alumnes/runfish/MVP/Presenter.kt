@@ -223,6 +223,11 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setStatsToCloud()
     }
 
+
+    fun getAllFromCloud() {
+        this.model.getAllFromCloud()
+    }
+
     fun getMeters() : Int{
         return this.gameEngine!!.getMeters()
     }
@@ -238,5 +243,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     /*fun getLevel(): Level {
         return this.gameEngine!!.level
     }*/
+
 
 }

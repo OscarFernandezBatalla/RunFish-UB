@@ -73,7 +73,9 @@ class FriendsFragment : Fragment() {
         //if(friendList.size != 0) {
         else{
             for (i in 0 until friendList.size) {
+                usernameFriendView!![i].visibility = View.VISIBLE
                 usernameFriendView!![i].text = friendList[i]
+                imatgeBallView!![i].visibility = View.VISIBLE
             }
         }
 
@@ -105,4 +107,7 @@ class FriendsFragment : Fragment() {
         }
 */
     }
+
+
+
 }

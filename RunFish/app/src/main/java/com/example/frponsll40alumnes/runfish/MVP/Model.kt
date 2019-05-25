@@ -29,6 +29,8 @@ class Model (var presenter: Presenter) : Contract.Model {
     var documentUsername: DocumentReference = collectionUserContext.document("username")
 
 
+
+
     var documentIdList: DocumentReference = db.collection("userID").document("userList")
 
     private var friends: MutableList<String> = mutableListOf()
@@ -204,20 +206,21 @@ class Model (var presenter: Presenter) : Contract.Model {
                 //setUserIdToList()
             }
             else{
-                getUsernameFromCloud()
-                getStatsFromCloud()
-                getOptionsFromCloud()
-                getPlanctonFromCloud()
-                getLevelsFromCloud()
-                getFishFromCloud()
-                getFriendsFromCloud()
-                getAllUsernameListFromCloud()
+                getAllFromCloud()
             }
         }, 5000)
     }
 
-
-
+    fun getAllFromCloud() {
+        getUsernameFromCloud()
+        getStatsFromCloud()
+        getOptionsFromCloud()
+        getPlanctonFromCloud()
+        getLevelsFromCloud()
+        getFishFromCloud()
+        getFriendsFromCloud()
+        getAllUsernameListFromCloud()
+    }
 
 
     override fun uploadStats():  MutableList<Int> {
@@ -522,7 +525,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
 
         //getFriendsFromCloud()
-        if(friendName in usernameUserIdMap.values){
+        if(friendName in usernameIdMap.values){
             friends.add(friendName)
             setFriendsToCloud()
         }
@@ -589,7 +592,7 @@ class Model (var presenter: Presenter) : Contract.Model {
                     for(i in 0 until y.size){
                         friends.add(y[i])
                         var z = friends
-                        var k = z
+
                     }
                 } else {
                     Log.d(TAG, "No such document")
@@ -718,7 +721,6 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun setAllUsernameListToCloud(){
         userIdMap["userId"] = userIdList
         documentIdList.set(userIdMap)
-
     }
 
     /*fun setUserIdToList(){
@@ -733,10 +735,6 @@ class Model (var presenter: Presenter) : Contract.Model {
     */
     fun searchUserIdInUserIdList(name: String): Boolean{
 
-        /*if(name in userIdList){
-            return true
-        }
-        return false*/
         if(name in usernameIdMap.keys){
             return true
         }
