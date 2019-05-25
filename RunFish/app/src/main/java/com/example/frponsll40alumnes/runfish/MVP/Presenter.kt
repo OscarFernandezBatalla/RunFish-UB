@@ -1,10 +1,8 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
-import com.example.frponsll40alumnes.runfish.FishType
-import com.example.frponsll40alumnes.runfish.GameEngine
+import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.Map
-import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.npc.NPC
@@ -139,18 +137,18 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return gameEngine!!.getNPC()
     }
 
-    override fun getMap(): Map? {
+    /*override fun getMap(): Map? {
         return gameEngine!!.getMap()
-    }
+    }*/
 
     override fun getFish(): Fish? {
         return gameEngine!!.getFishGE()
     }
 
-    override fun getBackground(): Map {
+    /*override fun getBackground(): Map {
         return gameEngine!!.background!!
     }
-
+*/
     override fun useAbility(){
         gameEngine!!.useAbilityGE()
     }
@@ -225,9 +223,26 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setStatsToCloud()
     }
 
+
     fun getAllFromCloud() {
         this.model.getAllFromCloud()
     }
+
+    fun getMeters() : Int{
+        return this.gameEngine!!.getMeters()
+    }
+
+    fun setMeters(meters : Int){
+        this.viewActivity.setMeters(meters)
+    }
+
+    fun getLevel() : Level{
+        return this.gameEngine!!.level
+    }
+
+    /*fun getLevel(): Level {
+        return this.gameEngine!!.level
+    }*/
 
 
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.R
 import com.google.firebase.auth.FirebaseAuth
@@ -79,5 +80,10 @@ class HomeActivity : AppCompatActivity() {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
+    }
+
+    fun setMeters(meters : Int){
+        var text : TextView = findViewById(R.id.textView_metersMap)
+        text.text = meters.toString()
     }
 }

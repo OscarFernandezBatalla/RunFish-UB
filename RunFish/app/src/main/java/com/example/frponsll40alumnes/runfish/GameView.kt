@@ -1,9 +1,11 @@
 package com.example.frponsll40alumnes.runfish
 
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 
 import android.support.constraint.ConstraintLayout
 import android.util.Log
@@ -29,6 +31,7 @@ import kotlin.math.sin
 class GameView(context: Context, var presenter: Presenter) : SurfaceView(context), SurfaceHolder.Callback{
 
     //private var meters : TextView? = null
+    var num = 0
     val thread: GameThread
     private var plankton: Plankton? = null
     private var shark : EnemyShark?= null
@@ -36,6 +39,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var textX: TextView? = null
     private var textY: TextView? = null
     private var planktonCollected : TextView? = null
+    //private var textMeters : TextView? = null
 
     private var constraint : ConstraintLayout? = null
 
@@ -85,6 +89,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //meters = rootView.findViewById(R.id.textView_meters)
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
+        //textMeters = rootView.findViewById(R.id.textView_metersMap)
+        //textMeters!!.text= "àkjfsdklgn"
 
         planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
 
@@ -147,6 +153,15 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             bar_life!!.progress = presenter.lifeBar()
             bar_capacity!!.progress = presenter.capacityBar()
 
+
+
+            //textMeters!!.text = num.toString()//presenter.getMeters().toString()
+            //num += 1
+            //textMeters!!.text= "àkjfsdklgn"
+
+            this.presenter.setMeters(presenter.getMeters())
+
+
             if(bar_life!!.progress <=0){
                 this.thread.setRunning(false)
                 Log.w(TAG, "QWE You died")
@@ -159,7 +174,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 }
                 this.presenter.setStatsToCloud()
             }
-            if(presenter.getBackground().getY() >= 0){
+            if(presenter.getMeters() >= 0){
                 Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
                 planktonCollected!!.text = presenter.getPlanktonCollected().toString()
@@ -202,14 +217,17 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //End prova
     }
 
+
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
+        canvas.drawColor(Color.parseColor("#00fff2"))   //background
+        this.presenter.getLevel().draw(canvas)
 
         val NPC: MutableList<NPC?>? = presenter.getNPC()
-        val map: Map? = presenter.getMap()
+        //val map: Map? = presenter.getMap()
         val fish: Fish? = presenter.getFish()
 
-        map!!.draw(canvas)
+        //map!!.draw(canvas)
 
         for(x in NPC!!){
             x!!.draw(canvas)
@@ -220,8 +238,11 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //canvas.drawText("Metres",20f,64f, paint)
         fish!!.draw(canvas)
 
+
         //test de col·lisions (temporal):
         fish.rec.draw(canvas)
+
+
     }
 
 
