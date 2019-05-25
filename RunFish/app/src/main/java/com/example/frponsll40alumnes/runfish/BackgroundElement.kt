@@ -3,6 +3,7 @@ package com.example.frponsll40alumnes.runfish
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 
 class BackgroundElement(type : BackgroundType, context : Context) {
 
@@ -28,7 +29,11 @@ class BackgroundElement(type : BackgroundType, context : Context) {
 
 
     fun update(){
-        y-=5
+        y+=5
+    }
+
+    fun draw(canvas: Canvas) {
+        canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
     }
 
     fun setCoordenates(x : Int, y: Int){

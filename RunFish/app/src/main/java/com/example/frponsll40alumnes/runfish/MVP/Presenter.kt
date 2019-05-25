@@ -231,6 +231,10 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.setMeters(meters)
     }
 
+    fun getLevel() : Level{
+        return this.gameEngine!!.level
+    }
+
     /*fun getLevel(): Level {
         return this.gameEngine!!.level
     }*/

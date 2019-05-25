@@ -16,6 +16,7 @@ open class Level (var numLevel : Int, val context : Context)
     private var difficultyLevel : DifficultyType? = null
     private var elements : MutableList<BackgroundElement> = mutableListOf()
     private var displayWidth = Resources.getSystem().displayMetrics.widthPixels
+    private var displayHeight = Resources.getSystem().displayMetrics.heightPixels
     private var heightNavegationBar = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"))
 
 
@@ -29,7 +30,7 @@ open class Level (var numLevel : Int, val context : Context)
     init{
         setMap()
 
-        for (i in 1..(meters/1000)){
+        for (i in 1..(-meters/1000)){
             val leftCoral = BackgroundElement(BackgroundType.LEFT_CORAL, context)
             val rightCoral = BackgroundElement(BackgroundType.RIGHT_CORAL, context)
             val leftTurtle = BackgroundElement(BackgroundType.LEFT_TURTLE, context)
@@ -37,12 +38,12 @@ open class Level (var numLevel : Int, val context : Context)
             val leftFish = BackgroundElement(BackgroundType.LEFT_FISH, context)
             val rightFish = BackgroundElement(BackgroundType.RIGHT_FISH, context)
 
-            leftCoral.setCoordenates(leftCoral.getImageWidth(), -i*1000)
-            rightCoral.setCoordenates(displayWidth+heightNavegationBar-rightCoral.getImageWidth(), -i*1000)
-            leftTurtle.setCoordenates(leftTurtle.getImageWidth(), -i*1000)
-            rightTurtle.setCoordenates(displayWidth+heightNavegationBar-rightTurtle.getImageWidth(), -i*1000)
-            leftFish.setCoordenates(leftCoral.getImageWidth(), -i*1000)
-            rightFish.setCoordenates(displayWidth+heightNavegationBar-rightFish.getImageWidth(), -i*1000)
+            leftCoral.setCoordenates(0, -i*2000)
+            rightCoral.setCoordenates(displayWidth+heightNavegationBar-rightCoral.getImageWidth(), -i*2000)
+            leftTurtle.setCoordenates(leftTurtle.getImageWidth(), -i*2000)
+            rightTurtle.setCoordenates(displayWidth+heightNavegationBar-rightTurtle.getImageWidth(), -i*2000)
+            leftFish.setCoordenates(leftCoral.getImageWidth(), -i*2000)
+            rightFish.setCoordenates(displayWidth+heightNavegationBar-rightFish.getImageWidth(), -i*2000)
 
             this.elements.add(leftCoral)
             this.elements.add(rightCoral)
@@ -117,6 +118,12 @@ open class Level (var numLevel : Int, val context : Context)
         }
         for (i in elements){
             i.update()
+        }
+    }
+
+    fun draw(canvas : Canvas){
+        for (i in elements){
+            i.draw(canvas)
         }
     }
 

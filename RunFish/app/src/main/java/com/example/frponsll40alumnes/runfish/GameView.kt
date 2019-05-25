@@ -221,6 +221,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
         canvas.drawColor(Color.parseColor("#00fff2"))   //background
+        this.presenter.getLevel().draw(canvas)
 
         val NPC: MutableList<NPC?>? = presenter.getNPC()
         //val map: Map? = presenter.getMap()
@@ -237,8 +238,11 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //canvas.drawText("Metres",20f,64f, paint)
         fish!!.draw(canvas)
 
+
         //test de col·lisions (temporal):
         fish.rec.draw(canvas)
+
+
     }
 
 
