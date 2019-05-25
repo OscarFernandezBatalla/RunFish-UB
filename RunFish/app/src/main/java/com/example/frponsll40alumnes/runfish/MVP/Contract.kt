@@ -56,9 +56,9 @@ interface Contract {
         fun updateJoystickInf(valx: Double, valy: Double, strength: Int)
         fun updateView()
         fun getNPC(): MutableList<NPC?>?
-        fun getMap(): Map?
+        //fun getMap(): Map?
         fun getFish(): Fish?
-        fun getBackground(): Map
+        //fun getBackground(): Map
         fun useAbility()
         fun lifeBar(): Int
         fun capacityBar(): Int

@@ -25,6 +25,10 @@ class GameFragment : Fragment() {
     lateinit var game : FrameLayout
     private lateinit var gameWidgets: LinearLayout
 
+    //private var textMet : TextView?= null
+
+    var met : Int = 0
+
     var posX : Int = 0
     var posY : Int = 0
 
@@ -49,7 +53,6 @@ class GameFragment : Fragment() {
         //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
 
         act!!.signOut.visibility = View.GONE
-
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
         act!!.presenter.startGame(Player(act!!.presenter.getCurrentFish()),context = this.gameView.context)
@@ -97,10 +100,20 @@ class GameFragment : Fragment() {
         button_next_level.setOnClickListener(){
             //successful_layout.visibility=View.GONE
         }
+
+
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         this.act!!.presenter.stopMusic()
     }
+
+/*    fun setMeters(meters : Int){
+        this.textView_metersMap.text = meters.toString()
+    }*/
+
+
+
 }

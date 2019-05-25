@@ -609,12 +609,9 @@ class Model (var presenter: Presenter) : Contract.Model {
         this.vibration = activated
     }
 
-
     fun actualitzaUsernameMap(){
         usernameMap["username"] = username
     }
-
-
 
     override fun getFriendsList(): MutableList<String>{
         return this.friends
@@ -706,6 +703,7 @@ class Model (var presenter: Presenter) : Contract.Model {
                         userIdList.add(y[i])
                     }*/
                     usernameIdMap = y
+
                 } else {
                     Log.d(TAG, "No such document")
                 }
