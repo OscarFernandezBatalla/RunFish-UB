@@ -1,14 +1,17 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.ContentValues.TAG
+import android.support.annotation.Nullable
 import android.util.Log
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
+import org.w3c.dom.Document
 
 
 class Model (var presenter: Presenter) : Contract.Model {
+
 
 
 
@@ -16,6 +19,17 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     var user = FirebaseAuth.getInstance().currentUser!!.uid
 
+    var collectionUserContext: CollectionReference = db.collection("usuarios").document("$user").collection("userContext")
+    var documentStats: DocumentReference = collectionUserContext.document("stats")
+    var documentFish: DocumentReference = collectionUserContext.document("fish")
+    var documentFriends: DocumentReference = collectionUserContext.document("friends")
+    var documentLevels: DocumentReference = collectionUserContext.document("levels")
+    var documentOptions: DocumentReference = collectionUserContext.document("options")
+    var documentPlancton: DocumentReference = collectionUserContext.document("plancton")
+    var documentUsername: DocumentReference = collectionUserContext.document("username")
+
+
+    var documentIdList: DocumentReference = db.collection("userID").document("userList")
 
     private var friends: MutableList<String> = mutableListOf()
 
@@ -50,7 +64,16 @@ class Model (var presenter: Presenter) : Contract.Model {
         "statMaxDistanceTraveled" to statMaxDistanceTraveled)
 
 
-    var usernameUserIdMap : HashMap<String, String> = hashMapOf() //TODO: Posar idUser to username
+    var usernameIdMap: HashMap<String, String> = hashMapOf()
+
+    var usernameIdCloudMap : HashMap<String, HashMap<String,String>> = hashMapOf(
+        "usernameIdMap" to usernameIdMap)
+
+
+
+
+    var usernameUserIdMap : HashMap<String, String> = hashMapOf()
+    // TODO: Quan afegim un username -> HashMap["&user"] = username ?  I si ho guardem funcionara?
 
 
     var friendsMap: HashMap<String, MutableList<String>> = hashMapOf(
@@ -146,6 +169,10 @@ class Model (var presenter: Presenter) : Contract.Model {
     "sharkOwned" to sharkOwned
     )
 
+    //var
+
+
+
     fun setTotalFishStat(){
         statTotalFish = 0
         for ((key, value) in fishMap) {
@@ -164,9 +191,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         //checkUserFromCloud()
         getAllUsernameListFromCloud() // Agafem tots els usuaris i els posem a dins la llista d'ID
 
-
         android.os.Handler().postDelayed({
-
             if(!searchUserIdInUserIdList(user)){
                 setUsernameToCloud()
                 setTotalFishStat()
@@ -176,7 +201,7 @@ class Model (var presenter: Presenter) : Contract.Model {
                 setLevelsToCloud()
                 setFishToCloud()
                 setFriendsToCloud()
-                setUserIdToList()
+                //setUserIdToList()
             }
             else{
                 getUsernameFromCloud()
@@ -188,9 +213,10 @@ class Model (var presenter: Presenter) : Contract.Model {
                 getFriendsFromCloud()
                 getAllUsernameListFromCloud()
             }
-        }, 4000)
-
+        }, 5000)
     }
+
+
 
 
 
@@ -389,12 +415,12 @@ class Model (var presenter: Presenter) : Contract.Model {
         statsMap["statNumberOfDeath"] = statNumberOfDeath
         statsMap["statMurderedFish"] = statMurderedFish
         statsMap["statMaxDistanceTraveled"] = statMaxDistanceTraveled
-        db.collection("usuarios").document("$user").collection("userContext").document("stats").set(statsMap)
+        documentStats.set(statsMap)
     }
 
     override fun setPlanctonToCloud(){
         planctonMap["actualPlankton"] = actualPlankton
-        db.collection("usuarios").document("$user").collection("userContext").document("plancton").set(planctonMap)
+        documentPlancton.set(planctonMap)
     }
     override fun setLevelsToCloud(){
         db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
@@ -405,12 +431,12 @@ class Model (var presenter: Presenter) : Contract.Model {
         fishMap["blowFishOwned"]=blowFishOwned
         fishMap["swordFishOwned"]=swordFishOwned
         fishMap["sharkOwned"]=sharkOwned
-        db.collection("usuarios").document("$user").collection("userContext").document("fish").set(fishMap)
+        documentFish.set(fishMap)
     }
 
 
     override fun getStatsFromCloud(){
-        db.collection("usuarios").document("$user").collection("userContext").document("stats").get().addOnSuccessListener { document ->
+       documentStats.get().addOnSuccessListener { document ->
             if (document != null) {
                 statTotalFish = document.data!!.get("statTotalFish").toString().toInt()
                 statPlanktonCollected = document.data!!.get("statPlanktonCollected").toString().toInt()
@@ -426,11 +452,11 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     override fun setOptionsToCloud(){
-        db.collection("usuarios").document("$user").collection("userContext").document("options").set(optionsMap)
+       documentOptions.set(optionsMap)
     }
 
     override fun getOptionsFromCloud(){
-        db.collection("usuarios").document("$user").collection("userContext").document("options").get().addOnSuccessListener { document ->
+        documentOptions.get().addOnSuccessListener { document ->
             if (document != null) {
                 music = document.data!!.get("music").toString().toInt()
                 sound = document.data!!.get("sound").toString().toInt()
@@ -446,7 +472,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     override fun getPlanctonFromCloud() {
-        db.collection("usuarios").document("$user").collection("userContext").document("plancton").get()
+        documentPlancton.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                      actualPlankton = document.data!!.get("actualPlankton").toString().toInt()
@@ -460,7 +486,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     override fun getLevelsFromCloud() {
-        db.collection("usuarios").document("$user").collection("userContext").document("levels").get()
+        documentLevels.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     levelsUnlocked = document.data!!.get("levelsUnlocked").toString().toInt()
@@ -474,7 +500,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     override fun getFishFromCloud() {
-        db.collection("usuarios").document("$user").collection("userContext").document("fish").get()
+        documentFish.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     commonFishOwned = document.data!!.get("commonFishOwned").toString().toBoolean()
@@ -493,16 +519,15 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     override fun addFriend(friendName: String) {
-        //if (db.collection("usuarios").document("$friendName") != null){
         //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
-        //getFriendsFromCloud()
-        if(searchUsernameInUserIdList(friendName)){ //Comprovar també que no el tinc com amic
+
+        /*if(searchUsernameInUserIdList(friendName)){ //Comprovar també que no el tinc com amic
             friends.add(friendName)
             setFriendsToCloud()
-        }
+        }*/
     }
     /*TODO: PROVAR METODE*/
-    fun searchUsernameInUserIdList(name: String): Boolean{
+   /* fun searchUsernameInUserIdList(name: String): Boolean{
         for(x in userIdList){
             var usernameFriend: String = ""
             db.collection("usuarios").document("$x").collection("userContext").document("username").get()
@@ -516,9 +541,32 @@ class Model (var presenter: Presenter) : Contract.Model {
                 }.addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
-            if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^ 
+            if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^
                 return true
             }
+
+        }
+        return false
+    }*/
+
+    fun getUsernameListFromCloud(name: String): Boolean{
+        for(x in userIdList){
+            var usernameFriend: String = ""
+            db.collection("usuarios").document("$x").collection("userContext").document("username").get()
+                .addOnSuccessListener { document ->
+                    //TODO: Posar delay
+                    if (document != null) {
+                        usernameList.add(document.data!!.get("username").toString())
+                        //usernameFriend = document.data!!.get("username").toString()
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }.addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+            /*if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^
+                return true
+            }*/
 
         }
         return false
@@ -527,7 +575,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
     override fun getFriendsFromCloud() {
-        db.collection("usuarios").document("$user").collection("userContext").document("friends").get()
+        documentFriends.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     var x = document.data!!.get("friends")
@@ -548,7 +596,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     override fun setFriendsToCloud(){
         friendsMap["friends"] = friends
-        db.collection("usuarios").document("$user").collection("userContext").document("friends").set(friendsMap)
+        documentFriends.set(friendsMap)
     }
 
     override fun setVibrationState(activated: Boolean) {
@@ -579,7 +627,14 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     override fun setUsername(username: String) {
         this.username = username
+        usernameIdMap["$user"] = username
+        usernameIdCloudMap["usernameIdMap"] = usernameIdMap
+        this.setUsernameIdCloudMap()
         this.setUsernameToCloud()
+    }
+
+    private fun setUsernameIdCloudMap() {
+        documentIdList.set(usernameIdCloudMap)
     }
 
     override fun getCurrentFish() : FishType{
@@ -614,12 +669,13 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun setUsernameToCloud(){
         this.actualitzaUsernameMap()
-        db.collection("usuarios").document("$user").collection("userContext").document("username").set(usernameMap)
+        documentUsername.set(usernameMap)
+
 
     }
 
     fun getUsernameFromCloud(){
-        db.collection("usuarios").document("$user").collection("userContext").document("username").get()
+        documentUsername.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     username = document.data!!.get("username").toString() /*TODO: KotlinNullPointerException. Això peta*/
@@ -633,24 +689,17 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    fun getAllUsernameListFromCloud(){
-        db.collection("userID").document("userList").get()
+    fun getAllUsernameListFromCloud() {
+
+        documentIdList.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    var x = document.data!!.get("userId")
-                    var y: ArrayList<String> = x as ArrayList<String>
-                    for(i in 0 until y.size){
+                    var x = document.data!!.get("usernameIdMap")
+                    var y: HashMap<String,String> = x as HashMap<String, String>
+                    /*for(i in 0 until y.size){
                         userIdList.add(y[i])
-                    }
-                    /*
-                    var z = !searchUserIdInUserIdList("$user")
-                    if(z) {
-                        this.userIdList.add(user)
-                        userIdMap["userId"] = userIdList
-                        setAllUsernameListToCloud()
                     }*/
-
-
+                    usernameIdMap = y
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -658,17 +707,21 @@ class Model (var presenter: Presenter) : Contract.Model {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
+
+
+
+
     fun setAllUsernameListToCloud(){
         userIdMap["userId"] = userIdList
-        db.collection("userID").document("userList").set(userIdMap)
+        documentIdList.set(userIdMap)
 
     }
 
-    fun setUserIdToList(){
+    /*fun setUserIdToList(){
         this.userIdList.add(user)
         //userIdMap["userId"] = userIdList
         setAllUsernameListToCloud()
-    }
+    }*/
 
 
     /*
@@ -676,7 +729,11 @@ class Model (var presenter: Presenter) : Contract.Model {
     */
     fun searchUserIdInUserIdList(name: String): Boolean{
 
-        if(name in userIdList){
+        /*if(name in userIdList){
+            return true
+        }
+        return false*/
+        if(name in usernameIdMap.keys){
             return true
         }
         return false

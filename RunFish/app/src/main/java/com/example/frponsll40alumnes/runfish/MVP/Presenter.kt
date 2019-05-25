@@ -217,9 +217,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         model.setCurrentFish(fish)
     }
 
-    fun addUserId() {
+    /*fun addUserId() {
         this.model.setUserIdToList()
-    }
+    }*/
 
     fun setStatsToCloud() {
         this.model.setStatsToCloud()
