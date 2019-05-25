@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
@@ -18,6 +19,7 @@ class FriendsFragment : Fragment() {
 
     var act : HomeActivity ?= null
     var usernameFriendView: MutableList<TextView> ?= null
+    var imatgeBallView: MutableList<ImageView> ?= null
 
 
     override fun onCreateView(
@@ -35,6 +37,8 @@ class FriendsFragment : Fragment() {
         act!!.signOut.visibility = View.GONE
 
         usernameFriendView = mutableListOf(text_friend0, text_friend1, text_friend2, text_friend3)
+        imatgeBallView = mutableListOf(image_ball_friend0, image_ball_friend1, image_ball_friend2, image_ball_friend3)
+
         //uploadFriendsFragment()
 
         refreshFriendListView()
@@ -60,7 +64,14 @@ class FriendsFragment : Fragment() {
 
     fun refreshFriendListView(){
         var friendList = getFriendList()//mutableListOf("Pepito","Pepe",null,null)  //TODO : MÀXIM 4
-        if(friendList.size != 0) {
+        if(friendList.size == 0){
+            for(i in 0 until usernameFriendView!!.size){
+                usernameFriendView!![i].visibility = View.GONE
+                imatgeBallView!![i].visibility = View.GONE
+            }
+        }
+        //if(friendList.size != 0) {
+        else{
             for (i in 0 until friendList.size) {
                 usernameFriendView!![i].text = friendList[i]
             }

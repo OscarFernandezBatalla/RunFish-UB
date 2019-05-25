@@ -496,10 +496,14 @@ class Model (var presenter: Presenter) : Contract.Model {
         //if (db.collection("usuarios").document("$friendName") != null){
         //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
         //getFriendsFromCloud()
-        if(searchUsernameInUserIdList(friendName)){ //Comprovar també que no el tinc com amic
+        if(friendName in usernameUserIdMap.values){
             friends.add(friendName)
             setFriendsToCloud()
         }
+       /*if(searchUsernameInUserIdList(friendName)){ //Comprovar també que no el tinc com amic
+            friends.add(friendName)
+            setFriendsToCloud()
+        }*/
     }
     /*TODO: PROVAR METODE*/
     fun searchUsernameInUserIdList(name: String): Boolean{
