@@ -15,6 +15,9 @@ class LevelsFragment : Fragment() {
 
     var act : HomeActivity ?= null
 
+    var numLevel : Int = 0
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +30,8 @@ class LevelsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         //Els posem tots a false per no poder accedir a tots els nivells
         //Només podrem accedir si estan desbloquejats
@@ -61,6 +66,7 @@ class LevelsFragment : Fragment() {
             button_comeback_singleplayer3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_multiplayerFragment))
         }
 
+        /*
         button_tutorial.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
         button_level1.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
         button_level2.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
@@ -72,6 +78,53 @@ class LevelsFragment : Fragment() {
         button_level8.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
         button_level9.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
         button_level10.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
+        */
+
+        button_tutorial.setOnClickListener {
+            numLevel = 0
+            //fragment.visibility
+        }
+
+        button_level1.setOnClickListener {
+            numLevel = 1
+            //fragment.visibility
+        }
+        button_level2.setOnClickListener {
+            numLevel = 2
+            //fragment.visibility
+        }
+        button_level3.setOnClickListener {
+            numLevel = 3
+            //fragment.visibility
+        }
+        button_level4.setOnClickListener {
+            numLevel = 4
+            //fragment.visibility
+        }
+        button_level5.setOnClickListener {
+            numLevel = 5
+            //fragment.visibility
+        }
+        button_level6.setOnClickListener {
+            numLevel = 6
+            //fragment.visibility
+        }
+        button_level7.setOnClickListener {
+            numLevel = 7
+            //fragment.visibility
+        }
+        button_level8.setOnClickListener {
+            numLevel = 8
+            //fragment.visibility
+        }
+        button_level9.setOnClickListener {
+            numLevel = 9
+            //fragment.visibility
+        }
+        button_level10.setOnClickListener {
+            numLevel = 10
+            //fragment.visibility
+        }
     }
 
     fun uploadLevelsFragment(){

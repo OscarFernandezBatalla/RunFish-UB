@@ -34,8 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 //import android.R
 
 
-var ReturnDirection : LevelDirection =
-    LevelDirection.SINGLEPLAYER
+var ReturnDirection : LevelDirection = LevelDirection.SINGLEPLAYER
 
 enum class LevelDirection {
     SINGLEPLAYER, MULTIPLAYER
