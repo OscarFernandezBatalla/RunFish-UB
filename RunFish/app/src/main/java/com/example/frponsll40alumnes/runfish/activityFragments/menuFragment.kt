@@ -64,7 +64,7 @@ class menuFragment : Fragment() {
                     menu_layout.visibility = View.VISIBLE
                 }
                 act!!.userChecked = true
-            }, 5000)
+            }, 6000)
         }
         else{
             imageView_commonFishh.visibility = View.GONE
@@ -84,9 +84,9 @@ class menuFragment : Fragment() {
 
     }
 
-    fun addUserId(){
+    /*fun addUserId(){
         this.act!!.presenter.addUserId()
-    }
+    }*/
 
     private fun uploadMenuFragment(){
         uploadFriends()
