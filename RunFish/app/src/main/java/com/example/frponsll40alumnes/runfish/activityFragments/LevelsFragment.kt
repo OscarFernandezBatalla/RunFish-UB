@@ -2,10 +2,12 @@ package com.example.frponsll40alumnes.runfish.activityFragments
 
 
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_levels.*
@@ -14,8 +16,9 @@ import kotlinx.android.synthetic.main.fragment_levels.*
 class LevelsFragment : Fragment() {
 
     var act : HomeActivity ?= null
-
+    //private var constraint : ConstraintLayout ?= null
     var numLevel : Int = 0
+    private var accept : Button ?= null
 
 
     override fun onCreateView(
@@ -24,12 +27,14 @@ class LevelsFragment : Fragment() {
     ): View? {
         act = (activity as HomeActivity)
         act!!.signOut.visibility = View.GONE
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_levels, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
 
 
@@ -66,64 +71,64 @@ class LevelsFragment : Fragment() {
             button_comeback_singleplayer3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_multiplayerFragment))
         }
 
-        /*
-        button_tutorial.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level1.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level2.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level4.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level5.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level6.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level7.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level8.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level9.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        button_level10.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
-        */
+
+        button_acceptar.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
 
         button_tutorial.setOnClickListener {
             numLevel = 0
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
 
         button_level1.setOnClickListener {
             numLevel = 1
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level2.setOnClickListener {
             numLevel = 2
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level3.setOnClickListener {
             numLevel = 3
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level4.setOnClickListener {
             numLevel = 4
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level5.setOnClickListener {
             numLevel = 5
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level6.setOnClickListener {
             numLevel = 6
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level7.setOnClickListener {
             numLevel = 7
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level8.setOnClickListener {
             numLevel = 8
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level9.setOnClickListener {
             numLevel = 9
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level10.setOnClickListener {
             numLevel = 10
-            //fragment.visibility
+            act!!.presenter.setActualLevel(numLevel)
+            constraint_confirm_level.visibility = View.VISIBLE
         }
     }
 

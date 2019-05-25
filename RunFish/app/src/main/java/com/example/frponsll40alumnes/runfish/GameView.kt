@@ -152,8 +152,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
             bar_life!!.progress = presenter.lifeBar()
             bar_capacity!!.progress = presenter.capacityBar()
-
-
+            
 
             //textMeters!!.text = num.toString()//presenter.getMeters().toString()
             //num += 1

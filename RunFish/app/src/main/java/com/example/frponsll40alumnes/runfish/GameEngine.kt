@@ -20,7 +20,7 @@ import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
 import java.util.*
 
-class GameEngine(var player1: Player, var player2: Player? = null, var context: Context){
+class GameEngine(var player1: Player, var player2: Player? = null, var context: Context, var numLevel: Int){
 
     var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
@@ -38,7 +38,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
-    var level = Level(8, context)
+    var level = Level(numLevel, context)
 
     var valy : Double = 0.0
     var valx : Double = 0.0

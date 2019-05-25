@@ -109,7 +109,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var lifeBar : Int = 100     //percentatge
     private var capacityBar : Int = 0   //percentatge
     private var abilityUsed : Boolean = false
-    private var levelSelected : Int? = null
+    private var levelSelected : Int = 0
     private var planktonCollected : Int = 0
 
     private var actualPlankton: Int = 20000
@@ -745,4 +745,10 @@ class Model (var presenter: Presenter) : Contract.Model {
         statNumberOfDeath++
     }
 
+    fun setLevelSelected(numLevel : Int){
+        this.levelSelected = numLevel
+    }
+    fun getLevelSelected() : Int{
+        return this.levelSelected
+    }
 }

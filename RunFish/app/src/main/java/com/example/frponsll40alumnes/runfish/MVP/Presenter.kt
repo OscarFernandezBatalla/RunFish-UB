@@ -119,7 +119,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
     override fun startGame(player1: Player, player2: Player?, context: Context) {
-        gameEngine = GameEngine(player1,player2,context)
+        gameEngine = GameEngine(player1,player2,context, this.getActualLevel())
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()
@@ -240,9 +240,13 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.gameEngine!!.level
     }
 
-    /*fun getLevel(): Level {
-        return this.gameEngine!!.level
-    }*/
+    fun setActualLevel(numLevel: Int) {
+        this.model.setLevelSelected(numLevel)
+    }
+
+    fun getActualLevel(): Int {
+        return this.model.getLevelSelected()
+    }
 
 
 }
