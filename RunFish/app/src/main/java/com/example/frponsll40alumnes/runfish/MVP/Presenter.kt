@@ -225,5 +225,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setStatsToCloud()
     }
 
+    fun getAllFromCloud() {
+        this.model.getAllFromCloud()
+    }
+
 
 }

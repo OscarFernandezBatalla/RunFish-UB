@@ -21,9 +21,6 @@ class menuFragment : Fragment() {
     ): View? {
 
         //Use ability
-
-
-
         act = (activity as HomeActivity)
         act!!.signOut.visibility = View.GONE
 
@@ -33,6 +30,8 @@ class menuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         if(!act!!.userChecked){
             android.os.Handler().postDelayed({
 
@@ -73,7 +72,6 @@ class menuFragment : Fragment() {
             text_view_loading.visibility = View.GONE
             menu_layout.visibility = View.VISIBLE
         }
-
         uploadMenuFragment()
         button_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_singlePlayerFragment))
         button_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_multiplayerFragment))
