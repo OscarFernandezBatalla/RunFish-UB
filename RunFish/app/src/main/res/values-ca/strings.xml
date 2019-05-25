@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RunFish</string>
-    
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in">SIGN IN</string>
     <string name="enter">ENTER</string>
@@ -17,7 +17,7 @@
     <string name="corda2">corda2</string>
     <string name="description_image_google">Google logo</string>
     <string name="description_user_image">User image</string>
-    <string name="singleplayer">SINGLEPLAYER</string>
+    <string name="singleplayer">PATATAAAA</string>
     <string name="resume">RESUME</string>
     <string name="levels">LEVELS</string>
     <string name="freemode">FREE MODE</string>
@@ -123,6 +123,6 @@
     <string name="clownFish">CLOWNFISH</string>
     <string name="commonFish">COMMON FISH</string>
     <string name="loadingData">LOADING DATA...</string>
-    <string name="run">RUN</string>
-
+    <string name="run">patateta</string>
+    <string name="run">pata</string>
 </resources>
