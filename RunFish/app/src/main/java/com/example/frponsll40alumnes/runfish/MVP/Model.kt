@@ -67,6 +67,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
     var usernameIdMap: HashMap<String, String> = hashMapOf()
+    var usernameIdMapLock : Boolean = false;
 
     var usernameIdCloudMap : HashMap<String, HashMap<String,String>> = hashMapOf(
         "usernameIdMap" to usernameIdMap)
@@ -567,36 +568,60 @@ class Model (var presenter: Presenter) : Contract.Model {
     }*/
 
     fun getUsernameListFromCloud(name: String): Boolean{
+
+        for(x in userIdList){
+            usernameIdMapLock = true //defined near usernameIdMap
+            db.collection("usuarios").document("${x}").collection("userContext").document("username").get()
+                .addOnSuccessListener { document->
+                    if(document != null){
+                        usernameList.add(document.data!!.get("username").toString())
+                        usernameIdMapLock = false
+                    }
+                }
+                .addOnFailureListener { exception->
+                    Log.d(TAG, "get failed with ", exception)
+                    usernameIdMapLock = false
+                }
+        }
+
+        //CAUTION: BOOTLENECK. WAIT UNTIL THE REQUESTS ARE COMPLETED
+        while(usernameIdMapLock && userIdList.size != usernameIdMap.size);
+
+        if(name in usernameIdMap)
+            return true;
+
+        return false;
+        /*
         for(x in userIdList){
             var usernameFriend: String = ""
-            var name_retrieved = false;
-            var tries_left = 5;
+            //var name_retrieved = false;
+            //var tries_left = 5;
             db.collection("usuarios").document("$x").collection("userContext").document("username").get()
                 .addOnSuccessListener { document ->
                     //TODO: Posar delay
                     if (document != null) {
                         usernameList.add(document.data!!.get("username").toString())
-                        usernameFriend = document.data!!.get("username").toString()
-                        name_retrieved = true;
+                        //usernameFriend = document.data!!.get("username").toString()
+                        //name_retrieved = true;
                     } else {
                         Log.d(TAG, "No such document")
                     }
                 }.addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
-            /*if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^
+            /*if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^ ----> UTILIZAR UN SISTEMA DE LOCKS QUE BLOQUEAN LA VARIABLE MIENTRAS UNA REQUEST ESTA EN PROCESO
                 return true
             }*/
 
-            while(!name_retrieved && tries_left > 0){
-                tries_left--;
-            }
-            if(name_retrieved)
-                if(name == usernameFriend)
-                    return true
-
+            //while(!name_retrieved && tries_left > 0){
+            //    tries_left--;
+            //}
+            //if(name_retrieved)
+                //if(name == usernameFriend)
+                    //return true
         }
         return false
+        */
     }
 
 
