@@ -2,7 +2,6 @@ package com.example.frponsll40alumnes.runfish.activityFragments
 
 
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -73,6 +72,10 @@ class LevelsFragment : Fragment() {
 
 
         button_acceptar.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
+
+        button_cancelarLevel.setOnClickListener {
+            constraint_confirm_level.visibility = View.GONE
+        }
 
         button_tutorial.setOnClickListener {
             numLevel = 0

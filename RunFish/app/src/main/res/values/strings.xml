@@ -124,5 +124,8 @@
     <string name="clownFish">CLOWNFISH</string>
     <string name="commonFish">COMMON FISH</string>
     <string name="loadingData">LOADING DATA...</string>
+    <string name="num_Level"> LEVEL 1</string>
+    <string name="levelMeters">METERS: 1000 M</string>
+    <string name="yourFish">YOUR FISH:</string>
 
 </resources>
