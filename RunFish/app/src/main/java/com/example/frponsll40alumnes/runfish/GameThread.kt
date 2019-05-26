@@ -39,6 +39,9 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
             var timeMilis = (System.nanoTime() - startTime) / 1000000
             var waitMilis = targetTime - timeMilis
 
+            if(waitMilis < 0)
+                waitMilis = 0 //no fa saltar les excepcions
+
             try {
                 sleep(waitMilis)
             } catch (e: Exception) {

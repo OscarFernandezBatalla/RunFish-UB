@@ -179,11 +179,12 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             if(presenter.getMeters() >= 0){
                 Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
+                this.presenter.stopMusic()
                 planktonCollected!!.text = presenter.getPlanktonCollected().toString()
                 constraint = rootView.findViewById(R.id.successful_layout)
-                Log.w(TAG, "QWE fragment found")
+                //TODO: no es mostra successful layout
                 constraint!!.visibility = View.VISIBLE
-                Log.w(TAG, "QWE setting visibility")
+
                 if(constraint!!.visibility == View.VISIBLE) {
                     Log.w(TAG, "QWE fragment is visible")
                 }
