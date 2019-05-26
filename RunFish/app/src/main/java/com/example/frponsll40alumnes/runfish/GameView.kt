@@ -29,33 +29,17 @@ import kotlin.math.sin
 
 
 class GameView(context: Context, var presenter: Presenter) : SurfaceView(context), SurfaceHolder.Callback{
-
-    //private var meters : TextView? = null
-    var num = 0
     val thread: GameThread
-    private var plankton: Plankton? = null
-    private var shark : EnemyShark?= null
-    private var fish : Fish ?= null
-    private var textX: TextView? = null
-    private var textY: TextView? = null
     private var planktonCollected : TextView? = null
-    //private var textMeters : TextView? = null
-
     private var constraint : ConstraintLayout? = null
-
-    private var paused : Boolean = false
-
     private var bar_life : ProgressBar? = null
     private var bar_capacity : ProgressBar? = null
-
     private var ability : Button? = null
     
     var angleRad : Double = 0.0
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
-
-    //lateinit var gameEngine: GameEngine
 
     private var joystick: JoystickView? = null
 
@@ -86,11 +70,6 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
         //constraint = rootView.findViewById(R.id.game_over_layout)
         joystick = rootView.findViewById(R.id.joystickView) as JoystickView
-        //meters = rootView.findViewById(R.id.textView_meters)
-        textX = rootView.findViewById(R.id.valuex)
-        textY = rootView.findViewById(R.id.valuey)
-        //textMeters = rootView.findViewById(R.id.textView_metersMap)
-        //textMeters!!.text= "àkjfsdklgn"
 
         planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
 
@@ -101,15 +80,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
         loadAbilityImage()
 
-        joystick!!.setOnMoveListener { angle, strength ->
-            angleRad = angle * PI / 180
-            valy= sin(angleRad)
-            valx= cos(angleRad)
-            this.strength = strength
 
-            textX!!.text= ""//"coordenada X:   $valx   strength: $strength"
-            textY!!.text= ""//"coordenada Y:   $valy   angle: $angle"
-        }
 
         //Use ability
         ability!!.setOnClickListener {
@@ -147,25 +118,28 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
     fun update() {
 
+        /*joystick!!.setOnMoveListener { angle, strength ->
+            angleRad = angle * PI / 180
+            valy= sin(angleRad)
+            valx= cos(angleRad)
+            this.strength = strength
+        }*/
+
         constraint = rootView.findViewById(R.id.pause_fragment)
         if(constraint!!.visibility != View.VISIBLE) {
 
-            presenter.updateJoystickInf(valx,valy,strength)
+            //presenter.updateJoystickInf(valx,valy,strength)
+
             presenter.updateView()
 
             bar_life!!.progress = presenter.lifeBar()
             bar_capacity!!.progress = presenter.capacityBar()
-            
-
-            //textMeters!!.text = num.toString()//presenter.getMeters().toString()
-            //num += 1
-            //textMeters!!.text= "àkjfsdklgn"
 
             this.presenter.setMeters(presenter.getMeters())
 
 
             if(bar_life!!.progress <=0){
-                this.thread.setRunning(false)
+                /*this.thread.setRunning(false)
                 Log.w(TAG, "QWE You died")
                 this.presenter.stopMusic()
                 this.presenter.increaseDeath()
@@ -174,10 +148,10 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 if(constraint!!.visibility == View.VISIBLE) {
                     Log.w(TAG, "QWE fragment is visible")
                 }
-                this.presenter.setStatsToCloud()
+                this.presenter.setStatsToCloud()*/
             }
             if(presenter.getMeters() >= 0){
-                Log.w(TAG, "QWE You win")
+                /*Log.w(TAG, "QWE You win")
                 this.thread.setRunning(false)
                 this.presenter.stopMusic()
                 planktonCollected!!.text = presenter.getPlanktonCollected().toString()
@@ -188,7 +162,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 if(constraint!!.visibility == View.VISIBLE) {
                     Log.w(TAG, "QWE fragment is visible")
                 }
-                this.presenter.setStatsToCloud()
+                this.presenter.setStatsToCloud()*/
             }
         }
 

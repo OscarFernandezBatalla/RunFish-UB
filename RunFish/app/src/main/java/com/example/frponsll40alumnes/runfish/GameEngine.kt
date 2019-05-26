@@ -18,7 +18,6 @@ import com.example.frponsll40alumnes.runfish.abilities.Health
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
-import java.util.*
 
 class GameEngine(var player1: Player, var player2: Player? = null, var context: Context, var numLevel: Int){
 
@@ -97,6 +96,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
             x.changeCoordinates(posx, posy)
         }
     }
+
+
 
 
     //Mètode que obté la informació del joystick

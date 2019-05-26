@@ -16,6 +16,9 @@ import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.R
 import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.*
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 
 class GameFragment : Fragment() {
 
@@ -99,6 +102,15 @@ class GameFragment : Fragment() {
 
         button_next_level.setOnClickListener(){
             //successful_layout.visibility=View.GONE
+        }
+
+        joystickView.setOnMoveListener { angle, strength ->
+            var angleRad = angle * PI / 180
+            var valy= sin(angleRad)
+            var valx= cos(angleRad)
+            var strength = strength
+
+            this.act!!.presenter.updateJoystickInf(valx, valy, strength)
         }
 
 
