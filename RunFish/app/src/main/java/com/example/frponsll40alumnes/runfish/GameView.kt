@@ -115,10 +115,13 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         ability!!.setOnClickListener {
 
             ability!!.visibility = View.GONE
-            presenter.useAbility()//gameEngine.life += 20
-            android.os.Handler().postDelayed({
+            //presenter.useAbility()//gameEngine.life += 20
+            /*android.os.Handler().postDelayed({
                 ability!!.visibility = View.VISIBLE
-            }, 8000)
+            }, 8000)*/
+            android.os.Handler().postDelayed({
+                ability!!.visibility = View.VISIBLE;
+            }, (presenter.useAbility() * 1000).toLong());
         }
 
         //gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)

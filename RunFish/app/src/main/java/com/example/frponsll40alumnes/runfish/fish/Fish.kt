@@ -70,7 +70,7 @@ abstract class Fish (
     }
 
     /* Use the fish special ability */
-    fun useAbility(){
+    fun useAbility() : Int {
         return this.ability.useAbility(this)
     }
 /*

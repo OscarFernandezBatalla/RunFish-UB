@@ -177,8 +177,8 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         return fish!!
     }
 
-    fun useAbilityGE(){
-        fish!!.useAbility()
+    fun useAbilityGE() : Int {
+        return fish!!.useAbility()
     }
 
     fun lifeBar(): Int{

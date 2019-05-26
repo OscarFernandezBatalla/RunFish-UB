@@ -59,7 +59,7 @@ interface Contract {
         //fun getMap(): Map?
         fun getFish(): Fish?
         //fun getBackground(): Map
-        fun useAbility()
+        fun useAbility() : Int
         fun lifeBar(): Int
         fun capacityBar(): Int
         fun increaseDeath()

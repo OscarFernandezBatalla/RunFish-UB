@@ -7,9 +7,11 @@ import com.example.frponsll40alumnes.runfish.fish.SwordFish
 
 class Speed : AbilityStrategy {
 
+    override val cooldown = 7;
+
     val SPEED_INCREASE_DURATION = 120;
 
-    override fun useAbility(fish: Fish) {
+    override fun useAbility(fish: Fish) : Int {
 
         if(fish is SwordFish) {
 
@@ -19,6 +21,7 @@ class Speed : AbilityStrategy {
             fish.speedIncreaseForNFrames = SPEED_INCREASE_DURATION;
         }
 
+        return this.cooldown
     }
 
 }

@@ -5,9 +5,11 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 
 class Shield : AbilityStrategy {
 
+    override val cooldown = 12;
+
     val INVENCIBILITY_LENGTH_IN_FRAMES = 30
 
-    override fun useAbility(fish: Fish) {
+    override fun useAbility(fish: Fish) : Int {
 
         /* Invencibility for next INVENCIBILITY_LENGTH_IN_FRAMES frames */
         if(fish is CommonFish){
@@ -16,6 +18,7 @@ class Shield : AbilityStrategy {
             fish.invencibilityForNFrames = INVENCIBILITY_LENGTH_IN_FRAMES
         }
 
+        return this.cooldown;
     }
 
 }
