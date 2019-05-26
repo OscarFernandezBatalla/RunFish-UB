@@ -525,9 +525,17 @@ class Model (var presenter: Presenter) : Contract.Model {
         //TODO: COMPROVAR QUE EXISTEIX L'USUARI, provar de fer un toast?
 
         //getFriendsFromCloud()
+
+        //TODO: simplificar tots els nested if en un únic if. Esta aixi per visibilitat
         if(friendName in usernameIdMap.values){
-            friends.add(friendName)
-            setFriendsToCloud()
+            // Comprovar que no et pots afegir tu mateix a la teva llista d'amics
+            if(usernameIdMap[friendName] != user) {
+                //Comprovar també que no el tinc com amic
+                if(friendName !in friends) {
+                    friends.add(friendName)
+                    setFriendsToCloud()
+                }
+            }
         }
        /*if(searchUsernameInUserIdList(friendName)){ //Comprovar també que no el tinc com amic
             friends.add(friendName)
@@ -561,12 +569,15 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun getUsernameListFromCloud(name: String): Boolean{
         for(x in userIdList){
             var usernameFriend: String = ""
+            var name_retrieved = false;
+            var tries_left = 5;
             db.collection("usuarios").document("$x").collection("userContext").document("username").get()
                 .addOnSuccessListener { document ->
                     //TODO: Posar delay
                     if (document != null) {
                         usernameList.add(document.data!!.get("username").toString())
-                        //usernameFriend = document.data!!.get("username").toString()
+                        usernameFriend = document.data!!.get("username").toString()
+                        name_retrieved = true;
                     } else {
                         Log.d(TAG, "No such document")
                     }
@@ -576,6 +587,13 @@ class Model (var presenter: Presenter) : Contract.Model {
             /*if(name == usernameFriend){ //TODO: No funciona perque no és sincron :D  -> buscar alguna solució perque ni amb wait o podem fer ja que no et deixa retornar res ^^
                 return true
             }*/
+
+            while(!name_retrieved && tries_left > 0){
+                tries_left--;
+            }
+            if(name_retrieved)
+                if(name == usernameFriend)
+                    return true
 
         }
         return false
