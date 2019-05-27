@@ -119,7 +119,11 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
     override fun startGame(player1: Player, player2: Player?, context: Context) {
-        gameEngine = GameEngine(player1,player2,context, this.getActualLevel())
+
+        //variable temporal per breakpoints
+        var lev = this.getActualLevel()
+
+        gameEngine = GameEngine(player1,player2,context,lev)
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()
@@ -246,6 +250,10 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     fun getActualLevel(): Int {
         return this.model.getLevelSelected()
+    }
+
+    fun unlockNextLevel() {
+        this.model.unlockNextLevel(this.getActualLevel())
     }
 
 

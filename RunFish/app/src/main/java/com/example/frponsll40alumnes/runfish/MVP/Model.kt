@@ -10,6 +10,7 @@ import com.google.firebase.firestore.*
 import org.w3c.dom.Document
 
 
+@Suppress("UNREACHABLE_CODE")
 class Model (var presenter: Presenter) : Contract.Model {
 
 
@@ -793,5 +794,13 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
     fun getLevelSelected() : Int{
         return this.levelSelected
+    }
+
+    fun unlockNextLevel(actualLevel: Int) {
+        //TODO: aixo no se si està bé
+        if (actualLevel == levelsUnlocked && actualLevel < 10){
+            this.levelsUnlocked++
+            this.setLevelSelected(levelsUnlocked++)
+        }
     }
 }

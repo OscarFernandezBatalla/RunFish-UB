@@ -97,9 +97,7 @@ class GameFragment : Fragment() {
 
         button_back_successful.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
 
-        button_next_level.setOnClickListener(){
-            //successful_layout.visibility=View.GONE
-        }
+        //button_next_level.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
 
 
 
