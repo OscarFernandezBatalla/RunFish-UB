@@ -11,4 +11,5 @@ class VeryEasy : Difficulty{
     override val plankton_min = 4
     override val plankton_max = 6
 
+
 }

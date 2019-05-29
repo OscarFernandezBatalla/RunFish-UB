@@ -44,6 +44,11 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     //private var friend1 : List<Any?> = mutableListOf()
 
+    /* Levels */
+    //private var sharkEasy: Int = 0
+
+
+
     /*stats*/
 
     private var statTotalFish : Int = 0

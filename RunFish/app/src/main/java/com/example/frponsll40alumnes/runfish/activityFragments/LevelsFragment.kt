@@ -1,18 +1,23 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.R
+import com.example.frponsll40alumnes.runfish.fish.Fish
 import kotlinx.android.synthetic.main.fragment_levels.*
+import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 
 
-class LevelsFragment : Fragment() {
+class LevelsFragment : Fragment(){
 
     var act : HomeActivity ?= null
     //private var constraint : ConstraintLayout ?= null
@@ -80,60 +85,96 @@ class LevelsFragment : Fragment() {
         button_tutorial.setOnClickListener {
             numLevel = 0
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
 
         button_level1.setOnClickListener {
             numLevel = 1
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level2.setOnClickListener {
             numLevel = 2
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level3.setOnClickListener {
             numLevel = 3
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level4.setOnClickListener {
             numLevel = 4
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level5.setOnClickListener {
             numLevel = 5
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level6.setOnClickListener {
             numLevel = 6
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level7.setOnClickListener {
             numLevel = 7
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level8.setOnClickListener {
             numLevel = 8
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level9.setOnClickListener {
             numLevel = 9
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
         button_level10.setOnClickListener {
             numLevel = 10
             act!!.presenter.setActualLevel(numLevel)
+            updateActualLevelFrag()
             constraint_confirm_level.visibility = View.VISIBLE
         }
     }
+
+    private fun updateActualLevelFrag(){
+        textView_numLevel.text = numLevel.toString()
+        imageView_actualFish.background = getFishImage()
+        /* S'ha de treure de Engine?*/
+        textView_numShark.text = 10.toString()
+
+        textView_numBomb.text = 10.toString()
+        textView_numPlancton.text = 10.toString()
+        textView_levelMeters.text = 100.toString()
+
+    }
+
+    private fun getFishImage(): Drawable?{
+        var type: FishType = act!!.presenter.getCurrentFish()
+        return when (type){
+            FishType.COMMONFISH -> ContextCompat.getDrawable(context!!, R.drawable.common_fish_shop)
+            FishType.BLOWFISH -> ContextCompat.getDrawable(context!!,R.drawable.blow_fish_shop)
+            FishType.ANEMONE -> ContextCompat.getDrawable(context!!,R.drawable.anemone)
+            FishType.SWORDFISH -> ContextCompat.getDrawable(context!!,R.drawable.sword_fish_shop)
+            FishType.SHARK -> ContextCompat.getDrawable(context!!,R.drawable.shark_shop)
+        }
+    }
+
+
 
     fun uploadLevelsFragment(){
         val numLevels: Int = act!!.presenter.uploadLevels()
