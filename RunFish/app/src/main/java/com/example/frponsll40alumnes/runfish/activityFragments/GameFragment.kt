@@ -17,6 +17,8 @@ import com.example.frponsll40alumnes.runfish.R
 import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.*
 
+import com.example.frponsll40alumnes.runfish.GameModes
+
 class GameFragment : Fragment() {
 
     var act : HomeActivity? = null
@@ -26,6 +28,8 @@ class GameFragment : Fragment() {
     private lateinit var gameWidgets: LinearLayout
 
     //private var textMet : TextView?= null
+
+    var gameMode : GameModes = GameModes.GAME_MODE_FINITE; //by default
 
     var met : Int = 0
 
@@ -52,10 +56,21 @@ class GameFragment : Fragment() {
     ): View? {
         //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
 
+        //Analyze the bundle
+        gameMode = arguments!!.getSerializable("game_mode") as GameModes
+
+
         act!!.signOut.visibility = View.GONE
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
-        act!!.presenter.startGame(Player(act!!.presenter.getCurrentFish()),context = this.gameView.context)
+        /*
+            player2 = null, hacer una variable, si gameMode es multiplayer crear un dummy player
+         */
+        var player2 : Player? = null;
+        if(gameMode == GameModes.GAME_MODE_MULTIPLAYER)
+            player2 = Player(FishType.ANEMONE)
+
+        act!!.presenter.startGame(Player(act!!.presenter.getCurrentFish()), player2, gameMode = gameMode, context = this.gameView.context)
 
         return game
     }

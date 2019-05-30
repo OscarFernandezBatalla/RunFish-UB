@@ -2,11 +2,12 @@ package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
 import com.example.frponsll40alumnes.runfish.*
-import com.example.frponsll40alumnes.runfish.Map
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.fish.Fish
+
+import com.example.frponsll40alumnes.runfish.GameModes
 
 //import kotlinx.android.synthetic.main.fragment_main.view.*
 
@@ -118,7 +119,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         model.addFriend(friendName)
     }
 
-    override fun startGame(player1: Player, player2: Player?, context: Context) {
+    override fun startGame(player1: Player, player2: Player?, gameMode : GameModes, context: Context) {
 
         //variable temporal per breakpoints
         var lev = this.getActualLevel() //MODEL, model.getLevel()

@@ -1,10 +1,8 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
-import com.example.frponsll40alumnes.runfish.FishType
-import com.example.frponsll40alumnes.runfish.GameEngine
+import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.Map
-import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.NPC
@@ -52,7 +50,7 @@ interface Contract {
         fun buyFish(fishType: FishType) : String
         fun uploadLevels() : Int
         fun addFriend(friendName: String)
-        fun startGame(player1: Player, player2: Player? = null, context: Context)
+        fun startGame(player1: Player, player2: Player?, gameMode : GameModes, context: Context)
         fun updateJoystickInf(valx: Double, valy: Double, strength: Int)
         fun updateView()
         fun getNPC(): MutableList<NPC?>?

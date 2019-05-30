@@ -10,10 +10,13 @@ import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_single_player.*
 
+import com.example.frponsll40alumnes.runfish.GameModes
+
 
 class SinglePlayerFragment : Fragment() {
 
     var act : HomeActivity? = null
+    var bundle : Bundle? = null;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +36,13 @@ class SinglePlayerFragment : Fragment() {
         button_resume_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))
         button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment))
-        button_freemode_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
+        button_freemode_singleplayer.setOnClickListener(
+            View.OnClickListener {
+                bundle = Bundle();
+                bundle!!.putSerializable("game_mode",GameModes.GAME_MODE_FREE);
+                Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment, bundle)
+            }
+        )
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_menuFragment))
     }
 }
