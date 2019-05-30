@@ -64,6 +64,8 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imageButton_pause.setOnClickListener(){
+            this.gameView.thread.setRunning(false)
+            //this.gameView.thread.interrupt()
             pause_fragment.bringToFront()
             pause_fragment.visibility=View.VISIBLE
             //gameView.thread.setRunning(false)
@@ -73,6 +75,12 @@ class GameFragment : Fragment() {
 
         button_resume.setOnClickListener(){
             pause_fragment.visibility=View.GONE
+            android.os.Handler().postDelayed({
+                this.gameView.thread.setRunning(true)
+                this.gameView.thread.run()
+            }, (2000))
+
+
         }
         button_exit.setOnClickListener(){
             pause_fragment.visibility=View.GONE

@@ -2,6 +2,7 @@ package com.example.frponsll40alumnes.runfish
 
 import android.graphics.Canvas
 import android.view.SurfaceHolder
+import kotlinx.android.synthetic.main.fragment_game.view.*
 
 
 class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView: GameView) : Thread(){
@@ -48,10 +49,18 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
                 e.printStackTrace()
             }
         }
+/*
+        if(this.gameView.getPause()){
+            this.gameView.showPause()
+        }*/
+
 
         //aqui el gameOver / successful? ojo
 
     }
+
+
+
 
     companion object {
         private var canvas: Canvas? = null

@@ -49,16 +49,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var user: FirebaseUser? = null
 
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        this.setContentView(R.layout.activity_main)
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
 
         mGoogleButton = findViewById(R.id.signInGoogleButton)
         firebaseAuth = FirebaseAuth.getInstance()

@@ -13,6 +13,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -39,6 +40,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var textX: TextView? = null
     private var textY: TextView? = null
     private var planktonCollected : TextView? = null
+    private var imageButton_pause : ImageButton?= null
     //private var textMeters : TextView? = null
 
     private var constraint : ConstraintLayout? = null
@@ -49,6 +51,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var bar_capacity : ProgressBar? = null
 
     private var ability : Button? = null
+
     
     var angleRad : Double = 0.0
     var valy : Double = 0.0
@@ -89,6 +92,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         //meters = rootView.findViewById(R.id.textView_meters)
         textX = rootView.findViewById(R.id.valuex)
         textY = rootView.findViewById(R.id.valuey)
+
+        imageButton_pause = rootView.findViewById(R.id.imageButton_pause)
         //textMeters = rootView.findViewById(R.id.textView_metersMap)
         //textMeters!!.text= "àkjfsdklgn"
 
@@ -124,6 +129,17 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             }, (presenter.useAbility() * 1000).toLong());
         }
 
+
+/*
+
+        imageButton_pause!!.setOnClickListener(){
+            paused = true
+            this.thread.setRunning(false)
+            //showPause()
+            //gameView.thread.setRunning(false)
+        }
+*/
+
         //gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
         //gameEngine.startGame()
 
@@ -146,79 +162,41 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {}
 
     fun update() {
+        presenter.updateJoystickInf(valx,valy,strength)
+        presenter.updateView()
 
-        constraint = rootView.findViewById(R.id.pause_fragment)
-        if(constraint!!.visibility != View.VISIBLE) {
+        bar_life!!.progress = presenter.lifeBar()
+        bar_capacity!!.progress = presenter.capacityBar()
 
-            presenter.updateJoystickInf(valx,valy,strength)
-            presenter.updateView()
+        this.presenter.setMeters(presenter.getMeters())
 
-            bar_life!!.progress = presenter.lifeBar()
-            bar_capacity!!.progress = presenter.capacityBar()
-            
-
-            //textMeters!!.text = num.toString()//presenter.getMeters().toString()
-            //num += 1
-            //textMeters!!.text= "àkjfsdklgn"
-
-            this.presenter.setMeters(presenter.getMeters())
-
-
-            if(bar_life!!.progress <=0){
-                this.thread.setRunning(false)
-                Log.w(TAG, "QWE You died")
-                this.presenter.stopMusic()
-                this.presenter.increaseDeath()
-                constraint = rootView.findViewById(R.id.game_over_layout)
-                constraint!!.visibility = View.VISIBLE
-                if(constraint!!.visibility == View.VISIBLE) {
-                    Log.w(TAG, "QWE fragment is visible")
-                }
-                this.presenter.setStatsToCloud()
-            }
-            if(presenter.getMeters() >= 0){
-                Log.w(TAG, "QWE You win")
-                this.thread.setRunning(false)
-                this.presenter.stopMusic()
-                planktonCollected!!.text = presenter.getPlanktonCollected().toString()
-                constraint = rootView.findViewById(R.id.successful_layout)
-                //TODO: no es mostra successful layout
-                constraint!!.visibility = View.VISIBLE
-
-                if(constraint!!.visibility == View.VISIBLE) {
-                    Log.w(TAG, "QWE fragment is visible")
-                }
-                this.presenter.unlockNextLevel()
-                this.presenter.setStatsToCloud()
-            }
+        if(bar_life!!.progress <=0){
+            this.thread.setRunning(false)
+            Log.w(TAG, "QWE You died")
+            this.presenter.stopMusic()
+            this.presenter.increaseDeath()
+            //constraint = rootView.findViewById(R.id.game_over_layout)
+            //constraint!!.visibility = View.VISIBLE
+            //if(constraint!!.visibility == View.VISIBLE) {
+            //    Log.w(TAG, "QWE fragment is visible")
+            //}
+            this.presenter.setStatsToCloud()
         }
+        if(presenter.getMeters() >= 0){
+            Log.w(TAG, "QWE You win")
+            this.thread.setRunning(false)
+            this.presenter.stopMusic()
+            planktonCollected!!.text = presenter.getPlanktonCollected().toString()
+            /*constraint = rootView.findViewById(R.id.successful_layout)
+            //TODO: no es mostra successful layout
+            constraint!!.visibility = View.VISIBLE
 
-
-        /*
-        //Prova
-        constraint = rootView.findViewById(R.id.pause_fragment)
-        if(constraint!!.visibility != View.VISIBLE) {
-            gameEngine.getJoystickInf(valx, valy, strength)
-            gameEngine.updateView()
-
-            bar_life!!.progress = gameEngine.life
-            bar_capacity!!.progress = gameEngine.capacity
-            if(bar_life!!.progress <=0){
-                this.thread.setRunning(false)
-                Log.w(TAG, "QWE You died")
-                constraint = rootView.findViewById(R.id.game_over_layout)
-                constraint!!.visibility = View.VISIBLE
-            }
-
-            if(gameEngine.background!!.getY() >= 0){
-                Log.w(TAG, "QWE You win")
-                this.thread.setRunning(false)
-                constraint = rootView.findViewById(R.id.successful_layout)
-                constraint!!.visibility = View.VISIBLE
-            }
+            if(constraint!!.visibility == View.VISIBLE) {
+                Log.w(TAG, "QWE fragment is visible")
+            }*/
+            this.presenter.unlockNextLevel()
+            this.presenter.setStatsToCloud()
         }
-        */
-        //End prova
     }
 
 
@@ -245,8 +223,17 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
         //test de col·lisions (temporal):
         fish.rec.draw(canvas)
+    }
 
+    fun showPause(){
+        constraint = rootView.findViewById(R.id.pause_fragment)
+        constraint!!.visibility = View.VISIBLE
+        constraint!!.bringToFront()
 
+    }
+
+    fun getPause() : Boolean{
+        return this.paused
     }
 
 
