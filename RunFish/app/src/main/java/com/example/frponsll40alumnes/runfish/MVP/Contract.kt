@@ -50,7 +50,7 @@ interface Contract {
         fun buyFish(fishType: FishType) : String
         fun uploadLevels() : Int
         fun addFriend(friendName: String)
-        fun startGame(player1: Player, player2: Player?, gameMode : GameModes, context: Context)
+        fun startGame(player1: Player, player2: Player?, gameMode : GameModes?, context: Context)
         fun updateJoystickInf(valx: Double, valy: Double, strength: Int)
         fun updateView()
         fun getNPC(): MutableList<NPC?>?

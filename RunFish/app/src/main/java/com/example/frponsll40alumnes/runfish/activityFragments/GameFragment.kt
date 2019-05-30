@@ -1,8 +1,10 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +31,7 @@ class GameFragment : Fragment() {
 
     //private var textMet : TextView?= null
 
-    var gameMode : GameModes = GameModes.GAME_MODE_FINITE; //by default
+    var gameMode : GameModes? = GameModes.GAME_MODE_FINITE; //by default
 
     var met : Int = 0
 
@@ -56,13 +58,16 @@ class GameFragment : Fragment() {
     ): View? {
         //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
 
-        //Analyze the bundle
-        gameMode = arguments!!.getSerializable("game_mode") as GameModes
-
+        Log.w(TAG, "QWE navigation 2")
 
         act!!.signOut.visibility = View.GONE
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
+
+        //Analyze the bundle
+        if(savedInstanceState != null)
+            gameMode = savedInstanceState.getSerializable("game_mode") as GameModes
+
         /*
             player2 = null, hacer una variable, si gameMode es multiplayer crear un dummy player
          */

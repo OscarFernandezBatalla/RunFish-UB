@@ -119,7 +119,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         model.addFriend(friendName)
     }
 
-    override fun startGame(player1: Player, player2: Player?, gameMode : GameModes, context: Context) {
+    override fun startGame(player1: Player, player2: Player?, gameMode : GameModes?, context: Context) {
 
         //variable temporal per breakpoints
         var lev = this.getActualLevel() //MODEL, model.getLevel()

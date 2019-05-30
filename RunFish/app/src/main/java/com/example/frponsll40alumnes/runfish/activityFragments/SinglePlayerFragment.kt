@@ -1,12 +1,15 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.example.frponsll40alumnes.runfish.Game
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_single_player.*
 
@@ -33,16 +36,37 @@ class SinglePlayerFragment : Fragment() {
         ReturnDirection =
             LevelDirection.SINGLEPLAYER
         super.onViewCreated(view, savedInstanceState)
-        button_resume_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
+        button_resume_singleplayer.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment)
+            /*View.OnClickListener {
+                bundle = Bundle();
+                bundle!!.putSerializable("game_mode", GameModes.GAME_MODE_FINITE);
+                Log.w(TAG, "QWE navigation");
+                Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment, bundle);
+            }*/
+        )
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))
-        button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment))
+
+        /* aquest boto no es multiplayer, porta a la fish store */
+        button_fish_multiplayer.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment)
+            /*View.OnClickListener {
+                bundle = Bundle();
+                bundle!!.putSerializable("game_mode", GameModes.GAME_MODE_MULTIPLAYER);
+                Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment, bundle)
+            }*/
+        )
+
         button_freemode_singleplayer.setOnClickListener(
-            View.OnClickListener {
+            Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment)
+            /*View.OnClickListener {
                 bundle = Bundle();
                 bundle!!.putSerializable("game_mode",GameModes.GAME_MODE_FREE);
-                Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment, bundle)
-            }
+                Log.w(TAG, "QWE navigation");
+                Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment, bundle);
+            }*/
         )
+
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_menuFragment))
     }
 }
