@@ -124,7 +124,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         //variable temporal per breakpoints
         var lev = this.getActualLevel() //MODEL, model.getLevel()
 
-        gameEngine = GameEngine(player1,player2,context,lev)
+        gameEngine = GameEngine(player1, player2, gameMode, context,lev)
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()

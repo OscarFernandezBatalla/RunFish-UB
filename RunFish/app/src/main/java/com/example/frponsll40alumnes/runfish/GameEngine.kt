@@ -20,7 +20,7 @@ import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
 import java.util.*
 
-class GameEngine(var player1: Player, var player2: Player? = null, var context: Context, var numLevel: Int){
+class GameEngine(var player1: Player, var player2: Player? = null, var gameMode : GameModes?, var context: Context, var numLevel: Int){
 
     var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
@@ -32,6 +32,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
     var displayHeight = displayMetrics.heightPixels
 
     var fish : Fish? = null
+    var fish2 : Fish? = null
 
     //var background : Map? = null
 
@@ -53,6 +54,13 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
 
         // Create player fish
         fish = fishFactory.createFish(player1.fishType, context)
+
+        if(gameMode != null && gameMode == GameModes.GAME_MODE_MULTIPLAYER) {
+            if (player2 != null) {
+                fish2 = fishFactory.createFish(player2!!.fishType, context)
+            }
+        }
+
 
         // Get background
         //background = level.getMap()
