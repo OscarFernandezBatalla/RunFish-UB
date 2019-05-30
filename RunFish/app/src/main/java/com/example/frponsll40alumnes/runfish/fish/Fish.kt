@@ -15,11 +15,10 @@ import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 abstract class Fish (
-                     var name : String,
+                     //var name : String,
                      var life : Int,
                      var capacity : Int,
                      var ability : AbilityStrategy,
-                     var price : Int,
                      val maxLife: Int,
                      val maxCapacity: Int
 ) : Position, Movable, Dimension, DrawableObject {

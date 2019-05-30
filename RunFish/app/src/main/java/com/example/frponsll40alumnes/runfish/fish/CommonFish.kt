@@ -10,8 +10,8 @@ import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 
-class CommonFish(context: Context) :
-    Fish("Common Fish", 50, 0, Shield(), 0, 50, 10) {
+class CommonFish(context: Context, atributs : MutableList<Int>) :
+    Fish(atributs[0], 0, Shield(), atributs[0], atributs[1]) {
 
     var invencibilityForNFrames = 0
 

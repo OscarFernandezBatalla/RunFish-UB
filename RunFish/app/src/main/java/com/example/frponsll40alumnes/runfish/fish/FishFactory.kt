@@ -4,11 +4,11 @@ import android.content.Context
 import com.example.frponsll40alumnes.runfish.FishType
 
 class FishFactory {
-    fun createFish(type : FishType, context: Context) : Fish? = when (type) {
-        FishType.COMMONFISH -> CommonFish(context)
-        FishType.ANEMONE -> Anemone(context)
-        FishType.BLOWFISH -> BlowFish(context)
-        FishType.SWORDFISH -> SwordFish(context)
-        FishType.SHARK -> Shark(context)
+    fun createFish(type : FishType, context: Context, atributs : MutableList<Int>) : Fish? = when (type) {
+        FishType.COMMONFISH -> CommonFish(context,atributs)
+        FishType.ANEMONE -> Anemone(context, atributs)
+        FishType.BLOWFISH -> BlowFish(context, atributs)
+        FishType.SWORDFISH -> SwordFish(context, atributs)
+        FishType.SHARK -> Shark(context, atributs)
     }
 }

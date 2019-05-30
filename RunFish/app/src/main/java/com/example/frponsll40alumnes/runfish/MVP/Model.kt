@@ -170,6 +170,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
+
     var fishMap: HashMap<String, Boolean> = hashMapOf(
     "commonFishOwned" to commonFishOwned,
     "clownFishOwned" to clownFishOwned,
@@ -180,6 +181,41 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     //var
 
+
+    fun getAtriutes(fish : FishType) : MutableList<Int> {
+
+        var llista = mutableListOf<Int>()
+        var life = 0
+        var capacity = 0
+
+        when (fish) {
+            FishType.ANEMONE -> {
+                life = clownFishLife
+                capacity = clownFishCapacity
+            }
+            FishType.BLOWFISH ->{
+                life = blowFishLife
+                capacity = blowFishCapacity
+            }
+            FishType.SWORDFISH ->{
+                life = swordFishLife
+                capacity = swordFishCapacity
+            }
+            FishType.SHARK ->{
+                life = sharkLife
+                capacity = sharkCapacity
+            }
+            FishType.COMMONFISH ->{
+                life = commonFishLife
+                capacity = commonFishCapacity
+            }
+        }
+        llista.add(life)
+        llista.add(capacity)
+
+        return llista
+
+    }
 
 
     fun setTotalFishStat(){

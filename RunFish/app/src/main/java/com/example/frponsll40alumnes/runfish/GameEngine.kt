@@ -20,7 +20,7 @@ import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
 import java.util.*
 
-class GameEngine(var player1: Player, var player2: Player? = null, var context: Context, var numLevel: Int){
+class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var context: Context, var numLevel: Int){
 
     var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
@@ -52,7 +52,7 @@ class GameEngine(var player1: Player, var player2: Player? = null, var context: 
         //vibration = this.uploadVibration()
 
         // Create player fish
-        fish = fishFactory.createFish(player1.fishType, context)
+        fish = fishFactory.createFish(fishType, context, atributs)
 
         // Get background
         //background = level.getMap()
