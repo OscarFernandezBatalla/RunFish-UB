@@ -127,5 +127,7 @@
     <string name="num_Level"> LEVEL 1</string>
     <string name="levelMeters">METERS: 1000 M</string>
     <string name="yourFish">YOUR FISH:</string>
+    <string name="maxDistance">MAX DISTANCE: 0</string>
+    <string name="maxScore">MAX SCORE: 0</string>
 
 </resources>

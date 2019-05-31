@@ -33,7 +33,9 @@ class SinglePlayerFragment : Fragment() {
         button_resume_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))
         button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment))
-        button_freemode_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
+        button_freemode_singleplayer.setOnClickListener {
+            constraint_freeMode.visibility = View.VISIBLE
+        }
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_menuFragment))
     }
 }
