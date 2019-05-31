@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.GameView
@@ -24,6 +22,8 @@ class GameFragment : Fragment() {
     private lateinit var gameView : GameView
     lateinit var game : FrameLayout
     private lateinit var gameWidgets: LinearLayout
+    //private var imageButton_pause : ImageButton?= null
+    //private var button_resume: Button?=null
 
     //private var textMet : TextView?= null
 
@@ -57,33 +57,23 @@ class GameFragment : Fragment() {
         game.addView(rootView)
         act!!.presenter.startGame(Player(act!!.presenter.getCurrentFish()),context = this.gameView.context)
 
+
         return game
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageButton_pause.setOnClickListener(){
-            this.gameView.thread.setRunning(false)
-            //this.gameView.thread.interrupt()
-            pause_fragment.bringToFront()
-            pause_fragment.visibility=View.VISIBLE
-            //gameView.thread.setRunning(false)
-        }
-
         button_restart.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
 
-        button_resume.setOnClickListener(){
-            pause_fragment.visibility=View.GONE
-            android.os.Handler().postDelayed({
-                this.gameView.thread.setRunning(true)
-                this.gameView.thread.run()
-            }, (2000))
-
-
+        imageButton_pause.setOnClickListener{
+            pause_fragment.visibility = View.VISIBLE
+            gameView.setPause(true)
         }
-        button_exit.setOnClickListener(){
-            pause_fragment.visibility=View.GONE
+
+        button_resume.setOnClickListener {
+            pause_fragment.visibility = View.GONE
+            gameView.setPause(false)
         }
 
         button_exit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))

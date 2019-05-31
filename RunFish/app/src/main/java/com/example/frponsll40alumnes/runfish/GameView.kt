@@ -24,6 +24,7 @@ import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 import io.github.controlwear.virtual.joystick.android.JoystickView
+import kotlinx.android.synthetic.main.fragment_game.view.*
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -41,6 +42,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var textY: TextView? = null
     private var planktonCollected : TextView? = null
     private var imageButton_pause : ImageButton?= null
+    private var button_resume: Button?=null
     //private var textMeters : TextView? = null
 
     private var constraint : ConstraintLayout? = null
@@ -94,6 +96,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         textY = rootView.findViewById(R.id.valuey)
 
         imageButton_pause = rootView.findViewById(R.id.imageButton_pause)
+        button_resume = rootView.findViewById(R.id.button_resume)
         //textMeters = rootView.findViewById(R.id.textView_metersMap)
         //textMeters!!.text= "àkjfsdklgn"
 
@@ -128,20 +131,6 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 ability!!.visibility = View.VISIBLE;
             }, (presenter.useAbility() * 1000).toLong());
         }
-
-
-/*
-
-        imageButton_pause!!.setOnClickListener(){
-            paused = true
-            this.thread.setRunning(false)
-            //showPause()
-            //gameView.thread.setRunning(false)
-        }
-*/
-
-        //gameEngine = GameEngine(Player(FishType.ANEMONE),context = this.context)
-        //gameEngine.startGame()
 
         thread.setRunning(true)
         thread.start()
@@ -225,15 +214,12 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         fish.rec.draw(canvas)
     }
 
-    fun showPause(){
-        constraint = rootView.findViewById(R.id.pause_fragment)
-        constraint!!.visibility = View.VISIBLE
-        constraint!!.bringToFront()
-
-    }
-
     fun getPause() : Boolean{
         return this.paused
+    }
+
+    fun setPause(paused: Boolean) {
+        this.paused = paused
     }
 
 

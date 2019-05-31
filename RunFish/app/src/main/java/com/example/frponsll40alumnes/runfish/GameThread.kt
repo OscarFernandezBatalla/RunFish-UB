@@ -17,26 +17,29 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
         var targetTime = 1000/FPS
         while (isRunning){
             var startTime = System.nanoTime()
-            canvas = null
+            if(!gameView.getPause()) {
 
-            try{
-                canvas = this.surfaceHolder.lockCanvas()
-                synchronized(surfaceHolder) {
-                    gameView.update()
-                    gameView.draw(canvas!!)
-                }
+                canvas = null
 
-                } catch (e : Exception){
+                try {
+                    canvas = this.surfaceHolder.lockCanvas()
+                    synchronized(surfaceHolder) {
+                        gameView.update()
+                        gameView.draw(canvas!!)
+                    }
+
+                } catch (e: Exception) {
                     e.printStackTrace()
                 } finally {
-                    if (canvas != null){
+                    if (canvas != null) {
                         try {
                             surfaceHolder.unlockCanvasAndPost(canvas)
-                        } catch (e: Exception){
+                        } catch (e: Exception) {
                             e.printStackTrace()
                         }
                     }
                 }
+            }
             var timeMilis = (System.nanoTime() - startTime) / 1000000
             var waitMilis = targetTime - timeMilis
 
@@ -49,10 +52,7 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
                 e.printStackTrace()
             }
         }
-/*
-        if(this.gameView.getPause()){
-            this.gameView.showPause()
-        }*/
+
 
 
         //aqui el gameOver / successful? ojo
