@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.SeekBar
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_options.*
@@ -30,6 +31,8 @@ class Options : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         act!!.signOut.visibility = View.VISIBLE
 
+
+
         uploadOptionsFragments()
 
         button_comeback_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_menuFragment))
@@ -46,6 +49,22 @@ class Options : Fragment() {
             setVibrationState(isChecked)
         }
 
+        seekBar_musica.max = this.act!!.getMaxVolume()
+        seekBar_musica.progress = this.act!!.getCurrentVolume()
+
+        seekBar_musica.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                act!!.setVolume(progress)
+            }
+        })
     }
 
 

@@ -15,7 +15,7 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 //import com.example.frponsll40alumnes.runfish.R
-import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
+//import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
 import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
