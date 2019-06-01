@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_single_player.*
 class SinglePlayerFragment : Fragment() {
 
     var act : HomeActivity? = null
+    var lastLevel : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +36,16 @@ class SinglePlayerFragment : Fragment() {
         button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment))
         button_freemode_singleplayer.setOnClickListener {
             constraint_freeMode.visibility = View.VISIBLE
+            this.lastLevel = this.act!!.presenter.getActualLevel()
+            this.act!!.presenter.freeModeON()
+
         }
+        button_cancel.setOnClickListener{
+            constraint_freeMode.visibility = View.GONE
+            this.act!!.presenter.setActualLevel(lastLevel)
+
+        }
+        button_go.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
         button_comeback.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_menuFragment))
     }
 }

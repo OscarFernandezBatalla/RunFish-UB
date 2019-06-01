@@ -9,7 +9,6 @@ import com.example.frponsll40alumnes.runfish.npc.NPCType
 
 open class Level (var numLevel : Int, val context : Context)
 {
-
     private var meters: Int = 0
     private var npcs = HashMap<NPCType, Int>()
     private val difficultyFactory = DifficultyFactory()
@@ -29,7 +28,6 @@ open class Level (var numLevel : Int, val context : Context)
 
     init{
         setMap()
-
         for (i in 1..(-meters/1000)){
             val leftCoral = BackgroundElement(BackgroundType.LEFT_CORAL, context)
             val rightCoral = BackgroundElement(BackgroundType.RIGHT_CORAL, context)
@@ -103,6 +101,10 @@ open class Level (var numLevel : Int, val context : Context)
             }
             10 -> {
                 this.meters = -10000
+                difficultyLevel = DifficultyType.VERY_HARD
+            }
+            else->{
+                this.meters = -10000    //TODO: aqui s'hauria de posar inifity, pero aleshores peta la linea 31 perque es fan moltes iteracions
                 difficultyLevel = DifficultyType.VERY_HARD
             }
         }

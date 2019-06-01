@@ -42,6 +42,8 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     private var currentFish : String? = null
 
+    private var freeMode : Boolean = false
+
     //private var friend1 : List<Any?> = mutableListOf()
 
     /* Levels */
@@ -116,7 +118,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var lifeBar : Int = 100     //percentatge
     private var capacityBar : Int = 0   //percentatge
     private var abilityUsed : Boolean = false
-    private var levelSelected : Int = 0
+    private var levelSelected : Int = 1
     private var planktonCollected : Int = 0
 
     private var actualPlankton: Int = 20000
@@ -843,5 +845,14 @@ class Model (var presenter: Presenter) : Contract.Model {
             this.levelsUnlocked++
             this.setLevelSelected(levelsUnlocked++)
         }
+    }
+
+    fun freeModeON() {
+        this.levelSelected = -1
+
+    }
+
+    fun getFreeMode() : Boolean{
+        return this.freeMode
     }
 }
