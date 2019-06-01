@@ -5,6 +5,7 @@ import android.graphics.*
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import android.graphics.drawable.shapes.Shape
+import com.example.frponsll40alumnes.runfish.GameMode
 import com.example.frponsll40alumnes.runfish.Movable
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
@@ -82,13 +83,13 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
         //test de col·lisions (temporal):
         //rec.setBounds(this.x+95, this.y+75, this.x+width-125, this.y+height)
     }
-/*
 
-    override fun collision(playerFish: Fish?) {
+
+    override fun collision(playerFish: Fish?, gameMode: GameMode) {
         playerFish?.loseLife(value)
-        super.collision(playerFish) // move offscreen
+        super.collision(playerFish, gameMode) // move offscreen
     }
-*/
+
 
 
 }
