@@ -1,9 +1,11 @@
 package com.example.frponsll40alumnes.runfish.fish
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
+import android.util.Log
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.DamageReduction
 import com.example.frponsll40alumnes.runfish.abilities.Health
@@ -21,7 +23,7 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
 
     var damageReductionForNFrames = 0;
 
-    val damageReduction = 15;
+    val damageReduction = 0.5;
     var damageReductionActivated = false;
 
     init{
@@ -51,7 +53,8 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
         }
         else {
             if(this.damageReductionActivated){
-                this.loseLife(npc.value - this.damageReduction)
+                Log.w(TAG, "WER Losing ${npc.value} * ${this.damageReduction}")
+                this.loseLife((npc.value * this.damageReduction).toInt())
             }else {
                 this.loseLife(npc.value)
             }

@@ -7,7 +7,7 @@ class DamageReduction : AbilityStrategy {
 
     override val cooldown = 8;
 
-    val DAMAGE_REDUCTION_DURATION = 60;
+    val DAMAGE_REDUCTION_DURATION = 120;
 
     override fun useAbility(fish: Fish) : Int {
 
