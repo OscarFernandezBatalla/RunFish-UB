@@ -27,6 +27,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var co
     var distanceTraveled: Int = 0
     var vibration = false
 
+    //var freeMode = false;
+    var gameMode : GameMode = GameMode.SINGLEPLAYER_FINITE;
+
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
     var displayHeight = displayMetrics.heightPixels
@@ -48,6 +51,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var co
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
+
+        if(numLevel == -1)
+            gameMode = GameMode.SINGLEPLAYER_INFINITE;
 
         //vibration = this.uploadVibration()
 
@@ -131,7 +137,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var co
         // Check if npcs had a collision
         for(x in NPCList!!){
             if(collision(x!!)){
-                x.collision(fish)
+                x.collision(fish, gameMode)
                 //fish!!.collision(x!!) // per mirar si té el shield activat
 
                 /* aixo hauria d'estar dintre de fish.collision()*/
@@ -213,4 +219,5 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var co
     fun getMeters() : Int{
         return this.level.getMeter()
     }
+
 }
