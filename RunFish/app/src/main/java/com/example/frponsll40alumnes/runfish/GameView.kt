@@ -164,8 +164,6 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             Log.w(TAG, "QWE You died")
             this.presenter.stopMusic()
             this.presenter.increaseDeath()
-
-
             //constraint = rootView.findViewById(R.id.game_over_layout)
             //constraint!!.visibility = View.VISIBLE
             //if(constraint!!.visibility == View.VISIBLE) {

@@ -7,7 +7,7 @@ class Shield : AbilityStrategy {
 
     override val cooldown = 12;
 
-    val INVENCIBILITY_LENGTH_IN_FRAMES = 60
+    val INVENCIBILITY_LENGTH_IN_FRAMES = 30
 
     override fun useAbility(fish: Fish) : Int {
 

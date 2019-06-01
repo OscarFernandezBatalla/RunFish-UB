@@ -131,8 +131,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp"
                             app:layout_constraintStart_toEndOf="@+id/text_common_fish"
-                            android:layout_marginStart="8dp"
-                            android:contentDescription="@string/ability_shield_description"/>
+                            android:layout_marginStart="8dp"/>
                     <ImageView
                             android:src="@drawable/placton"
                             android:layout_width="25dp"
