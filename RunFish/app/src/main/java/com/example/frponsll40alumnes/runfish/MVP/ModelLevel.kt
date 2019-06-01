@@ -10,12 +10,6 @@ class ModelLevel {
 
     fun getLevelContext(numLevel: Int): MutableList<Int>{
         when(numLevel){
-            -1 -> { // INFINITE MODE
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
-                meters = Int.MAX_VALUE //TODO: canviar per true infinity
-            }
             0 -> {
                 numPlankton = 5
                 numBomb = 5
