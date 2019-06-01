@@ -32,6 +32,7 @@ class LevelsFragment : Fragment(){
         act = (activity as HomeActivity)
         act!!.signOut.visibility = View.GONE
 
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_levels, container, false)
     }
@@ -40,7 +41,7 @@ class LevelsFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
 
-
+        constraint_confirm_level.visibility = View.GONE
 
         //Els posem tots a false per no poder accedir a tots els nivells
         //Només podrem accedir si estan desbloquejats
