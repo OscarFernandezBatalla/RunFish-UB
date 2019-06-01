@@ -10,6 +10,12 @@ class ModelLevel {
 
     fun getLevelContext(numLevel: Int): MutableList<Int>{
         when(numLevel){
+            -1 ->{
+                numPlankton = 2
+                numBomb = 2
+                numShark = 2
+                meters = -10000
+            }
             0 -> {
                 numPlankton = 5
                 numBomb = 5

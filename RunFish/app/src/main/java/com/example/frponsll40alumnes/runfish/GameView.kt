@@ -128,8 +128,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 ability!!.visibility = View.VISIBLE
             }, 8000)*/
             android.os.Handler().postDelayed({
-                ability!!.visibility = View.VISIBLE;
-            }, (presenter.useAbility() * 1000).toLong());
+                ability!!.visibility = View.VISIBLE
+            }, (presenter.useAbility() * 1000).toLong())
         }
 
         thread.setRunning(true)

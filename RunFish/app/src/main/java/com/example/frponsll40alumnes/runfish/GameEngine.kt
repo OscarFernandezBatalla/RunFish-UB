@@ -10,6 +10,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.support.v4.content.ContextCompat.getSystemService
 import android.util.Log
+import android.view.View
 import android.widget.ProgressBar
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
@@ -26,6 +27,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
     var vibration = false
+    var freeMode : Boolean = false
 
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
@@ -67,34 +69,71 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             }
         }
 
+        var posx: Int
+        var posy: Int
+
         // Spawn created npcs
-        for(x in NPCList!!){
-            // Handpicked values that fit the demo
+        if (!freeMode){
+            for(x in NPCList!!){
 
-            var posx: Int
-            var posy: Int
 
-            if (x is EnemyShark){
-                if(x.vertical){
-                    posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
-                    posy = (2500..30000).random()* (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
-                }
-                else{
-                    if (x.leftToRight){
-                        posx = (-2000..0).random()     //si no va fer-ho amb -1 i invertir random
-                        posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
+                if (x is EnemyShark) {
+                    if (x.vertical) {
+                        posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
+                        posy = (2500..30000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                    } else {
+                        if (x.leftToRight) {
+                            posx = (-2000..0).random()     //si no va fer-ho amb -1 i invertir random
+                            posy =
+                                (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
+                        } else {
+                            posx = (0..2000).random()     //si no va fer-ho amb -1 i invertir random
+                            posy =
+                                (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
+                        }
                     }
-                    else{
-                        posx = (0..2000).random()     //si no va fer-ho amb -1 i invertir random
-                        posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
+                } else {
+                    posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
+                    posy =
+                        (displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                }
+                x.changeCoordinates(posx, posy)
+            }
+        }
+
+
+        //freemode
+        else{
+            val NPCListFreeMode : MutableList<NPC?> = mutableListOf(
+                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = false, leftToRight = false),   //sharkR
+                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true, leftToRight = true),     //sharkL
+                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),                         //sharkV
+                npcFactory.createNPC(NPCType.PLANKTON, context),                                            //plankton
+                npcFactory.createNPC(NPCType.BOMB, context))                                                 //bomb
+
+
+            android.os.Handler().postDelayed({
+                val nextNPC = NPCListFreeMode.random()
+                if (nextNPC is EnemyShark) {
+                    if (nextNPC.vertical) {
+                        posx = (0..(displayWidth - nextNPC.width)).random()     //pot começar a 0?
+                        posy = displayHeight * -1//(2500..30000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                    } else {
+                        if (nextNPC.leftToRight) {
+                            posx = -nextNPC.width     //si no va fer-ho amb -1 i invertir random
+                            posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
+                        } else {
+                            posx = nextNPC.width     //si no va fer-ho amb -1 i invertir random
+                            posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
+                        }
                     }
                 }
-            }
-            else{
-                posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
-                posy = (displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
-            }
-            x.changeCoordinates(posx, posy)
+                else {
+                    posx = (0..(displayWidth - nextNPC!!.width)).random()     //pot começar a 0?
+                    posy = -nextNPC.height//displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                }
+                nextNPC.changeCoordinates(posx, posy)
+            }, 2000)
         }
     }
 
@@ -111,11 +150,6 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
         val playerRect = fish!!.rectangle
 
         return playerRect.intersect(npcRect)
-        /*
-        if(playerRect.intersect(npcRect)){
-            return true
-        }
-        return false*/
     }
 
     //Mètode que fa un update de cada objecte
@@ -212,5 +246,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     fun getMeters() : Int{
         return this.level.getMeter()
+    }
+
+    fun freeModeOn() {
+        this.freeMode = true
     }
 }

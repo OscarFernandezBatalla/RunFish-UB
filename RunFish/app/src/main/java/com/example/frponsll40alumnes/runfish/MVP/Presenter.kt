@@ -121,9 +121,12 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     override fun startGame(player1: Player, player2: Player?, context: Context) {
 
         //variable temporal per breakpoints
-        var lev = this.model.getLevelSelected()
+        //var lev = this.model.getLevelSelected()
 
         gameEngine = GameEngine(this.getCurrentFish(),this.model.getAtriutes(this.getCurrentFish()),this.getLevelContext(),context)
+        if (this.model.getLevelSelected() == -1){
+            gameEngine!!.freeModeOn()
+        }
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()
