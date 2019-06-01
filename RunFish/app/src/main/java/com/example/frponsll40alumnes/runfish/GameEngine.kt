@@ -40,6 +40,8 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
+    val NPCListFreeMode : MutableList<NPC?>? = mutableListOf()
+
     var level = Level(levelContext, context)
 
     var valy : Double = 0.0
@@ -59,21 +61,24 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
         // Get background
         //background = level.getMap()
 
-        // Create npcs for the level
-        for((key, value) in level.getNpc()){
-            for(i in 0..value){
-                val npc = npcFactory.createNPC(key, context, vertical = true) //vertical = Random().nextBoolean(), leftToRight = Random().nextBoolean())
-                if(npc != null){
-                    NPCList!!.add(npc)
-                }
-            }
-        }
 
-        var posx: Int
-        var posy: Int
+
+        var posx: Int = 0
+        var posy: Int = 0
 
         // Spawn created npcs
         if (!freeMode){
+
+            // Create npcs for the level
+            for((key, value) in level.getNpc()){
+                for(i in 0..value){
+                    val npc = npcFactory.createNPC(key, context, vertical = true) //vertical = Random().nextBoolean(), leftToRight = Random().nextBoolean())
+                    if(npc != null){
+                        NPCList!!.add(npc)
+                    }
+                }
+            }
+
             for(x in NPCList!!){
 
 
@@ -94,8 +99,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                     }
                 } else {
                     posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
-                    posy =
-                        (displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                    posy = (displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                 }
                 x.changeCoordinates(posx, posy)
             }
@@ -104,21 +108,43 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
         //freemode
         else{
-            val NPCListFreeMode : MutableList<NPC?> = mutableListOf(
-                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = false, leftToRight = false),   //sharkR
-                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true, leftToRight = true),     //sharkL
-                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),                         //sharkV
+            NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true))
+
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
+            NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
+
+            for(x in NPCListFreeMode){
+                reaparicioNPC(x!!)
+            }
+
+
+
+
+                //npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = false, leftToRight = false),   //sharkR
+                //npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true, leftToRight = true),     //sharkL
+                /*NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true)),
+                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),
+                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),
+                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),     //sharkV
                 npcFactory.createNPC(NPCType.PLANKTON, context),                                            //plankton
                 npcFactory.createNPC(NPCType.BOMB, context))                                                 //bomb
+*/
 
-
-            android.os.Handler().postDelayed({
+            /*android.os.Handler().postDelayed({
                 val nextNPC = NPCListFreeMode.random()
                 if (nextNPC is EnemyShark) {
                     if (nextNPC.vertical) {
-                        posx = (0..(displayWidth - nextNPC.width)).random()     //pot começar a 0?
+                        var resta = displayWidth - nextNPC.width
+                        posx = (0..resta).random()     //pot começar a 0? NO
                         posy = displayHeight * -1//(2500..30000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
-                    } else {
+                    } /*else {
                         if (nextNPC.leftToRight) {
                             posx = -nextNPC.width     //si no va fer-ho amb -1 i invertir random
                             posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
@@ -126,14 +152,14 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                             posx = nextNPC.width     //si no va fer-ho amb -1 i invertir random
                             posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
                         }
-                    }
+                    }*/
                 }
                 else {
                     posx = (0..(displayWidth - nextNPC!!.width)).random()     //pot começar a 0?
                     posy = -nextNPC.height//displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                 }
                 nextNPC.changeCoordinates(posx, posy)
-            }, 2000)
+            }, 2000)*/
         }
     }
 
@@ -158,31 +184,65 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
         fish!!.update(valx, valy, strength)
 
         // Update positions for npcs
+        if(!freeMode) {
+            for (x in NPCList!!) {
+                x!!.update()
+            }
+            // Check if npcs had a collision
+            for (x in NPCList!!) {
+                if (collision(x!!)) {
+                    x.collision(fish)
+                    //fish!!.collision(x!!) // per mirar si té el shield activat
 
-        for(x in NPCList!!){
-            x!!.update()
-        }
-        // Check if npcs had a collision
-        for(x in NPCList!!){
-            if(collision(x!!)){
-                x.collision(fish)
-                //fish!!.collision(x!!) // per mirar si té el shield activat
-
-                /* aixo hauria d'estar dintre de fish.collision()*/
-                if(x is Plankton){
-                    fish!!.gainCapacity(x.value)
-                }
-                else{
-                    fish!!.loseLife(x.value)
-                    if(vibration){
-                        vibrate()
+                    /* aixo hauria d'estar dintre de fish.collision()*/
+                    if (x is Plankton) {
+                        fish!!.gainCapacity(x.value)
+                    } else {
+                        fish!!.loseLife(x.value)
+                        if (vibration) {
+                            vibrate()
+                        }
                     }
                 }
             }
         }
+        else{
+            for (x in NPCListFreeMode!!) {
+                x!!.update()
+            }
+            for (x in NPCListFreeMode) {
+                if (collision(x!!)) {
+                    reaparicioNPC(x)
+                    if (x is Plankton) {
+                        fish!!.gainCapacity(x.value)
+                    } else {
+                        fish!!.loseLife(x.value)
+                        if (vibration) {
+                            vibrate()
+                        }
+                    }
+                }
+                if(NPCLeftScreen(x)){
+                    reaparicioNPC(x)
+                }
+            }
+
+
+        }
         // Update scrolling of background
-        //background!!.update()
         level.update()
+    }
+
+    private fun reaparicioNPC(x: NPC){
+        var posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
+        var posy = (1000..4000).random() * (-1)//this.level.getMeters()*60).random() * (-1)
+        x.changeCoordinates(posx,posy)
+    }
+    private fun NPCLeftScreen(x:NPC): Boolean{
+        if(x.y > displayHeight){
+            return true
+        }
+        return false
     }
 
     private fun vibrate() {
@@ -200,12 +260,12 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     }
 
     fun getNPC(): MutableList<NPC?>? {
-        return NPCList!!
-    }
+        if(!freeMode){
+            return NPCList!!
+        }
+        return NPCListFreeMode
 
-    /*fun getMap(): Map? {
-        return background!!
-    }*/
+    }
 
     fun getFishGE(): Fish? {
         return fish!!

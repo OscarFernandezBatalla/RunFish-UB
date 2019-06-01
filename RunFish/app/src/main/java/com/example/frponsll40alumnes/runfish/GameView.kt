@@ -194,7 +194,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         canvas.drawColor(Color.parseColor("#00fff2"))   //background
         this.presenter.getLevel().draw(canvas)
 
-        val NPC: MutableList<NPC?>? = presenter.getNPC()
+        val NPC: MutableList<NPC?>? = this.presenter.getNPC()
         //val map: Map? = presenter.getMap()
         val fish: Fish? = presenter.getFish()
 

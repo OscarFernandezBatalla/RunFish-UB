@@ -222,9 +222,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         model.setCurrentFish(fish)
     }
 
-    /*fun addUserId() {
-        this.model.setUserIdToList()
-    }*/
 
     fun setStatsToCloud() {
         this.model.setStatsToCloud()
@@ -268,6 +265,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     fun getLevelContext(): MutableList<Int> {
         return this.model.getLevelContext()
     }
+
+
+
 
 
 }
