@@ -186,7 +186,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     //var
 
 
-    fun getAtriutes(fish : FishType) : MutableList<Int> {
+    fun getAttributes(fish : FishType) : MutableList<Int> {
 
         var llista = mutableListOf<Int>()
         var life = 0
