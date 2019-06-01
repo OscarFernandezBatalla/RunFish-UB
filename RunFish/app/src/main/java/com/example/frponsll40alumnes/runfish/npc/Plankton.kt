@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_game.view.*
 class Plankton(context: Context, points : Int): NPC(points) {
 
 
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.placton)
+    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.placton_aux)
 
     override var width: Int = image.width
     override var height: Int = image.height

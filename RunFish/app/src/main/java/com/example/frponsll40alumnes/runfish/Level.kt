@@ -29,6 +29,12 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     init{
         setMap()
         for (i in 1..(-meters/1000)){
+
+            val height = if (i == 1){
+                -500
+            }else{
+                -i*1250
+            }
             val leftCoral = BackgroundElement(BackgroundType.LEFT_CORAL, context)
             val rightCoral = BackgroundElement(BackgroundType.RIGHT_CORAL, context)
             val leftTurtle = BackgroundElement(BackgroundType.LEFT_TURTLE, context)
@@ -36,12 +42,12 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
             val leftFish = BackgroundElement(BackgroundType.LEFT_FISH, context)
             val rightFish = BackgroundElement(BackgroundType.RIGHT_FISH, context)
 
-            leftCoral.setCoordenates(0, -i*1500)
-            rightCoral.setCoordenates(displayWidth+heightNavegationBar-rightCoral.getImageWidth(), -i*1000)
-            leftTurtle.setCoordenates(10, -i*1500)
-            rightTurtle.setCoordenates(displayWidth+heightNavegationBar-rightTurtle.getImageWidth(), -i*1500)
-            leftFish.setCoordenates(leftCoral.getImageWidth(), -i*1500)
-            rightFish.setCoordenates(displayWidth+heightNavegationBar-rightFish.getImageWidth(), -i*1500)
+            leftCoral.setCoordenates(0, height)
+            rightCoral.setCoordenates(displayWidth+heightNavegationBar-rightCoral.getImageWidth(), height+500)
+            leftTurtle.setCoordenates(displayWidth+heightNavegationBar-600, height+250)
+            rightTurtle.setCoordenates(400, height+350)
+            leftFish.setCoordenates(leftCoral.getImageWidth()+300, height-500)
+            rightFish.setCoordenates(displayWidth+heightNavegationBar-400, height+100)
 
             this.elements.add(leftCoral)
             this.elements.add(rightCoral)
