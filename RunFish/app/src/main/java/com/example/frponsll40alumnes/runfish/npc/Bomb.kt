@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
-import com.example.frponsll40alumnes.runfish.GameMode
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
@@ -44,15 +43,15 @@ class Bomb(context: Context, damage : Int= 10): NPC(value=damage) {
         //test de col·lisions (temporal):
         //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
+/*
 
-
-    override fun collision(playerFish: Fish?, gameMode: GameMode) {
+    override fun collision(playerFish: Fish?) {
         if(playerFish != null){
             //value es el nom de la variable que guarda dmg
             playerFish.loseLife(value)
         }
-        super.collision(playerFish, gameMode) // move offscreen
+        super.collision(playerFish) // move offscreen
     }
-
+*/
 
 }
