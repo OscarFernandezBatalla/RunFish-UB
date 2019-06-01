@@ -129,5 +129,6 @@
     <string name="yourFish">YOUR FISH:</string>
     <string name="maxDistance">MAX DISTANCE: 0</string>
     <string name="maxScore">MAX SCORE: 0</string>
+    <string name="ability_shield_description">Makes you invulnerable for a short time</string>
 
 </resources>

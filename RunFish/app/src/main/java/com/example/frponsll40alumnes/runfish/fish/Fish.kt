@@ -29,6 +29,7 @@ abstract class Fish (
     override var x: Int = screenWidth/2
     override var y: Int = screenHeight/2
 
+    var oldLife = life;
     override var speed: Int = 70
     override lateinit var image: Bitmap
     override var rec: ShapeDrawable = ShapeDrawable(RectShape())
@@ -38,11 +39,11 @@ abstract class Fish (
     var isDead : Boolean = false
 
     fun loseLife(damage : Int){
+        this.oldLife = this.life;
         this.life -= damage
         if(this.life <= 0){
             die()
         }
-        // emit vibration
     }
 
     /* Increments, if possible, the current cargo the fish carries */
@@ -77,7 +78,7 @@ abstract class Fish (
         collision.collision(this)//parametres? fish? position?
     }
 */
-/*    open fun collision(npc : NPC){
+    open fun collision(npc : NPC){
         if(npc is Plankton){
             this.gainCapacity(npc.value)
         }
@@ -85,7 +86,7 @@ abstract class Fish (
             this.loseLife(npc.value)
             // emite vibration in loseLife
         }
-    }*/
+    }
 
     /* draw fish bitmap */
     fun draw(canvas: Canvas) {
@@ -132,5 +133,8 @@ abstract class Fish (
         this.y = y
     }
 
+    fun hasLostLife() : Boolean {
+        return ((this.oldLife - this.life) > 0)
+    }
 
 }

@@ -15,9 +15,11 @@ import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
 import com.example.frponsll40alumnes.runfish.abilities.Health
+import com.example.frponsll40alumnes.runfish.fish.CommonFish
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
+import com.google.android.gms.common.internal.service.Common
 import java.util.*
 
 class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var levelContext: MutableList<Int>, var context: Context/*, var numLevel: Int*/){
@@ -133,9 +135,14 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             if(collision(x!!)){
                 x.collision(fish)
                 //fish!!.collision(x!!) // per mirar si té el shield activat
+                fish!!.collision(x!!)
 
-                /* aixo hauria d'estar dintre de fish.collision()*/
-                if(x is Plankton){
+                if(fish!!.hasLostLife())
+                    if(vibration)
+                        vibrate()
+
+                // SI AIXO ES QUEDA AQUI NO S'APLIQUEN NI LA INVENCIBILITAT NI LA REDUCCIO DE DANY
+                /*if(x is Plankton){
                     fish!!.gainCapacity(x.value)
                 }
                 else{
@@ -143,7 +150,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                     if(vibration){
                         vibrate()
                     }
-                }
+                }*/
             }
         }
         // Update scrolling of background

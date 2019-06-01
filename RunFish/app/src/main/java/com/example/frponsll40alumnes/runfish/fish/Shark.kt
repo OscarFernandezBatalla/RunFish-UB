@@ -47,7 +47,7 @@ class Shark(context: Context, atributs : MutableList<Int>) :
             this.collisionScaled = true;
         }
     }
-/*
+
     override fun collision(npc: NPC) {
         if(npc is Plankton){
             this.gainCapacity(npc.value)
@@ -56,11 +56,11 @@ class Shark(context: Context, atributs : MutableList<Int>) :
             // Si CommonFish no té activat el shield per aquest frame
             if(this.biteActivated){
                 npc.die()
-                // emite vibration in loseLife
             }else{
+                // emite vibration in loseLife
                 this.loseLife(npc.value)
             }
         }
-    }*/
+    }
 }
 

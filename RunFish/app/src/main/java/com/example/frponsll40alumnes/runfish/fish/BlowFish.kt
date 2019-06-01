@@ -44,7 +44,7 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
             }
         }
     }
-/*
+
     override fun collision(npc : NPC){
         if(npc is Plankton){
             this.gainCapacity(npc.value)
@@ -57,6 +57,6 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
             }
             // emite vibration in loseLife
         }
-    }*/
+    }
 
 }
