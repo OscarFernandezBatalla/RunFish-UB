@@ -152,14 +152,15 @@ class LevelsFragment : Fragment(){
     }
 
     private fun updateActualLevelFrag(){
-        textView_numLevel.text = numLevel.toString()
+        textView_numLevel.text = "Level $numLevel"
         imageView_actualFish.background = getFishImage()
         /* S'ha de treure de Engine?*/
-        textView_numShark.text = 10.toString()
-
-        textView_numBomb.text = 10.toString()
-        textView_numPlancton.text = 10.toString()
-        textView_levelMeters.text = 100.toString()
+        var levelContext: MutableList<Int> = act!!.presenter.getLevelContext()
+        textView_numPlancton.text = levelContext[0].toString()
+        textView_numBomb.text = levelContext[1].toString()
+        textView_numShark.text = levelContext[2].toString()
+        var meters: Int = levelContext[3]
+        textView_levelMeters.text = "Meters: $meters M"
 
     }
 

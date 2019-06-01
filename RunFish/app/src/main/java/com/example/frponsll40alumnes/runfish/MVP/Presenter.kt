@@ -262,5 +262,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.freeModeON()
     }
 
+    fun getLevelContext(): MutableList<Int> {
+        return this.model.getLevelContext()
+    }
+
 
 }

@@ -490,7 +490,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView_numLevel"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="30dp"/>
             <ImageView
-                    android:src="@drawable/blow_fish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView_actualFish" android:layout_marginTop="8dp"

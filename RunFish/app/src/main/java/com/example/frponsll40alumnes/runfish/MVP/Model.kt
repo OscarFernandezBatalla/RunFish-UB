@@ -20,6 +20,8 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     var user = FirebaseAuth.getInstance().currentUser!!.uid
 
+    var modelLevel: ModelLevel = ModelLevel()
+
     var collectionUserContext: CollectionReference = db.collection("usuarios").document("$user").collection("userContext")
     var documentStats: DocumentReference = collectionUserContext.document("stats")
     var documentFish: DocumentReference = collectionUserContext.document("fish")
@@ -855,4 +857,10 @@ class Model (var presenter: Presenter) : Contract.Model {
     fun getFreeMode() : Boolean{
         return this.freeMode
     }
+
+    fun getLevelContext(): MutableList<Int>{
+        return this.modelLevel.getLevelContext(levelSelected)
+    }
+
+
 }
