@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import android.widget.ImageView
-import com.example.frponsll40alumnes.runfish.GameMode
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import kotlinx.android.synthetic.main.fragment_game.view.*
@@ -47,14 +46,16 @@ class Plankton(context: Context, points : Int): NPC(points) {
         //test de col·lisions (temporal):
         //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
+/*
 
-
-    override fun collision(playerFish: Fish?, gameMode: GameMode) {
+    override fun collision(playerFish: Fish?) {
         if(playerFish != null){
             //el peix recull el Plankton e incrementa la càrrega
             playerFish.gainCapacity(value);
         }
-        super.collision(playerFish, gameMode); // move offscreen
+        super.collision(playerFish); // move offscreen
     }
+*/
+
 
 }
