@@ -11,7 +11,7 @@ class Bite : AbilityStrategy {
 
         if(fish is Shark) {
             fish.biteActivated = true;
-            fish.biteFrame = 1;
+            fish.biteFrame = 3;
         }
 
         return this.cooldown

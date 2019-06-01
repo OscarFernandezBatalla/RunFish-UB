@@ -44,14 +44,12 @@ class Bomb(context: Context, damage : Int= 10): NPC(value=damage) {
         //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
 /*
-
     override fun collision(playerFish: Fish?) {
-        if(playerFish != null){
+       /* if(playerFish != null){
             //value es el nom de la variable que guarda dmg
             playerFish.loseLife(value)
-        }
+        }*/
         super.collision(playerFish) // move offscreen
     }
 */
-
 }

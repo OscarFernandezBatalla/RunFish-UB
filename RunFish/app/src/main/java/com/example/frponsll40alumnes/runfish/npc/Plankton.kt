@@ -46,7 +46,7 @@ class Plankton(context: Context, points : Int): NPC(points) {
         //test de col·lisions (temporal):
         //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
-/*
+
 
     override fun collision(playerFish: Fish?) {
         if(playerFish != null){
@@ -55,7 +55,7 @@ class Plankton(context: Context, points : Int): NPC(points) {
         }
         super.collision(playerFish); // move offscreen
     }
-*/
+
 
 
 }

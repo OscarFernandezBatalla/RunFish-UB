@@ -20,7 +20,7 @@ class Shark(context: Context, atributs : MutableList<Int>) :
     var biteFrame = 0;
     var biteActivated = false;
     var collisionScaled = false;
-    val biteLength = 100;
+    val biteLength = 200;
 
     init{
         //test de col·lisions (temporal):
@@ -43,11 +43,11 @@ class Shark(context: Context, atributs : MutableList<Int>) :
             this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height)
             this.collisionScaled = false;
         }else if(this.biteFrame >= 0 && this.biteActivated && !(this.collisionScaled)){
-            this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height+this.biteLength)
+            this.rectangle = Rect(this.x, this.y-this.biteLength, this.x+width, this.y+height+this.biteLength)
             this.collisionScaled = true;
         }
     }
-/*
+
     override fun collision(npc: NPC) {
         if(npc is Plankton){
             this.gainCapacity(npc.value)
@@ -55,12 +55,12 @@ class Shark(context: Context, atributs : MutableList<Int>) :
         else {
             // Si CommonFish no té activat el shield per aquest frame
             if(this.biteActivated){
-                npc.die()
-                // emite vibration in loseLife
+                //npc.die()
+                npc.collision(this)
             }else{
                 this.loseLife(npc.value)
             }
         }
-    }*/
+    }
 }
 

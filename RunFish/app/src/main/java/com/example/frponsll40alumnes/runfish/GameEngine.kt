@@ -192,17 +192,22 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             for (x in NPCList!!) {
                 if (collision(x!!)) {
                     x.collision(fish)
-                    //fish!!.collision(x!!) // per mirar si té el shield activat
+
+                    fish!!.collision(x!!)
+
+                    if(fish!!.hasLostLife())
+                        if(vibration)
+                            vibrate()
 
                     /* aixo hauria d'estar dintre de fish.collision()*/
-                    if (x is Plankton) {
+                    /*if (x is Plankton) {
                         fish!!.gainCapacity(x.value)
                     } else {
                         fish!!.loseLife(x.value)
                         if (vibration) {
                             vibrate()
                         }
-                    }
+                    }*/
                 }
             }
         }
