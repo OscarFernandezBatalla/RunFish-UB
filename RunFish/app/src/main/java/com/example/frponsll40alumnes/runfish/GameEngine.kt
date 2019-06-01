@@ -141,7 +141,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var co
                 //fish!!.collision(x!!) // per mirar si té el shield activat
 
                 /* aixo hauria d'estar dintre de fish.collision()*/
-                if(x is Plankton){
+                /*if(x is Plankton){
                     fish!!.gainCapacity(x.value)
                 }
                 else{
@@ -149,7 +149,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int> ,var co
                     if(vibration){
                         vibrate()
                     }
-                }
+                }*/
             }
         }
         // Update scrolling of background
