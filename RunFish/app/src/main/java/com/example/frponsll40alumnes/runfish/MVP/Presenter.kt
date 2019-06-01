@@ -2,6 +2,7 @@ package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
 import com.example.frponsll40alumnes.runfish.*
+import com.example.frponsll40alumnes.runfish.Map
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.npc.NPC
@@ -122,10 +123,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         //variable temporal per breakpoints
         var lev = this.model.getLevelSelected()
 
-        gameEngine = GameEngine(this.getCurrentFish(),
-                                this.model.getAttributes(this.getCurrentFish()),
-                                this.getLevelContext(),
-                                context)
+        gameEngine = GameEngine(this.getCurrentFish(),this.model.getAtriutes(this.getCurrentFish()),this.getLevelContext(),context)
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()

@@ -164,6 +164,8 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             Log.w(TAG, "QWE You died")
             this.presenter.stopMusic()
             this.presenter.increaseDeath()
+
+
             //constraint = rootView.findViewById(R.id.game_over_layout)
             //constraint!!.visibility = View.VISIBLE
             //if(constraint!!.visibility == View.VISIBLE) {
@@ -171,9 +173,6 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             //}
             this.presenter.setStatsToCloud()
         }
-
-        Log.w(TAG, "QWE meters: ${presenter.getMeters()}")
-
         if(presenter.getMeters() >= 0){
             Log.w(TAG, "QWE You win")
             this.thread.setRunning(false)

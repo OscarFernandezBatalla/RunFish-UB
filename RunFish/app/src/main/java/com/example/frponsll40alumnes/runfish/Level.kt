@@ -1,10 +1,8 @@
 package com.example.frponsll40alumnes.runfish
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
-import android.util.Log
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyFactory
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.npc.NPCType
@@ -29,7 +27,7 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     private var rightFish : Int = 0*/
 
     init{
-        setMap() //TODO: meters == 0, sembla que aquesta funcio no es crida perque tampoc es carreguen els corals al free mode
+        setMap()
         for (i in 1..(-meters/1000)){
             val leftCoral = BackgroundElement(BackgroundType.LEFT_CORAL, context)
             val rightCoral = BackgroundElement(BackgroundType.RIGHT_CORAL, context)
@@ -66,8 +64,6 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
         npcs[NPCType.BOMB] = this.levelContext[1]
         npcs[NPCType.ENEMYSHARK] = this.levelContext[2]
         meters = this.levelContext[3]
-
-        Log.w(TAG, "Level.kt setMap() meters = $meters")
 
         /*when(numLevel){
             0 -> {
