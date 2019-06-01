@@ -123,7 +123,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         //variable temporal per breakpoints
         var lev = this.model.getLevelSelected()
 
-        gameEngine = GameEngine(this.getCurrentFish(),this.model.getAtriutes(this.getCurrentFish()),context,lev)
+        gameEngine = GameEngine(this.getCurrentFish(),this.model.getAtriutes(this.getCurrentFish()),this.getLevelContext(),context)
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()

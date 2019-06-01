@@ -14,68 +14,68 @@ class ModelLevel {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
 
             }
             1 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             2 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             3 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             4 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             5 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             6 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             7-> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             8 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             9 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
             10 -> {
                 numPlankton = 5
                 numBomb = 5
                 numShark = 5
-                meters = 10000
+                meters = -10000
             }
         }
         return mutableListOf(numPlankton,numBomb, numShark, meters)

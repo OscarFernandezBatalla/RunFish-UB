@@ -7,7 +7,7 @@ import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyFactory
 import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 import com.example.frponsll40alumnes.runfish.npc.NPCType
 
-open class Level (var numLevel : Int, val context : Context)
+open class Level (var levelContext : MutableList<Int>, val context : Context)
 {
     private var meters: Int = 0
     private var npcs = HashMap<NPCType, Int>()
@@ -51,14 +51,21 @@ open class Level (var numLevel : Int, val context : Context)
             this.elements.add(rightFish)
         }
 
-        val difficulty = difficultyFactory.createDifficulty(difficultyLevel!!)
+        /*val difficulty = difficultyFactory.createDifficulty(difficultyLevel!!)
         npcs[NPCType.PLANKTON] = difficulty!!.getNPlankton()
         npcs[NPCType.BOMB] = difficulty.getNBombs()
         npcs[NPCType.ENEMYSHARK] = difficulty.getNSharks()
+        */
     }
 
     private fun setMap(){
-        when(numLevel){
+
+        npcs[NPCType.PLANKTON] = this.levelContext[0]
+        npcs[NPCType.BOMB] = this.levelContext[1]
+        npcs[NPCType.ENEMYSHARK] = this.levelContext[2]
+        meters = this.levelContext[3]
+
+        /*when(numLevel){
             0 -> {
                 this.meters = -5000
                 difficultyLevel = DifficultyType.TUTORIAL
@@ -107,7 +114,7 @@ open class Level (var numLevel : Int, val context : Context)
                 this.meters = -10000    //TODO: aqui s'hauria de posar inifity, pero aleshores peta la linea 31 perque es fan moltes iteracions
                 difficultyLevel = DifficultyType.VERY_HARD
             }
-        }
+        }*/
     }
 
     fun getNpc(): HashMap<NPCType, Int> {
