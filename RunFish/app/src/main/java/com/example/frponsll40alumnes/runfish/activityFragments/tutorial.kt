@@ -6,13 +6,15 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
+import kotlinx.android.synthetic.main.fragment_ranking.*
 import kotlinx.android.synthetic.main.fragment_tutorial.*
 
 
 class tutorial : Fragment() {
 
-    var contador: Int = 0
+    private var contador: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,8 +27,10 @@ class tutorial : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_next_tutorial.setOnClickListener{
             contador++
+            actualitzarTutorial()
         }
-        actualitzarTutorial()
+        button_back_level.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_tutorial_to_levelsFragment))
+
     }
 
     fun actualitzarTutorial(){
@@ -44,6 +48,8 @@ class tutorial : Fragment() {
             tutorialConstraint.visibility = View.GONE
             enemiesConstraint.visibility = View.GONE
             planctonConstraint.visibility = View.VISIBLE
+            button_next_tutorial.visibility = View.GONE
+            button_back_level.visibility = View.VISIBLE
         }
     }
 
