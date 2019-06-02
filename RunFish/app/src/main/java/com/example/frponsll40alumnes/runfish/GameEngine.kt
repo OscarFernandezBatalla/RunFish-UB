@@ -36,6 +36,10 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     var fish : Fish? = null
 
+    var bonus: Boolean = false
+    var mult : Int = 1
+    var time: Int = 0 //TEMPS?
+
     //var background : Map? = null
 
     var fishFactory = FishFactory()
@@ -221,7 +225,19 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                 if (collision(x!!)) {
                     reaparicioNPC(x)
                     if (x is Plankton) {
-                        planktonFreeMode += x.value
+                        if(bonus){
+                            planktonFreeMode += ((x.value)*mult)
+                        }
+                        else{
+                            planktonFreeMode += x.value
+                            if(isPrime(planktonFreeMode)){
+                                bonus = true
+                                time = 10 //TODO: Mirar com fer el time
+                                mult = 3 //TODO: PODRIEM FER UN CREATE MULT QUE FOS SEGONS EL NOMBRE PRIMER EN EL QUE ENS TROBEM
+                            }
+
+                        }
+
                         //fish!!.gainCapacity(x.value)
                     } else {
                         fish!!.loseLife(x.value)
@@ -329,5 +345,38 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     fun getFreeModePlankton(): Int {
         return this.planktonFreeMode
     }
+
+
+    fun isPrime(n: Int): Boolean{
+       /* if(n<3)
+            return n>1
+        else if(n%2 == 0 || n%3 == 0)
+            return false
+
+        else if n mod 2 = 0 or n mod 3 = 0
+        return false
+        let i ← 5
+        while i * i ≤ n
+        if n mod i = 0 or n mod (i + 2) = 0
+        return false
+        i ← i + 6
+        return true*/
+        var flag = false
+        for (i in 2..n / 2)
+        {
+            // condition to check prime number
+            if (n % i == 0) {
+                flag = true
+                break
+            }
+        }
+
+        if (!flag)
+            return true
+
+        return false
+    }
+
+
 
 }
