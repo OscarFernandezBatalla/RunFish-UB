@@ -41,8 +41,9 @@ abstract class Fish (
 
         if(this is BlowFish){
             if(this.damageReductionActivated){
-                this.life = this.life - (damage*0.5).toInt()
-            }
+                this.life -= (damage*0.5).toInt()
+                this.damageReductionActivated = false
+            }else this.life -= damage
         }
         else {
             this.life -= damage

@@ -12,7 +12,6 @@ class DamageReduction : AbilityStrategy {
     override fun useAbility(fish: Fish) : Int {
         if(fish is BlowFish) {
             fish.damageReductionActivated = true;
-            fish.damageReductionForNFrames = DAMAGE_REDUCTION_DURATION;
         }
 
         return this.cooldown;
