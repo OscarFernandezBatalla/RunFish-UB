@@ -43,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
         song = MediaPlayer.create(this, R.raw.baby_shark)
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
+        song.isLooping = true
         maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
         currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
 
