@@ -192,6 +192,10 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.getMusic().seekTo(0)
     }
 
+    override fun pauseMusic(){
+        this.viewActivity.getMusic().pause()
+    }
+
 
     override fun getFriendsList(): MutableList<String>{
         return this.model.getFriendsList()

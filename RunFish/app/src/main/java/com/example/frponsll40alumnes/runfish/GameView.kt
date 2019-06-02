@@ -1,7 +1,6 @@
 package com.example.frponsll40alumnes.runfish
 
 
-import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Canvas
@@ -25,12 +24,11 @@ import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.npc.Plankton
 
 import io.github.controlwear.virtual.joystick.android.JoystickView
-import kotlinx.android.synthetic.main.fragment_game.view.*
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
-
+/* Es necesario acceder a GameFragment para mostrar los mensajes "You lose" "You win" mediante runOnUiThread */
 class GameView(context: Context, var presenter: Presenter, var gameView: GameFragment) : SurfaceView(context), SurfaceHolder.Callback{
 
     //private var meters : TextView? = null
@@ -236,6 +234,10 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
 
     fun setPause(paused: Boolean) {
         this.paused = paused
+        if(paused)
+            this.presenter.pauseMusic()
+        else
+            this.presenter.startMusic()
     }
 
 

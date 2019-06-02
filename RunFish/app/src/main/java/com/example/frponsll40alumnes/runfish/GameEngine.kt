@@ -195,19 +195,12 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
                     fish!!.collision(x!!)
 
+                    //NPCList!!.remove(x!!)
+                    // modifiquem la llista que estem recorrent -> no bona idea
+
                     if(fish!!.hasLostLife())
                         if(vibration)
                             vibrate()
-
-                    /* aixo hauria d'estar dintre de fish.collision()*/
-                    /*if (x is Plankton) {
-                        fish!!.gainCapacity(x.value)
-                    } else {
-                        fish!!.loseLife(x.value)
-                        if (vibration) {
-                            vibrate()
-                        }
-                    }*/
                 }
             }
         }

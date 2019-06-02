@@ -68,6 +68,7 @@ interface Contract {
         fun getNPCsInArea(x_start : Int, x_end : Int, y_start : Int, y_end : Int) : MutableList<NPC?>
         fun startMusic()
         fun stopMusic()
+        fun pauseMusic()
         fun getFriendsList(): MutableList<String>
         fun getConnected(): Boolean
         fun setConnected(connected: Boolean)
