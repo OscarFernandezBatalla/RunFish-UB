@@ -74,7 +74,7 @@ class GameFragment : Fragment() {
         button_retry.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
         button_back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
         button_back_successful.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
-        //button_next_level.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
+        button_next_level.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
     }
 
     override fun onDestroyView() {

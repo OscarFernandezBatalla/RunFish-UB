@@ -101,7 +101,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                 if (x is EnemyShark) {
                     if (x.vertical) {
                         posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
-                        posy = (displayHeight..met*3).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                        posy = (displayHeight..met*4).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                     }
                 } else {
                     posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
