@@ -19,7 +19,9 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
     override val height: Int = image.height
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
-    var damageReductionActivated = false;
+
+    var noDamage = false
+
 
     init{
         //test de col·lisions (temporal):

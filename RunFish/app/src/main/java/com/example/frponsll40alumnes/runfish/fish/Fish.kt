@@ -40,8 +40,13 @@ abstract class Fish (
     fun loseLife(damage : Int){
 
         if(this is BlowFish){
+            if(this.noDamage){
+                this.noDamage = false
+            }else this.life -= damage
+        }
+        else if(this is CommonFish){
             if(this.damageReductionActivated){
-                this.life -= (damage*0.5).toInt()
+                this.life -= (damage*0.5).toInt() //menys damage
                 this.damageReductionActivated = false
             }else this.life -= damage
         }
