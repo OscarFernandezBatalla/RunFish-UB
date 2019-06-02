@@ -850,6 +850,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     fun freeModeON() {
+        this.freeMode = true
         this.levelSelected = -1
 
     }
