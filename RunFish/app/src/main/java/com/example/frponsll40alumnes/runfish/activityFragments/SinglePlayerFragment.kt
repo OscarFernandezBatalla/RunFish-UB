@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_single_player.*
+import kotlinx.android.synthetic.main.fragment_single_player.view.*
 
 
 class SinglePlayerFragment : Fragment() {
@@ -35,7 +36,14 @@ class SinglePlayerFragment : Fragment() {
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))
         button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment))
         button_freemode_singleplayer.setOnClickListener {
+
+            val stats : MutableList<Int> = act!!.presenter.uploadStats()
+
+            constraint_freeMode.textView_maxDistance.text = "${stats[4]}"
+            constraint_freeMode.textView_maxScore.text = "${stats[1]}"
+
             constraint_freeMode.visibility = View.VISIBLE
+
             this.lastLevel = this.act!!.presenter.getActualLevel()
             this.act!!.presenter.freeModeON()
 

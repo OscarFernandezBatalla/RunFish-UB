@@ -118,7 +118,7 @@
     <string name="actual_plankton">Actual Plankton</string>
     <string name="welcome">WELCOME TO RUNFISH!</string>
     <string name="username_petition">HEY, TO CONTINUE USING RUNFISH YOU WILL NEED TO CREATE YOUR USERNAME:</string>
-    <string name="blowFish">BLOW SHARK</string>
+    <string name="blowFish">BLOWFISH</string>
     <string name="swordFish">SWORD FISH</string>
     <string name="whiteShark">WHITE SHARK</string>
     <string name="clownFish">CLOWNFISH</string>
@@ -127,7 +127,9 @@
     <string name="num_Level"> LEVEL 1</string>
     <string name="levelMeters">METERS: 1000 M</string>
     <string name="yourFish">YOUR FISH:</string>
-    <string name="maxDistance">MAX DISTANCE: 0</string>
-    <string name="maxScore">MAX SCORE: 0</string>
+    <string name="maxDistance">MAX DISTANCE:</string>
+    <string name="maxScore">MAX SCORE:</string>
+    <string name="freeMode_confirmation_default_maxDistance">0</string>
+    <string name="freeMode_confirmation_default_maxScore">0</string>
 
 </resources>
