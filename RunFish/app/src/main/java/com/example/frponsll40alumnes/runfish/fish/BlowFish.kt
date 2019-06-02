@@ -33,17 +33,6 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
         rec.paint.color = Color.GREEN*/
     }
 
-    override fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        super.update(xJoy, yJoy, strength)
-        if(this.damageReductionForNFrames > 0){
-            // decrease speed boost per frame
-            this.damageReductionForNFrames--
-        }else{
-            if(damageReductionActivated){
-                damageReductionActivated = false;
-            }
-        }
-    }
 /*
     override fun collision(npc : NPC){
         if(npc is Plankton){

@@ -38,11 +38,19 @@ abstract class Fish (
     var isDead : Boolean = false
 
     fun loseLife(damage : Int){
-        this.life -= damage
-        if(this.life <= 0){
+
+        if(this is BlowFish){
+            if(this.damageReductionActivated){
+                this.life = this.life - (damage*0.5).toInt()
+            }
+        }
+        else {
+            this.life -= damage
+            // emit vibration
+        }
+        if (this.life <= 0) {
             die()
         }
-        // emit vibration
     }
 
     /* Increments, if possible, the current cargo the fish carries */
