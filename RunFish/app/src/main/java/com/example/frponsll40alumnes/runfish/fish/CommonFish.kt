@@ -49,4 +49,9 @@ class CommonFish(context: Context, atributs : MutableList<Int>) :
             }
         }
     }*/
+
+    override fun loseLife(value : Int){
+        if(this.invencibilityForNFrames <= 0)
+            super.loseLife(value)
+    }
 }

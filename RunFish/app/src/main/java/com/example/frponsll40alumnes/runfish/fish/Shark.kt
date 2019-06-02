@@ -62,5 +62,10 @@ class Shark(context: Context, atributs : MutableList<Int>) :
             }
         }
     }*/
+
+    override fun loseLife(value: Int) {
+        if(!(this.biteActivated))
+            super.loseLife(value)
+    }
 }
 

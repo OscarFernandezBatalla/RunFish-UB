@@ -21,7 +21,7 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
 
     var damageReductionForNFrames = 0;
 
-    val damageReduction = 15;
+    val damageReduction = 0.5;
     var damageReductionActivated = false;
 
     init{
@@ -58,5 +58,12 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
             // emite vibration in loseLife
         }
     }*/
+
+    override fun loseLife(value : Int){
+        if(this.damageReductionActivated)
+            this.loseLife((value * this.damageReduction).toInt())
+        else
+            super.loseLife(value)
+    }
 
 }

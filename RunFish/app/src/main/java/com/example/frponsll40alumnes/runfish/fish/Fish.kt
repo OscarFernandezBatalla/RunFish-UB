@@ -37,7 +37,7 @@ abstract class Fish (
 
     var isDead : Boolean = false
 
-    fun loseLife(damage : Int){
+    open fun loseLife(damage : Int){
         this.life -= damage
         if(this.life <= 0){
             die()
