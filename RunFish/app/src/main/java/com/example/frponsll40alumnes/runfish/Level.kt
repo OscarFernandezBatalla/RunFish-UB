@@ -123,9 +123,13 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     }
 
     fun update() {
-        if(this.meters <= 0){
+        /*if(this.meters <= 0){
             meters+=5
-        }
+        }*/
+        this.meters += 5
+
+        //TODO: problema -> meters > Int.MAX
+
         for (i in elements){
             i.update()
         }
