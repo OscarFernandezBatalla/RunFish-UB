@@ -309,6 +309,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.addPlankton(plankton)
     }
 
+    fun getLevelsUnlocked(): Int {
+        return this.model.getLevelsUnlocked()
+    }
 
 
 }

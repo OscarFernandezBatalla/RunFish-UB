@@ -891,4 +891,12 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
 
+
+
+
+
+    fun getLevelsUnlocked(): Int{
+        return this.levelsUnlocked
+    }
+
 }
