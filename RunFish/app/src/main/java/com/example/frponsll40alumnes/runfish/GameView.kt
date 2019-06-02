@@ -178,7 +178,8 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
 
             this.presenter.setStatsToCloud()
         }
-        if(presenter.getMeters() >= 0){
+        //if(presenter.getMeters() >= 0){
+        if(presenter.getLevel().levelFinished()){
             this.thread.setRunning(false)
             Log.w(TAG, "QWE You win")
 

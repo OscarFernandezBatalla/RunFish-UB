@@ -62,8 +62,6 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
         // Get background
         //background = level.getMap()
 
-
-
         var posx: Int = 0
         var posy: Int = 0
 
@@ -109,6 +107,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
         //freemode
         else{
+            //Mark the level as infinite
+            level.markAsInfinite();
+
             NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.PLANKTON, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))

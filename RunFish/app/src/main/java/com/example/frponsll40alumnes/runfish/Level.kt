@@ -18,6 +18,7 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     private var displayHeight = Resources.getSystem().displayMetrics.heightPixels
     private var heightNavegationBar = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"))
 
+    private var infinite : Boolean = false;
 
     /*private var leftCoral : Int = 0
     private var rightCoral : Int = 0
@@ -138,6 +139,16 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
 
     fun getMeter() : Int{
         return this.meters
+    }
+
+    fun levelFinished() : Boolean {
+        if(this.infinite)
+            return false;
+        return (this.meters >= 0);
+    }
+
+    fun markAsInfinite(){
+        this.infinite = true;
     }
 }
 
