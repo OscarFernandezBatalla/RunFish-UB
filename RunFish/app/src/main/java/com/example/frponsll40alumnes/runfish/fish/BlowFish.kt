@@ -19,10 +19,9 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
     override val height: Int = image.height
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
-    var damageReductionForNFrames = 0;
 
-    val damageReduction = 15;
-    var damageReductionActivated = false;
+    var noDamage = false
+
 
     init{
         //test de col·lisions (temporal):
@@ -33,17 +32,6 @@ class BlowFish(context: Context, atributs : MutableList<Int>) :
         rec.paint.color = Color.GREEN*/
     }
 
-    override fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        super.update(xJoy, yJoy, strength)
-        if(this.damageReductionForNFrames > 0){
-            // decrease speed boost per frame
-            this.damageReductionForNFrames--
-        }else{
-            if(damageReductionActivated){
-                damageReductionActivated = false;
-            }
-        }
-    }
 /*
     override fun collision(npc : NPC){
         if(npc is Plankton){

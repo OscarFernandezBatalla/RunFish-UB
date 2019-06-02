@@ -97,8 +97,6 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             }
 
             for(x in NPCList!!){
-
-
                 if (x is EnemyShark) {
                     if (x.vertical) {
                         posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
@@ -142,43 +140,6 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             for(x in NPCListFreeMode){
                 reaparicioNPC(x!!)
             }
-
-
-
-
-                //npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = false, leftToRight = false),   //sharkR
-                //npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true, leftToRight = true),     //sharkL
-                /*NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true)),
-                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),
-                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),
-                npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true),     //sharkV
-                npcFactory.createNPC(NPCType.PLANKTON, context),                                            //plankton
-                npcFactory.createNPC(NPCType.BOMB, context))                                                 //bomb
-*/
-
-            /*android.os.Handler().postDelayed({
-                val nextNPC = NPCListFreeMode.random()
-                if (nextNPC is EnemyShark) {
-                    if (nextNPC.vertical) {
-                        var resta = displayWidth - nextNPC.width
-                        posx = (0..resta).random()     //pot começar a 0? NO
-                        posy = displayHeight * -1//(2500..30000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
-                    } /*else {
-                        if (nextNPC.leftToRight) {
-                            posx = -nextNPC.width     //si no va fer-ho amb -1 i invertir random
-                            posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
-                        } else {
-                            posx = nextNPC.width     //si no va fer-ho amb -1 i invertir random
-                            posy = (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
-                        }
-                    }*/
-                }
-                else {
-                    posx = (0..(displayWidth - nextNPC!!.width)).random()     //pot começar a 0?
-                    posy = -nextNPC.height//displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
-                }
-                nextNPC.changeCoordinates(posx, posy)
-            }, 2000)*/
         }
     }
 
