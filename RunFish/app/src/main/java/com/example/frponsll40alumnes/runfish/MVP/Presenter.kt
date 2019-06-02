@@ -257,6 +257,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     override fun unlockNextLevel() {
         this.model.unlockNextLevel(this.model.getLevelSelected())
+        this.model.setLevelsToCloud()
     }
 
     override fun freeModeON() {

@@ -166,7 +166,7 @@ class LevelsFragment : Fragment(){
             FishType.BLOWFISH -> ContextCompat.getDrawable(context!!,R.drawable.blow_fish_shop)
             FishType.ANEMONE -> ContextCompat.getDrawable(context!!,R.drawable.anemone)
             FishType.SWORDFISH -> ContextCompat.getDrawable(context!!,R.drawable.sword_fish_shop)
-            FishType.SHARK -> ContextCompat.getDrawable(context!!,R.drawable.shark_shop)
+            FishType.SHARK -> ContextCompat.getDrawable(context!!,R.drawable.shark)
         }
     }
 
@@ -175,7 +175,7 @@ class LevelsFragment : Fragment(){
     fun uploadLevelsFragment(){
         val numLevels: Int = act!!.presenter.uploadLevels()
         for(i in 2..numLevels){
-            when(numLevels){
+            when(i){
                 2 -> {
                     button_level2.isEnabled = true
                     button_level2.setBackgroundResource(R.drawable.new_tablon)
