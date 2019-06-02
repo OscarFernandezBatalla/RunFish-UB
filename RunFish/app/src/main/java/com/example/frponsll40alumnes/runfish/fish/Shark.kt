@@ -17,11 +17,12 @@ class Shark(context: Context, atributs : MutableList<Int>) :
     override val height: Int = image.height
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
 
-    var biteFrame = 0;
+    /*var biteFrame = 0;
     var biteActivated = false;
     var collisionScaled = false;
     val biteLength = 100;
-
+*/
+    var bite: Boolean = false
     init{
         //test de col·lisions (temporal):
         /*rec.setBounds(this.x, this.y, this.x+width, this.y+height)
@@ -31,7 +32,7 @@ class Shark(context: Context, atributs : MutableList<Int>) :
         rec.paint.color = Color.GREEN*/
     }
 
-    override fun update(xJoy : Double, yJoy : Double, strength : Int) {
+   /* override fun update(xJoy : Double, yJoy : Double, strength : Int) {
         super.update(xJoy, yJoy, strength)
         if(this.biteFrame > 0){
             this.biteFrame--
@@ -46,7 +47,7 @@ class Shark(context: Context, atributs : MutableList<Int>) :
             this.rectangle = Rect(this.x, this.y, this.x+width, this.y+height+this.biteLength)
             this.collisionScaled = true;
         }
-    }
+    }*/
 /*
     override fun collision(npc: NPC) {
         if(npc is Plankton){

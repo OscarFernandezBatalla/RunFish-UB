@@ -10,8 +10,10 @@ class Bite : AbilityStrategy {
     override fun useAbility(fish: Fish) : Int {
 
         if(fish is Shark) {
-            fish.biteActivated = true;
+            /*fish.biteActivated = true;
             fish.biteFrame = 1;
+            */
+            fish.bite = true
         }
 
         return this.cooldown
