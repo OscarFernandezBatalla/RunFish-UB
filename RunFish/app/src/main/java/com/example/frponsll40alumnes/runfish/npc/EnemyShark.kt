@@ -59,7 +59,7 @@ class EnemyShark(context: Context, speed : Int, var vertical: Boolean, var leftT
      * Draws the object on to the canvas.
      */
     override fun draw(canvas: Canvas) {
-        canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
+        canvas.drawBitmap(image!!, x.toFloat(), y.toFloat(), null)
     }
 
     /**

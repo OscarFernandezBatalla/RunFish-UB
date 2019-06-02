@@ -12,8 +12,7 @@ import kotlinx.android.synthetic.main.fragment_menu.*
 
 class menuFragment : Fragment() {
 
-    var act : HomeActivity ?= null                //    aixo feia que petes
-    //var userChecked: Boolean = false
+    var act : HomeActivity ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +30,6 @@ class menuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         if(!act!!.userChecked){
             android.os.Handler().postDelayed({
 
@@ -44,7 +42,7 @@ class menuFragment : Fragment() {
                     button_user_petition.setOnClickListener{
                         act!!.hideNav()
                         var username = edit_text_username.text.toString()
-                        if(username != ""){    //TODO: COMPROVAR QUE L'USERNAME NO EXISTEIX...
+                        if(username != ""){
                             act!!.presenter.setUsername(username)
                             welcome_username.visibility = View.GONE
                             menu_layout.visibility = View.VISIBLE
@@ -81,10 +79,6 @@ class menuFragment : Fragment() {
         imageButton_friends.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_friendsFragment))
 
     }
-
-    /*fun addUserId(){
-        this.act!!.presenter.addUserId()
-    }*/
 
     private fun uploadMenuFragment(){
         uploadFriends()

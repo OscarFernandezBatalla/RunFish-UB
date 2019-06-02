@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
-import kotlinx.android.synthetic.main.fragment_ranking.*
 import kotlinx.android.synthetic.main.fragment_tutorial.*
-
 
 class tutorial : Fragment() {
 
@@ -30,7 +28,6 @@ class tutorial : Fragment() {
             actualitzarTutorial()
         }
         button_back_level.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_tutorial_to_levelsFragment))
-
     }
 
     fun actualitzarTutorial(){
@@ -52,6 +49,4 @@ class tutorial : Fragment() {
             button_back_level.visibility = View.VISIBLE
         }
     }
-
-
 }

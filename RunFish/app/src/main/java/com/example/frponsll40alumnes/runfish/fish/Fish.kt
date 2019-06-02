@@ -1,22 +1,15 @@
 package com.example.frponsll40alumnes.runfish.fish
 
-import android.content.Context
+
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Rect
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
-import com.example.frponsll40alumnes.runfish.abilities.Speed
-import com.example.frponsll40alumnes.runfish.collision.CollisionStrategy
-import com.example.frponsll40alumnes.runfish.npc.NPC
-import com.example.frponsll40alumnes.runfish.npc.Plankton
 
-abstract class Fish (
-                     //var name : String,
-                     var life : Int,
+abstract class Fish (var life : Int,
                      var capacity : Int,
                      var ability : AbilityStrategy,
                      val maxLife: Int,
@@ -33,9 +26,8 @@ abstract class Fish (
     override lateinit var image: Bitmap
     override var rec: ShapeDrawable = ShapeDrawable(RectShape())
 
-    //val ability : AbilityStrategy = Speed()
 
-    var isDead : Boolean = false
+    private var isDead : Boolean = false
 
     fun loseLife(damage : Int){
 
@@ -63,7 +55,6 @@ abstract class Fish (
         }
         else {
             this.life -= damage
-            // emit vibration
         }
         if (this.life <= 0) {
             die()
@@ -97,20 +88,6 @@ abstract class Fish (
     fun useAbility() : Int {
         return this.ability.useAbility(this)
     }
-/*
-    fun collision(collision : CollisionStrategy){
-        collision.collision(this)//parametres? fish? position?
-    }
-*/
-/*    open fun collision(npc : NPC){
-        if(npc is Plankton){
-            this.gainCapacity(npc.value)
-        }
-        else {
-            this.loseLife(npc.value)
-            // emite vibration in loseLife
-        }
-    }*/
 
     /* draw fish bitmap */
     fun draw(canvas: Canvas) {
@@ -148,14 +125,10 @@ abstract class Fish (
         y += yV
 
         this.rectangle.set(this.x, this.y, this.x+width, this.y+height)
-        //test de col·lisions (temporal):
-        //rec.setBounds(this.x, this.y, this.x+width, this.y+height)
     }
 
     override fun changeCoordinates(x: Int, y: Int) {
         this.x = x
         this.y = y
     }
-
-
 }

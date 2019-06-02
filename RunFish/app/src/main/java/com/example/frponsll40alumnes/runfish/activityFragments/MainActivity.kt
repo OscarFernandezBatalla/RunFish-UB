@@ -4,19 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.databinding.DataBindingUtil
-import android.os.Build
-import android.support.v4.app.FragmentManager
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
-import android.util.AttributeSet
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.Toast
-//import com.example.frponsll40alumnes.runfish.R
-//import com.example.frponsll40alumnes.runfish.databinding.ActivityMainBinding
-import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -28,11 +19,6 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.firestore.FirebaseFirestore
-
-
-//import android.R
-
 
 var ReturnDirection : LevelDirection = LevelDirection.SINGLEPLAYER
 
@@ -49,19 +35,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var user: FirebaseUser? = null
 
-    //private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
         this.setContentView(R.layout.activity_main)
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
 
         mGoogleButton = findViewById(R.id.signInGoogleButton)
         firebaseAuth = FirebaseAuth.getInstance()
@@ -114,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account!!)   //ojo
+                firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
                 Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
             }

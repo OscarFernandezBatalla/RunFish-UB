@@ -33,7 +33,7 @@ class BackgroundElement(type : BackgroundType, context : Context) {
     }
 
     fun draw(canvas: Canvas) {
-        canvas.drawBitmap(image, x.toFloat(), y.toFloat(), null)
+        canvas.drawBitmap(image!!, x.toFloat(), y.toFloat(), null)
     }
 
     fun setCoordenates(x : Int, y: Int){

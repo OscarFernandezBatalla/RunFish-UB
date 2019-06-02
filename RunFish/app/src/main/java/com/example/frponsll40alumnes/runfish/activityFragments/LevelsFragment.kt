@@ -20,10 +20,7 @@ import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
 class LevelsFragment : Fragment(){
 
     var act : HomeActivity ?= null
-    //private var constraint : ConstraintLayout ?= null
     var numLevel : Int = 0
-    private var accept : Button ?= null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +35,6 @@ class LevelsFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
 
         //Els posem tots a false per no poder accedir a tots els nivells
         //Només podrem accedir si estan desbloquejats
@@ -74,7 +68,6 @@ class LevelsFragment : Fragment(){
         } else if (ReturnDirection == LevelDirection.MULTIPLAYER) {
             button_comeback_singleplayer3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_multiplayerFragment))
         }
-
 
         button_acceptar.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_gameFragment))
 
@@ -149,7 +142,6 @@ class LevelsFragment : Fragment(){
     private fun updateActualLevelFrag(){
         textView_numLevel.text = "Level $numLevel"
         imageView_actualFish.background = getFishImage()
-        /* S'ha de treure de Engine?*/
         var levelContext: MutableList<Int> = act!!.presenter.getLevelContext()
         textView_numPlancton.text = levelContext[0].toString()
         textView_numBomb.text = levelContext[1].toString()
@@ -169,8 +161,6 @@ class LevelsFragment : Fragment(){
             FishType.SHARK -> ContextCompat.getDrawable(context!!,R.drawable.shark)
         }
     }
-
-
 
     fun uploadLevelsFragment(){
         val numLevels: Int = act!!.presenter.uploadLevels()

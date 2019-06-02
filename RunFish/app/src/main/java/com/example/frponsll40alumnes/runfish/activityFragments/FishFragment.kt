@@ -2,7 +2,6 @@ package com.example.frponsll40alumnes.runfish.activityFragments
 
 
 import android.graphics.drawable.Drawable
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -14,8 +13,6 @@ import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import kotlinx.android.synthetic.main.fragment_fish.*
-
-
 
 class FishFragment : Fragment() {
 
@@ -148,7 +145,4 @@ class FishFragment : Fragment() {
             Ability.SPEED -> ContextCompat.getDrawable(context!!,R.drawable.rayo)
         }
     }
-
-
-
 }

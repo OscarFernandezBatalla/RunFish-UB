@@ -38,9 +38,6 @@ class FriendsFragment : Fragment() {
 
         usernameFriendView = mutableListOf(text_friend0, text_friend1, text_friend2, text_friend3)
         imatgeBallView = mutableListOf(image_ball_friend0, image_ball_friend1, image_ball_friend2, image_ball_friend3)
-
-        //uploadFriendsFragment()
-
         refreshFriendListView()
 
         imageButton_cross.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_friendsFragment_to_menuFragment))
@@ -63,14 +60,13 @@ class FriendsFragment : Fragment() {
 
 
     fun refreshFriendListView(){
-        var friendList = getFriendList()//mutableListOf("Pepito","Pepe",null,null)  //TODO : MÀXIM 4
+        var friendList = getFriendList()
         if(friendList.size == 0){
             for(i in 0 until usernameFriendView!!.size){
                 usernameFriendView!![i].visibility = View.GONE
                 imatgeBallView!![i].visibility = View.GONE
             }
         }
-        //if(friendList.size != 0) {
         else{
             for (i in 0 until friendList.size) {
                 usernameFriendView!![i].visibility = View.VISIBLE
@@ -78,36 +74,5 @@ class FriendsFragment : Fragment() {
                 imatgeBallView!![i].visibility = View.VISIBLE
             }
         }
-
-
-        //friendList ha de retornar el amic sencer y no una array
-        /*
-        if (friendList[0] != null) {
-            image_ball_friend0.setImageResource(R.drawable.bola_verde)
-        } else {
-            image_ball_friend0.setImageResource(R.drawable.bola_gris)
-        }
-
-        if (friendList[1] != null) {
-            image_ball_friend1.setImageResource(R.drawable.bola_verde)
-        } else {
-            image_ball_friend1.setImageResource(R.drawable.bola_gris)
-        }
-
-        if (friendList[2] != null) {
-            image_ball_friend2.setImageResource(R.drawable.bola_verde)
-        } else {
-            image_ball_friend2.setImageResource(R.drawable.bola_gris)
-        }
-
-        if (friendList[3] != null) {
-            image_ball_friend3.setImageResource(R.drawable.bola_verde)
-        } else {
-            image_ball_friend3.setImageResource(R.drawable.bola_gris)
-        }
-*/
     }
-
-
-
 }

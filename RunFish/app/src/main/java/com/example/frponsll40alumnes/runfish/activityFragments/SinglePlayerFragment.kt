@@ -1,6 +1,5 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_single_player.*
-
 
 class SinglePlayerFragment : Fragment() {
 

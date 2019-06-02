@@ -1,8 +1,5 @@
 package com.example.frponsll40alumnes.runfish.activityFragments
 
-
-import android.content.Context
-import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -16,7 +13,6 @@ import com.example.frponsll40alumnes.runfish.FishType
 import com.example.frponsll40alumnes.runfish.R
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import kotlinx.android.synthetic.main.fragment_shop.*
-
 
 class ShopFragment : Fragment() {
 
@@ -89,7 +85,6 @@ class ShopFragment : Fragment() {
         this.actual_plankton.text = act!!.presenter.uploadPlayerPlankton().toString()
     }
 
-
     private fun getAbility(type: Ability): Drawable?{
         return when (type){
             Ability.SHIELD -> ContextCompat.getDrawable(context!!, R.drawable.shield)
@@ -116,7 +111,6 @@ class ShopFragment : Fragment() {
         }
     }
 
-
     private fun uploadClownFish(){
         val barsClownFish: MutableList<Int> = act!!.presenter.uploadBarsClownFish()
 
@@ -135,7 +129,6 @@ class ShopFragment : Fragment() {
         else{
             this.image_clownfish.setImageResource(R.drawable.anemone_lock)
         }
-
     }
 
     private fun uploadBlowFish(){
@@ -158,8 +151,6 @@ class ShopFragment : Fragment() {
         }
     }
 
-
-
     private fun uploadSwordFish(){
         val barsSwordFish: MutableList<Int> = act!!.presenter.uploadBarsSwordFish()
 
@@ -180,7 +171,6 @@ class ShopFragment : Fragment() {
     }
 
     private fun uploadShark(){
-
         val barsShark: MutableList<Int> = act!!.presenter.uploadBarsShark()
 
         this.life_bar_shark.progress = barsShark[0]
