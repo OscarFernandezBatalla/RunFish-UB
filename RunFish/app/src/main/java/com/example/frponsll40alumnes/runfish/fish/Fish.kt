@@ -38,11 +38,36 @@ abstract class Fish (
     var isDead : Boolean = false
 
     fun loseLife(damage : Int){
-        this.life -= damage
-        if(this.life <= 0){
+
+        if(this is BlowFish){
+            if(this.noDamage){
+                this.noDamage = false
+            }else this.life -= damage
+        }
+        else if(this is CommonFish){
+            if(this.damageReductionActivated){
+                this.life -= (damage*0.5).toInt() //menys damage
+                this.damageReductionActivated = false
+            }else this.life -= damage
+        }
+        else if(this is Shark){
+            if(this.bite){
+                if((this.life + (damage/2)) >= this.maxLife){
+                    this.life = this.maxLife
+                }else {
+                    this.life += damage/2
+                }
+                this.bite = false
+            }
+            else this.life -= damage
+        }
+        else {
+            this.life -= damage
+            // emit vibration
+        }
+        if (this.life <= 0) {
             die()
         }
-        // emit vibration
     }
 
     /* Increments, if possible, the current cargo the fish carries */

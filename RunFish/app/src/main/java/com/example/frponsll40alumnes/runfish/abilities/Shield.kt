@@ -12,10 +12,8 @@ class Shield : AbilityStrategy {
     override fun useAbility(fish: Fish) : Int {
 
         /* Invencibility for next INVENCIBILITY_LENGTH_IN_FRAMES frames */
-        if(fish is CommonFish){
-
-            // activate the invencibility for the next INVENCIBILITY_LENGTH_IN_FRAMES frames
-            fish.invencibilityForNFrames = INVENCIBILITY_LENGTH_IN_FRAMES
+        if(fish is CommonFish) {
+            fish.damageReductionActivated = true;
         }
 
         return this.cooldown;
