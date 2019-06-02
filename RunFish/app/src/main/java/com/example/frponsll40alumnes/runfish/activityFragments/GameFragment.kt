@@ -27,7 +27,7 @@ class GameFragment : Fragment() {
         super.onCreate(savedInstanceState)
         act = (activity as HomeActivity)
         game = FrameLayout(this.context!!)
-        gameView = GameView(this.context!!, act!!.presenter)
+        gameView = GameView(this.context!!, act!!.presenter, this)
         gameWidgets = LinearLayout(context)
         game.addView(gameView)
         game.addView(gameWidgets)

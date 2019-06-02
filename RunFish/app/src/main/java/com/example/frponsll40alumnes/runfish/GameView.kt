@@ -13,6 +13,7 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.MVP.Presenter
+import com.example.frponsll40alumnes.runfish.activityFragments.GameFragment
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import io.github.controlwear.virtual.joystick.android.JoystickView
@@ -21,7 +22,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 
-class GameView(context: Context, var presenter: Presenter) : SurfaceView(context), SurfaceHolder.Callback{
+class GameView(context: Context, var presenter: Presenter, var gameView: GameFragment) : SurfaceView(context), SurfaceHolder.Callback{
     val thread: GameThread
     private var planktonCollected : TextView? = null
     private var imageButton_pause : ImageButton?= null
@@ -137,7 +138,15 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         if(bar_life!!.progress <=0){
 
             this.thread.setRunning(false)
-            constraintGameOver!!.visibility = View.VISIBLE
+            //constraintGameOver!!.visibility = View.VISIBLE
+
+            this.gameView.act!!.runOnUiThread( Runnable {
+                constraintGameOver = rootView.findViewById(R.id.game_over_layout)
+                constraintGameOver!!.visibility = View.VISIBLE
+            })
+
+
+
             this.presenter.stopMusic()
             this.presenter.increaseDeath()
 
@@ -147,7 +156,14 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         if(condicionMetres && condicioFreeMode){
 
             this.thread.setRunning(false)
-            constraintSuccessfull!!.visibility = View.VISIBLE
+            //constraintSuccessfull!!.visibility = View.VISIBLE
+
+            this.gameView.act!!.runOnUiThread( Runnable {
+                constraintSuccessfull = rootView.findViewById(R.id.successful_layout)
+                constraintSuccessfull!!.visibility = View.VISIBLE
+            })
+
+
             this.presenter.stopMusic()
             planktonCollected!!.text = presenter.getPlanktonCollected().toString()
 
