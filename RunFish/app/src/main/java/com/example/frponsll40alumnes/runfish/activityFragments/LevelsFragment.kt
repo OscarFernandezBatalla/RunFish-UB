@@ -82,12 +82,7 @@ class LevelsFragment : Fragment(){
             constraint_confirm_level.visibility = View.GONE
         }
 
-        button_tutorial.setOnClickListener {
-            numLevel = 0
-            act!!.presenter.setActualLevel(numLevel)
-            updateActualLevelFrag()
-            constraint_confirm_level.visibility = View.VISIBLE
-        }
+        button_tutorial.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_levelsFragment_to_tutorial))
 
         button_level1.setOnClickListener {
             numLevel = 1

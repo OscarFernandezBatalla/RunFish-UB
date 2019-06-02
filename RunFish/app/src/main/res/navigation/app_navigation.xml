@@ -50,6 +50,8 @@
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_levelsFragment_to_singlePlayerFragment2"
                 app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_levelsFragment_to_tutorial" app:destination="@id/tutorial"
+                app:popUpTo="@+id/levelsFragment"/>
     </fragment>
 
     <fragment android:id="@+id/options" android:name="com.example.frponsll40alumnes.runfish.activityFragments.Options"
@@ -101,6 +103,10 @@
     <fragment android:id="@+id/rankingFragment" android:name="com.example.frponsll40alumnes.runfish.RankingFragment"
               android:label="fragment_ranking" tools:layout="@layout/fragment_ranking">
         <action android:id="@+id/action_rankingFragment_to_menuFragment2" app:destination="@id/menuFragment"/>
+    </fragment>
+    <fragment android:id="@+id/tutorial" android:name="com.example.frponsll40alumnes.runfish.activityFragments.tutorial"
+              android:label="fragment_tutorial" tools:layout="@layout/fragment_tutorial">
+        <action android:id="@+id/action_tutorial_to_levelsFragment" app:destination="@id/levelsFragment"/>
     </fragment>
 
 </navigation>
