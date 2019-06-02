@@ -89,25 +89,16 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                 }
             }
 
+            var met: Int = - this.level.getMeter()
             for(x in NPCList!!){
                 if (x is EnemyShark) {
                     if (x.vertical) {
                         posx = (0..(displayWidth - x.width)).random()     //pot começar a 0?
-                        posy = (2500..30000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
-                    } else {
-                        if (x.leftToRight) {
-                            posx = (-2000..0).random()     //si no va fer-ho amb -1 i invertir random
-                            posy =
-                                (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()      //si no va fer-ho amb -1 i invertir random
-                        } else {
-                            posx = (0..2000).random()     //si no va fer-ho amb -1 i invertir random
-                            posy =
-                                (0..displayHeight).random()//(displayHeight..this.level.getMeters()*25).random()     //si no va fer-ho amb -1 i invertir random
-                        }
+                        posy = (displayHeight..met*3).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                     }
                 } else {
                     posx = (0..(displayWidth - x!!.width)).random()     //pot começar a 0?
-                    posy = (displayHeight..25000).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
+                    posy = (displayHeight..(met*1.5).toInt()).random() * (-1)//this.level.getMeters()*60).random() * (-1)       //ajustar el 40
                 }
                 x.changeCoordinates(posx, posy)
             }
@@ -125,7 +116,6 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true))
-
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
@@ -198,8 +188,8 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                                 bonus = true
 
                                 time2 = 0
-                                time = 5000 //TODO: Mirar com fer el time
-                                mult = 3 //TODO: PODRIEM FER UN CREATE MULT QUE FOS SEGONS EL NOMBRE PRIMER EN EL QUE ENS TROBEM
+                                time = 5000
+                                mult = 3
                             }
 
                         }
