@@ -68,6 +68,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var connected: Boolean = false
 
 
+
     var statsMap : HashMap<String, Int> = hashMapOf(
         "statTotalFish" to statTotalFish,
         "statPlanktonCollected" to statPlanktonCollected,
@@ -99,8 +100,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         "levelsUnlocked" to levelsUnlocked
     )
 
-    private var music : Int = 50        //percentatge
-    private var sound : Int = 50        //percentatge
+    private var music : Int = 50
+    private var sound : Boolean = true
     private var vibration : Boolean = true
     private var languageCat : Boolean = true
 
@@ -284,7 +285,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         return music
     }
 
-    override fun uploadSoundBar(): Int {
+    override fun uploadSoundSwitch(): Boolean {
         return sound
     }
 
@@ -509,7 +510,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         documentOptions.get().addOnSuccessListener { document ->
             if (document != null) {
                 music = document.data!!.get("music").toString().toInt()
-                sound = document.data!!.get("sound").toString().toInt()
+                sound = document.data!!.get("sound").toString().toBoolean()
                 vibration = document.data!!.get("vibration").toString().toBoolean()
                 languageCat = document.data!!.get("languageCat").toString().toBoolean()
             } else {
@@ -864,6 +865,14 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     override fun setMusic(progress : Int) {
         this.music = progress
+    }
+
+    fun getSounds(): Boolean {
+        return this.sound
+    }
+
+    fun setSounds(checked: Boolean) {
+        this.sound = checked
     }
 
 

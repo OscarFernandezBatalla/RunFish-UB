@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -23,6 +24,8 @@ import java.util.*
 
 class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var levelContext: MutableList<Int>, var context: Context/*, var numLevel: Int*/){
 
+    private lateinit var damage_sound : MediaPlayer
+    var sound : Boolean = true
     var time2 : Int = 0
     var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
@@ -62,6 +65,10 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     //Inicialitzem el joc, hauriem de comprobar si es SinglePlayer o Multiplayer i després crear el peix AQUI.
     fun startGame(){
+
+        damage_sound = MediaPlayer.create(context, R.raw.damage_sound)
+        val log1 = (Math.log(25.toDouble()) / Math.log(100.toDouble())).toFloat()
+        this.damage_sound.setVolume(log1,log1)
 
         //vibration = this.uploadVibration()
 
@@ -162,6 +169,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                     if (x is Plankton) {
                         fish!!.gainCapacity(x.value)
                     } else {
+                        if(sound){
+                            this.damage_sound.start()
+                        }
                         fish!!.loseLife(x.value)
                         if (vibration) {
                             vibrate()
@@ -196,6 +206,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
                         //fish!!.gainCapacity(x.value)
                     } else {
+                        if(sound) {
+                            this.damage_sound.start()
+                        }
                         fish!!.loseLife(x.value)
                         if (vibration) {
                             vibrate()
@@ -206,9 +219,6 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                     reaparicioNPC(x)
                 }
             }
-
-
-
         }
 
         if(!freeMode) {
@@ -336,6 +346,10 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     fun getBonus() : Boolean{
         return this.bonus
+    }
+
+    fun setSounds(sound : Boolean) {
+        this.sound = sound
     }
 
 

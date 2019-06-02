@@ -43,12 +43,18 @@ class Options : Fragment() {
             act!!.setVolume(0)
         }
 
+        switch_sounds.setOnCheckedChangeListener { _, isChecked ->
+            act!!.presenter.setSounds(isChecked)
+        }
+
+
         switch_vibration.setOnCheckedChangeListener { _, isChecked ->
             setVibrationState(isChecked)
         }
 
         seekBar_musica.max = this.act!!.getMaxVolume()
         seekBar_musica.progress = this.act!!.getCurrentVolume()
+
 
         seekBar_musica.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -83,7 +89,7 @@ class Options : Fragment() {
     }
 
     private fun uploadSoundBar(){
-        this.seekBar_sounds.progress = act!!.presenter.uploadSoundBar()
+        this.switch_sounds.isChecked = act!!.presenter.uploadSoundSwitch()
     }
 
     private fun uploadVibrationSwitch(){

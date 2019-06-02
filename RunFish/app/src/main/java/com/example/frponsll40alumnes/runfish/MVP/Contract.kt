@@ -27,7 +27,7 @@ interface Contract {
     interface Presenter {
         fun uploadStats(): MutableList<Int>
         fun uploadMusicBar(): Int
-        fun uploadSoundBar(): Int
+        fun uploadSoundSwitch(): Boolean
         fun uploadVibrationSwitch(): Boolean
         fun uploadBarsCommonFish(): MutableList<Int>
         fun uploadPriceCommonFish(): Int
@@ -90,7 +90,7 @@ interface Contract {
     interface Model {
         fun uploadStats():  MutableList<Int>
         fun uploadMusicBar(): Int
-        fun uploadSoundBar(): Int
+        fun uploadSoundSwitch(): Boolean
         fun uploadVibrationSwitch(): Boolean
         fun uploadBarsCommonFish(): MutableList<Int>
         fun uploadBarsClownFish(): MutableList<Int>

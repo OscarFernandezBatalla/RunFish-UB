@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var song : MediaPlayer
+    private lateinit var damage_sound : MediaPlayer
     private lateinit var audioManager : AudioManager
 
     private var currentVolume : Int = 0
@@ -41,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         song = MediaPlayer.create(this, R.raw.baby_shark)
+        damage_sound = MediaPlayer.create(this, R.raw.damage_sound)
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         song.isLooping = true
@@ -110,5 +112,9 @@ class HomeActivity : AppCompatActivity() {
 
     fun setVolume(progress : Int) {
         this.audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0)
+    }
+
+    fun getDamageSound() : MediaPlayer{
+        return damage_sound
     }
 }
