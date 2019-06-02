@@ -122,9 +122,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     private var capacityBar : Int = 0   //percentatge
     private var abilityUsed : Boolean = false
     private var levelSelected : Int = 1
-    private var planktonCollected : Int = 0
-
-    private var actualPlankton: Int = 20000
+    private var actualPlankton: Int = 0
 
     var planctonMap: HashMap<String, Int> = hashMapOf(
         "actualPlankton" to actualPlankton
@@ -136,7 +134,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var commonFishLife : Int = 20
     var commonFishCapacity : Int = 20
     var commonFishSpeed : Int = 20
-    var commonFishPrice : Int = 20
+    var commonFishPrice : Int = 0
     var commonFishAbility : Ability = Ability.SHIELD
     var commonFishOwned : Boolean = true
 
@@ -146,7 +144,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var clownFishLife : Int = 30
     var clownFishCapacity : Int = 30
     var clownFishSpeed : Int = 30
-    var clownFishPrice : Int = 30
+    var clownFishPrice : Int = 100
     var clownFishAbility : Ability = Ability.HEALTH
     var clownFishOwned : Boolean = true
 
@@ -155,7 +153,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var blowFishLife : Int = 40
     var blowFishCapacity : Int = 40
     var blowFishSpeed : Int = 40
-    var blowFishPrice : Int = 40
+    var blowFishPrice : Int = 350
     var blowFishAbility : Ability = Ability.DAMAGE_REDUCTION
     var blowFishOwned : Boolean = false
 
@@ -163,7 +161,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var swordFishLife : Int = 50
     var swordFishCapacity : Int = 50
     var swordFishSpeed : Int = 50
-    var swordFishPrice : Int = 50
+    var swordFishPrice : Int = 1000
     var swordFishAbility : Ability = Ability.SPEED
     var swordFishOwned : Boolean = true
 
@@ -171,7 +169,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     var sharkLife : Int = 60
     var sharkCapacity : Int = 60
     var sharkSpeed : Int = 60
-    var sharkPrice : Int = 60
+    var sharkPrice : Int = 5000
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
 
@@ -877,6 +875,10 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     fun getMetersLevel(): Int {
         return this.modelLevel.getMetersLevel()
+    }
+
+    fun addPlankton(planktonCollected: Int) {
+        this.actualPlankton += planktonCollected
     }
 
 

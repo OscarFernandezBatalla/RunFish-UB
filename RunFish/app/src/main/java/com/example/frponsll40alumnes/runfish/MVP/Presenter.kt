@@ -292,5 +292,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.model.getMetersLevel()
     }
 
+    fun addPlankton() {
+        this.model.addPlankton(this.getPlanktonCollected())
+    }
+
 
 }

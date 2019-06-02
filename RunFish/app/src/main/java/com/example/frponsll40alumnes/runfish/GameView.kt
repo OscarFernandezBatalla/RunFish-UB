@@ -175,6 +175,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
             this.presenter.stopMusic()
             planktonCollected!!.text = presenter.getPlanktonCollected().toString()
             metersTravelled!!.text = presenter.getMetersLevel().toString()
+            this.presenter.addPlankton()
 
 
 
