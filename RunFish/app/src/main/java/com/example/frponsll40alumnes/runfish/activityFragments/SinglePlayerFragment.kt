@@ -32,6 +32,12 @@ class SinglePlayerFragment : Fragment() {
         button_resume_singleplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_gameFragment))
         button_levels.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_levelsFragment))
         button_fish_multiplayer.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_singlePlayerFragment_to_fishFragment))
+        button_freemode_singleplayer.isEnabled = false
+        button_freemode_singleplayer.setBackgroundResource(R.drawable.tablon_block)
+        if(act!!.presenter.getLevelsUnlocked() == 10){
+            button_freemode_singleplayer.isEnabled = true
+            button_freemode_singleplayer.setBackgroundResource(R.drawable.new_tablon)
+        }
         button_freemode_singleplayer.setOnClickListener {
             constraint_freeMode.visibility = View.VISIBLE
             this.lastLevel = this.act!!.presenter.getActualLevel()

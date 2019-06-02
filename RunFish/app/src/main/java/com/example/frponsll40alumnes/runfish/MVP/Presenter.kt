@@ -282,4 +282,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     fun addPlanktonFreeMode(plankton: Int) {
         this.model.addPlankton(plankton)
     }
+
+    fun getLevelsUnlocked(): Int {
+        return this.model.getLevelsUnlocked()
+    }
+    
 }

@@ -729,4 +729,8 @@ class Model (var presenter: Presenter) : Contract.Model {
         this.statMaxDistanceTraveled += metersLevel
         this.setStatsToCloud()
     }
+
+    fun getLevelsUnlocked(): Int{
+        return this.levelsUnlocked
+    }
 }
