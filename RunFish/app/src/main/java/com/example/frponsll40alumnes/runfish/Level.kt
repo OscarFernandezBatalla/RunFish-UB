@@ -128,6 +128,16 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
         }
     }
 
+    fun updateFreeMode() {
+        //meters+=1
+        //if(this.meters <= 0){
+            meters+=5
+        //}
+        for (i in elements){
+            i.update()
+        }
+    }
+
     fun draw(canvas : Canvas){
         for (i in elements){
             i.draw(canvas)
@@ -137,5 +147,10 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     fun getMeter() : Int{
         return this.meters
     }
+
+    fun setMeters() {
+        this.meters = 0
+    }
+
 }
 
