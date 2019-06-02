@@ -288,5 +288,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setSounds(checked)
     }
 
+    fun getMetersLevel(): Int {
+        return this.model.getMetersLevel()
+    }
+
 
 }
