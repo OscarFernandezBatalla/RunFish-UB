@@ -130,5 +130,10 @@
     <string name="maxDistance">MAX DISTANCE: 0</string>
     <string name="maxScore">MAX SCORE: 0</string>
     <string name="ranking">RANKING</string>
+    <string name="tutorial_description">1. SELECT YOUR FAVOURITE CHARACTER\n\n
+        2. SELECT A LEVEL \n\n
+        3. MOVE YOUR CHARACTER WITH THE JOYSTICK BELOW\n\n
+        4. TRY TO AVOID THE ENEMYS AND \nCOLLECT THE PLANKTON!
+    </string>
 
 </resources>
