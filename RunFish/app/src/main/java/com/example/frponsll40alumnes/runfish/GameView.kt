@@ -201,7 +201,6 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
                 constraint!!.visibility = View.VISIBLE
             })
 
-
             this.presenter.unlockNextLevel()
             this.presenter.setStatsToCloud()
         }

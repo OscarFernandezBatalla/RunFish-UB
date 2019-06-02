@@ -868,8 +868,9 @@ class Model (var presenter: Presenter) : Contract.Model {
 
         var tempMeters = meters;
 
-        if(meters < 0)
-            tempMeters = meters.absoluteValue
+        var levelDeepness = this.modelLevel.getLevelContext(this.levelSelected)[3]
+
+        tempMeters = levelDeepness + levelDeepness.absoluteValue + (meters + levelDeepness.absoluteValue)
 
         if(tempMeters > this.statMaxDistanceTraveled) {
             this.statMaxDistanceTraveled = tempMeters
