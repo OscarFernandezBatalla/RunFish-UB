@@ -1,10 +1,8 @@
 package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
-import com.example.frponsll40alumnes.runfish.FishType
-import com.example.frponsll40alumnes.runfish.GameEngine
+import com.example.frponsll40alumnes.runfish.*
 import com.example.frponsll40alumnes.runfish.Map
-import com.example.frponsll40alumnes.runfish.Player
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.NPC
@@ -75,6 +73,18 @@ interface Contract {
         fun setUsername(username: String)
         fun getCurrentFish() : FishType
         fun setCurrentFish(fish: FishType)
+        fun setStatsToCloud()
+        fun getAllFromCloud()
+        fun getMeters() : Int
+        fun setMeters(meters : Int)
+        fun getLevel() : Level
+        fun setActualLevel(numLevel: Int)
+        fun getActualLevel(): Int
+        fun unlockNextLevel()
+        fun freeModeON()
+        fun getLevelContext(): MutableList<Int>
+        fun getFreeMode(): Boolean
+        fun setMusic(progress: Int)
     }
 
     interface Model {
@@ -123,6 +133,21 @@ interface Contract {
         fun setUsername(username: String)
         fun getCurrentFish() : FishType
         fun setCurrentFish(fish: FishType)
+        fun setUsernameToCloud()
+        fun getUsernameFromCloud()
+        fun getAllUsernameListFromCloud()
+        fun setAllUsernameListToCloud()
+        fun searchUserIdInUserIdList(name: String): Boolean
+        fun increaseDeath()
+        fun setLevelSelected(numLevel : Int)
+        fun getLevelSelected() : Int
+        fun unlockNextLevel(actualLevel: Int)
+        fun freeModeON()
+        fun getFreeMode() : Boolean
+        fun getLevelContext(): MutableList<Int>
+        fun setMusic(progress : Int)
+        fun getUsernameListFromCloud(name: String): Boolean
+
     }
 
 }

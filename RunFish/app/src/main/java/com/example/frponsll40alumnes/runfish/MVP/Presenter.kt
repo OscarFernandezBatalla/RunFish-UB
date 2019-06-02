@@ -223,51 +223,55 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
 
-    fun setStatsToCloud() {
+    override fun setStatsToCloud() {
         this.model.setStatsToCloud()
     }
 
 
-    fun getAllFromCloud() {
+    override fun getAllFromCloud() {
         this.model.getAllFromCloud()
     }
 
-    fun getMeters() : Int{
+    override fun getMeters() : Int{
         return this.gameEngine!!.getMeters()
     }
 
-    fun setMeters(meters : Int){
+    override fun setMeters(meters : Int){
         this.viewActivity.setMeters(meters)
     }
 
-    fun getLevel() : Level{
+    override fun getLevel() : Level{
         return this.gameEngine!!.level
     }
 
-    fun setActualLevel(numLevel: Int) {
+    override fun setActualLevel(numLevel: Int) {
         this.model.setLevelSelected(numLevel)
     }
 
 
-    fun getActualLevel(): Int {
+    override fun getActualLevel(): Int {
         return this.model.getLevelSelected()
     }
 
 
-    fun unlockNextLevel() {
+    override fun unlockNextLevel() {
         this.model.unlockNextLevel(this.model.getLevelSelected())
     }
 
-    fun freeModeON() {
+    override fun freeModeON() {
         this.model.freeModeON()
     }
 
-    fun getLevelContext(): MutableList<Int> {
+    override fun getLevelContext(): MutableList<Int> {
         return this.model.getLevelContext()
     }
 
-    fun getFreeMode(): Boolean {
+    override fun getFreeMode(): Boolean {
         return this.model.getFreeMode()
+    }
+
+    override fun setMusic(progress: Int) {
+        this.model.setMusic(progress)
     }
 
 
