@@ -18,6 +18,7 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import io.github.controlwear.virtual.joystick.android.JoystickView
 import kotlinx.android.synthetic.main.fragment_game.view.*
+import org.w3c.dom.Text
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -41,6 +42,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
+    private var metersFreeMode: TextView? = null
     var condicioFreeMode = !this.presenter.getFreeMode()
 
     private var joystick: JoystickView? = null
@@ -80,6 +82,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
         planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
         metersTravelled = rootView.findViewById(R.id.textView_int_travelled_meters)
 
+
         bar_life = rootView.findViewById(R.id.life_bar)
         bar_capacity = rootView.findViewById(R.id.bar_capacity)
         text_plankton = rootView.findViewById(R.id.text_view_plankton)
@@ -104,11 +107,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
         }
 
         /* Posem la capacity si estem a levels o el plankton infinit si estem a freeMode */
-        if(condicioFreeMode){
-            bar_capacity!!.visibility = View.VISIBLE
-        }else text_plankton!!.visibility = View.VISIBLE
-
-
+        this.setCapacityBar()
 
 
         thread.setRunning(true)
@@ -132,7 +131,6 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
         presenter.updateJoystickInf(valx,valy,strength)
         presenter.updateView()
 
-
         //setBonus()
 
         bar_life!!.progress = presenter.lifeBar()
@@ -154,7 +152,11 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
             })
 
 
-
+            if(!this.condicioFreeMode){
+                this.metersFreeMode = rootView.findViewById(R.id.textView_metersMap)
+                this.presenter.setMetersTraveledFreeMode(metersFreeMode!!.text.toString().toInt())
+                this.presenter.addPlanktonFreeMode(text_plankton!!.text.toString().toInt())
+            }
             this.presenter.stopMusic()
             this.presenter.increaseDeath()
 
@@ -178,7 +180,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
             this.presenter.addPlankton()
 
 
-
+            this.presenter.setMetersTraveled()
             this.presenter.unlockNextLevel()
             this.presenter.setStatsToCloud()
         }
@@ -220,5 +222,15 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
             this.text_bonus!!.visibility = View.GONE
         }
 
+    }
+
+    fun setCapacityBar(){
+        if(condicioFreeMode){
+            text_plankton!!.visibility = View.GONE
+            bar_capacity!!.visibility = View.VISIBLE
+        }else{
+            bar_capacity!!.visibility = View.GONE
+            text_plankton!!.visibility = View.VISIBLE
+        }
     }
 }
