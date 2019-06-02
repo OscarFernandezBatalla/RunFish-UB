@@ -848,8 +848,9 @@ class Model (var presenter: Presenter) : Contract.Model {
             this.setLevelSelected(levelsUnlocked++)
         }
     }
-
+    
     override fun freeModeON() {
+        this.freeMode = true
         this.levelSelected = -1
     }
 

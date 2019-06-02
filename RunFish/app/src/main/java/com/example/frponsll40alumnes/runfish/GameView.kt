@@ -128,7 +128,9 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
             this.presenter.setStatsToCloud()
         }
-        if(presenter.getMeters() >= 0 && !this.presenter.getFreeMode()){
+        var condicionMetres = presenter.getMeters() >= 0
+        var condicioFreeMode = !this.presenter.getFreeMode()
+        if(condicionMetres && condicioFreeMode){
 
             this.thread.setRunning(false)
             constraintSuccessfull!!.visibility = View.VISIBLE
