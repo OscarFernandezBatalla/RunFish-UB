@@ -474,6 +474,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         documentPlancton.set(planctonMap)
     }
     override fun setLevelsToCloud(){
+        levelsMap["levelsUnlocked"] = levelsUnlocked
         db.collection("usuarios").document("$user").collection("userContext").document("levels").set(levelsMap)
     }
     override fun setFishToCloud(){

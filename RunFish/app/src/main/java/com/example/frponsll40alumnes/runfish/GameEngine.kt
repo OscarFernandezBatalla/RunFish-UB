@@ -49,6 +49,8 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     var fishFactory = FishFactory()
     var npcFactory = NPCFactory()
 
+    var n: Int = 1
+
     val NPCListFreeMode : MutableList<NPC?>? = mutableListOf()
 
     var level = Level(levelContext, context)
@@ -181,6 +183,23 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             }
         }
         else{
+
+            if(level.getMeter()> 500*n && n<=7){
+                this.n++
+                var size: Int = NPCListFreeMode!!.size
+
+                NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+                NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+                NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+                NPCListFreeMode.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true))
+                NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
+                NPCListFreeMode.add(npcFactory.createNPC(NPCType.BOMB, context))
+
+                for(i in size..NPCListFreeMode.size){
+                    reaparicioNPC(NPCListFreeMode[i]!!)
+                }
+
+            }
             for (x in NPCListFreeMode!!) {
                 x!!.update()
             }
