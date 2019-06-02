@@ -27,7 +27,6 @@ class BackgroundElement(type : BackgroundType, context : Context) {
         this.imageWidth = image!!.width
     }
 
-
     fun update(){
         y+=5
     }

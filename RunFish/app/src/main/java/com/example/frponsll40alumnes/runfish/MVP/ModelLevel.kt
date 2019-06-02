@@ -6,8 +6,6 @@ class ModelLevel {
     private var numShark: Int = 0
     private var meters: Int = 0
 
-
-
     fun getLevelContext(numLevel: Int): MutableList<Int>{
         when(numLevel){
             -1 ->{

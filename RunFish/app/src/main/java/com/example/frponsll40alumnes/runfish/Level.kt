@@ -62,57 +62,6 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
         npcs[NPCType.BOMB] = this.levelContext[1]
         npcs[NPCType.ENEMYSHARK] = this.levelContext[2]
         meters = this.levelContext[3]
-
-        /*when(numLevel){
-            0 -> {
-                this.meters = -5000
-                difficultyLevel = DifficultyType.TUTORIAL
-            }
-            1 -> {
-                this.meters = -5000
-                difficultyLevel = DifficultyType.VERY_EASY
-            }
-            2 -> {
-                this.meters = -10000
-                difficultyLevel = DifficultyType.VERY_EASY
-            }
-            3 -> {
-                this.meters = -5000
-                difficultyLevel = DifficultyType.EASY
-            }
-            4 -> {
-                this.meters = -10000
-                difficultyLevel = DifficultyType.EASY
-            }
-            5 -> {
-                this.meters = -5000
-                difficultyLevel = DifficultyType.NORMAL
-            }
-            6 -> {
-                this.meters = -10000
-                difficultyLevel = DifficultyType.NORMAL
-            }
-            7 -> {
-                this.meters = -5000
-                difficultyLevel = DifficultyType.HARD
-            }
-            8 -> {
-                this.meters = -10000
-                difficultyLevel = DifficultyType.HARD
-            }
-            9 -> {
-                this.meters = -5000
-                difficultyLevel = DifficultyType.VERY_HARD
-            }
-            10 -> {
-                this.meters = -10000
-                difficultyLevel = DifficultyType.VERY_HARD
-            }
-            else->{
-                this.meters = -10000    //TODO: aqui s'hauria de posar inifity, pero aleshores peta la linea 31 perque es fan moltes iteracions
-                difficultyLevel = DifficultyType.VERY_HARD
-            }
-        }*/
     }
 
     fun getNpc(): HashMap<NPCType, Int> {

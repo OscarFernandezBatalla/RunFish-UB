@@ -134,6 +134,11 @@ interface Contract {
         fun getLevelContext(): MutableList<Int>
         fun setMusic(progress : Int)
         fun getUsernameListFromCloud(name: String): Boolean
+        fun getSounds(): Boolean
+        fun setSounds(checked: Boolean)
+        fun getMetersLevel(): Int
+        fun addPlankton(planktonCollected: Int)
+        fun setMetersTraveled(metersLevel: Int)
     }
 
 }
