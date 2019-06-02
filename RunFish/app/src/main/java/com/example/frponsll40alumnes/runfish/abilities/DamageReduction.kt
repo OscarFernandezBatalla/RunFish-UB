@@ -1,6 +1,7 @@
 package com.example.frponsll40alumnes.runfish.abilities
 
 import com.example.frponsll40alumnes.runfish.fish.BlowFish
+import com.example.frponsll40alumnes.runfish.fish.CommonFish
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
 class DamageReduction : AbilityStrategy {
@@ -10,8 +11,11 @@ class DamageReduction : AbilityStrategy {
     val DAMAGE_REDUCTION_DURATION = 60;
 
     override fun useAbility(fish: Fish) : Int {
-        if(fish is BlowFish) {
+        if(fish is CommonFish) {
             fish.damageReductionActivated = true;
+        }
+        else if(fish is BlowFish) {
+            fish.noDamage = true;
         }
 
         return this.cooldown;
