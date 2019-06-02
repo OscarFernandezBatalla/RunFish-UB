@@ -11,10 +11,8 @@ class DamageReduction : AbilityStrategy {
     val DAMAGE_REDUCTION_DURATION = 60;
 
     override fun useAbility(fish: Fish) : Int {
-        if(fish is CommonFish) {
-            fish.damageReductionActivated = true;
-        }
-        else if(fish is BlowFish) {
+
+        if(fish is BlowFish) {
             fish.noDamage = true;
         }
 

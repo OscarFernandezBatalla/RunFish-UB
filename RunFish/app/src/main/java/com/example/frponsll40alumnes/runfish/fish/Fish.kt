@@ -50,6 +50,17 @@ abstract class Fish (
                 this.damageReductionActivated = false
             }else this.life -= damage
         }
+        else if(this is Shark){
+            if(this.bite){
+                if((this.life + (damage/2)) >= this.maxLife){
+                    this.life = this.maxLife
+                }else {
+                    this.life += damage/2
+                }
+                this.bite = false
+            }
+            else this.life -= damage
+        }
         else {
             this.life -= damage
             // emit vibration

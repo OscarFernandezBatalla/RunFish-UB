@@ -30,13 +30,7 @@ class CommonFish(context: Context, atributs : MutableList<Int>) :
         rec.paint.color = Color.GREEN*/
     }
 
-    override fun update(xJoy : Double, yJoy : Double, strength : Int) {
-        super.update(xJoy, yJoy, strength)
-        if(this.invencibilityForNFrames > 0){
-            // decrease invencibility per frame
-            this.invencibilityForNFrames--
-        }
-    }
+
 /*
     override fun collision(npc: NPC) {
         if(npc is Plankton){
