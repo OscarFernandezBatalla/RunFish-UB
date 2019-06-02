@@ -44,6 +44,10 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     var level = Level(levelContext, context)
 
+    fun levelSetMeters(){
+        level.setMeters()
+    }
+
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
@@ -108,6 +112,8 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
         //freemode
         else{
+            levelSetMeters()
+
             NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.PLANKTON, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
             NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
@@ -229,8 +235,14 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
 
         }
-        // Update scrolling of background
-        level.update()
+
+        if(!freeMode) {
+            // Update scrolling of background
+            level.update()
+        }
+        else{
+            level.updateFreeMode()
+        }
     }
 
     private fun reaparicioNPC(x: NPC){
