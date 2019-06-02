@@ -23,9 +23,10 @@ import java.util.*
 
 class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var levelContext: MutableList<Int>, var context: Context/*, var numLevel: Int*/){
 
+    var savedPlankton : Int = 0;
     var numberOfDeaths: Int = 0
-    var murderedFish: Int = 0
-    var distanceTraveled: Int = 0
+    var murderedFish: Int = 0       //TODO: Aixo per a que serveix ??
+    var distanceTraveled: Int = 0 //TODO: guarda-ho a les estadistiques
     var vibration = false
     var freeMode : Boolean = false
 
@@ -211,14 +212,28 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
             for (x in NPCListFreeMode) {
                 if (collision(x!!)) {
                     reaparicioNPC(x)
+
+                    fish!!.collision(x!!)
+
+                    if(fish!!.hasLostLife())
+                        if(vibration)
+                            vibrate()
+                    /*
                     if (x is Plankton) {
                         fish!!.gainCapacity(x.value)
                     } else {
-                        fish!!.loseLife(x.value)
+                        fish!!.loseLife(x.value) // <----- AIXO NO TE EN COMPTE LA INVENCIBILITAT I LA REDUCCIO DE DANY ENTRE ALTRES
                         if (vibration) {
                             vibrate()
                         }
+                    }*/
+
+                    // save the current bar of plankton and reset it
+                    if(fish!!.capacity >= fish!!.maxCapacity){
+                        savedPlankton += fish!!.capacity;
+                        fish!!.capacity = 0
                     }
+
                 }
                 if(NPCLeftScreen(x)){
                     reaparicioNPC(x)
@@ -286,7 +301,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     }
 
     fun getPlanktonCollected(): Int {
-        return this.fish!!.capacity
+        return this.fish!!.capacity + this.savedPlankton;
     }
 
     /* Get an array of npcs positioned inside a rectangular area */

@@ -11,76 +11,76 @@ class ModelLevel {
     fun getLevelContext(numLevel: Int): MutableList<Int>{
         when(numLevel){
             -1 ->{
-                numPlankton = 2
+                numPlankton = 10
                 numBomb = 2
                 numShark = 2
-                meters = -10000
+                meters = -3000
             }
             0 -> {
-                numPlankton = 5
+                numPlankton = 15
                 numBomb = 5
                 numShark = 5
-                meters = -10000
+                meters = -4000
 
             }
             1 -> {
-                numPlankton = 5
+                numPlankton = 20
                 numBomb = 5
                 numShark = 5
-                meters = -10000
+                meters = -5000
             }
             2 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
-                meters = -10000
+                numPlankton = 25
+                numBomb = 7
+                numShark = 7
+                meters = -6000
             }
             3 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
-                meters = -10000
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
+                meters = -7000
             }
             4 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
-                meters = -10000
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
+                meters = -8000
             }
             5 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
-                meters = -10000
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
+                meters = -9000
             }
             6 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
                 meters = -10000
             }
             7-> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
                 meters = -10000
             }
             8 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
                 meters = -10000
             }
             9 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
                 meters = -10000
             }
             10 -> {
-                numPlankton = 5
-                numBomb = 5
-                numShark = 5
+                numPlankton = 30
+                numBomb = 7
+                numShark = 7
                 meters = -10000
             }
         }
