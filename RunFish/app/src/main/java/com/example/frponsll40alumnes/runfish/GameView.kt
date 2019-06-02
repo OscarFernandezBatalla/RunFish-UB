@@ -17,6 +17,7 @@ import com.example.frponsll40alumnes.runfish.activityFragments.GameFragment
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import io.github.controlwear.virtual.joystick.android.JoystickView
+import kotlinx.android.synthetic.main.fragment_game.view.*
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -25,6 +26,7 @@ import kotlin.math.sin
 class GameView(context: Context, var presenter: Presenter, var gameView: GameFragment) : SurfaceView(context), SurfaceHolder.Callback{
     val thread: GameThread
     private var planktonCollected : TextView? = null
+    private var metersTravelled : TextView? = null
     private var imageButton_pause : ImageButton?= null
     private var button_resume: Button?=null
     private var constraintGameOver : ConstraintLayout? = null
@@ -76,6 +78,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
         imageButton_pause = rootView.findViewById(R.id.imageButton_pause)
         button_resume = rootView.findViewById(R.id.button_resume)
         planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
+        metersTravelled = rootView.findViewById(R.id.textView_int_travelled_meters)
 
         bar_life = rootView.findViewById(R.id.life_bar)
         bar_capacity = rootView.findViewById(R.id.bar_capacity)
@@ -171,6 +174,9 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
 
             this.presenter.stopMusic()
             planktonCollected!!.text = presenter.getPlanktonCollected().toString()
+            metersTravelled!!.text = presenter.getMetersLevel().toString()
+
+
 
             this.presenter.unlockNextLevel()
             this.presenter.setStatsToCloud()

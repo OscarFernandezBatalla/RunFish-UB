@@ -88,4 +88,7 @@ class ModelLevel {
     }
 
 
+    fun getMetersLevel() : Int{
+        return this.meters
+    }
 }

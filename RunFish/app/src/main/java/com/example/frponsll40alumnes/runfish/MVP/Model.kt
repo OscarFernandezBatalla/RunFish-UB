@@ -875,5 +875,9 @@ class Model (var presenter: Presenter) : Contract.Model {
         this.sound = checked
     }
 
+    fun getMetersLevel(): Int {
+        return this.modelLevel.getMetersLevel()
+    }
+
 
 }
