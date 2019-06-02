@@ -54,11 +54,11 @@ class Options : Fragment() {
 
         seekBar_musica.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                act!!.getMusic().start()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                act!!.getMusic().stop()
             }
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

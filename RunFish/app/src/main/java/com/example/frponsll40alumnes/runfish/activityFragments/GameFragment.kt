@@ -50,7 +50,6 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-        //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
 
         act!!.signOut.visibility = View.GONE
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
