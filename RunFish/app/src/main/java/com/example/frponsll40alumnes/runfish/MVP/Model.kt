@@ -131,7 +131,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     /*FISH*/
 
     /*Common fish*/
-    var commonFishLife : Int = 20
+    var commonFishLife : Int = 40
     var commonFishCapacity : Int = 20
     var commonFishSpeed : Int = 20
     var commonFishPrice : Int = 0
@@ -141,34 +141,34 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
     /*Clownfish*/
-    var clownFishLife : Int = 30
+    var clownFishLife : Int = 60
     var clownFishCapacity : Int = 30
-    var clownFishSpeed : Int = 30
+    var clownFishSpeed : Int = 40
     var clownFishPrice : Int = 100
     var clownFishAbility : Ability = Ability.HEALTH
-    var clownFishOwned : Boolean = true
+    var clownFishOwned : Boolean = false
 
 
     /*Blow fish*/
-    var blowFishLife : Int = 40
-    var blowFishCapacity : Int = 40
-    var blowFishSpeed : Int = 40
+    var blowFishLife : Int = 60
+    var blowFishCapacity : Int = 60
+    var blowFishSpeed : Int = 30
     var blowFishPrice : Int = 350
     var blowFishAbility : Ability = Ability.DAMAGE_REDUCTION
     var blowFishOwned : Boolean = false
 
     /*Sword fish*/
-    var swordFishLife : Int = 50
+    var swordFishLife : Int = 80
     var swordFishCapacity : Int = 50
     var swordFishSpeed : Int = 50
     var swordFishPrice : Int = 1000
     var swordFishAbility : Ability = Ability.SPEED
-    var swordFishOwned : Boolean = true
+    var swordFishOwned : Boolean = false
 
     /*Shark*/
-    var sharkLife : Int = 60
-    var sharkCapacity : Int = 60
-    var sharkSpeed : Int = 60
+    var sharkLife : Int = 200
+    var sharkCapacity : Int = 90
+    var sharkSpeed : Int = 70
     var sharkPrice : Int = 5000
     var sharkAbility : Ability = Ability.BITE
     var sharkOwned : Boolean = false
