@@ -26,8 +26,8 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadMusicBar()
     }
 
-    override fun uploadSoundBar(): Int {
-        return model.uploadSoundBar()
+    override fun uploadSoundSwitch(): Boolean {
+        return model.uploadSoundSwitch()
     }
 
     override fun uploadVibrationSwitch(): Boolean {
@@ -127,6 +127,7 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         if (this.model.getLevelSelected() == -1){
             gameEngine!!.freeModeOn()
         }
+        gameEngine!!.setSounds(this.model.getSounds())
         gameEngine!!.updateVibration(uploadVibrationSwitch())
         this.startMusic()
         gameEngine!!.startGame()
@@ -280,6 +281,11 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
     fun getBonus(): Boolean {
         return this.gameEngine!!.getBonus()
+    }
+
+
+    fun setSounds(checked: Boolean) {
+        this.model.setSounds(checked)
     }
 
 
