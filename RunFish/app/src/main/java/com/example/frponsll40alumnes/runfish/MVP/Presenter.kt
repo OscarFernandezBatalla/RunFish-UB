@@ -274,5 +274,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setMusic(progress)
     }
 
+    fun getFreeModePlankton(): Int {
+        return this.gameEngine!!.getFreeModePlankton()
+    }
+
 
 }

@@ -31,11 +31,13 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
     private var paused : Boolean = false
     private var bar_life : ProgressBar? = null
     private var bar_capacity : ProgressBar? = null
+    private var text_plankton : TextView? = null
     private var ability : Button? = null
     var angleRad : Double = 0.0
     var valy : Double = 0.0
     var valx : Double = 0.0
     var strength: Int = 0
+    var condicioFreeMode = !this.presenter.getFreeMode()
 
     private var joystick: JoystickView? = null
 
@@ -74,6 +76,7 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
 
         bar_life = rootView.findViewById(R.id.life_bar)
         bar_capacity = rootView.findViewById(R.id.bar_capacity)
+        text_plankton = rootView.findViewById(R.id.text_view_plankton)
 
         ability = rootView.findViewById(R.id.button_habilitat)
 
@@ -93,6 +96,15 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
                 ability!!.visibility = View.VISIBLE
             }, (presenter.useAbility() * 1000).toLong())
         }
+
+        /* Posem la capacity si estem a levels o el plankton infinit si estem a freeMode */
+        if(condicioFreeMode){
+            bar_capacity!!.visibility = View.VISIBLE
+        }else text_plankton!!.visibility = View.VISIBLE
+
+
+
+
         thread.setRunning(true)
         thread.start()
     }
@@ -115,7 +127,10 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
         presenter.updateView()
 
         bar_life!!.progress = presenter.lifeBar()
-        bar_capacity!!.progress = presenter.capacityBar()
+        if(condicioFreeMode){
+            bar_capacity!!.progress = presenter.capacityBar()
+        }else text_plankton!!.text = presenter.getFreeModePlankton().toString()
+
 
         this.presenter.setMeters(presenter.getMeters())
 
@@ -129,7 +144,6 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             this.presenter.setStatsToCloud()
         }
         var condicionMetres = presenter.getMeters() >= 0
-        var condicioFreeMode = !this.presenter.getFreeMode()
         if(condicionMetres && condicioFreeMode){
 
             this.thread.setRunning(false)

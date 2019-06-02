@@ -28,6 +28,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     var distanceTraveled: Int = 0
     var vibration = false
     var freeMode : Boolean = false
+    var planktonFreeMode: Int = 0
 
     var displayMetrics = Resources.getSystem().displayMetrics
     var displayWidth = displayMetrics.widthPixels
@@ -220,7 +221,8 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                 if (collision(x!!)) {
                     reaparicioNPC(x)
                     if (x is Plankton) {
-                        fish!!.gainCapacity(x.value)
+                        planktonFreeMode += x.value
+                        //fish!!.gainCapacity(x.value)
                     } else {
                         fish!!.loseLife(x.value)
                         if (vibration) {
@@ -322,6 +324,10 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     fun freeModeOn() {
         this.freeMode = true
+    }
+
+    fun getFreeModePlankton(): Int {
+        return this.planktonFreeMode
     }
 
 }
