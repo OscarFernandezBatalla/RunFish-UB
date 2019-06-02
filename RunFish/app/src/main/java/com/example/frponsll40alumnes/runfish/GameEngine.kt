@@ -38,7 +38,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     var bonus: Boolean = false
     var mult : Int = 1
-    var time: Int = 0 //TEMPS?
+    var time: Long = 0 //TEMPS?
 
     //var background : Map? = null
 
@@ -232,7 +232,10 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                             planktonFreeMode += x.value
                             if(isPrime(planktonFreeMode)){
                                 bonus = true
-                                time = 10 //TODO: Mirar com fer el time
+                                time = 5000 //TODO: Mirar com fer el time
+                                android.os.Handler().postDelayed({
+                                    bonus = false
+                                },time)
                                 mult = 3 //TODO: PODRIEM FER UN CREATE MULT QUE FOS SEGONS EL NOMBRE PRIMER EN EL QUE ENS TROBEM
                             }
 
@@ -250,6 +253,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                     reaparicioNPC(x)
                 }
             }
+
 
 
         }
