@@ -3,23 +3,12 @@ package com.example.frponsll40alumnes.runfish
 import android.content.ContentValues
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Canvas
-import android.graphics.Rect
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.support.v4.content.ContextCompat.getSystemService
-import android.util.Log
-import android.view.View
-import android.widget.ProgressBar
-import com.example.frponsll40alumnes.runfish.Difficulty.DifficultyType
-import com.example.frponsll40alumnes.runfish.abilities.Ability
-import com.example.frponsll40alumnes.runfish.abilities.AbilityStrategy
-import com.example.frponsll40alumnes.runfish.abilities.Health
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.fish.FishFactory
 import com.example.frponsll40alumnes.runfish.npc.*
-import java.util.*
 
 class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var levelContext: MutableList<Int>, var context: Context/*, var numLevel: Int*/){
 

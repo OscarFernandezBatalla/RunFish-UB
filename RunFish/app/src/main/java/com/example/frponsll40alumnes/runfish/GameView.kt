@@ -164,6 +164,10 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
             this.presenter.stopMusic()
             this.presenter.increaseDeath()
 
+            if(this.presenter.getLevel().isInfinite()){
+                this.presenter.saveMeters();
+            }
+
             /*
             // ONLY THE UI THREAD CAN MODIFY THE UI STATE
             constraint = rootView.findViewById(R.id.game_over_layout)

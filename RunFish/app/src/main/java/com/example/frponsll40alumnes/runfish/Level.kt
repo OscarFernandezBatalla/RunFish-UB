@@ -150,5 +150,9 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     fun markAsInfinite(){
         this.infinite = true;
     }
+
+    fun isInfinite() : Boolean {
+        return this.infinite;
+    }
 }
 

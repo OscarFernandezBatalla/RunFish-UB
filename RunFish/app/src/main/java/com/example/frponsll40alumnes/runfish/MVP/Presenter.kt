@@ -270,8 +270,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.model.getLevelContext()
     }
 
-
-
+    fun saveMeters() {
+        this.model.possibleNewMaxDistance(this.getLevel().getMeter())
+    }
 
 
 }

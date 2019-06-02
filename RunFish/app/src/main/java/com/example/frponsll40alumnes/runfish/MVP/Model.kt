@@ -8,6 +8,7 @@ import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import org.w3c.dom.Document
+import kotlin.math.absoluteValue
 
 
 @Suppress("UNREACHABLE_CODE")
@@ -862,7 +863,19 @@ class Model (var presenter: Presenter) : Contract.Model {
         return this.modelLevel.getLevelContext(levelSelected)
     }
 
+    fun possibleNewMaxDistance(meters : Int){
+        Log.w(TAG, "WER checking max distance $meters")
 
+        var tempMeters = meters;
+
+        if(meters < 0)
+            tempMeters = meters.absoluteValue
+
+        if(tempMeters > this.statMaxDistanceTraveled) {
+            this.statMaxDistanceTraveled = tempMeters
+            Log.w(TAG, "WER new max distance $tempMeters")
+        }
+    }
 
 
 }
