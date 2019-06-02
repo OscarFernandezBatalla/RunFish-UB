@@ -20,28 +20,4 @@ class CommonFish(context: Context, atributs : MutableList<Int>) :
     override val height: Int = image.height
     override var rectangle: Rect = Rect(this.x, this.y, this.x+width, this.y+height)
     var damageReductionActivated = false
-
-    init{
-        //test de col·lisions (temporal):
-       /* rec.setBounds(this.x, this.y, this.x+width, this.y+height)
-        rec.paint.color = Color.parseColor("#009944")
-        rec.paint.color= Color.TRANSPARENT
-        rec.paint.style= Paint.Style.STROKE
-        rec.paint.color = Color.GREEN*/
-    }
-
-
-/*
-    override fun collision(npc: NPC) {
-        if(npc is Plankton){
-            this.gainCapacity(npc.value)
-        }
-        else {
-            // Si CommonFish no té activat el shield per aquest frame
-            if(this.invencibilityForNFrames <= 0){
-                this.loseLife(npc.value)
-                // emite vibration in loseLife
-            }
-        }
-    }*/
 }

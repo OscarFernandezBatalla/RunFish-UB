@@ -2,27 +2,11 @@ package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
 import com.example.frponsll40alumnes.runfish.*
-import com.example.frponsll40alumnes.runfish.Map
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.NPC
 
 interface Contract {
-
-    interface View {
-
-        //aqui tots els metodes que ha de fer la view
-
-        //fun initView()
-        /*fun updateShopFragment()
-        fun updateFishFragment()
-        fun updateFriendsFragment()
-        fun updateLevelsFragment()
-        fun updateMultiplayerFragment()
-        fun updateOptionsFragment()
-        fun updateStatsFragment()*/
-
-    }
 
     interface Presenter {
         fun uploadStats(): MutableList<Int>
@@ -54,9 +38,7 @@ interface Contract {
         fun updateJoystickInf(valx: Double, valy: Double, strength: Int)
         fun updateView()
         fun getNPC(): MutableList<NPC?>?
-        //fun getMap(): Map?
         fun getFish(): Fish?
-        //fun getBackground(): Map
         fun useAbility() : Int
         fun lifeBar(): Int
         fun capacityBar(): Int
@@ -85,6 +67,11 @@ interface Contract {
         fun getLevelContext(): MutableList<Int>
         fun getFreeMode(): Boolean
         fun setMusic(progress: Int)
+        fun getFreeModePlankton() : Int
+        fun getBonus(): Boolean
+        fun setSounds(checked: Boolean)
+        fun getMetersLevel(): Int
+        fun addPlankton()
     }
 
     interface Model {
@@ -147,7 +134,6 @@ interface Contract {
         fun getLevelContext(): MutableList<Int>
         fun setMusic(progress : Int)
         fun getUsernameListFromCloud(name: String): Boolean
-
     }
 
 }

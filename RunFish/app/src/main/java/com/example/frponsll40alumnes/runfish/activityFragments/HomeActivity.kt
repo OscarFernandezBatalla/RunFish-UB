@@ -14,10 +14,7 @@ import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home.*
-
-
 
 class HomeActivity : AppCompatActivity() {
 
@@ -40,7 +37,6 @@ class HomeActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         hideNav()
 
-
         song = MediaPlayer.create(this, R.raw.baby_shark)
         damage_sound = MediaPlayer.create(this, R.raw.damage_sound)
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -55,7 +51,6 @@ class HomeActivity : AppCompatActivity() {
         setupUI()
 
         presenter.setConnected(true)
-
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -90,7 +85,6 @@ class HomeActivity : AppCompatActivity() {
         return song
     }
 
-
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -112,9 +106,5 @@ class HomeActivity : AppCompatActivity() {
 
     fun setVolume(progress : Int) {
         this.audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0)
-    }
-
-    fun getDamageSound() : MediaPlayer{
-        return damage_sound
     }
 }

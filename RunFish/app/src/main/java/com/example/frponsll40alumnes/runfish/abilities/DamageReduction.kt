@@ -6,17 +6,14 @@ import com.example.frponsll40alumnes.runfish.fish.Fish
 
 class DamageReduction : AbilityStrategy {
 
-    override val cooldown = 8;
-
-    val DAMAGE_REDUCTION_DURATION = 60;
+    override val cooldown = 8
 
     override fun useAbility(fish: Fish) : Int {
-
         if(fish is BlowFish) {
-            fish.noDamage = true;
+            fish.noDamage = true
         }
 
-        return this.cooldown;
+        return this.cooldown
     }
 
 }

@@ -188,7 +188,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                 this.n++
                 var size: Int = NPCListFreeMode!!.size
 
-                NPCListFreeMode!!.add(npcFactory.createNPC(NPCType.PLANKTON, context))
+                NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
                 NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
                 NPCListFreeMode.add(npcFactory.createNPC(NPCType.PLANKTON, context))
                 NPCListFreeMode.add(npcFactory.createNPC(NPCType.ENEMYSHARK, context, vertical = true))

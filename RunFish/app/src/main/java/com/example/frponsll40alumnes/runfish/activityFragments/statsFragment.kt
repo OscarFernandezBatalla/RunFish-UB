@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.frponsll40alumnes.runfish.MVP.Presenter
 import com.example.frponsll40alumnes.runfish.R
 import kotlinx.android.synthetic.main.fragment_stats.*
 
@@ -26,7 +25,6 @@ class statsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         uploadStats()
         act!!.signOut.visibility = View.GONE
 

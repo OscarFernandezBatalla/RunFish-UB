@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.navigation.Navigation
 import com.example.frponsll40alumnes.runfish.R
@@ -31,8 +30,6 @@ class Options : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         act!!.signOut.visibility = View.VISIBLE
 
-
-
         uploadOptionsFragments()
 
         button_comeback_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_menuFragment))
@@ -46,7 +43,6 @@ class Options : Fragment() {
         switch_sounds.setOnCheckedChangeListener { _, isChecked ->
             act!!.presenter.setSounds(isChecked)
         }
-
 
         switch_vibration.setOnCheckedChangeListener { _, isChecked ->
             setVibrationState(isChecked)
@@ -76,7 +72,6 @@ class Options : Fragment() {
         super.onActivityCreated(savedInstanceState)
         uploadOptionsFragments()
     }
-
 
     private fun uploadOptionsFragments(){
         uploadMusicBar()

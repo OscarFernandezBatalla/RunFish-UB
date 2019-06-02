@@ -2,21 +2,15 @@ package com.example.frponsll40alumnes.runfish.MVP
 
 import android.content.Context
 import com.example.frponsll40alumnes.runfish.*
-import com.example.frponsll40alumnes.runfish.Map
 import com.example.frponsll40alumnes.runfish.abilities.Ability
 import com.example.frponsll40alumnes.runfish.activityFragments.HomeActivity
 import com.example.frponsll40alumnes.runfish.npc.NPC
 import com.example.frponsll40alumnes.runfish.fish.Fish
 
-//import kotlinx.android.synthetic.main.fragment_main.view.*
-
 class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
 
-
-    //var viewActivity: MainActivity = MainActivity()
     var model: Model = Model(this)
-    var gameEngine: GameEngine? = null          //o tambe es pot crear aqui es igual
-    //gameEngine.startGame()
+    var gameEngine: GameEngine? = null
 
     override fun uploadStats(): MutableList<Int> {
         return model.uploadStats()
@@ -34,9 +28,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return model.uploadVibrationSwitch()
     }
 
-    /*
-        Functions to update CommonFish Shop & Fish Fragments
-     */
     override fun uploadBarsCommonFish(): MutableList<Int> {
         return model.uploadBarsCommonFish()
     }
@@ -119,10 +110,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     }
 
     override fun startGame(player1: Player, player2: Player?, context: Context) {
-
-        //variable temporal per breakpoints
-        //var lev = this.model.getLevelSelected()
-
         gameEngine = GameEngine(this.getCurrentFish(),this.model.getAtriutes(this.getCurrentFish()),this.getLevelContext(),context)
         if (this.model.getLevelSelected() == -1){
             gameEngine!!.freeModeOn()
@@ -145,18 +132,10 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return gameEngine!!.getNPC()
     }
 
-    /*override fun getMap(): Map? {
-        return gameEngine!!.getMap()
-    }*/
-
     override fun getFish(): Fish? {
         return gameEngine!!.getFishGE()
     }
 
-    /*override fun getBackground(): Map {
-        return gameEngine!!.background!!
-    }
-*/
     override fun useAbility() : Int {
         return gameEngine!!.useAbilityGE()
     }
@@ -193,7 +172,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.viewActivity.getMusic().seekTo(0)
     }
 
-
     override fun getFriendsList(): MutableList<String>{
         return this.model.getFriendsList()
     }
@@ -217,7 +195,6 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     override fun getCurrentFish() : FishType{
         return model.getCurrentFish()
     }
-
 
     override fun setCurrentFish(fish: FishType) {
         model.setCurrentFish(fish)
@@ -249,11 +226,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setLevelSelected(numLevel)
     }
 
-
     override fun getActualLevel(): Int {
         return this.model.getLevelSelected()
     }
-
 
     override fun unlockNextLevel() {
         this.model.unlockNextLevel(this.model.getLevelSelected())
@@ -276,24 +251,23 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         this.model.setMusic(progress)
     }
 
-    fun getFreeModePlankton(): Int {
+    override fun getFreeModePlankton(): Int {
         return this.gameEngine!!.getFreeModePlankton()
     }
 
-    fun getBonus(): Boolean {
+    override fun getBonus(): Boolean {
         return this.gameEngine!!.getBonus()
     }
 
-
-    fun setSounds(checked: Boolean) {
+    override fun setSounds(checked: Boolean) {
         this.model.setSounds(checked)
     }
 
-    fun getMetersLevel(): Int {
+    override fun getMetersLevel(): Int {
         return this.model.getMetersLevel()
     }
 
-    fun addPlankton() {
+    override fun addPlankton() {
         this.model.addPlankton(this.getPlanktonCollected())
     }
 
@@ -312,6 +286,5 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     fun getLevelsUnlocked(): Int {
         return this.model.getLevelsUnlocked()
     }
-
-
+    
 }
