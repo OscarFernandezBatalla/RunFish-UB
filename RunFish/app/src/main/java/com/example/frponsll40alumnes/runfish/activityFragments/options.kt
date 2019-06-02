@@ -36,13 +36,11 @@ class Options : Fragment() {
         uploadOptionsFragments()
 
         button_comeback_options.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_menuFragment))
-        //button_logOut.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_options_to_mainFragment))
-        button_audio_music.setOnClickListener {
-            this.seekBar_musica.progress = 0
-        }
 
         button_audio_music.setOnClickListener {
-            this.seekBar_sounds.progress = 0
+            this.seekBar_musica.progress = 0
+            act!!.presenter.setMusic(0)
+            act!!.setVolume(0)
         }
 
         switch_vibration.setOnCheckedChangeListener { _, isChecked ->
@@ -62,9 +60,15 @@ class Options : Fragment() {
             }
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                act!!.presenter.setMusic(progress)
                 act!!.setVolume(progress)
             }
         })
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        uploadOptionsFragments()
     }
 
 
@@ -75,12 +79,10 @@ class Options : Fragment() {
     }
 
     private fun uploadMusicBar(){
-        //this.text_view_int_deaths.text = statNumberOfDeath.toString()
         this.seekBar_musica.progress = act!!.presenter.uploadMusicBar()
     }
 
     private fun uploadSoundBar(){
-        //this.text_view_int_deaths.text = statNumberOfDeath.toString()
         this.seekBar_sounds.progress = act!!.presenter.uploadSoundBar()
     }
 

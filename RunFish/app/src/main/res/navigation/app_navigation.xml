@@ -22,6 +22,8 @@
                 app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_menuFragment_to_shopFragment" app:destination="@id/shopFragment"
                 app:popUpTo="@+id/menuFragment"/>
+        <action android:id="@+id/action_menuFragment_to_rankingFragment" app:destination="@id/rankingFragment"
+                app:popUpTo="@+id/menuFragment"/>
     </fragment>
 
     <fragment android:id="@+id/singlePlayerFragment"
@@ -95,6 +97,10 @@
                 app:destination="@id/singlePlayerFragment" app:popUpTo="@+id/menuFragment"/>
         <action android:id="@+id/action_fishFragment_to_multiplayerFragment" app:destination="@id/multiplayerFragment"
                 app:popUpTo="@+id/menuFragment"/>
+    </fragment>
+    <fragment android:id="@+id/rankingFragment" android:name="com.example.frponsll40alumnes.runfish.RankingFragment"
+              android:label="fragment_ranking" tools:layout="@layout/fragment_ranking">
+        <action android:id="@+id/action_rankingFragment_to_menuFragment2" app:destination="@id/menuFragment"/>
     </fragment>
 
 </navigation>

@@ -613,7 +613,7 @@ class Model (var presenter: Presenter) : Contract.Model {
         return false
     }*/
 
-    fun getUsernameListFromCloud(name: String): Boolean{
+    override fun getUsernameListFromCloud(name: String): Boolean{
 
         for(x in userIdList){
             usernameIdMapLock = true //defined near usernameIdMap
@@ -762,14 +762,14 @@ class Model (var presenter: Presenter) : Contract.Model {
         2. FER QUE LA BASE DE DADES ES MANTINGUI FIXE (no cada cop que entres es resetegi)
      */
 
-    fun setUsernameToCloud(){
+    override fun setUsernameToCloud(){
         this.actualitzaUsernameMap()
         documentUsername.set(usernameMap)
 
 
     }
 
-    fun getUsernameFromCloud(){
+    override fun getUsernameFromCloud(){
         documentUsername.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -784,7 +784,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
 
-    fun getAllUsernameListFromCloud() {
+    override fun getAllUsernameListFromCloud() {
 
         documentIdList.get()
             .addOnSuccessListener { document ->
@@ -807,7 +807,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
 
 
-    fun setAllUsernameListToCloud(){
+    override fun setAllUsernameListToCloud(){
         userIdMap["userId"] = userIdList
         documentIdList.set(userIdMap)
     }
@@ -822,7 +822,7 @@ class Model (var presenter: Presenter) : Contract.Model {
     /*
         Mètode que et diu si un id d'usuari està a la llista d'usuaris. Per no poder ficar dos al hora, potser ho puc posar dins del MAIN METHOD...
     */
-    fun searchUserIdInUserIdList(name: String): Boolean{
+    override fun searchUserIdInUserIdList(name: String): Boolean{
 
         if(name in usernameIdMap.keys){
             return true
@@ -830,18 +830,18 @@ class Model (var presenter: Presenter) : Contract.Model {
         return false
     }
 
-    fun increaseDeath() {
+    override fun increaseDeath() {
         statNumberOfDeath++
     }
 
-    fun setLevelSelected(numLevel : Int){
+    override fun setLevelSelected(numLevel : Int){
         this.levelSelected = numLevel
     }
-    fun getLevelSelected() : Int{
+    override fun getLevelSelected() : Int{
         return this.levelSelected
     }
 
-    fun unlockNextLevel(actualLevel: Int) {
+    override fun unlockNextLevel(actualLevel: Int) {
         //TODO: aixo no se si està bé
         if (actualLevel == levelsUnlocked && actualLevel < 10){
             this.levelsUnlocked++
@@ -849,20 +849,21 @@ class Model (var presenter: Presenter) : Contract.Model {
         }
     }
 
-    fun freeModeON() {
+    override fun freeModeON() {
         this.levelSelected = -1
-
     }
 
-    fun getFreeMode() : Boolean{
+    override fun getFreeMode() : Boolean{
         return this.freeMode
     }
 
-    fun getLevelContext(): MutableList<Int>{
+    override fun getLevelContext(): MutableList<Int>{
         return this.modelLevel.getLevelContext(levelSelected)
     }
 
-
+    override fun setMusic(progress : Int) {
+        this.music = progress
+    }
 
 
 }
