@@ -18,25 +18,13 @@ import kotlinx.android.synthetic.main.fragment_game.*
 class GameFragment : Fragment() {
 
     var act : HomeActivity? = null
-    //lateinit var joystick : JoystickView
     private lateinit var gameView : GameView
     lateinit var game : FrameLayout
     private lateinit var gameWidgets: LinearLayout
-    //private var imageButton_pause : ImageButton?= null
-    //private var button_resume: Button?=null
 
-    //private var textMet : TextView?= null
-
-    var met : Int = 0
-
-    var posX : Int = 0
-    var posY : Int = 0
-
-//    lateinit var text_y : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //act!!.signOut.visibility = View.GONE
         act = (activity as HomeActivity)
         game = FrameLayout(this.context!!)
         gameView = GameView(this.context!!, act!!.presenter)
@@ -50,14 +38,10 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-        //TODO: MIRAR MULTIPLAYER i crear persontatge en el presenter i no aquí.
-
         act!!.signOut.visibility = View.GONE
         val rootView = inflater.inflate(R.layout.fragment_game, container, false)
         game.addView(rootView)
         act!!.presenter.startGame(Player(act!!.presenter.getCurrentFish()),context = this.gameView.context)
-
-
         return game
     }
 
@@ -87,29 +71,14 @@ class GameFragment : Fragment() {
             successful_layout.bringToFront()
             successful_layout.visibility=View.VISIBLE
         }
-
         button_retry.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
-
-        
         button_back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
-
         button_back_successful.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_to_menuFragment))
-
         //button_next_level.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gameFragment_self))
-
-
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         this.act!!.presenter.stopMusic()
     }
-
-/*    fun setMeters(meters : Int){
-        this.textView_metersMap.text = meters.toString()
-    }*/
-
-
-
 }

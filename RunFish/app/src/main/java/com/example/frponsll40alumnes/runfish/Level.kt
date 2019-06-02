@@ -18,14 +18,6 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
     private var displayHeight = Resources.getSystem().displayMetrics.heightPixels
     private var heightNavegationBar = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"))
 
-
-    /*private var leftCoral : Int = 0
-    private var rightCoral : Int = 0
-    private var leftTurtle : Int = 0
-    private var rightTurtle : Int = 0
-    private var leftFish : Int = 0
-    private var rightFish : Int = 0*/
-
     init{
         setMap()
         for (i in 1..(-meters/1000)){
@@ -45,7 +37,7 @@ open class Level (var levelContext : MutableList<Int>, val context : Context)
             leftCoral.setCoordenates(0, height)
             rightCoral.setCoordenates(displayWidth+heightNavegationBar-rightCoral.getImageWidth(), height+500)
             leftTurtle.setCoordenates(displayWidth+heightNavegationBar-600, height+250)
-            rightTurtle.setCoordenates(400, height+350)
+            rightTurtle.setCoordenates(400, height-400)
             leftFish.setCoordenates(leftCoral.getImageWidth()+300, height-500)
             rightFish.setCoordenates(displayWidth+heightNavegationBar-400, height+100)
 

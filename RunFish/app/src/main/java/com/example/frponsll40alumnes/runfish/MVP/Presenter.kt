@@ -266,8 +266,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.model.getLevelContext()
     }
 
-
-
+    fun getFreeMode(): Boolean {
+        return this.model.getFreeMode()
+    }
 
 
 }

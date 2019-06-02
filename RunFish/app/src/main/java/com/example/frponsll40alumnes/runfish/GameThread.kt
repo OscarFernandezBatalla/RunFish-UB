@@ -1,13 +1,20 @@
 package com.example.frponsll40alumnes.runfish
 
 import android.graphics.Canvas
+import android.support.constraint.ConstraintLayout
+import android.text.Layout
 import android.view.SurfaceHolder
+import android.view.View
 import kotlinx.android.synthetic.main.fragment_game.view.*
 
 
 class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView: GameView) : Thread(){
     private val FPS : Int = 30
     private var isRunning : Boolean = false
+
+    private var constraintGO : ConstraintLayout?= null
+    private var constraintS : ConstraintLayout?= null
+
 
     fun setRunning(isRunning: Boolean) {
         this.isRunning = isRunning
@@ -52,15 +59,7 @@ class GameThread(private var surfaceHolder: SurfaceHolder, private var gameView:
                 e.printStackTrace()
             }
         }
-
-
-
-        //aqui el gameOver / successful? ojo
-
     }
-
-
-
 
     companion object {
         private var canvas: Canvas? = null

@@ -311,4 +311,5 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     fun freeModeOn() {
         this.freeMode = true
     }
+
 }
