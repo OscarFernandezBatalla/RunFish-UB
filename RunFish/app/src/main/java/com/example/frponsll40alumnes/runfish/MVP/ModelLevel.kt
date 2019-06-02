@@ -24,7 +24,7 @@ class ModelLevel {
 
             }
             1 -> {
-                numPlankton = 5
+                numPlankton = 100
                 numBomb = 5
                 numShark = 5
                 meters = -10000

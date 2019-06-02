@@ -14,7 +14,9 @@ import kotlinx.android.synthetic.main.fragment_game.view.*
 class Plankton(context: Context, points : Int): NPC(points) {
 
 
-    private val image : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.placton_aux)
+    private val image : Bitmap = changePlanktonImage(points,context)
+
+
 
     override var width: Int = image.width
     override var height: Int = image.height
@@ -29,6 +31,19 @@ class Plankton(context: Context, points : Int): NPC(points) {
         rec.paint.color=Color.TRANSPARENT
         rec.paint.style=Paint.Style.STROKE
         rec.paint.color = Color.RED*/
+    }
+
+
+    fun changePlanktonImage(points: Int, context: Context): Bitmap{
+        return when(points){
+            1 -> BitmapFactory.decodeResource(context.resources, R.drawable.plankton_one)
+            2 -> BitmapFactory.decodeResource(context.resources, R.drawable.plankton_two)
+            3 -> BitmapFactory.decodeResource(context.resources, R.drawable.plankton_three)
+            4 -> BitmapFactory.decodeResource(context.resources, R.drawable.plankton_four)
+            5 -> BitmapFactory.decodeResource(context.resources, R.drawable.plankton_five)
+            else -> BitmapFactory.decodeResource(context.resources, R.drawable.placton)
+        }
+
     }
     /**
      * Draws the object on to the canvas.
