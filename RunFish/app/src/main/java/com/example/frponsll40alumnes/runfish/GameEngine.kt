@@ -23,6 +23,7 @@ import java.util.*
 
 class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var levelContext: MutableList<Int>, var context: Context/*, var numLevel: Int*/){
 
+    var time2 : Int = 0
     var numberOfDeaths: Int = 0
     var murderedFish: Int = 0
     var distanceTraveled: Int = 0
@@ -36,7 +37,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
 
     var fish : Fish? = null
 
-    var bonus: Boolean = false
+    private var bonus: Boolean = false
     var mult : Int = 1
     var time: Long = 0 //TEMPS?
 
@@ -193,6 +194,7 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
     fun updateView(){
         // Update positions for player's fish
         fish!!.update(valx, valy, strength)
+        time2++
 
         // Update positions for npcs
         if(!freeMode) {
@@ -225,17 +227,17 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
                 if (collision(x!!)) {
                     reaparicioNPC(x)
                     if (x is Plankton) {
-                        if(bonus){
+                        if(bonus && time2 <150){
                             planktonFreeMode += ((x.value)*mult)
                         }
                         else{
+                            bonus = false
                             planktonFreeMode += x.value
                             if(isPrime(planktonFreeMode)){
                                 bonus = true
+
+                                time2 = 0
                                 time = 5000 //TODO: Mirar com fer el time
-                                android.os.Handler().postDelayed({
-                                    bonus = false
-                                },time)
                                 mult = 3 //TODO: PODRIEM FER UN CREATE MULT QUE FOS SEGONS EL NOMBRE PRIMER EN EL QUE ENS TROBEM
                             }
 
@@ -381,6 +383,9 @@ class GameEngine(var fishType: FishType, var atributs : MutableList<Int>, var le
         return false
     }
 
+    fun getBonus() : Boolean{
+        return this.bonus
+    }
 
 
 }

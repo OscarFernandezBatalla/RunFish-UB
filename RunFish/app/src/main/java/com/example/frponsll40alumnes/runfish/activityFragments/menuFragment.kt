@@ -55,7 +55,7 @@ class menuFragment : Fragment() {
                     }
                 }
                 else{
-                    imageView_commonFishh.visibility = View.GONE
+                    //imageView_commonFishh.visibility = View.GONE
                     imageView_nemo.visibility = View.GONE
                     imageView_shark.visibility = View.GONE
                     text_view_loading.visibility = View.GONE

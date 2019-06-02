@@ -33,6 +33,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
     private var bar_life : ProgressBar? = null
     private var bar_capacity : ProgressBar? = null
     private var text_plankton : TextView? = null
+    private var text_bonus : TextView? = null
     private var ability : Button? = null
     var angleRad : Double = 0.0
     var valy : Double = 0.0
@@ -71,6 +72,7 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
         constraintGameOver = rootView.findViewById(R.id.game_over_layout)
         constraintSuccessfull = rootView.findViewById(R.id.successful_layout)
 
+        text_bonus = rootView.findViewById(R.id.textView_bonus)
         imageButton_pause = rootView.findViewById(R.id.imageButton_pause)
         button_resume = rootView.findViewById(R.id.button_resume)
         planktonCollected = rootView.findViewById(R.id.textView_int_planctonCollected)
@@ -126,6 +128,9 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
     fun update() {
         presenter.updateJoystickInf(valx,valy,strength)
         presenter.updateView()
+
+
+        //setBonus()
 
         bar_life!!.progress = presenter.lifeBar()
         if(condicioFreeMode){
@@ -197,5 +202,16 @@ class GameView(context: Context, var presenter: Presenter, var gameView: GameFra
 
     fun setPause(paused: Boolean) {
         this.paused = paused
+    }
+
+    fun setBonus(){
+        if(this.presenter.getBonus()){
+            //this.text_bonus!!.visibility = View.VISIBLE
+            //this.text_bonus!!.bringToFront()
+        }
+        else{
+            this.text_bonus!!.visibility = View.GONE
+        }
+
     }
 }

@@ -278,5 +278,9 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
         return this.gameEngine!!.getFreeModePlankton()
     }
 
+    fun getBonus(): Boolean {
+        return this.gameEngine!!.getBonus()
+    }
+
 
 }
