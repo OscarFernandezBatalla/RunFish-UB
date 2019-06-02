@@ -182,8 +182,6 @@ class Model (var presenter: Presenter) : Contract.Model {
     "sharkOwned" to sharkOwned
     )
 
-    //var
-
 
     fun getAtriutes(fish : FishType) : MutableList<Int> {
 
@@ -832,6 +830,7 @@ class Model (var presenter: Presenter) : Contract.Model {
 
     override fun increaseDeath() {
         statNumberOfDeath++
+        this.setStatsToCloud()
     }
 
     override fun setLevelSelected(numLevel : Int){
@@ -879,8 +878,17 @@ class Model (var presenter: Presenter) : Contract.Model {
     }
 
     fun addPlankton(planktonCollected: Int) {
+        this.statPlanktonCollected += planktonCollected
         this.actualPlankton += planktonCollected
+        this.setPlanctonToCloud()
+        this.setStatsToCloud()
     }
+
+    fun setMetersTraveled(metersLevel: Int) {
+        this.statMaxDistanceTraveled += metersLevel
+        this.setStatsToCloud()
+    }
+
 
 
 }

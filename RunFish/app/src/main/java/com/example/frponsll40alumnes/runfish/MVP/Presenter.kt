@@ -270,4 +270,16 @@ class Presenter(var viewActivity: HomeActivity) : Contract.Presenter{
     override fun addPlankton() {
         this.model.addPlankton(this.getPlanktonCollected())
     }
+
+    fun setMetersTraveled() {
+        this.model.setMetersTraveled(this.getMetersLevel())
+    }
+
+    fun setMetersTraveledFreeMode(meters: Int) {
+        this.model.setMetersTraveled(meters)
+    }
+
+    fun addPlanktonFreeMode(plankton: Int) {
+        this.model.addPlankton(plankton)
+    }
 }
