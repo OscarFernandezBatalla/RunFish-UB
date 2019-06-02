@@ -18,6 +18,7 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.frponsll40alumnes.runfish.MVP.Presenter
+import com.example.frponsll40alumnes.runfish.activityFragments.GameFragment
 import com.example.frponsll40alumnes.runfish.fish.Fish
 import com.example.frponsll40alumnes.runfish.npc.EnemyShark
 import com.example.frponsll40alumnes.runfish.npc.NPC
@@ -30,7 +31,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 
-class GameView(context: Context, var presenter: Presenter) : SurfaceView(context), SurfaceHolder.Callback{
+class GameView(context: Context, var presenter: Presenter, var gameView: GameFragment) : SurfaceView(context), SurfaceHolder.Callback{
 
     //private var meters : TextView? = null
     var num = 0
@@ -164,25 +165,40 @@ class GameView(context: Context, var presenter: Presenter) : SurfaceView(context
             Log.w(TAG, "QWE You died")
             this.presenter.stopMusic()
             this.presenter.increaseDeath()
-            //constraint = rootView.findViewById(R.id.game_over_layout)
-            //constraint!!.visibility = View.VISIBLE
-            //if(constraint!!.visibility == View.VISIBLE) {
-            //    Log.w(TAG, "QWE fragment is visible")
-            //}
+
+            /*
+            // ONLY THE UI THREAD CAN MODIFY THE UI STATE
+            constraint = rootView.findViewById(R.id.game_over_layout)
+            constraint!!.visibility = View.VISIBLE
+            */
+
+            this.gameView.act!!.runOnUiThread( Runnable {
+                constraint = rootView.findViewById(R.id.game_over_layout)
+                constraint!!.visibility = View.VISIBLE
+            })
+
+
             this.presenter.setStatsToCloud()
         }
         if(presenter.getMeters() >= 0){
-            Log.w(TAG, "QWE You win")
             this.thread.setRunning(false)
+            Log.w(TAG, "QWE You win")
+
             this.presenter.stopMusic()
             planktonCollected!!.text = presenter.getPlanktonCollected().toString()
-            /*constraint = rootView.findViewById(R.id.successful_layout)
-            //TODO: no es mostra successful layout
-            constraint!!.visibility = View.VISIBLE
 
-            if(constraint!!.visibility == View.VISIBLE) {
-                Log.w(TAG, "QWE fragment is visible")
-            }*/
+            /*
+            // ONLY THE UI THREAD CAN MODIFY THE UI STATE
+            constraint = rootView.findViewById(R.id.successful_layout)
+            constraint!!.visibility = View.VISIBLE
+            */
+
+            this.gameView.act!!.runOnUiThread( Runnable {
+                constraint = rootView.findViewById(R.id.successful_layout)
+                constraint!!.visibility = View.VISIBLE
+            })
+
+
             this.presenter.unlockNextLevel()
             this.presenter.setStatsToCloud()
         }
